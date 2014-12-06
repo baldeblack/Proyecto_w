@@ -1,0 +1,135 @@
+package com.models;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import com.Controllers.CUsuarios;
+import com.Entities.TipoRescatista;
+import com.Interfaces.ICUsuarios;
+
+public class UsuariosModel {
+
+	private String apellido;
+	private byte borrado;
+	private String celular;
+	private Date creacion;
+	private String direccion;
+	private String email;
+	private Date nacimiento;
+	private String nick;
+	private String nombre;
+	private String password;
+	private String sexo;
+	private int tipoUsuario;
+	private TipoRescatista tiporescatisa;
+	private List<TipoRescatista> tiposrescatistas; 
+	private String latLongRecidencia;
+	private String residencia;
+	
+	public UsuariosModel(){
+		tiposrescatistas = new ArrayList<TipoRescatista>();
+		ICUsuarios ic = new CUsuarios();
+		tiposrescatistas = ic.GetTipoRescatista();
+	};
+	
+	public byte getBorrado() {
+		return borrado;
+	}
+	public void setBorrado(byte borrado) {
+		this.borrado = borrado;
+	}
+	public String getCelular() {
+		return celular;
+	}
+	public void setCelular(String celular) {
+		this.celular = celular;
+	}
+	public Date getCreacion() {
+		return creacion;
+	}
+	public void setCreacion(Date creacion) {
+		this.creacion = creacion;
+	}
+	public String getDireccion() {
+		return direccion;
+	}
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public Date getNacimiento() {
+		return nacimiento;
+	}
+	public void setNacimiento(Date nacimiento) {
+		this.nacimiento = nacimiento;
+	}
+	public String getNick() {
+		return nick;
+	}
+	public void setNick(String nick) {
+		this.nick = nick;
+	}
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getSexo() {
+		return sexo;
+	}
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+	public int getTipoUsuario() {
+		return tipoUsuario;
+	}
+	public void setTipoUsuario(int tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
+	}
+	public TipoRescatista getTiporescatisa() {
+		return tiporescatisa;
+	}
+	public void setTiporescatisa(TipoRescatista tiporescatisa) {
+		this.tiporescatisa = tiporescatisa;
+	}
+	public List<TipoRescatista> getTiposrescatistas() {
+		return tiposrescatistas;
+	}
+	public void setTiposrescatistas(List<TipoRescatista> tiposrescatistas) {
+		this.tiposrescatistas = tiposrescatistas;
+	}
+	public String getLatLongRecidencia() {
+		return latLongRecidencia;
+	}
+	public void setLatLongRecidencia(String latLongRecidencia) {
+		this.latLongRecidencia = latLongRecidencia;
+	}
+	public String getResidencia() {
+		return residencia;
+	}
+	public void setResidencia(String residencia) {
+		this.residencia = residencia;
+	}
+
+	public String getApellido() {
+		return apellido;
+	}
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+	
+
+}

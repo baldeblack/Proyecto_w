@@ -1,0 +1,126 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans     
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+	<mvc:resources mapping="/resources/**" location="/resources/"/>
+	<context:component-scan base-package="com.controllers" />
+	<mvc:annotation-driven conversion-service="conversionService" />
+ 
+	<bean class="Validadores.CatastrofeValidador" />
+	<bean class="Validadores.UsuarioValidador" />
+	<bean class="Validadores.OngValidador" />
+	
+	
+ 
+<bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean" >
+<property name="converters">
+<list>
+<bean class="com.utils.StringToTipoRescatistaConverter">
+</bean>
+<bean class="com.utils.StringToDateConverter">
+</bean>
+</list>
+</property>
+</bean>
+	
+<!--  	<bean class="com.utils.TipoRescatistaPropertyEditor"/>  -->
+
+<!-- <bean class="org.springframework.beans.factory.config.CustomEditorConfigurer"> -->
+<!-- <property name="customEditors"> -->
+<!-- <map> -->
+<!-- <entry key="java.lang.String"> -->
+<!-- <bean class="com.utils.TipoRescatistaPropertyEditor"/> -->
+<!-- </entry> -->
+<!-- </map> -->
+<!-- </property> -->
+<!-- </bean> -->
+
+	 
+<!-- 	<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer"> -->
+<!-- 	     <property name="customEditors"> -->
+<!-- 		<map> -->
+<!--              <entry key="java.util.regex.Pattern"> -->
+<!--                  <bean class="miscillaneous.propertyeditorsupport.RegexPropertyEditor" /> -->
+<!--              </entry> -->
+<!--              TODO Add other entries here when required -->
+<!--          </map> -->
+<!-- 	     </property> -->
+<!-- 	    <property name="customEditors"> --> 
+<!-- 	        <list> --> 
+<!-- 	            <ref bean="TipoRescatistaPropertyEditor"/> --> 
+<!--  	        </list> --> 
+<!-- 	    </property> --> 
+<!-- 	</bean> -->
+
+ <!-- Register the Customer.properties -->
+ <bean id="messageSource"
+    class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+    <property name="basename" value="classpath:messages" />
+    <property name="defaultEncoding" value="UTF-8"/>
+</bean>
+ 
+<bean id="localeChangeInterceptor"
+    class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+    <property name="paramName" value="lang" />
+</bean>
+ 
+<bean id="localeResolver"
+    class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+    <property name="defaultLocale" value="en"/>
+</bean>
+    
+<bean id="handlerMapping"
+    class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+    <property name="interceptors">
+        <ref bean="localeChangeInterceptor" />
+    </property>    
+</bean>
+
+
+    
+<!-- 	<bean id="viewResolver" -->
+<!-- 		class="org.springframework.web.servlet.view.InternalResourceViewResolver"> -->
+<!-- 		<property name="prefix"> -->
+<!-- 			<value>/WEB-INF/Views/</value> -->
+<!-- 		</property> -->
+<!-- 		<property name="suffix"> -->
+<!-- 			<value>.jsp</value> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
+	
+	<bean id="viewResolver"
+    class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+    <property name="viewClass">
+        <value>
+            org.springframework.web.servlet.view.tiles2.TilesView
+        </value>
+    </property>
+</bean>
+<bean id="tilesConfigurer"
+    class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+    <property name="definitions">
+        <list>
+            <value>/WEB-INF/tiles.xml</value>
+        </list>
+    </property>
+</bean>
+	
+	
+	
+	<bean id="multipartResolver"
+        class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- max upload size in bytes -->
+        <property name="maxUploadSize" value="20971520" /> <!-- 20MB -->
+         
+        <!-- max size of file in memory (in bytes) -->
+        <property name="maxInMemorySize" value="1048576" /> <!-- 1MB --> 
+    </bean>
+    
+</beans>
