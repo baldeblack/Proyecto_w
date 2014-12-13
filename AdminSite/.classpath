@@ -14,15 +14,32 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/BusinessLogic"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/DAL"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/SpringFramework">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry combineaccessrules="false" kind="src" path="/BusinessLogic"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/DAL"/>
-	<classpathentry kind="lib" path="C:/Users/Gaston/git/Proyecto_w/Recursos/mysql/mysql-connector-java-5.1.32-bin.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Gaston/git/Proyecto_w/Recursos/gson-2.3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Gaston/git/Proyecto_w/Recursos/jackson-all-1.9.9.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/hibernate">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/MySqlDriver">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/git/Proyecto_w/Recursos/gson-2.3.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/git/Proyecto_w/Recursos/jackson-all-1.9.9.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

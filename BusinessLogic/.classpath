@@ -13,7 +13,15 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/DAL"/>
-	<classpathentry kind="lib" path="C:/Users/Gaston/git/Proyecto_w/Recursos/DALSite.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Gaston/git/Proyecto_w/Recursos/gson-2.3.jar"/>
+	<classpathentry kind="lib" path="C:/git/Proyecto_w/Recursos/DALSite.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="../"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/git/Proyecto_w/Recursos/gson-2.3.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="../"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
