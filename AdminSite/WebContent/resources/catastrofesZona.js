@@ -210,7 +210,7 @@ var drawingManager;
 		var jsonResult = new Array();	 
 	    		var jsonArr = new Array();
 	    		for ( var j = 0; j < coordinates.length; j++) {
-	    			jsonArr[j] = coordinates[j].k + " " + coordinates[j].B;
+	    			jsonArr[j] = coordinates[j].k + " " + coordinates[j].D;
 	    		}
 	    		
 	    	

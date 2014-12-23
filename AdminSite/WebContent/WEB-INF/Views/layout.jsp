@@ -8,9 +8,12 @@
 <title><tiles:insertAttribute name="title" ignore="true" /></title>
 <script type="text/javascript" src="<c:url value="/resources/OpenLayers/OpenLayers.js" />"> </script>
 <script type="text/javascript" src="<c:url value="/resources/js/jquery.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/jquery.dataTables.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/dataTables.tableTools.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/dataTables.bootstrap.js" />"></script>
 <link href="<c:url value="/resources/css/bootstrap.css"/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value="/resources/css/proyecto.css"/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value="/resources/css/font-awesome.css"/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value="/resources/css/dataTables.bootstrap.css"/>" rel="stylesheet" type="text/css" />
 </head>
 <body>
   <div id="contenedor_web">

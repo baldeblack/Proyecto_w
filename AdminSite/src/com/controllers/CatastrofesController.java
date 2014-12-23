@@ -100,13 +100,14 @@ public class CatastrofesController {
 				cEntity.setZonaAfectada(CatastrofeModel.getZonaAfectada());				
 				cEntity.setLogo(CatastrofeModel.getLogo().getBytes());
 				 //alta tenant en archivo hosts
-				 /*File hosts = new File("C:\\Windows\\System32\\drivers\\etc");			
+				 File hosts = new File("C:/Windows/System32/drivers/etc/hosts");			
+				 hosts.setWritable(true);
 				 BufferedWriter bw = new BufferedWriter(new FileWriter(hosts, true));
 				 bw.append(System.getProperty("line.separator"));
 				 bw.append("127.0.0.1"+"	" +	CatastrofeModel.getDominio());
 				 bw.flush();
-				 bw.close();*/
-						
+				 bw.close();
+				 
 				 String altaFecha = cEntity.getNombre() + s.replace("-", "").trim();
 				 String imagenesT = context.getRealPath("/WEB-INF/imagenesT");
 				 
