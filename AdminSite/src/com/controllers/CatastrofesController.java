@@ -82,6 +82,7 @@ public class CatastrofesController {
 			
 			if(CatastrofeModel.getAction().equals("Crear")){
 			try {
+				  
 				Date date = new Date();
 			      Calendar calendar = Calendar.getInstance();
 			      calendar.setTime(date);

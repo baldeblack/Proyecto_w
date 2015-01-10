@@ -45,26 +45,32 @@ public class LostController {
 	
 	@RequestMapping(value = "/getAllView", method = RequestMethod.GET)
 	public ModelAndView getAllDesaparecidosView(LostsModel model,  HttpServletRequest request) {
+		ModelAndView  model2 = new ModelAndView("desaparecidos");
 		
 		Gson gson = new Gson();
-		ModelAndView  model2 = new ModelAndView("desaparecidos");
-		List<LostsModel> listModel =new ArrayList<LostsModel>(); 
+		List<LostsModel> listModel = null; 
 		HttpSession session = request.getSession(true);
 		Catastrofe c = (Catastrofe)session.getAttribute("Catastrofe");
 		
 		String jspnresp = ServiceConnectionHelper.CallServiceMethoodGET("LostsServies", "AllDesaparecidos", c.getStringConeccion());
-		Type listType = new TypeToken<List<Desaparecido>>() {}.getType();
-		List<Desaparecido> list = gson.fromJson(jspnresp, listType);
-		for (Desaparecido d : list) {
-			
-			LostsModel item = new LostsModel(d.getIdDesaparecidos(), d.getApellido(), d.getNombre(), d.getEdad(), d.getEstadoBusqueda(),
-					d.getFechaDesaparicion(), d.getNombreContacto(), d.getRelacionContacto(), d.getSexo(), d.getTelefonoContacto(),
-					d.getTIpoUsuioReportado(), d.getUltimoParadero(), d.getFoto());
-			
-			listModel.add(item);
-		}
+		
+			Type listType = new TypeToken<List<Desaparecido>>() {}.getType();
+			List<Desaparecido> list = gson.fromJson(jspnresp, listType);
+			if(list != null)
+			{
+				listModel =new ArrayList<LostsModel>(); 
+				for (Desaparecido d : list) {
+					
+					LostsModel item = new LostsModel(d.getIdDesaparecidos(), d.getApellido(), d.getNombre(), d.getEdad(), d.getEstadoBusqueda(),
+							d.getFechaDesaparicion(), d.getNombreContacto(), d.getRelacionContacto(), d.getSexo(), d.getTelefonoContacto(),
+							d.getTIpoUsuioReportado(), d.getUltimoParadero(), d.getFoto());
+					
+					listModel.add(item);
+				}
+			}
 		model2.addObject("Losts",listModel);
 		return model2;
+		
 	}
 	
 	
