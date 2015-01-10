@@ -32,7 +32,7 @@
 				  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user fa-lg"></i></a>
 				  <ul class="dropdown-menu" style="padding:12px;">
 				  	
-					<form class="form-horizontal" role="form">
+					<form class="form-horizontal" role="form" method="post">
 						
 					  	<div class="row contenedor-form">
 						  	<div class="col-xs-12 col-lg-12">
