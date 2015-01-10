@@ -59,6 +59,7 @@ public class SingletonTenant {
 					
 					if(!_mapSites.containsKey(obj.getDominio())){
 						obj.setlistOfImages(LoadImages(obj.getCarpetaImagenes()));
+						obj.setZonaAfectada(obj.getZonaAfectada().replace('"', '\''));
 						_mapSites.put(obj.getDominio(), obj);
 					}
 				}
@@ -77,7 +78,7 @@ public class SingletonTenant {
 		c.setIdCatastrofe(0);
 		c.setNombre("Local test");
 		c.setInformacion("Sitio no valido -> no asignado a ninguna catastrofe...");
-		c.setCarpetaImagenes("/home/proyecto/git/ImgCat/Default");
+		c.setCarpetaImagenes("C:\\wildfly-8.0.0.Final\\standalone\\deployments\\BackOffice.war\\WEB-INF\\imagenesT\\CT20150110054132");
 		c.setlistOfImages(LoadImages(c.getCarpetaImagenes()));
 		_mapSites.put(c.getDominio(), c);
 	}

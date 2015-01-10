@@ -161,12 +161,12 @@ height:150px;
 		<tr>
 			<td>Temas :</td>
 			<td><select name="css">
-					<option selected="selected" value="TEMA 1">TEMA 1</option>
-					<option value="TEMA 2">TEMA 2</option>
-					<option value="TEMA 3">TEMA 3</option>
-					<option value="TEMA 4">TEMA 4</option>
-					<option value="TEMA 5">TEMA 5</option>
-					<option value="TEMA 6">TEMA 6</option>
+					<option selected="selected" value="Style1.css">TEMA 1</option>
+					<option value="Style2.css">TEMA 2</option>
+					<option value="Style2.css">TEMA 3</option>
+					<option value="Style1.css">TEMA 4</option>
+					<option value="Style1.css">TEMA 5</option>
+					<option value="Style1.css">TEMA 6</option>
 			</select></td>
 		</tr>
 		<tr>

@@ -85,8 +85,8 @@ public class CatastrofesController {
 				Date date = new Date();
 			      Calendar calendar = Calendar.getInstance();
 			      calendar.setTime(date);
-			      SimpleDateFormat SDF = new SimpleDateFormat("yyyy-MM-dd");
-			      String s = SDF.format(date);
+			      SimpleDateFormat SDF = new SimpleDateFormat("yyyyMMddhhmmss");
+			      String tenantIdentifier = "CT" + SDF.format(date);
 
 				//ALta entidad
 				Catastrofe cEntity = new Catastrofe();
@@ -95,7 +95,7 @@ public class CatastrofesController {
 				cEntity.setCss(CatastrofeModel.getCss());
 				cEntity.setDominio(CatastrofeModel.getDominio());
 				cEntity.setFechaCreacion(date);
-  			    cEntity.setStringConeccion("jdbc:mysql://localhost:3306/" + CatastrofeModel.getNombre().trim() + s.replace("-", "").trim());
+  			    cEntity.setStringConeccion("jdbc:mysql://localhost:3306/" + tenantIdentifier /*CatastrofeModel.getNombre().trim() + s.replace("-", "").trim()*/);
 				cEntity.setInformacion(CatastrofeModel.getInformacion());				
 				cEntity.setZonaAfectada(CatastrofeModel.getZonaAfectada());				
 				cEntity.setLogo(CatastrofeModel.getLogo().getBytes());
@@ -108,10 +108,10 @@ public class CatastrofesController {
 				 bw.flush();
 				 bw.close();
 				 
-				 String altaFecha = cEntity.getNombre() + s.replace("-", "").trim();
+				 //String altaFecha = cEntity.getNombre() + s.replace("-", "").trim();
 				 String imagenesT = context.getRealPath("/WEB-INF/imagenesT");
 				 
-				 File theDir = new File(imagenesT +"/" + altaFecha);
+				 File theDir = new File(imagenesT +"/" +tenantIdentifier/* altaFecha*/);
 
 				  // if the directory does not exist, create it
 				  if (!theDir.exists()) {
@@ -143,8 +143,8 @@ public class CatastrofesController {
 					ICCatastrofe ic = new CCatastrofe();
 					ICBasedeDatos ib = new CBasedeDatos();
 					ic.GuardarCatastrofe(cEntity);	
-					ib.CrearTenantDB(CatastrofeModel.getNombre() + s.replace("-", "").trim());
-					ib.CrearTenantTables(CatastrofeModel.getNombre() + s.replace("-", "").trim());					
+					ib.CrearTenantDB(tenantIdentifier/*CatastrofeModel.getNombre() + s.replace("-", "").trim()*/);
+					ib.CrearTenantTables(tenantIdentifier/*CatastrofeModel.getNombre() + s.replace("-", "").trim()*/);					
 				
 			} catch (Exception e) {
 				throw e;

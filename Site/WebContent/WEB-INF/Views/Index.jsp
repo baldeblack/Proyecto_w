@@ -17,11 +17,12 @@
 		
 		<!-- DESCRIPCION-->
 		<div class="container-fluid informacion">
-			
+		
 			<!-- Heading Row -->
 	        <div class="row">
 	            <div class="col-md-8">
  						<div id="map-canvas"></div>
+ 						<input type="hidden" id="zonaAfectada" value="${sessionScope.Catastrofe.zonaAfectada}"/>
 	            </div>
 	            <!-- /.col-md-8 -->
 	            <div class="col-md-4">

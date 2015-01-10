@@ -19,14 +19,17 @@ public class Catastrofe implements Serializable {
 	private String dominio;
 
 	private Date fechaCreacion;
+	
+	private String fuentesDatos;
 
 	private String informacion;
 
 	private String nombre;
+	
+	private String palabrasClaves;
 
 
 	private String stringConeccion;
-
 
 	private String zonaAfectada;
 	
@@ -84,6 +87,14 @@ public class Catastrofe implements Serializable {
 		this.fechaCreacion = fechaCreacion;
 	}
 
+	public String getFuentesDatos() {
+		return this.fuentesDatos;
+	}
+
+	public void setFuentesDatos(String fuentesDatos) {
+		this.fuentesDatos = fuentesDatos;
+	}
+	
 	public String getInformacion() {
 		return this.informacion;
 	}
@@ -98,6 +109,14 @@ public class Catastrofe implements Serializable {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+	
+	public String getPalabrasClaves() {
+		return this.palabrasClaves;
+	}
+
+	public void setPalabrasClaves(String palabrasClaves) {
+		this.palabrasClaves = palabrasClaves;
 	}
 
 	public String getStringConeccion() {

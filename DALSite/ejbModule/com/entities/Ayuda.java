@@ -14,7 +14,7 @@ public class Ayuda implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idAyuda;
 
 	private short canal;
@@ -22,11 +22,11 @@ public class Ayuda implements Serializable {
 	@Lob
 	private String mensaje;
 
+	private String telefono;
+
 	private int tipoSolicitor;
 
 	private String ubicacion;
-
-	private String ubicacionLatLong;
 
 	//bi-directional many-to-one association to Usuario
 	@ManyToOne
@@ -60,6 +60,14 @@ public class Ayuda implements Serializable {
 		this.mensaje = mensaje;
 	}
 
+	public String getTelefono() {
+		return this.telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
 	public int getTipoSolicitor() {
 		return this.tipoSolicitor;
 	}
@@ -74,14 +82,6 @@ public class Ayuda implements Serializable {
 
 	public void setUbicacion(String ubicacion) {
 		this.ubicacion = ubicacion;
-	}
-
-	public String getUbicacionLatLong() {
-		return this.ubicacionLatLong;
-	}
-
-	public void setUbicacionLatLong(String ubicacionLatLong) {
-		this.ubicacionLatLong = ubicacionLatLong;
 	}
 
 	public Usuario getUsuario() {
