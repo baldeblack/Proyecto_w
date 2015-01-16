@@ -3,7 +3,6 @@ package com.entities;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 
 /**
@@ -17,7 +16,7 @@ public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idUsuarios;
 
 	private String apellido;
@@ -38,14 +37,6 @@ public class Usuario implements Serializable {
 	private String password;
 
 	private String sexo;
-
-	//bi-directional many-to-one association to Ayuda
-	@OneToMany(mappedBy="usuario")
-	private List<Ayuda> ayudas;
-
-	//bi-directional many-to-one association to Donacione
-	@OneToMany(mappedBy="usuario")
-	private List<Donacione> donaciones;
 
 	public Usuario() {
 	}
@@ -128,50 +119,6 @@ public class Usuario implements Serializable {
 
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
-	}
-
-	public List<Ayuda> getAyudas() {
-		return this.ayudas;
-	}
-
-	public void setAyudas(List<Ayuda> ayudas) {
-		this.ayudas = ayudas;
-	}
-
-	public Ayuda addAyuda(Ayuda ayuda) {
-		getAyudas().add(ayuda);
-		ayuda.setUsuario(this);
-
-		return ayuda;
-	}
-
-	public Ayuda removeAyuda(Ayuda ayuda) {
-		getAyudas().remove(ayuda);
-		ayuda.setUsuario(null);
-
-		return ayuda;
-	}
-
-	public List<Donacione> getDonaciones() {
-		return this.donaciones;
-	}
-
-	public void setDonaciones(List<Donacione> donaciones) {
-		this.donaciones = donaciones;
-	}
-
-	public Donacione addDonacione(Donacione donacione) {
-		getDonaciones().add(donacione);
-		donacione.setUsuario(this);
-
-		return donacione;
-	}
-
-	public Donacione removeDonacione(Donacione donacione) {
-		getDonaciones().remove(donacione);
-		donacione.setUsuario(null);
-
-		return donacione;
 	}
 
 }

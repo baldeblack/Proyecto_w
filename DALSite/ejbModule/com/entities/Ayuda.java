@@ -28,8 +28,8 @@ public class Ayuda implements Serializable {
 
 	private String ubicacion;
 
-	//bi-directional many-to-one association to Usuario
-	@ManyToOne
+	//uni-directional many-to-one association to Usuario
+	@ManyToOne(cascade={CascadeType.REFRESH})
 	@JoinColumn(name="IdSolicitor")
 	private Usuario usuario;
 

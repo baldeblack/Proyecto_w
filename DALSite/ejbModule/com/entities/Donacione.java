@@ -17,7 +17,7 @@ public class Donacione implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idDonaciones;
 
 	private int cantidad;
@@ -45,7 +45,7 @@ public class Donacione implements Serializable {
 	@JoinColumn(name="IdTipoDonacion")
 	private Tipodonacion tipodonacion;
 
-	//bi-directional many-to-one association to Usuario
+	//uni-directional many-to-one association to Usuario
 	@ManyToOne
 	@JoinColumn(name="IdDonante")
 	private Usuario usuario;

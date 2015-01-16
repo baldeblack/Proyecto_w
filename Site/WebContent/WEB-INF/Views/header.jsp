@@ -31,8 +31,7 @@
 				<li class="dropdown">
 				  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user fa-lg"></i></a>
 				  <ul class="dropdown-menu" style="padding:12px;">
-				  	
-					<form class="form-horizontal" role="form" method="post">
+				  	<form class="form-horizontal" role="form" >
 						
 					  	<div class="row contenedor-form">
 						  	<div class="col-xs-12 col-lg-12">
@@ -57,10 +56,10 @@
 			   			<a class="btn btn-facebook btn-lg" href="#"><i class="icon-facebook icon-large"></i> Facebook</a>
 			   			<a class="btn btn-google-plus btn-lg" href="#"><i class="icon-google-plus icon-large"></i> Google+</a>
 			   			<br><br>
-					  	<button type="submit" class="btn btn-default bton-login">Iniciar Sesion</button>
+					  	<button  class="btn btn-default bton-login" onclick="doLogin()">Iniciar Sesion</button>
 						<a data-toggle="modal" class="pull-right bton-registrarse" data-target="#myModal">Registrarse</a>
-					</form>
-					
+					 </form>
+					 
 				  </ul>
 				</li>
 			  </ul>

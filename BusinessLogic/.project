@@ -4,6 +4,7 @@
 	<comment></comment>
 	<projects>
 		<project>DAL</project>
+		<project>DALSite</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

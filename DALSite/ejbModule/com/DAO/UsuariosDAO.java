@@ -42,8 +42,8 @@ public class UsuariosDAO {
 	public Usuario getUsuarioByMail(String mail){
 		Usuario result = null;
 		try {
-			TypedQuery<Usuario> query =_eManager.createQuery("Select u From Usuario u where u.Email = ?1", Usuario.class);
-			query.setParameter(1, mail);
+			TypedQuery<Usuario> query =_eManager.createQuery("Select u From Usuario u where u.email = :correo", Usuario.class);
+			query.setParameter("correo", mail);
 			result = query.getSingleResult();
 		
 		} catch (Exception e) {

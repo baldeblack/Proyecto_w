@@ -26,4 +26,17 @@ public class ContentServices {
 		String response =  controller.GetAllOngs();
 		return Response.ok(response).build();
 	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/AskHelp/{input}")
+	public Response AskHelp(@PathParam("input") String input){
+	    /*Gson gson = new Gson();
+		MessageInput request = gson.fromJson(input, MessageInput.class);
+		IHelp
+		ICOng controller = new COng(request.getBdConnection());
+	
+		String response =  controller.GetAllOngs();*/
+		return Response.ok("").build();
+	}
 }

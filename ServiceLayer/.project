@@ -5,6 +5,7 @@
 	<projects>
 		<project>BusinessLogic</project>
 		<project>DAL</project>
+		<project>DALSite</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
