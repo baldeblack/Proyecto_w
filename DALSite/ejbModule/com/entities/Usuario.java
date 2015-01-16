@@ -27,7 +27,7 @@ public class Usuario implements Serializable {
 
 	private String email;
 
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaNacimiento;
 
 	private String nik;

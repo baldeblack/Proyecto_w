@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,17 +22,29 @@ import com.models.LoginModel;
 import com.utilities.HashHandler;
 import com.utilities.ServiceConnectionHelper;
 import com.utilities.SessionHandler;
+
 import java.util.List;
 
 @Controller
 @RequestMapping("/access")
 public class LoginController {
 	
+
+	@RequestMapping( value="/logOut", method = RequestMethod.GET)
+	public String logOut(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			SessionHandler.getInstance().closeActiveSesion(request);
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 return "layout";
+	}
 	
 	
 	@RequestMapping( value="/logon", method = RequestMethod.POST)
 	@ResponseBody
-	public String performLogin(@RequestBody String json, HttpServletRequest request, HttpServletResponse response) {
+	public String doLogin(@RequestBody String json, HttpServletRequest request, HttpServletResponse response) {
 		
 		Gson g = new Gson();
 		 try 

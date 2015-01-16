@@ -41,7 +41,7 @@ function doLogin() {
         url : url,
         type : "POST",
         cache : false,
-        async : true,
+        async : false,
         contentType : "application/json; charset=UTF-8",
         data : JSON.stringify({
             "email" : username,
@@ -49,10 +49,10 @@ function doLogin() {
         }),
         datatype : "json",
         success : function(data) {
-        	 alert("Bienvenido: "+ data);
+        	// alert("Bienvenido: "+ data);
         },
         error : function(XMLHttpRequest, textStatus, errorThrown) {
-            alert(XMLHttpRequest.status + " : " + errorThrown);
+            //alert(XMLHttpRequest.status + " : " + errorThrown);
         }
     });
 }
