@@ -5,9 +5,9 @@ public class Ayuda {
 	private int idAyuda;
 	private short canal;
 	private String mensaje;
+	private String telefono;
 	private int tipoSolicitor;
 	private String ubicacion;
-	private String ubicacionLatLong;
 	private Usuario usuario;
 
 	public Ayuda() {
@@ -37,6 +37,14 @@ public class Ayuda {
 		this.mensaje = mensaje;
 	}
 
+	public String getTelefono() {
+		return this.telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
 	public int getTipoSolicitor() {
 		return this.tipoSolicitor;
 	}
@@ -53,14 +61,6 @@ public class Ayuda {
 		this.ubicacion = ubicacion;
 	}
 
-	public String getUbicacionLatLong() {
-		return this.ubicacionLatLong;
-	}
-
-	public void setUbicacionLatLong(String ubicacionLatLong) {
-		this.ubicacionLatLong = ubicacionLatLong;
-	}
-
 	public Usuario getUsuario() {
 		return this.usuario;
 	}
@@ -68,5 +68,4 @@ public class Ayuda {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-
 }

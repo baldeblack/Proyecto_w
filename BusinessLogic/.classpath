@@ -19,5 +19,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry combineaccessrules="false" kind="src" path="/DALSite"/>
+	<classpathentry kind="lib" path="C:/git/Proyecto_w/Recursos/javamail1_4_7.zip"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

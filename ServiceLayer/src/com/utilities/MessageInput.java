@@ -9,6 +9,8 @@ public class MessageInput<T> {
 	private String _bdConnection;
 	private List<String> _extendedProperty;
 	
+	public MessageInput(){}
+	
 	public MessageInput(T entity, String connection, List<String> props){
 		_entity = entity;
 		_bdConnection = connection;

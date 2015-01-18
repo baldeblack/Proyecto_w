@@ -53,5 +53,4 @@ public class AccessService {
 		return Response.ok(dataString).build();
 		
 	}
-
 }

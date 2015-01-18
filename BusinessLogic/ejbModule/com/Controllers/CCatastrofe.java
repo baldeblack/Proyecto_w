@@ -34,12 +34,18 @@ public class CCatastrofe implements ICCatastrofe {
 		// TODO Auto-generated method stub
 		return _dao.getCatastrofeByID(id);
 	}
-
+	
 	@Override
 	public void ActualizarCatastrofe(Catastrofe c, Integer tenatId) {
 		// TODO Auto-generated method stub
 		_dao.ActualizarCatastrofe(c, tenatId);
 		
+	}
+	
+	@Override
+	public Catastrofe getCatastrofeByStringConnection(String conn) {
+
+		return _dao.getCatastrofeByStringConnection(conn);
 	}
 
 }

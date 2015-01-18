@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+
 import com.Entities.Catastrofe;
 import com.Helper.EntityManagerHelper;
 
@@ -82,6 +83,27 @@ public class CatastrofeDAO {
 			throw e;
 		}
 		return c;
+	}
+	
+	public Catastrofe getCatastrofeByStringConnection(String conn){
+		Catastrofe result = null;
+		try {
+			
+			List<Catastrofe> list = GetAllCatastrofes();
+			for (Catastrofe catastrofe : list) {
+				if(catastrofe.getStringConeccion().equalsIgnoreCase(conn))
+					return catastrofe;
+			}
+			//result = _eManager.find(Catastrofe.class,  conn);
+			/*
+			TypedQuery<Catastrofe> query =_eManager.createQuery("Select c From Catastrofe c Where c.StringConeccion =:conn and c.Activa =:act", Catastrofe.class);
+			query.setParameter("conn", conn);
+			query.setParameter("act", 1);
+			result = (Catastrofe)query.getSingleResult();*/
+		} catch (Exception e) {
+			throw e;
+		}
+		return result;
 	}
 
 }

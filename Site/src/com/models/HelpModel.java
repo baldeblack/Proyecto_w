@@ -4,16 +4,18 @@ public class HelpModel {
 
 	private int typeRequest;
 	private String message;
+	private String telefono;
 	private String location;
 	
 	public HelpModel(){
 		
 	}
 	
-	public HelpModel(int type, String msj, String loc){
+	public HelpModel(int type, String msj, String loc, String tel){
 		typeRequest = type;
 		message = msj;
 		location=loc;
+		telefono = tel;
 	}
 	
 	
@@ -31,6 +33,14 @@ public class HelpModel {
 
 	public void setMessage(String msg) {
 		this.message = msg;
+	}
+	
+	public String getTelefono() {
+		return this.telefono;
+	}
+
+	public void setTelefono(String tel) {
+		this.telefono = tel;
 	}
 
 	public String getLocation() {
