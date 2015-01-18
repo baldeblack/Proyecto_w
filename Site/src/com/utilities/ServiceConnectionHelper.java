@@ -13,7 +13,7 @@ import com.google.gson.Gson;
 
 public class ServiceConnectionHelper {
 
-	private static final String URL_SERVER = "http://localhost:8080/ServiceLayer/rest/";
+	private static final String URL_SERVER = "http://localhost/ServiceLayer/rest/";
 	
 	ServiceConnectionHelper(){
 	}

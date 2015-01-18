@@ -29,10 +29,6 @@ $(document).ready(function() {
 	  		           ));
 	  		}
 	  	 
-	 
-	  	 
-	  	 
-	  	 
 	  	 // Construct the polygon.
 	     zonaPolygon = new google.maps.Polygon({
 	     paths: arr,
@@ -41,9 +37,18 @@ $(document).ready(function() {
 	     strokeWeight: 2,
 	     fillColor: '#FF1493',
 	     fillOpacity: 0.35
+	     
 	   });
 	     
-	   zonaPolygon.setMap(map);
+	      zonaPolygon.setMap(map);	   
+	   	  var bounds = new google.maps.LatLngBounds();
+	      var i;
+	      
+	      for (i = 0; i < arr.length; i++) {
+	          bounds.extend(arr[i]);
+	      }
+	      
+	      map.fitBounds(bounds);
+	      map.setZoom(5);
 	  }
- 
-});
+ });

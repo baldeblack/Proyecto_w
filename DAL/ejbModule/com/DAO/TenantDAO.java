@@ -29,8 +29,8 @@ public class TenantDAO {
 						Statement st = null;		
 						st = con.createStatement();					
 						
-						String sql =  "CREATE TABLE Usuarios " +
-						"(idUsuarios int(11) NOT NULL, " +
+						String sql =  "CREATE TABLE usuarios " +
+						"(idUsuarios int(11) NOT NULL AUTO_INCREMENT, " +
 						"Nombre varchar(50) NOT NULL, " +
 						"Apellido varchar(50) NOT NULL, " +
 						"Nik varchar(50) DEFAULT NULL, " +
@@ -40,44 +40,48 @@ public class TenantDAO {
 						"Sexo char(1) NOT NULL, " +
 						"Celular varchar(50) DEFAULT NULL, " +
 						"Direccion varchar(200)DEFAULT NULL, " +
+						"FECHA timestamp NULL DEFAULT CURRENT_TIMESTAMP, " +
 						"PRIMARY KEY (idUsuarios))";
 						st.execute(sql);			
 						st.execute("LOCK TABLES "+usuariosTable+" WRITE");
 						st.execute("UNLOCK TABLES");							
-						sql ="CREATE TABLE Ayuda " +
-						"(idAyuda int(11) NOT NULL, " +
-						"TipoSolicitor int(11) DEFAULT NULL, " +
+						sql ="CREATE TABLE ayuda " +
+						"(idAyuda int(11) NOT NULL AUTO_INCREMENT, " +
+						"TipoSolicitor int(11) NOT NULL, " +
 						"IdSolicitor int(11) DEFAULT NULL, " +
 						"Canal smallint(6) DEFAULT NULL, " +
-						"Mensaje longtext, " +
-						"Ubicacion varchar(500) DEFAULT NULL, " +
+						"Mensaje longtext NOT NULL, " +
+						"Ubicacion varchar(500) NOT NULL, " +
+						"Telefono varchar(45) NOT NULL, " +
 						"UbicacionLatLong varchar(300) DEFAULT NULL, " +
+						"Fecha timestamp NULL DEFAULT CURRENT_TIMESTAMP, " +
 						"PRIMARY KEY (idAyuda), " +
 						"KEY fk_Ayuda_Solicitor_idx (IdSolicitor), " +
 						"CONSTRAINT fk_Ayuda_Solicitor FOREIGN KEY (IdSolicitor) REFERENCES Usuarios (idUsuarios) ON DELETE NO ACTION ON UPDATE NO ACTION)";
 						st.execute(sql);
 						st.execute("LOCK TABLES "+ ayudTable +" WRITE");				
 					    st.execute("UNLOCK TABLES");
-						sql = "CREATE TABLE Desaparecidos " + 
-						"(idDesaparecidos int(11) NOT NULL, " +
-						"Nombre varchar(100) DEFAULT NULL, " +
-						"Apellido varchar(100) DEFAULT NULL, " +
+						sql = "CREATE TABLE desaparecidos " + 
+						"(idDesaparecidos int(11) NOT NULL AUTO_INCREMENT, " +
+						"Nombre varchar(100) NOT NULL, " +
+						"Apellido varchar(100) NOT NULL, " +
 						"Edad int(11) DEFAULT NULL, " +
-						"Sexo char(1) DEFAULT NULL, " +
-						"FechaDesaparicion datetime DEFAULT NULL, " +
-						"UltimoParadero varchar(300) DEFAULT NULL, " +
-						"UltimoParaderoLatLong varchar(300) DEFAULT NULL, " +
-						"EstadoBusqueda smallint(6) DEFAULT NULL, " +
-						"NombreContacto varchar(100) DEFAULT NULL, " +
-						"TelefonoContacto varchar(100) DEFAULT NULL, " +
+						"Sexo char(1) NOT NULL, " +
+						"FechaDesaparicion datetime NOT NULL, " +
+						"UltimoParadero varchar(300) NOT NULL, " +
+						"EstadoBusqueda smallint(6) NOT NULL, " +
+						"NombreContacto varchar(100) NOT NULL, " +
+						"TelefonoContacto varchar(100) NOT NULL, " +
 						"RelacionContacto int(11) DEFAULT NULL, " +
 						"IdUsuarioReportado int(11) DEFAULT NULL, " +
 						"TIpoUsuioReportado int(11) DEFAULT NULL,  " +
+						"Foto blob, " +
+						"Fecha timestamp NULL DEFAULT CURRENT_TIMESTAMP, " +
 						"PRIMARY KEY (idDesaparecidos))";
 						st.execute(sql);
 						st.execute("LOCK TABLES " + desaparecidosTable + " WRITE");				
 					    st.execute("UNLOCK TABLES");
-						sql = "CREATE TABLE ONGs " +
+						sql = "CREATE TABLE ongs " +
 						"(idONGs int(11) NOT NULL, " +
 						"Nombre varchar(100) DEFAULT NULL, " +
 						"Direccion varchar(200) DEFAULT NULL, " +
@@ -98,8 +102,8 @@ public class TenantDAO {
 						st.execute(sql);
 						st.execute("LOCK TABLES " + tipoDonacionTable + " WRITE");				
 						st.execute("UNLOCK TABLES");
-						sql = "CREATE TABLE Donaciones " +
-						"(idDonaciones int(11) NOT NULL, " +
+						sql = "CREATE TABLE donaciones " +
+						"(idDonaciones int(11) NOT NULL AUTO_INCREMENT, " +
 						"IdDonante int(11) NOT NULL, " +
 						"IdOng int(11) NOT NULL, " +
 						"IdTipoDonacion int(11) NOT NULL, " +
@@ -110,6 +114,7 @@ public class TenantDAO {
 						"HsServicio int(11) DEFAULT NULL, " +
 						"ComienzoServico int(11) DEFAULT NULL, " +
 						"FInalizacionServicio int(11) DEFAULT NULL, " +
+						"Fecha timestamp NULL DEFAULT CURRENT_TIMESTAMP, " +
 						"PRIMARY KEY (idDonaciones), " +
 						"KEY fk_Donaciones_Ong_idx (IdOng), " +
 						"KEY fk_Donaciones_Tipo_idx (IdTipoDonacion), " +

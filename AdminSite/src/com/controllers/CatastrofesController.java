@@ -110,8 +110,9 @@ public class CatastrofesController {
 				 bw.close();
 				 
 				 //String altaFecha = cEntity.getNombre() + s.replace("-", "").trim();
-				 String imagenesT = context.getRealPath("/WEB-INF/imagenesT");
-				 
+				 //String imagenesT = context.getRealPath("/WEB-INF/imagenesT");				 
+				 String imagenesT = "C:/imagenesT";
+						 
 				 File theDir = new File(imagenesT +"/" +tenantIdentifier/* altaFecha*/);
 
 				  // if the directory does not exist, create it

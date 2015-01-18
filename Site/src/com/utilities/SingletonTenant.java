@@ -102,7 +102,10 @@ public class SingletonTenant {
 	
 	private static List<String> LoadImages(String folder){
 		try {
-		File dir = new File(folder);
+			
+		if(folder !=null){
+		
+			File dir = new File(folder);
 		
 		 File[] files = dir.listFiles();
 
@@ -131,6 +134,7 @@ public class SingletonTenant {
 		        }
 	        return filPaths;
 	         
+		}
 		}
 		catch (IOException e) {
 			// TODO Auto-generated catch block
