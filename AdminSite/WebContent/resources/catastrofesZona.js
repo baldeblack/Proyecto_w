@@ -167,6 +167,16 @@ var drawingManager;
 			 
 			  zonaPolygon.setMap(map);
 			  
+		  	  var bounds = new google.maps.LatLngBounds();
+		      var i;
+		      
+		      for (i = 0; i < arr.length; i++) {
+		          bounds.extend(arr[i]);
+		      }
+		      
+		      map.fitBounds(bounds);
+		      map.setZoom(1);
+		      
 			  drawingManager.setDrawingMode(null);
 	            // To hide:
 	            drawingManager.setOptions({

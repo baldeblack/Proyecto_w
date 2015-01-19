@@ -161,8 +161,11 @@ public class CatastrofesController {
 					c.setCss(CatastrofeModel.getCss());
 					c.setDominio(CatastrofeModel.getDominio());
 					c.setInformacion(CatastrofeModel.getInformacion());				
-					c.setZonaAfectada(CatastrofeModel.getZonaAfectada());				
+					c.setZonaAfectada(CatastrofeModel.getZonaAfectada());
+					
+					if (CatastrofeModel.getLogo().getSize() > 0 ){
 					c.setLogo(CatastrofeModel.getLogo().getBytes());
+					}
 					
 					 File imgFolder = new File(c.getCarpetaImagenes());
 					 File[] listOfFiles = imgFolder.listFiles();
