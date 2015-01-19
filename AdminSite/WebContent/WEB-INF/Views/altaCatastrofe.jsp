@@ -111,17 +111,17 @@ height:150px;
 	<table>
 		<tr>
 			<td>Nombre :</td>
-			<td><form:input path="nombre" /></td>
+			<td><form:input path="nombre" required="true" /></td>
 			<td><form:errors path="nombre" cssClass="error" /></td>
 		</tr>
 		<tr>
 			<td>Dominio :</td>
-			<td><form:input path="dominio" /></td>
+			<td><form:input path="dominio" required="true" /></td>
 			<td><form:errors path="dominio" cssClass="error" /></td>
 		</tr>
 		<tr>
 			<td>Informacion :</td>
-			<td><form:textarea path="informacion" /></td>
+			<td><form:textarea path="informacion" required="true" /></td>
 			<td><form:errors path="informacion" cssClass="error" /></td>
 		</tr>
 		<tr>
@@ -154,7 +154,7 @@ height:150px;
 		</tr>
 		<tr>
 			<td>Logo :</td>
-			<td><form:input type="file" path="logo" /></td>
+			<td><form:input type="file" path="logo" required="true"/></td>
 			<td><form:errors path="logo" cssClass="error" /></td>
 			<td><img class="imgShow" alt="" title="" src="data:image/jpeg;base64,${CatastrofeModel.logoString}"></td>
 		</tr>
@@ -217,7 +217,7 @@ height:150px;
 	<div id="map"></div>
 	<table>
 		<tr>
-			<td><form:hidden id="zonaAfectada" path="zonaAfectada" /></td>
+			<td><form:hidden id="zonaAfectada" path="zonaAfectada" required="true"/></td>
 			<td><form:errors path="zonaAfectada" cssClass="error" /></td>
 		</tr>
 	</table>
@@ -232,7 +232,7 @@ height:150px;
 			</tr>
 		</table>
 	</div>
-	<div id="fd" style="width:600px; height:300px; height:300px; overflow-x: hidden; overflow-y: scroll">
+	<div id="fd" style="height:300px; height:300px; overflow-x: hidden; overflow-y: auto">
 	<c:if test="${not empty CatastrofeModel.imagenes}">				
 						<c:forEach var="img"
 							items="${CatastrofeModel.imagenes}" varStatus="i">	
