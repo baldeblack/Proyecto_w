@@ -19,6 +19,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry combineaccessrules="false" kind="src" path="/DALSite"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/javamaillib"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/javamail"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

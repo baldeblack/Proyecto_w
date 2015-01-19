@@ -55,7 +55,6 @@ public class UsuariosDAO {
 	public int InsertUpdateUsuario(Usuario input){
 		try
 		{
-			//TODO: ver si funciona esto bien...
 			_eManager.getTransaction().begin();
 		    _eManager.persist(input);
 			_eManager.getTransaction().commit();

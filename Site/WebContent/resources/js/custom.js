@@ -1,4 +1,32 @@
 
+var login = function(mail, passwd){
+	 var url = "/Site/access/logon";
+	 
+	 $.ajax({
+	        url : url,
+	        type : "POST",
+	        cache : false,
+	        async : false,
+	        contentType : "application/json; charset=UTF-8",
+	        data : JSON.stringify({
+	            "email" : mail,
+	            "password" : passwd
+	        }),
+	        datatype : "json",
+	        success : function(data) {
+	        	if(data==="onError"){
+	        		alert("Usuario o contraseña no válida.");
+	        	}
+	        	else{
+	        		 location.reload();
+	        	}
+	        },
+	        error : function(XMLHttpRequest, textStatus, errorThrown) {
+	            alert(XMLHttpRequest.status + " : " + errorThrown);
+	        }
+	    });
+}
+
 function LoadLostList(callback) {
     $.ajax({
         url : '/Site/lost/getAllView',
@@ -34,10 +62,11 @@ function LoadOngList() {
 }
 
 function doLogin() {
-    var url = "/Site/access/logon";
     var username = $("#exampleInputEmail2").val();
     var password = $("#exampleInputPassword2").val();
-    $.ajax({
+    login(username,password)
+    
+    /*$.ajax({
         url : url,
         type : "POST",
         cache : false,
@@ -56,7 +85,7 @@ function doLogin() {
         error : function(XMLHttpRequest, textStatus, errorThrown) {
             alert(XMLHttpRequest.status + " : " + errorThrown);
         }
-    });
+    });*/
 }
 
 function SendHelp(){
@@ -92,7 +121,7 @@ function SendHelp(){
 		            	
 		            }
 		            else {
-		            	$("#responseHelp").html("Hubo un error al procesar su solicitud por fabor vuelva a intentarlo o comuniquece al: 112233");
+		            	$("#responseHelp").html("Hubo un error al procesar su solicitud por favor vuelva a intentarlo o comuniquece al: 112233");
 		            	setTimeout(function(){
 		            		$("#responseHelp").html("");
 		            	}, 8000);
@@ -103,42 +132,86 @@ function SendHelp(){
 	            alert(XMLHttpRequest.status + " : " + errorThrown);
 	        }
 	    });
-	    
-	/*var url = "/Site/help/ask";
-	var typeRequest = $('#typeRequest').val();
-    var messaje = $('#message').val();
-    var tel = $('#tel_ayuda').val();
-    var location = $('#ubicacion_ayuda').val();
-    
-    $.ajax({
-        url :  url,
-        type : "POST",
-        cache : false,
-        async : false,
-        contentType : "application/json; charset=UTF-8",
-        data: JSON.stringify({
-            "typeRequest" : typeRequest,
-            "message" : message,
-            "location":location,
-            "telefono":tel
-        }),
-        datatype : "json",
-        success : function(data) {
-        	alert("ahhhh");
-        	 if(data==="success"){ 
-	            	$("#responseHelp").html("Su pedido de ayuda fue enviado con exito, en minutos personal calificado se podra en contacto con ud.");
-	            	$('#typeRequest').val(1);
-	            	$('#message').val("");
-	            	$('#ubicacion_ayuda').val("");
-	            	$('#tel_ayuda').val("");
-	            	$("#closeModal").click();
-	            }
-	            else {
-	            	$("#responseHelp").html("Hubo un error al procesar su solicitud por fabor vuelva a intentarlo o comuniquece al: 112233");
-	            }
-        },
-        error : function(XMLHttpRequest, textStatus, errorThrown) {
-            alert(XMLHttpRequest.status + " : " + errorThrown);
-        }
-    });*/
 }
+
+var validateReg = function(){
+	var error = false;
+	if($('#password').val() !=$('#password_confirmation').val()){
+		error = true;
+	}
+	if( $('#nombre_usuario').val() == "")
+	{
+		error = true;
+	}
+	if( $('#apellido_usuario').val() == "")
+	{
+		error = true;
+	}
+	if( $('#email').val() == "")
+	{
+		error = true;
+	}
+	if( $('#nick_usuario').val() == "")
+	{
+		error = true;
+	}
+	if( $('#password').val() == "")
+	{
+		error = true;
+	}
+	return !error;
+}
+
+
+function RegistUser(){
+	if(validateReg())
+	{
+		 var url = "/Site/access/register";
+		 var name = $('#nombre_usuario').val();
+		 var lastName = $('#apellido_usuario').val();
+		 var nic = $('#nick_usuario').val();
+		 var email = $('#email').val();
+		 var psswd = $('#password').val();
+		 var confpswd = $('#password_confirmation').val();
+		 var fn = $('#fecha_nacimiento').val();
+		 var cel = $('#celular_usuario').val();
+		 var dir = $('#direccion_usuario').val();
+		 var sex = $('#sexo_usuario').val();
+	 
+	    $.ajax({
+	        url : url,
+	        type : "POST",
+	        cache : false,
+	        async : false,
+	        contentType : "application/json; charset=UTF-8",
+	        data : JSON.stringify({
+	        	 "apellido" : lastName,
+	             "celular" : cel,
+	             "direccion":dir,
+	             "email":email,
+	             "fechaNacimiento" : fn,
+	             "nik" : nic,
+	             "nombre" : name,
+	             "password" : psswd,
+	             "sexo" : sex
+	        }),
+	        datatype : "json",
+	        success : function(data) {
+	        	 if(data==="success"){ 
+		            	login(email,psswd);
+		            }
+		            else {
+		            	$("#responseReg").html("Hubo un error al procesar su solicitud por favor vuelva a intentarlo o comuniquece al: 112233");
+		            	setTimeout(function(){
+		            		$("#responseReg").html("");
+		            	}, 8000);
+		            }
+	        },
+	        error : function(XMLHttpRequest, textStatus, errorThrown) {
+	            alert(XMLHttpRequest.status + " : " + errorThrown);
+	        }
+	    });
+	}
+	    
+}
+

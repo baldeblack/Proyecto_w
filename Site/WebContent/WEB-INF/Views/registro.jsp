@@ -8,7 +8,7 @@
 		      </div>
 		      <div class="modal-body">		        
 					<form role="form">
-						<!--<h2>Please Sign Up <small>It's free and always will be.</small></h2>-->
+						<h2 id="responseReg"></h2>
 
 						<div class="row">
 							<div class="col-xs-12 col-sm-6 col-md-6">
@@ -44,6 +44,13 @@
 							<input type="date" name="fecha_nacimiento" id="fecha_nacimiento" class="form-control input-lg" placeholder="" tabindex="6">
 						</div>
 						<div class="form-group">
+							<select  id="sexo_usuario" class="form-control input-lg" tabindex="7">
+								<option value="F" selected="selected">Femenino</option>
+								<option value="M">Masculino</option>
+								<option value="O">Otro</option>
+							</select>
+						</div>
+						<div class="form-group">
 							<input type="text" name="celular_usuario" id="celular_usuario" class="form-control input-lg" placeholder="Celular" tabindex="7">
 						</div>
 						<div class="form-group">
@@ -53,8 +60,8 @@
 
 		      </div>
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-		        <button type="button" class="btn btn-warning">Registrar</button>
+		        <button type="button" class="btn btn-default" data-dismiss="modal" id="closeReg">Cerrar</button>
+		        <button type="button" class="btn btn-warning" onclick="RegistUser()">Registrar</button>
 		      </div>
 		    </div>
 		  </div>

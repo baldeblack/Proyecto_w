@@ -17,6 +17,7 @@ public class CAyuda implements ICAyuda {
 	Gson _gson;
 	AyudaDAO _dao;
 	private String _connection;
+	
 	public CAyuda(String connection){
 		_dao = new AyudaDAO(connection);
 		_connection = connection;
@@ -58,9 +59,8 @@ public class CAyuda implements ICAyuda {
 				help.getTelefono(), help.getUbicacion(), help.getMensaje());
 		
 		List<String> to = new ArrayList<String>();
-		to.add("yenn2005@gmail.com");
+		to.add("sic.grupo5@gmail.com");
 		 
 		mh.SendHtmlEmail(cat.getDominio()+"@SIC.com", to, "AYUDA Catastrofe: "+cat.getNombre() , body);
 	}
-
 }

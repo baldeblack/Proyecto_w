@@ -1,7 +1,9 @@
 package com.entities;
 
+import java.text.ParseException;
 import java.util.Date;
-import java.util.List;
+
+import com.models.UserModel;
 public class Usuario {
 
 	private int idUsuarios;
@@ -14,10 +16,21 @@ public class Usuario {
 	private String nombre;
 	private String password;
 	private String sexo;
-	private List<Ayuda> ayudas;
-	private List<Donacione> donaciones;
 
 	public Usuario() {
+	}
+	
+	public Usuario(UserModel m) throws ParseException {
+		idUsuarios = m.getIdUsuarios();
+		apellido = m.getApellido();
+		celular = m.getCelular();
+		direccion = m.getDireccion();
+		email = m.getEmail();
+		fechaNacimiento = m.getFechaNacimiento();
+		nik = m.getNik();
+		nombre = m.getNombre();
+		password = m.getPassword();
+		sexo = m.getSexo();
 	}
 
 	public int getIdUsuarios() {
@@ -98,49 +111,5 @@ public class Usuario {
 
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
-	}
-
-	public List<Ayuda> getAyudas() {
-		return this.ayudas;
-	}
-
-	public void setAyudas(List<Ayuda> ayudas) {
-		this.ayudas = ayudas;
-	}
-
-	public Ayuda addAyuda(Ayuda ayuda) {
-		getAyudas().add(ayuda);
-		ayuda.setUsuario(this);
-
-		return ayuda;
-	}
-
-	public Ayuda removeAyuda(Ayuda ayuda) {
-		getAyudas().remove(ayuda);
-		ayuda.setUsuario(null);
-
-		return ayuda;
-	}
-
-	public List<Donacione> getDonaciones() {
-		return this.donaciones;
-	}
-
-	public void setDonaciones(List<Donacione> donaciones) {
-		this.donaciones = donaciones;
-	}
-
-	public Donacione addDonacione(Donacione donacione) {
-		getDonaciones().add(donacione);
-		donacione.setUsuario(this);
-
-		return donacione;
-	}
-
-	public Donacione removeDonacione(Donacione donacione) {
-		getDonaciones().remove(donacione);
-		donacione.setUsuario(null);
-
-		return donacione;
 	}
 }

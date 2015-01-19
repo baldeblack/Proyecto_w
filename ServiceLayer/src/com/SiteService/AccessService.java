@@ -15,6 +15,7 @@ import com.Entities.Catastrofe;
 import com.Interfaces.ICCatastrofe;
 import com.TenantControllers.CUsuario;
 import com.TenantInterfaces.ICUsuario;
+import com.entities.Usuario;
 import com.google.gson.Gson;
 import com.utilities.MessageInput;
 
@@ -52,5 +53,17 @@ public class AccessService {
 		String dataString =  controller.getUsuarioByMail(request.getExtendedProperty().get(0).toString());
 		return Response.ok(dataString).build();
 		
+	}
+	
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/Registro/{input}")
+	public Response inserUpdatetUser(@PathParam("input") String input){
+		Gson gson = new Gson();
+		MessageInput<Usuario> request = gson.fromJson(input, MessageInput.class);
+		ICUsuario controller = new CUsuario(request.getBdConnection());
+		int dataString =  controller.InsertUpdateUsuario(gson.toJson(request.getEntity()));
+		
+		return Response.ok(dataString).build();
 	}
 }

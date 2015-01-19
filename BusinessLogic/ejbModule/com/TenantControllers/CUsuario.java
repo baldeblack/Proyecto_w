@@ -34,7 +34,9 @@ public class CUsuario implements ICUsuario {
 
 	@Override
 	public int InsertUpdateUsuario(String input) {
-		return _dao.InsertUpdateUsuario(_gson.fromJson(input, Usuario.class));
+		input = input.replace('+', ' ');
+		Usuario us =_gson.fromJson(input, Usuario.class);
+		return _dao.InsertUpdateUsuario(us);
 	}
 
 }

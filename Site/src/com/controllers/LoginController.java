@@ -17,6 +17,7 @@ import com.entities.Catastrofe;
 import com.entities.Usuario;
 import com.google.gson.Gson;
 import com.models.LoginModel;
+import com.models.UserModel;
 import com.utilities.HashHandler;
 import com.utilities.ServiceConnectionHelper;
 import com.utilities.SessionHandler;
@@ -33,7 +34,6 @@ public class LoginController {
 		try {
 			SessionHandler.getInstance().closeActiveSesion(request);
 		} catch (ServletException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		 return "layout";
@@ -62,6 +62,7 @@ public class LoginController {
 					 String jspnresp = ServiceConnectionHelper.CallServiceMethoodPOST("AccessService", "Login", c.getStringConeccion(),listProp);
 					
 					 Usuario usr = g.fromJson(jspnresp, Usuario.class);
+					 String hash = HashHandler.getSecurePassword(model.getPassword());
 					 if(usr != null){
 						 if(HashHandler.getSecurePassword(model.getPassword()).equals(usr.getPassword())){
 							 SessionHandler.getInstance().setActiveUser(usr, request);
@@ -79,4 +80,32 @@ public class LoginController {
 		}
 	}
 	
+	@RequestMapping( value="/register", method = RequestMethod.POST)
+	@ResponseBody
+	public String insertUser(@RequestBody String json, HttpServletRequest request, HttpServletResponse response) {
+		Gson g = new Gson();
+		try 
+		{
+			UserModel model = g.fromJson(json, UserModel.class);
+			if(model != null && model.getEmail() != ""){
+				HttpSession session = request.getSession(true);
+				Catastrofe c = (Catastrofe)session.getAttribute("Catastrofe");
+				model.setPassword(HashHandler.getSecurePassword(model.getPassword()));
+				String jsonresp = ServiceConnectionHelper.CallServiceMethoodPOST("AccessService", "Registro", c.getStringConeccion(), new Usuario(model));
+				
+				if(Integer.parseInt(jsonresp) >0){
+					return "success";
+				}
+				else{
+					return "onError";
+				} 
+			}
+			return "onError";
+		}
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+			return "onError";
+		}
+	}
 }

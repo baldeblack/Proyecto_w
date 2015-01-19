@@ -47,7 +47,6 @@ public class AyudaDAO {
 	public int InsertUpdateAyuda(Ayuda input){
 		try
 		{
-			//TODO: ver si funciona esto bien...
 			_eManager.getTransaction().begin();
 		    _eManager.persist(input);
 			_eManager.getTransaction().commit();
