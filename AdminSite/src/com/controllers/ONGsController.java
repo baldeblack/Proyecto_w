@@ -13,9 +13,7 @@ import com.Controllers.COngs;
 import com.Entities.ONG;
 import com.Interfaces.ICOngs;
 import com.models.OngModel;
-
-
-
+import com.models.OngsListModel;
 
 @RequestMapping("/ongs")
 @Controller
@@ -26,6 +24,13 @@ public class ONGsController {
 	@Autowired
 	public ONGsController(OngValidador CValidador) {
 		this.CValidador = CValidador;
+	}
+	
+	@RequestMapping(method = RequestMethod.GET)
+	public String OngsGet(ModelMap model) {
+		 OngsListModel uModel = new OngsListModel();
+		model.addAttribute("OngsListModel", uModel);		
+		return "listOngs";
 	}
 	
 	@RequestMapping(value="/create", method=RequestMethod.GET)

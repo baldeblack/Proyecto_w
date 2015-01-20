@@ -29,7 +29,7 @@ public class OngDAO {
 	public List<ONG> GetOngs(){
 		List<ONG> result = null;
 		try {
-		TypedQuery<ONG> query =_eManager.createQuery("Select o From ONGs o", ONG.class);
+		TypedQuery<ONG> query =_eManager.createQuery("Select o From ONG o", ONG.class);
 		result = query.getResultList();
 		
 		} catch (Exception e) {
