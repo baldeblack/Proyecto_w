@@ -18,6 +18,18 @@ public class UsuarioDAO {
 		_eManager = EntityManagerHelper.getInstance().getJPAFactory().createEntityManager();
 	}
 	
+	public List<Usuario> GetAllUsuarios(){
+		List<Usuario> result = null;
+		try {
+		TypedQuery<Usuario> query =_eManager.createQuery("Select u From Usuario u", Usuario.class);
+		result = query.getResultList();
+		
+		} catch (Exception e) {
+			throw e;
+		}
+		return result;
+	}
+	
 	public Usuario ExisteUsu(String mail, String pass){
 		Usuario user = null;		
 		try {

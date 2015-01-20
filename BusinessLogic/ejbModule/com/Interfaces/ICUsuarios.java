@@ -8,6 +8,7 @@ import com.Entities.Usuario;
 
 public interface ICUsuarios {
 
+	List<Usuario> GetAllUsuarios();
 	List<TipoRescatista>  GetTipoRescatista();
 	void AltaUsuario(Usuario u);
 	void AltaRescatista(Rescatista r);

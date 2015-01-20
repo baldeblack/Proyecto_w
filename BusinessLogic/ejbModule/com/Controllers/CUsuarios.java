@@ -53,4 +53,10 @@ public class CUsuarios implements ICUsuarios{
 		return _dao.maxUsrId();
 	}
 
+	@Override
+	public List<Usuario> GetAllUsuarios() {
+		// TODO Auto-generated method stub
+		return _dao.GetAllUsuarios();
+	}
+
 }

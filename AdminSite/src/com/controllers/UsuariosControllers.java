@@ -16,6 +16,7 @@ import com.Controllers.CUsuarios;
 import com.Entities.Rescatista;
 import com.Entities.Usuario;
 import com.Interfaces.ICUsuarios;
+import com.models.UsuariosListModel;
 import com.models.UsuariosModel;
 
 @RequestMapping("/usuarios")
@@ -29,6 +30,15 @@ public class UsuariosControllers {
 		this.CValidador = CValidador;
 	}
 
+	
+	@RequestMapping(method = RequestMethod.GET)
+	public String UsuariosGet(ModelMap model) {
+		 UsuariosListModel uModel = new UsuariosListModel();
+		model.addAttribute("UsuariosListModel", uModel);		
+		return "listUsuarios";
+	}
+	
+	
 	@RequestMapping(value = "create", method = RequestMethod.GET)
 	public String getCreateForm(ModelMap model) {
 		UsuariosModel usuM = new UsuariosModel();
