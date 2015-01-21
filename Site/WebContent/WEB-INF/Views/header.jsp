@@ -28,7 +28,7 @@
 				  <a href="#cont">Contacto</a>
 				</li>
 			  </ul>
- 				<c:if test="${empty sessionScope.active_user}">
+ 				<c:if test="${empty sessionScope.active_user_nick}">
 				  	<ul class="nav navbar-right navbar-nav">
 				 
 						<li class="dropdown">
