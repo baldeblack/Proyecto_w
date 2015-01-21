@@ -46,6 +46,11 @@
 		<put-attribute name="body" value="/WEB-INF/Views/listUsuarios.jsp" />
 	</definition>
 	
+	<definition name="listOngs" extends="base.definition">
+		<put-attribute name="title" value="Usuarios del Sistema" />
+		<put-attribute name="body" value="/WEB-INF/Views/listOngs.jsp" />
+	</definition>
+	
 	<definition name="altaplan" extends="base.definition">
 		<put-attribute name="title" value="PLanes" />
 		<put-attribute name="body" value="/WEB-INF/Views/altaplan.jsp" />

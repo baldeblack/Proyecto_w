@@ -1,5 +1,6 @@
 package com.Interfaces;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import com.Entities.Rescatista;
@@ -16,4 +17,6 @@ public interface ICUsuarios {
 	Usuario ExisteUsu(String mail, String pass);
 	Integer maxResId();
 	Integer maxUsrId();
+	Usuario getUsuById(int id);
+	Rescatista getRescatistaByUsuID(int id) throws ClassNotFoundException, SQLException;
 }

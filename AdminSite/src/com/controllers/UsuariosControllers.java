@@ -2,11 +2,14 @@ package com.controllers;
 
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -42,6 +45,7 @@ public class UsuariosControllers {
 	@RequestMapping(value = "create", method = RequestMethod.GET)
 	public String getCreateForm(ModelMap model) {
 		UsuariosModel usuM = new UsuariosModel();
+		usuM.setAction("Crear");
 		model.addAttribute("UsuariosModel", usuM);
 		return "altaUsuario";
 	}
@@ -91,4 +95,15 @@ public class UsuariosControllers {
 
 		return "Result";
 	}
+
+	@RequestMapping(value="/edit/{idUsuarios}", method = RequestMethod.GET)
+	public String UsuUpdate(@PathVariable int idUsuarios, ModelMap model, HttpServletRequest request) throws Exception {
+		request.getSession().setAttribute("idUsuarios", idUsuarios);
+		ICUsuarios ic = new CUsuarios();
+		Usuario u = ic.getUsuById(idUsuarios);
+		UsuariosModel uModel = new UsuariosModel(u);
+		uModel.setAction("Modificar");
+		model.addAttribute("UsuariosModel", uModel);
+		return "altaUsuario";	
+		}
 }

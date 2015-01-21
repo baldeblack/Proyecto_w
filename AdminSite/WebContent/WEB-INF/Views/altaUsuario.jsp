@@ -22,9 +22,9 @@
 				<td>Nick :</td>
 				<td><form:input path="nick" required="true"/></td>
 			</tr>
-			<tr>
+			<tr id="password">
 				<td>Contraseña :</td>
-				<td><form:input type="password" path="password" required="true"/></td>
+				<td><form:input  type="password" path="password" required="true"/></td>
 			</tr>
 			<tr>
 				<td>Celular :</td>
@@ -63,8 +63,19 @@
              <tr>
 				<td>Tipo Rescatista :</td>
 				<td>	
+<%-- 				<form:select path="tiporescatisa" id="tiposrescatistas" multiple="false" size="1"> --%>
+<%-- 				<form:options items="${UsuariosModel.tiposrescatistas}" itemValue="idTipoRescatista" itemLabel="Nombre"/> --%>
 				<form:select path="tiporescatisa" id="tiposrescatistas" multiple="false" size="1">
-				<form:options items="${UsuariosModel.tiposrescatistas}" itemValue="idTipoRescatista" itemLabel="Nombre"/>
+				<c:forEach var="rt" varStatus="i" items="${UsuariosModel.tiposrescatistas}">
+					<c:choose>
+			            <c:when test="${rt.nombre eq UsuariosModel.tiporescatisa.nombre}">
+			                <option value="${rt.idTipoRescatista}" selected="true">${rt.nombre}</option>
+			            </c:when>
+			            <c:otherwise>
+			                <option value="${rt.idTipoRescatista}">${rt.nombre}</option>
+			            </c:otherwise>
+			        </c:choose>
+			       </c:forEach>
 				</form:select>							
 				</td>
 			</tr>
@@ -85,10 +96,9 @@
 		
 		<table>
                 <tr>
-                <td colspan="2" align="center"><input type="submit" value="Guardar"/></td>
+                <td colspan="2" align="center"><input id="actionbtn" type="submit" name="action" value="${UsuariosModel.action}"/></td>
                 </tr>
             </table>
-
-		
+            		
 		</form:form>
 

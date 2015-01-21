@@ -44,26 +44,26 @@
     String direccion = request.getSession().getServletContext().getRealPath("imagenesDB/");
 %>
 
-	<c:if test="${not empty UsuariosListModel.lstUsuarios}">
+	<c:if test="${not empty OngsListModel.lstOngs}">
     <table id="lstTable" class="table table-striped table-bordered" cellspacing="0" width="70%">
      <thead>
             <tr>
-                <th>Nombre</th>               
+                <th>Name</th>               
                   <th>Link</th>          
             </tr>
         </thead>
  
         <tfoot>
             <tr>
-                 <th>Nombre</th>              
+                 <th>Name</th>              
                   <th>Link</th>              
             </tr>
         </tfoot>
     <tbody>
-        <c:forEach var="o" items="${UsuariosListModel.lstUsuarios}">
+        <c:forEach var="o" items="${OngsListModel.lstOngs}">
             <tr>
                 <th>${o.nombre}</th>
-                <th><a href="/BackOffice/usuarios/edit/${o.idUsuarios}">Editar</a></th>                 
+                <th><a href="/BackOffice/catastrofes/edit/${o.idONGs}">Editar</a></th>                 
             </tr>
         </c:forEach>
       </tbody>
