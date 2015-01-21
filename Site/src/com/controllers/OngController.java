@@ -1,21 +1,30 @@
 package com.controllers;
 
 import java.lang.reflect.Type;
+import java.text.ParseException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.entities.Ayuda;
 import com.entities.Catastrofe;
+import com.entities.Donacione;
 import com.entities.ONG;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.models.DonarModel;
+import com.models.HelpModel;
 import com.utilities.ServiceConnectionHelper;
+import com.utilities.SessionHandler;
 
 @Controller
 @RequestMapping("/ong")
@@ -36,5 +45,46 @@ public class OngController {
 		
 		model.addObject("Ongs",list);
 		return model;
+	}
+	
+	@RequestMapping( value="/donate", method = RequestMethod.POST)
+	@ResponseBody
+	public String MakeDonation(@RequestBody String json, HttpServletRequest request, HttpServletResponse response) {
+		
+		Gson g = new  Gson();
+		DonarModel model = g.fromJson(json, DonarModel.class);
+		 try {
+			 if(model != null && model.getTipoDonacion() > 0){
+				 HttpSession session = request.getSession(true);
+				 Catastrofe c = (Catastrofe)session.getAttribute("Catastrofe");
+				 Donacione don = new Donacione();
+				 don.setCantidad(model.getCantidad());
+				 don.setComienzoServico(model.getComienzoServico());
+				 don.setDescripcion(model.getDescripcion());
+				 don.setFechaEntrega(model.getFechaEntrega());
+				 don.setFInalizacionServicio(model.getFInalizacionServicio());
+				 don.setHsServicio(model.getHsServicio());
+				 don.setIdTipoDonacion(model.getTipoDonacion());
+				 don.setMoneda(model.getMoneda());
+				 don.setMonto(model.getMonto());
+				 ONG ong = new ONG();
+				 ong.setIdONGs(model.getOng());
+				 don.setOng(ong);
+				 don.setUsuario(SessionHandler.getInstance().getActiveUser(request));
+				 
+				 String jsonresp = ServiceConnectionHelper.CallServiceMethoodPOST("ContentServies", "Donate", c.getStringConeccion(), don);
+				
+				 if(Integer.parseInt(jsonresp) >0){
+					return "success";
+				}
+				else{
+					return "onError";
+				} 
+			 }
+		 } catch (ParseException e) {
+				e.printStackTrace();
+			}
+
+		return "onError";
 	}
 }

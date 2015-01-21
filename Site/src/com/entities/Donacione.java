@@ -3,24 +3,21 @@ package com.entities;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import com.sun.jmx.snmp.Timestamp;
 
 public class Donacione {
+	
 	private int idDonaciones;
 	private int cantidad;
-	private int comienzoServico;
+	private Date comienzoServico;
+	private String descripcion;
 	private Date fechaEntrega;
-	private int FInalizacionServicio;
+	private Date FInalizacionServicio;
 	private int hsServicio;
+	private int idTipoDonacion;
 	private String moneda;
 	private BigDecimal monto;
 	private ONG ong;
-	private TipoDonacion tipoDonacion;
 	private Usuario usuario;
 
 	public Donacione() {
@@ -42,13 +39,22 @@ public class Donacione {
 		this.cantidad = cantidad;
 	}
 
-	public int getComienzoServico() {
+	public Date getComienzoServico() {
 		return this.comienzoServico;
 	}
 
-	public void setComienzoServico(int comienzoServico) {
+	public void setComienzoServico(Date comienzoServico) {
 		this.comienzoServico = comienzoServico;
 	}
+
+	public String getDescripcion() {
+		return this.descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
 
 	public Date getFechaEntrega() {
 		return this.fechaEntrega;
@@ -58,11 +64,11 @@ public class Donacione {
 		this.fechaEntrega = fechaEntrega;
 	}
 
-	public int getFInalizacionServicio() {
+	public Date getFInalizacionServicio() {
 		return this.FInalizacionServicio;
 	}
 
-	public void setFInalizacionServicio(int FInalizacionServicio) {
+	public void setFInalizacionServicio(Date FInalizacionServicio) {
 		this.FInalizacionServicio = FInalizacionServicio;
 	}
 
@@ -72,6 +78,14 @@ public class Donacione {
 
 	public void setHsServicio(int hsServicio) {
 		this.hsServicio = hsServicio;
+	}
+
+	public int getIdTipoDonacion() {
+		return this.idTipoDonacion;
+	}
+
+	public void setIdTipoDonacion(int idTipoDonacion) {
+		this.idTipoDonacion = idTipoDonacion;
 	}
 
 	public String getMoneda() {
@@ -96,14 +110,6 @@ public class Donacione {
 
 	public void setOng(ONG ong) {
 		this.ong = ong;
-	}
-
-	public TipoDonacion getTipoDonacion() {
-		return this.tipoDonacion;
-	}
-
-	public void setTipoDonacion(TipoDonacion tipoDonacion) {
-		this.tipoDonacion = tipoDonacion;
 	}
 
 	public Usuario getUsuario() {

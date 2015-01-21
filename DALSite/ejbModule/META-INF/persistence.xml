@@ -6,7 +6,6 @@
 	<class>com.entities.Desaparecido</class>
 	<class>com.entities.Donacione</class>
 	<class>com.entities.Ong</class>
-	<class>com.entities.Tipodonacion</class>
 	<class>com.entities.Usuario</class>
 		<properties>
 				 <property name="hibernate.show_sql" value="true"/>

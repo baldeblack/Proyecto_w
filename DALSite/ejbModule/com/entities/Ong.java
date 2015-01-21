@@ -1,7 +1,9 @@
 package com.entities;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.util.List;
 
 
@@ -18,7 +20,7 @@ public class Ong implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idONGs;
-
+	
 	@Lob
 	private String datosPayPal;
 

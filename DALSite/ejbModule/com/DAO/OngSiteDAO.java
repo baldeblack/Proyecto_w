@@ -4,22 +4,21 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-
 import com.entities.Ong;
 import com.helper.EntityManagerHelper;
 
-public class ONGDAO {
+public class OngSiteDAO {
 
 	EntityManager _eManager;
-	public ONGDAO(String connection){
+	public OngSiteDAO(String connection){
 		_eManager = EntityManagerHelper.getInstance(connection).getJPAFactory().createEntityManager();
 	}
 	
 	public List<Ong> getAllONGs(){
 		List<Ong> result = null;
 		try {
-		TypedQuery<Ong> query =_eManager.createQuery("Select o From ONG o", Ong.class);
-		result = query.getResultList();
+			TypedQuery<Ong> query =_eManager.createQuery("SELECT o FROM Ong o", Ong.class);
+			result = query.getResultList();
 		
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

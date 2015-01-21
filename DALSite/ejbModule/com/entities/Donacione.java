@@ -1,9 +1,11 @@
 package com.entities;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
-import java.math.BigDecimal;
+
 import java.util.Date;
+import java.math.BigDecimal;
 
 
 /**
@@ -22,14 +24,20 @@ public class Donacione implements Serializable {
 
 	private int cantidad;
 
-	private int comienzoServico;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date comienzoServico;
 
-	@Temporal(TemporalType.DATE)
+	private String descripcion;
+
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaEntrega;
 
-	private int FInalizacionServicio;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date FInalizacionServicio;
 
 	private int hsServicio;
+
+	private int idTipoDonacion;
 
 	private String moneda;
 
@@ -39,11 +47,6 @@ public class Donacione implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="IdOng")
 	private Ong ong;
-
-	//bi-directional many-to-one association to Tipodonacion
-	@ManyToOne
-	@JoinColumn(name="IdTipoDonacion")
-	private Tipodonacion tipodonacion;
 
 	//uni-directional many-to-one association to Usuario
 	@ManyToOne
@@ -69,12 +72,20 @@ public class Donacione implements Serializable {
 		this.cantidad = cantidad;
 	}
 
-	public int getComienzoServico() {
+	public Date getComienzoServico() {
 		return this.comienzoServico;
 	}
 
-	public void setComienzoServico(int comienzoServico) {
+	public void setComienzoServico(Date comienzoServico) {
 		this.comienzoServico = comienzoServico;
+	}
+
+	public String getDescripcion() {
+		return this.descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
 	public Date getFechaEntrega() {
@@ -85,11 +96,11 @@ public class Donacione implements Serializable {
 		this.fechaEntrega = fechaEntrega;
 	}
 
-	public int getFInalizacionServicio() {
+	public Date getFInalizacionServicio() {
 		return this.FInalizacionServicio;
 	}
 
-	public void setFInalizacionServicio(int FInalizacionServicio) {
+	public void setFInalizacionServicio(Date FInalizacionServicio) {
 		this.FInalizacionServicio = FInalizacionServicio;
 	}
 
@@ -99,6 +110,14 @@ public class Donacione implements Serializable {
 
 	public void setHsServicio(int hsServicio) {
 		this.hsServicio = hsServicio;
+	}
+
+	public int getIdTipoDonacion() {
+		return this.idTipoDonacion;
+	}
+
+	public void setIdTipoDonacion(int idTipoDonacion) {
+		this.idTipoDonacion = idTipoDonacion;
 	}
 
 	public String getMoneda() {
@@ -123,14 +142,6 @@ public class Donacione implements Serializable {
 
 	public void setOng(Ong ong) {
 		this.ong = ong;
-	}
-
-	public Tipodonacion getTipodonacion() {
-		return this.tipodonacion;
-	}
-
-	public void setTipodonacion(Tipodonacion tipodonacion) {
-		this.tipodonacion = tipodonacion;
 	}
 
 	public Usuario getUsuario() {

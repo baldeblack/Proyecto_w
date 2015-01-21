@@ -48,6 +48,8 @@ $(document).ready(function(){
 	 
 	 LoadOngList();
 	
+	 showData();
+	 
 	$('[data-toggle="tooltip"]').tooltip();
 	
 

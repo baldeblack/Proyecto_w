@@ -80,7 +80,6 @@ public class Usuario implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
 	public Date getFechaNacimiento() {
 		return this.fechaNacimiento;
 	}

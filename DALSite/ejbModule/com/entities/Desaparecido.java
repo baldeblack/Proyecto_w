@@ -2,6 +2,7 @@ package com.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Date;
 
 
@@ -27,7 +28,6 @@ public class Desaparecido implements Serializable {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaDesaparicion;
-
 	@Lob
 	private byte[] foto;
 
@@ -90,7 +90,7 @@ public class Desaparecido implements Serializable {
 		this.fechaDesaparicion = fechaDesaparicion;
 	}
 
-	public byte[] getFoto() {
+	public Object getFoto() {
 		return this.foto;
 	}
 

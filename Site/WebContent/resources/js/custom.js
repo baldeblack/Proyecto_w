@@ -64,28 +64,7 @@ function LoadOngList() {
 function doLogin() {
     var username = $("#exampleInputEmail2").val();
     var password = $("#exampleInputPassword2").val();
-    login(username,password)
-    
-    /*$.ajax({
-        url : url,
-        type : "POST",
-        cache : false,
-        async : false,
-        contentType : "application/json; charset=UTF-8",
-        data : JSON.stringify({
-            "email" : username,
-            "password" : password
-        }),
-        datatype : "json",
-        success : function(data) {
-        	if(data==="onError"){
-        		alert("Usuario o contraseña no válida.");
-        	}
-        },
-        error : function(XMLHttpRequest, textStatus, errorThrown) {
-            alert(XMLHttpRequest.status + " : " + errorThrown);
-        }
-    });*/
+    login(username,password);
 }
 
 function SendHelp(){
@@ -214,4 +193,97 @@ function RegistUser(){
 	}
 	    
 }
+
+function showData(){
+	var tipo = $("#tipo").val();
+	if(tipo === "1"){
+		$(".eco").css("display", "block");
+		$(".servi").css("display", "none");
+		$(".bienes").css("display", "none");
+		cleanBienes();
+		cleanServi();
+	}
+	else if(tipo === "2"){
+		$(".eco").css("display", "none");
+		$(".servi").css("display", "none");
+		$(".bienes").css("display", "block");
+		cleanEco();
+		cleanServi();
+	}
+	else if(tipo === "3"){
+		$(".eco").css("display", "none");
+		$(".servi").css("display", "block");
+		$(".bienes").css("display", "none");
+		cleanEco();
+		cleanBienes();
+	}
+}
+
+var cleanBienes = function(){
+	$("#cantidad").val("");
+	$("#fechaEntrega").val("");
+	
+}
+
+var cleanEco = function(){
+	$("#moneda").val("Dol");
+	$("#monto").val("");
+}
+
+var cleanServi = function(){
+	$("#hsServicio").val("");
+	$("#comienzo").val("");
+	$("#finalizacion").val("");
+}
+
+var cleanAll = function(){
+	$("#tipo").val("1");
+	$("#descripcion").val("");
+	$("#idDonacion").val("");
+	
+	cleanBienes();
+	cleanEco();
+	cleanServi();
+}
+
+function Donar(){
+	var url = "/Site/ong/donate";
+	 
+	 $.ajax({
+	        url : url,
+	        type : "POST",
+	        cache : false,
+	        async : false,
+	        contentType : "application/json; charset=UTF-8",
+	        data : JSON.stringify({
+	            "cantidad" : $("#cantidad").val(),
+	            "comienzoServico":$("#fechaEntrega").val(),
+	            "fechaEntrega":$("#finalizacion").val(),
+	            "FInalizacionServicio":$("#comienzo").val(),
+	            "hsServicio":$("#hsServicio").val(),
+	            "moneda":$("#moneda").val(),
+	            "monto":$("#monto").val(),
+	            "ong":$("#idong").val(),
+	            "tipoDonacion":$("#tipo").val(),
+	            "descripcion":$("#descripcion").val(),
+	        }),
+	        datatype : "json",
+	        success : function(data) {
+	        	if(data==="onError"){
+	        		$("#responseDonacion").val("Ocurrió un error sepa disculparnos, esperamos vuelva a intentarlo mas tarde.");
+	        	}
+	        	else{
+	        		$("#responseDonacion").val("Su donación ah sido enviada con exito, en breve la ong se pondra en contacto para coordinar las acciones correspondiente.");
+	        		cleanAll();
+	        		setTimeout(function(){
+	            		$("#btnDonar").html("");
+	            	}, 8000);
+	        	}
+	        },
+	        error : function(XMLHttpRequest, textStatus, errorThrown) {
+	            alert(XMLHttpRequest.status + " : " + errorThrown);
+	        }
+	    });
+}
+
 

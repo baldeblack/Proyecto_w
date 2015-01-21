@@ -32,7 +32,7 @@ public class SessionHandler {
 	        if (request.isRequestedSessionIdValid()) {
 	            if (request.getSession().getAttribute("active_user") == null) {
 	                request.getSession().setAttribute("active_user_nick", usr.getNik()); 
-	                request.getSession().setAttribute("active_user", usr.getNik());
+	                request.getSession().setAttribute("active_user", usr);
 	            }
 	        }        
 	    }

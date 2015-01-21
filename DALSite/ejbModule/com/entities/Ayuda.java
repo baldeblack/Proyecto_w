@@ -2,6 +2,7 @@ package com.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.sql.Timestamp;
 
 
 /**
@@ -27,6 +28,7 @@ public class Ayuda implements Serializable {
 	private int tipoSolicitor;
 
 	private String ubicacion;
+
 
 	//uni-directional many-to-one association to Usuario
 	@ManyToOne(cascade={CascadeType.REFRESH})

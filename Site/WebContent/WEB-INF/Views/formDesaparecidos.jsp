@@ -13,6 +13,7 @@
 					  <ul class="nav nav-tabs" role="tablist">
 					    <li role="presentation" class="active"><a href="#persona" aria-controls="persona" role="tab" data-toggle="tab">Persona</a></li>
 					    <li role="presentation"><a href="#contacto" aria-controls="contacto" role="tab" data-toggle="tab">Contacto</a></li>
+					    <li role="presentation"><a href="#imagen" aria-controls="imagen" role="tab" data-toggle="tab">Foto</a></li>
 					  </ul><br>
 					  <!-- Tab panes -->
 					  <div class="tab-content">
@@ -78,6 +79,19 @@
 								</div>
 							</form>
 					    </div>
+						<div role="tabpanel" class="tab-pane" id="imagen">
+							<form role="form-horizontal">
+								<div class="form-group">
+									<label id="image-upload-ariaLabel" for="picture">Select Image:</label> <input type="file" class="form-control input-lg" name="image-upload" id="image-upload"> <button id="remove-image-upload"> Remove</button>
+								</div>
+								<div id="image_preview_wrap" class="form-group">
+                  					<!--<img class="loading" alt="loading..." src="img/loading.gif">
+                  					<img alt="picture" src="img/350x150.jpg" id="image_preview">-->
+								</div>
+								<input type="submit" value="Cargar imagen" class="submit-btn">
+							</form>
+					    </div>
+
 					  </div>
 
 					</div>		        

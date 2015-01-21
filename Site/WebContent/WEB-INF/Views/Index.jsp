@@ -37,6 +37,30 @@
 		
 		<jsp:include page="imagenes.jsp" />
 		
-		<div id="secDesaparecidos"></div>
+	<!-- DESAPARECIDOS -->
+	<div  class="desaparecidos_titulo">
+		<div id="desp"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-md-6 col-lg-6 columna-desp">
+					<h1>Desaparecidos</h1>
+				</div>
+				<div class="col-lg-6 search">
+					<div class="input-group c-search">
+	                      <input type="search" class="form-control" id="container-search">
+	                      <span class="input-group-btn">
+	                          <button class="btn btn-warning" type="buttom" ><span class="glyphicon glyphicon-search text-muted"></span></button>
+	                      </span>
+	                  	</div>
+	                  </div>
+				<div class="col-xs-12 col-md-4 col-lg-2 pull-right botones-desaparecidos">
+					<a href="#" class="btn btn-warning bton-vermas">Ver mas</a>
+					<a class="btn btn-warning bton-reportar" data-toggle="modal" data-target="#modalDesp">Reportar</a>
+				</div>
+			</div>
+		</div>			
+	</div>
+	
+	<div id="secDesaparecidos"></div>
 		
 		<div id="secOngs"></div>

@@ -9,10 +9,13 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.TenantControllers.CAyuda;
+import com.TenantControllers.CDonaciones;
 import com.TenantControllers.COng;
 import com.TenantInterfaces.ICAyuda;
+import com.TenantInterfaces.ICDonaciones;
 import com.TenantInterfaces.ICOng;
 import com.entities.Ayuda;
+import com.entities.Donacione;
 import com.google.gson.Gson;
 import com.utilities.MessageInput;
 
@@ -40,6 +43,18 @@ public class ContentServices {
 		ICAyuda controller = new CAyuda(request.getBdConnection());
 		
 		int response =  controller.InsertUpdateAyuda(gson.toJson(request.getEntity()));
+		return Response.ok(response).build();
+	}
+	
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/Donate/{input}")
+	public Response MakeDonation(@PathParam("input") String input){
+	    Gson gson = new Gson();
+		MessageInput<Donacione> request = gson.fromJson(input, MessageInput.class);
+		ICDonaciones controller = new CDonaciones(request.getBdConnection());
+		
+		int response =  controller.InsertUpdateDonacion(gson.toJson(request.getEntity()));
 		return Response.ok(response).build();
 	}
 }

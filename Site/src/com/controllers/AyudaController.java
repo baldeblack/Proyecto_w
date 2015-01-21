@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.entities.Ayuda;
 import com.entities.Catastrofe;
+import com.entities.Usuario;
 import com.google.gson.Gson;
 import com.models.HelpModel;
 import com.utilities.ServiceConnectionHelper;

@@ -39,7 +39,7 @@
 	                        <td>${o.email}</td>
 	                        <td>${o.web}</td>
 	                        <td>${o.origen}</td>
-	                        <td><a href="" class="btn btn-warning" data-toggle="modal" data-target="#modalDonar">Donar</a></td>
+	                        <td><a href="" class="btn btn-warning" data-toggle="modal" data-target="#modalDonar" onclick="javascript:$('#idong').val('${o.idONGs}');">Donar</a></td>
 	                    </tr>
 	                </c:forEach>
 	                </tbody>

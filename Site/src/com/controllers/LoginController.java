@@ -62,7 +62,6 @@ public class LoginController {
 					 String jspnresp = ServiceConnectionHelper.CallServiceMethoodPOST("AccessService", "Login", c.getStringConeccion(),listProp);
 					
 					 Usuario usr = g.fromJson(jspnresp, Usuario.class);
-					 String hash = HashHandler.getSecurePassword(model.getPassword());
 					 if(usr != null){
 						 if(HashHandler.getSecurePassword(model.getPassword()).equals(usr.getPassword())){
 							 SessionHandler.getInstance().setActiveUser(usr, request);

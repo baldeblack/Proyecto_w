@@ -93,18 +93,4 @@ public class ONG {
 	public void setDonaciones(List<Donacione> donaciones) {
 		this.donaciones = donaciones;
 	}
-
-	public Donacione addDonacione(Donacione donacione) {
-		getDonaciones().add(donacione);
-		donacione.setOng(this);
-
-		return donacione;
-	}
-
-	public Donacione removeDonacione(Donacione donacione) {
-		getDonaciones().remove(donacione);
-		donacione.setOng(null);
-
-		return donacione;
-	}
 }
