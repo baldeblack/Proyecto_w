@@ -48,14 +48,14 @@
     <table id="lstTable" class="table table-striped table-bordered" cellspacing="0" width="70%">
      <thead>
             <tr>
-                <th>Name</th>               
+                <th>Nombre</th>               
                   <th>Link</th>          
             </tr>
         </thead>
  
         <tfoot>
             <tr>
-                 <th>Name</th>              
+                 <th>Nombre</th>              
                   <th>Link</th>              
             </tr>
         </tfoot>
@@ -63,7 +63,7 @@
         <c:forEach var="o" items="${UsuariosListModel.lstUsuarios}">
             <tr>
                 <th>${o.nombre}</th>
-                <th><a href="/BackOffice/catastrofes/edit/${o.idUsuarios}">Editar</a></th>                 
+                <th><a href="/BackOffice/usuarios/edit/${o.idUsuarios}">Editar</a></th>                 
             </tr>
         </c:forEach>
       </tbody>

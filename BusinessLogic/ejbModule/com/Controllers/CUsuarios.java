@@ -1,5 +1,6 @@
 package com.Controllers;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import com.DAO.UsuarioDAO;
@@ -57,6 +58,18 @@ public class CUsuarios implements ICUsuarios{
 	public List<Usuario> GetAllUsuarios() {
 		// TODO Auto-generated method stub
 		return _dao.GetAllUsuarios();
+	}
+
+	@Override
+	public Usuario getUsuById(int id) {
+		// TODO Auto-generated method stub
+		return _dao.getUsuByID(id);
+	}
+
+	@Override
+	public Rescatista getRescatistaByUsuID(int id) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		return _dao.getRescatistaByUsuID(id);
 	}
 
 }

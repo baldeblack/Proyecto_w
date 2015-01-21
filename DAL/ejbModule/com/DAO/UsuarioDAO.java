@@ -1,5 +1,10 @@
 package com.DAO;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -70,7 +75,7 @@ public class UsuarioDAO {
 		}
 	}	
 		
-		public void AltaRescatista(Rescatista r){
+	public void AltaRescatista(Rescatista r){
 			try {
 				_eManager.getTransaction().begin();
 				_eManager.persist(r);	
@@ -82,12 +87,12 @@ public class UsuarioDAO {
 				
 	}
 		
-		public TipoRescatista getTipoByID(int ID){
+	public TipoRescatista getTipoByID(int ID){
 			TipoRescatista TipoRescatista = _eManager.find(TipoRescatista.class, ID);
 			return TipoRescatista;
 			}
 		
-		public Integer maxUsrId(){
+	public Integer maxUsrId(){
 			try {
 			Integer i = (Integer)_eManager.createQuery("select max(u.id) from Usuario u").getSingleResult();
 			if(i == null){
@@ -101,7 +106,7 @@ public class UsuarioDAO {
 			return null;
 		}
 		
-		public Integer maxResId(){
+	public Integer maxResId(){
 			try {
 			Integer i = (Integer)_eManager.createQuery("select max(u.id) from Rescatista u").getSingleResult();
 			if(i == null){
@@ -114,4 +119,39 @@ public class UsuarioDAO {
 			}
 			return null;
 		}
+
+	public Usuario getUsuByID(int id){
+		Usuario u = null;
+		try {
+		_eManager.getTransaction().begin();
+	     u = _eManager.find(Usuario.class, id);
+		_eManager.flush();
+		_eManager.getTransaction().commit();
+		} catch (Exception e) {
+			throw e;
+		}
+		return u;
+	}
+	
+	public Rescatista getRescatistaByUsuID(int id) throws ClassNotFoundException, SQLException{
+		Rescatista result = null;
+		Class.forName("com.mysql.jdbc.Driver");
+		String url = "jdbc:mysql://localhost:3306/sharedb";
+		String username = "root";
+		String pass = "123456";
+		Connection con = DriverManager.getConnection(url,username,pass);
+		Statement statement = con.createStatement();
+		String query = "SELECT * FROM rescatista WHERE IdUsuarios = " + id ;
+		ResultSet resultST = statement.executeQuery(query);
+		result = new Rescatista();
+		while (resultST.next())
+		{
+		result.setIdRescatista(resultST.getInt("idRescatista"));
+		result.setIdTipoRescatista(resultST.getInt("IdTipoRescatista"));
+		result.setLatLongRecidencia(resultST.getString("LatLongRecidencia"));
+		result.setResidencia(resultST.getString("Residencia"));
+		result.setUsuario(getUsuByID(id));
+		}
+		return result;
+	}
 }

@@ -1,5 +1,8 @@
 $( document ).ready(function() {
 	init();
+	if($('#actionbtn').val() == "Modificar"){
+		$('#password').hide();
+	}
 });
 
 function init(){

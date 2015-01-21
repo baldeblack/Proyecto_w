@@ -34,7 +34,7 @@ public class Rescatista implements Serializable {
 	@ManyToOne (cascade=CascadeType.PERSIST)
 	@JoinColumn(name="IdUsuarios")
 	private Usuario usuario;
-
+	
 	public Rescatista() {
 	}
 
