@@ -245,7 +245,35 @@ var cleanAll = function(){
 	cleanEco();
 	cleanServi();
 }
-
+var jsonDataDonacion = function(){
+	
+	var tipo = $("#tipo").val();
+	if(tipo === "1"){//eco
+		return JSON.stringify({
+		    "moneda":$("#moneda").val(),
+		    "monto":$("#monto").val(),
+		    "ong":$("#idong").val(),
+		    "tipoDonacion":$("#tipo").val(),
+		    "descripcion":$("#descripcion").val(),});
+	}
+	else if(tipo === "2"){//bienes
+		return JSON.stringify({
+			"cantidad" : $("#cantidad").val(),
+		    "fechaEntrega":$("#finalizacion").val(),
+		    "ong":$("#idong").val(),
+		    "tipoDonacion":$("#tipo").val(),
+		    "descripcion":$("#descripcion").val(),});
+	}
+	else if(tipo === "3"){//servi
+		return JSON.stringify({
+			"comienzoServico":$("#fechaEntrega").val(),
+		    "FInalizacionServicio":$("#comienzo").val(),
+		    "hsServicio":$("#hsServicio").val(),
+		    "ong":$("#idong").val(),
+		    "tipoDonacion":$("#tipo").val(),
+		    "descripcion":$("#descripcion").val(),});
+	}
+}
 function Donar(){
 	var url = "/Site/ong/donate";
 	 
@@ -255,18 +283,7 @@ function Donar(){
 	        cache : false,
 	        async : false,
 	        contentType : "application/json; charset=UTF-8",
-	        data : JSON.stringify({
-	            "cantidad" : $("#cantidad").val(),
-	            "comienzoServico":$("#fechaEntrega").val(),
-	            "fechaEntrega":$("#finalizacion").val(),
-	            "FInalizacionServicio":$("#comienzo").val(),
-	            "hsServicio":$("#hsServicio").val(),
-	            "moneda":$("#moneda").val(),
-	            "monto":$("#monto").val(),
-	            "ong":$("#idong").val(),
-	            "tipoDonacion":$("#tipo").val(),
-	            "descripcion":$("#descripcion").val(),
-	        }),
+	        data : jsonDataDonacion(),
 	        datatype : "json",
 	        success : function(data) {
 	        	if(data==="onError"){
@@ -276,7 +293,7 @@ function Donar(){
 	        		$("#responseDonacion").val("Su donación ah sido enviada con exito, en breve la ong se pondra en contacto para coordinar las acciones correspondiente.");
 	        		cleanAll();
 	        		setTimeout(function(){
-	            		$("#btnDonar").html("");
+	            		$("#btnDonarClose").click();
 	            	}, 8000);
 	        	}
 	        },

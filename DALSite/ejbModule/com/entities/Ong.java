@@ -36,10 +36,6 @@ public class Ong implements Serializable {
 
 	private String web;
 
-	//bi-directional many-to-one association to Donacione
-	@OneToMany(mappedBy="ong")
-	private List<Donacione> donaciones;
-
 	public Ong() {
 	}
 
@@ -106,27 +102,4 @@ public class Ong implements Serializable {
 	public void setWeb(String web) {
 		this.web = web;
 	}
-
-	public List<Donacione> getDonaciones() {
-		return this.donaciones;
-	}
-
-	public void setDonaciones(List<Donacione> donaciones) {
-		this.donaciones = donaciones;
-	}
-
-	public Donacione addDonacione(Donacione donacione) {
-		getDonaciones().add(donacione);
-		donacione.setOng(this);
-
-		return donacione;
-	}
-
-	public Donacione removeDonacione(Donacione donacione) {
-		getDonaciones().remove(donacione);
-		donacione.setOng(null);
-
-		return donacione;
-	}
-
 }

@@ -57,19 +57,28 @@ public class OngController {
 			 if(model != null && model.getTipoDonacion() > 0){
 				 HttpSession session = request.getSession(true);
 				 Catastrofe c = (Catastrofe)session.getAttribute("Catastrofe");
+
 				 Donacione don = new Donacione();
-				 don.setCantidad(model.getCantidad());
-				 don.setComienzoServico(model.getComienzoServico());
 				 don.setDescripcion(model.getDescripcion());
-				 don.setFechaEntrega(model.getFechaEntrega());
-				 don.setFInalizacionServicio(model.getFInalizacionServicio());
-				 don.setHsServicio(model.getHsServicio());
 				 don.setIdTipoDonacion(model.getTipoDonacion());
-				 don.setMoneda(model.getMoneda());
-				 don.setMonto(model.getMonto());
 				 ONG ong = new ONG();
 				 ong.setIdONGs(model.getOng());
 				 don.setOng(ong);
+				 
+				 if(model.getTipoDonacion()==1){//eco
+					 don.setMoneda(model.getMoneda());
+					 don.setMonto(model.getMonto());
+				 }
+				 else if(model.getTipoDonacion()==2){//bienes
+					 don.setCantidad(model.getCantidad());
+					 don.setFechaEntrega(model.getFechaEntrega());
+				 }
+				 else if(model.getTipoDonacion()==3){//servicios
+					 don.setComienzoServico(model.getComienzoServico());
+					 don.setFInalizacionServicio(model.getFInalizacionServicio());
+					 don.setHsServicio(model.getHsServicio());
+				 }
+				
 				 don.setUsuario(SessionHandler.getInstance().getActiveUser(request));
 				 
 				 String jsonresp = ServiceConnectionHelper.CallServiceMethoodPOST("ContentServies", "Donate", c.getStringConeccion(), don);

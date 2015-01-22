@@ -28,7 +28,7 @@
 				  <a href="#cont">Contacto</a>
 				</li>
 			  </ul>
- 				<c:if test="${empty sessionScope.active_user_nick}">
+ 				<c:if test="${empty sessionScope.active_user}">
 				  	<ul class="nav navbar-right navbar-nav">
 				 
 						<li class="dropdown">
@@ -67,7 +67,7 @@
 				</c:if>	
 				 <c:if test="${not empty sessionScope.active_user}">
 				 <ul class="nav navbar-right navbar-nav">
-				 	<li><h4 style="padding-top: 6px;">Bienvenid@ ${sessionScope.active_user}</h3></li>
+				 	<li><h4 style="padding-top: 6px;">Bienvenid@ ${sessionScope.active_user_nick}</h3></li>
 				 	<li><a href="/Site/access/logOut" class="btn btn-link">Cerrar Sesion</a></li>	
 				 </ul>
 				 </c:if>

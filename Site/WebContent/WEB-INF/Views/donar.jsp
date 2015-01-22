@@ -48,8 +48,8 @@
 					</form>
 		      </div>
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-		        <button type="button" class="btn btn-warning" id="btnDonar">Donar</button>
+		        <button type="button" class="btn btn-default" data-dismiss="modal" id="btnDonarClose">Cerrar</button>
+		        <button type="button" class="btn btn-warning" onclick="Donar()">Donar</button>
 		      </div>
 		    </div>
 		  </div>
