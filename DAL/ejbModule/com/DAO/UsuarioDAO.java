@@ -154,4 +154,31 @@ public class UsuarioDAO {
 		}
 		return result;
 	}
+	
+	public void ActualizarUsuario(Usuario u, Rescatista r, int usuId) throws Exception{
+		try {
+			
+			 Usuario usuMod = _eManager.find(Usuario.class, usuId);
+			 _eManager.getTransaction().begin();
+			 usuMod.setNombre(u.getNombre());
+			 usuMod.setApellido(u.getApellido());
+			 usuMod.setBorrado(u.getBorrado());
+			 usuMod.setCelular(u.getCelular());
+			 usuMod.setNacimiento(u.getNacimiento());
+			 usuMod.setDireccion(u.getDireccion());
+			 usuMod.setNick(u.getNick());
+			 usuMod.setSexo(u.getSexo());			 
+			 if(u.getTipoUsuario() == 1){
+				Rescatista rMod =  getRescatistaByUsuID(usuId);
+				rMod.setIdTipoRescatista(r.getIdTipoRescatista());
+				rMod.setLatLongRecidencia(r.getLatLongRecidencia());
+				rMod.setResidencia(r.getResidencia());
+				rMod.setTipoRescatista(r.getTipoRescatista());
+				rMod.setUsuario(u);
+			}
+			 _eManager.getTransaction().commit();	
+		} catch (Exception e) {
+			throw e;
+		}
+	}
 }

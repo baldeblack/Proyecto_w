@@ -10,6 +10,7 @@ import com.Entities.Rescatista;
 import com.Entities.TipoRescatista;
 import com.Entities.Usuario;
 import com.Interfaces.ICUsuarios;
+import com.utils.tipoUsr;
 
 public class UsuariosModel {
 
@@ -29,6 +30,7 @@ public class UsuariosModel {
 	private List<TipoRescatista> tiposrescatistas;
 	private String latLongRecidencia;
 	private String residencia;
+	private List<tipoUsr> tipos;
 	String action;
 	
 	public UsuariosModel (Usuario u) throws ClassNotFoundException, SQLException{
@@ -54,6 +56,23 @@ public class UsuariosModel {
 				this.tiporescatisa = tr;
 			}
 		} 
+		this.tipos = new ArrayList<tipoUsr>();
+		tipoUsr uno = new tipoUsr();
+		uno.setValue(0);
+		uno.setNombre("ADMINISTRADOR");
+		this.tipos.add(uno);
+		tipoUsr dos = new tipoUsr();
+		dos.setValue(1);
+		dos.setNombre("RESCATISTA");
+		this.tipos.add(dos);
+	}
+
+	public List<tipoUsr> getTipos() {
+		return tipos;
+	}
+
+	public void setTipos(List<tipoUsr> tipos) {
+		this.tipos = tipos;
 	}
 
 	public String getAction() {
@@ -68,6 +87,15 @@ public class UsuariosModel {
 		tiposrescatistas = new ArrayList<TipoRescatista>();
 		ICUsuarios ic = new CUsuarios();
 		tiposrescatistas = ic.GetTipoRescatista();
+		this.tipos = new ArrayList<tipoUsr>();
+		tipoUsr uno = new tipoUsr();
+		uno.setValue(0);
+		uno.setNombre("ADMINISTRADOR");
+		this.tipos.add(uno);
+		tipoUsr dos = new tipoUsr();
+		dos.setValue(1);
+		dos.setNombre("RESCATISTA");
+		this.tipos.add(dos);
 	};
 
 	public byte getBorrado() {

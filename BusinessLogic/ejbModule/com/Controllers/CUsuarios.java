@@ -72,4 +72,10 @@ public class CUsuarios implements ICUsuarios{
 		return _dao.getRescatistaByUsuID(id);
 	}
 
+	@Override
+	public void ActualizarUsuario(Usuario u, Rescatista r, int usuId)
+			throws Exception {
+		_dao.ActualizarUsuario(u,r,usuId);		
+	}
+
 }

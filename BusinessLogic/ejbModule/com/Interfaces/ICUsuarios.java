@@ -13,6 +13,7 @@ public interface ICUsuarios {
 	List<TipoRescatista>  GetTipoRescatista();
 	void AltaUsuario(Usuario u);
 	void AltaRescatista(Rescatista r);
+	void ActualizarUsuario(Usuario u, Rescatista r, int usuId) throws Exception;
 	TipoRescatista getTipoByID(int ID);
 	Usuario ExisteUsu(String mail, String pass);
 	Integer maxResId();

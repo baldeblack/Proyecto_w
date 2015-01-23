@@ -53,46 +53,73 @@ public class UsuariosControllers {
 	@RequestMapping(value = "save", method = RequestMethod.POST)
 	public String Alta(
 			@ModelAttribute("UsuariosModel") UsuariosModel UsuarioModel,
-			BindingResult bindingResult) throws Exception {
+			BindingResult bindingResult, HttpServletRequest request) throws Exception {
 
 		CValidador.validate(UsuarioModel, bindingResult);
-
-		if (bindingResult.hasErrors()) {
-			return "altaUsuario";
-		} else {
-			ICUsuarios icu = new CUsuarios();
-			byte b = 0;
-			Usuario usr = new Usuario();
-			usr.setApellido(UsuarioModel.getApellido());
-			usr.setNombre(UsuarioModel.getNombre());
-			usr.setIdUsuarios(icu.maxUsrId());
-			usr.setBorrado(b);
-			usr.setCelular(UsuarioModel.getCelular());
-			usr.setCreacion(new Date());
-			usr.setNacimiento(UsuarioModel.getNacimiento());
-			usr.setDireccion(UsuarioModel.getDireccion());
-			usr.setNick(UsuarioModel.getNick());
-			usr.setPassword(UsuarioModel.getPassword());
-			usr.setSexo(UsuarioModel.getSexo());
-			usr.setTipoUsuario(UsuarioModel.getTipoUsuario());
-			usr.setEmail(UsuarioModel.getEmail());
-
-			if (usr.getTipoUsuario() == 1) {
-				Rescatista r = new Rescatista();
-				r.setIdRescatista(icu.maxResId());
-				r.setLatLongRecidencia(UsuarioModel.getLatLongRecidencia());
-				r.setIdTipoRescatista(UsuarioModel.getTiporescatisa()
-						.getIdTipoRescatista());
-				r.setUsuario(usr);
-				r.setResidencia(usr.getDireccion());
-				r.setTipoRescatista(icu.getTipoByID(r.getIdTipoRescatista()));
-				icu.AltaRescatista(r);
-			} else {
-
-				icu.AltaUsuario(usr);
+		ICUsuarios icu = new CUsuarios();
+		Usuario usr = new Usuario();
+		
+		if(UsuarioModel.getAction().equals("Crear")){
+			if (bindingResult.hasErrors()) {
+				return "altaUsuario";
+			} else {		
+				byte b = 0;				
+				usr.setApellido(UsuarioModel.getApellido());
+				usr.setNombre(UsuarioModel.getNombre());
+				usr.setIdUsuarios(icu.maxUsrId());
+				usr.setBorrado(b);
+				usr.setCelular(UsuarioModel.getCelular());
+				usr.setCreacion(new Date());
+				usr.setNacimiento(UsuarioModel.getNacimiento());
+				usr.setDireccion(UsuarioModel.getDireccion());
+				usr.setNick(UsuarioModel.getNick());
+				usr.setPassword(UsuarioModel.getPassword());
+				usr.setSexo(UsuarioModel.getSexo());
+				usr.setTipoUsuario(UsuarioModel.getTipoUsuario());
+				usr.setEmail(UsuarioModel.getEmail());
+	
+				if (usr.getTipoUsuario() == 1) {
+					Rescatista r = new Rescatista();
+					r.setIdRescatista(icu.maxResId());
+					r.setLatLongRecidencia(UsuarioModel.getLatLongRecidencia());
+					r.setIdTipoRescatista(UsuarioModel.getTiporescatisa()
+							.getIdTipoRescatista());
+					r.setUsuario(usr);
+					r.setResidencia(usr.getDireccion());
+					r.setTipoRescatista(icu.getTipoByID(r.getIdTipoRescatista()));
+					icu.AltaRescatista(r);
+				} else {
+	
+					icu.AltaUsuario(usr);
+				}
 			}
-		}
+	}else{
+		byte b = 0;				
+		usr.setApellido(UsuarioModel.getApellido());
+		usr.setNombre(UsuarioModel.getNombre());
+		usr.setBorrado(b);
+		usr.setCelular(UsuarioModel.getCelular());
+		usr.setNacimiento(UsuarioModel.getNacimiento());
+		usr.setDireccion(UsuarioModel.getDireccion());
+		usr.setNick(UsuarioModel.getNick());
+		usr.setSexo(UsuarioModel.getSexo());
+		usr.setTipoUsuario(UsuarioModel.getTipoUsuario());
+		usr.setEmail(UsuarioModel.getEmail());
 
+		if (usr.getTipoUsuario() == 1) {
+			Rescatista r = new Rescatista();
+			r.setLatLongRecidencia(UsuarioModel.getLatLongRecidencia());
+			r.setIdTipoRescatista(UsuarioModel.getTiporescatisa()
+					.getIdTipoRescatista());
+			r.setUsuario(usr);
+			r.setResidencia(usr.getDireccion());
+			r.setTipoRescatista(icu.getTipoByID(r.getIdTipoRescatista()));		
+			icu.ActualizarUsuario(usr, r, (Integer)request.getSession().getAttribute("idUsuarios"));
+		} else {
+			icu.ActualizarUsuario(usr, null, (Integer)request.getSession().getAttribute("idUsuarios"));		
+		}
+		
+	}
 		return "Result";
 	}
 
