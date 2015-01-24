@@ -77,7 +77,7 @@ public class TenantDAO {
 						"TIpoUsuioReportado int(11) DEFAULT NULL,  " +
 						"Foto blob, " +
 						"Fecha timestamp NULL DEFAULT CURRENT_TIMESTAMP, " +
-						"PRIMARY KEY (idDesaparecidos))";
+						"PRIMARY KEY (idDesaparecidos))";				
 						st.execute(sql);
 						st.execute("LOCK TABLES " + desaparecidosTable + " WRITE");				
 					    st.execute("UNLOCK TABLES");
@@ -113,15 +113,15 @@ public class TenantDAO {
 						"FechaEntrega date DEFAULT NULL, " +
 						"HsServicio int(11) DEFAULT NULL, " +
 						"ComienzoServico int(11) DEFAULT NULL, " +
-						"FInalizacionServicio int(11) DEFAULT NULL, " +
+						"FInalizacionServicio date DEFAULT NULL, " +
 						"Fecha timestamp NULL DEFAULT CURRENT_TIMESTAMP, " +
+						"Descripcion varchar(300) DEFAULT NULL, " +
 						"PRIMARY KEY (idDonaciones), " +
 						"KEY fk_Donaciones_Ong_idx (IdOng), " +
 						"KEY fk_Donaciones_Tipo_idx (IdTipoDonacion), " +
 						"KEY fk_Donaciones_Usuario_idx (IdDonante), " +
 						"CONSTRAINT fk_Donaciones_Ong FOREIGN KEY (IdOng) REFERENCES ONGs (idONGs) ON DELETE NO ACTION ON UPDATE NO ACTION, " +
-						"CONSTRAINT fk_Donaciones_Tipo FOREIGN KEY (IdTipoDonacion) REFERENCES TipoDonacion (idTipoDonacion) ON DELETE NO ACTION ON UPDATE NO ACTION, " +
-						"CONSTRAINT fk_Donaciones_Usuario FOREIGN KEY (IdDonante) REFERENCES Usuarios (idUsuarios) ON DELETE NO ACTION ON UPDATE NO ACTION)"; 
+						"CONSTRAINT fk_Donaciones_Usuario FOREIGN KEY (IdDonante) REFERENCES Usuarios (idUsuarios) ON DELETE NO ACTION ON UPDATE NO ACTION)"; 					
 						st.execute(sql);
 						st.execute("LOCK TABLES " + donacionesTable + " WRITE");				
 					    st.execute("UNLOCK TABLES");
