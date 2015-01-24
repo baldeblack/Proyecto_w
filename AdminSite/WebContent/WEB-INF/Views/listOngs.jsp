@@ -63,7 +63,7 @@
         <c:forEach var="o" items="${OngsListModel.lstOngs}">
             <tr>
                 <th>${o.nombre}</th>
-                <th><a href="/BackOffice/catastrofes/edit/${o.idONGs}">Editar</a></th>                 
+                <th><a href="/BackOffice/ongs/edit/${o.idONGs}">Editar</a></th>                 
             </tr>
         </c:forEach>
       </tbody>

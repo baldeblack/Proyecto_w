@@ -9,7 +9,14 @@ public class OngModel {
 	private String origen;
 	private String telefono;
 	private String web;
+	String action;
 	
+	public String getAction() {
+		return action;
+	}
+	public void setAction(String action) {
+		this.action = action;
+	}
 	public String getDatosPayPal() {
 		return datosPayPal;
 	}

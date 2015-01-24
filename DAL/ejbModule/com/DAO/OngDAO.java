@@ -37,4 +37,41 @@ public class OngDAO {
 		}
 		return result;
 	}
+
+	public ONG getONG(int idOng){
+		ONG o = _eManager.find(ONG.class, idOng);
+		return o;
+	}
+	
+	public void ActualizarOng(ONG o, Integer idOng){
+		try {
+			 ONG oMod = _eManager.find(ONG.class, idOng);			 
+			 _eManager.getTransaction().begin();
+			 oMod.setDatosPayPal(o.getDatosPayPal());
+			 oMod.setDireccion(o.getDireccion());
+			 oMod.setEmail(o.getEmail());
+			 oMod.setNombre(o.getNombre());
+			 oMod.setOrigen(o.getOrigen());
+			 oMod.setTelefono(o.getTelefono());
+			 oMod.setWeb(o.getWeb());
+			 _eManager.getTransaction().commit();			
+		} catch (Exception e) {
+			throw e;
+		}
+			
+	}
+	
+	public Integer maxOngId(){
+		try {
+		Integer i = (Integer)_eManager.createQuery("select max(o.id) from ONG o").getSingleResult();
+		if(i == null){
+			i = 0;
+			return i;
+		}
+		return i + 1;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return null;
+	}
 }

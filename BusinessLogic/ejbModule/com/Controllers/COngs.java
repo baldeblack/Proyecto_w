@@ -23,6 +23,20 @@ public class COngs implements ICOngs {
 		// TODO Auto-generated method stub
 		return _dao.GetOngs();
 	}
+	@Override
+	public ONG getONG(int idOng) {
+		// TODO Auto-generated method stub
+		return _dao.getONG(idOng);
+	}
+	@Override
+	public void ActualizarOng(ONG o, Integer idOng) {
+		_dao.ActualizarOng(o, idOng);		
+	}
+	@Override
+	public Integer maxOngId() {
+		// TODO Auto-generated method stub
+		return _dao.maxOngId();
+	}
 	
 	
 }

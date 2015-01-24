@@ -14,12 +14,7 @@
 				<td>Mail :</td>
 				<td><form:input path="email" /></td>
 				<td><form:errors path="email" cssClass="error" /></td>
-			</tr>
-			<tr>
-				<td>Direccion :</td>
-				<td><form:input path="direccion" /></td>
-				<td><form:errors path="direccion" cssClass="error" /></td>
-			</tr>	
+			</tr>			
 			<tr>
 				<td>Web :</td>
 				<td><form:input path="web" /></td>
@@ -47,7 +42,8 @@
 		
 		<table>
                 <tr>
-                <td colspan="2" align="center"><input type="submit" value="Guardar"/></td>
+                <td colspan="2" align="center"><input id="actionbtn"
+				type="submit" name="action" value="${OngModel.action}" /></td>
                 </tr>
             </table>
 
