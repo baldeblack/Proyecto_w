@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -155,7 +156,47 @@ public class UsuarioDAO {
 		return result;
 	}
 	
-	public void ActualizarUsuario(Usuario u, Rescatista r, int usuId) throws Exception{
+	public void ActualizarUsuario(Usuario u, Rescatista r, int usuId) throws ClassNotFoundException, SQLException
+	{
+		Class.forName("com.mysql.jdbc.Driver");
+		String url = "jdbc:mysql://localhost:3306/sharedb";
+		String username = "root";
+		String pass = "123456";	
+		String query = null; 
+		String queryu = null; 
+		
+		Connection con = DriverManager.getConnection(url,username,pass);
+		
+		try
+		{	
+		con.setAutoCommit(false);
+		Statement statementu = con.createStatement();
+	      SimpleDateFormat SDF = new SimpleDateFormat("yyyy/MM/dd");
+		queryu = "UPDATE usuarios SET Nombre = '"+ u.getNombre() + "' , Apellido = '" + u.getApellido() + "' , Nick = '" + u.getNick() + "' ,";
+		queryu = queryu + " Nacimiento = '" + SDF.format((u.getNacimiento()).getTime()) +"', Sexo = '" + u.getSexo() +"', Celular = " + u.getCelular() + ", Direccion = '" + u.getDireccion() + "', Borrado = " + u.getBorrado() + " WHERE idUsuarios  = " + usuId;
+	
+		if(u.getTipoUsuario() == 1){
+		Statement statement = con.createStatement();
+			
+	    query = "UPDATE rescatista SET IdTipoRescatista =" + r.getIdTipoRescatista() + ",	Residencia = ";
+		query = query + "'" + r.getResidencia() + "', LatLongRecidencia = '" + r.getLatLongRecidencia() + "' WHERE IdUsuarios = " + usuId;
+
+		statement.executeUpdate(query);
+		}		
+		
+		statementu.executeUpdate(queryu);
+		con.commit();
+		} catch (Exception e) {
+			con.rollback();
+			throw e;
+		}
+		finally
+		{
+		   con.close();
+		}
+	}
+	
+/*	public void ActualizarUsuario(Usuario u, Rescatista r, int usuId) throws Exception{
 		try {
 			
 			 Usuario usuMod = _eManager.find(Usuario.class, usuId);
@@ -169,16 +210,13 @@ public class UsuarioDAO {
 			 usuMod.setNick(u.getNick());
 			 usuMod.setSexo(u.getSexo());			 
 			 if(u.getTipoUsuario() == 1){
-				Rescatista rMod =  getRescatistaByUsuID(usuId);
-				rMod.setIdTipoRescatista(r.getIdTipoRescatista());
-				rMod.setLatLongRecidencia(r.getLatLongRecidencia());
-				rMod.setResidencia(r.getResidencia());
-				rMod.setTipoRescatista(r.getTipoRescatista());
-				rMod.setUsuario(u);
+				 ActualizarRescatista(r, usuId);
+			
+				//rMod.setUsuario(u);
 			}
 			 _eManager.getTransaction().commit();	
 		} catch (Exception e) {
 			throw e;
 		}
-	}
+	}*/
 }

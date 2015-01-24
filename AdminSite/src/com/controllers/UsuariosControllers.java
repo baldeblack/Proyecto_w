@@ -17,6 +17,7 @@ import Validadores.UsuarioValidador;
 
 import com.Controllers.CUsuarios;
 import com.Entities.Rescatista;
+import com.Entities.TipoRescatista;
 import com.Entities.Usuario;
 import com.Interfaces.ICUsuarios;
 import com.models.UsuariosListModel;
@@ -98,7 +99,7 @@ public class UsuariosControllers {
 		usr.setApellido(UsuarioModel.getApellido());
 		usr.setNombre(UsuarioModel.getNombre());
 		usr.setBorrado(b);
-		usr.setCelular(UsuarioModel.getCelular());
+		usr.setCelular(UsuarioModel.getCelular());	    
 		usr.setNacimiento(UsuarioModel.getNacimiento());
 		usr.setDireccion(UsuarioModel.getDireccion());
 		usr.setNick(UsuarioModel.getNick());
@@ -128,7 +129,11 @@ public class UsuariosControllers {
 		request.getSession().setAttribute("idUsuarios", idUsuarios);
 		ICUsuarios ic = new CUsuarios();
 		Usuario u = ic.getUsuById(idUsuarios);
+		Rescatista r = ic.getRescatistaByUsuID(idUsuarios);
+		TipoRescatista t = ic.getTipoByID(r.getIdTipoRescatista());
 		UsuariosModel uModel = new UsuariosModel(u);
+		uModel.setLatLongRecidencia(r.getLatLongRecidencia());
+		uModel.setTiporescatisa(t);
 		uModel.setAction("Modificar");
 		model.addAttribute("UsuariosModel", uModel);
 		return "altaUsuario";	

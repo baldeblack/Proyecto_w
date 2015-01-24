@@ -1,6 +1,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <script type="text/javascript"
+	src="http://maps.google.com/maps/api/js?sensor=false&libraries=drawing"></script>
+<script type="text/javascript"
 	src="<c:url value="/resources/altausuario.js" />"> </script>
 <h1>Alta Usuarios</h1>
 
@@ -26,7 +28,7 @@
 		</tr>
 		<tr id="password">
 			<td>Contraseña :</td>
-			<td><form:input type="password" path="password" required="true" /></td>
+			<td><form:input type="password" path="password" required="true"/></td>
 		</tr>
 		<tr>
 			<td>Celular :</td>
@@ -50,7 +52,7 @@
 		<tr>
 			<td>Tipo Usuario :</td>
 			<td><form:select path="tipoUsuario"
-					onchange="rescatistaDiv(this)" multiple="false" size="1">
+			onchange="rescatistaDiv(this)" multiple="false" size="1"> 
 					<c:forEach var="tu" varStatus="i" items="${UsuariosModel.tipos}">
 						<c:choose>
 							<c:when test="${tu.value eq UsuariosModel.tipoUsuario}">
@@ -64,7 +66,7 @@
 				</form:select></td>
 		</tr>
 	</table>
-	<div id="rescatistaDiv" style="display: none;">
+    <div id="rescatistaDiv" style="display: none;">
 		<table>
 			<tr>
 				<td>Tipo Rescatista :</td>
@@ -92,6 +94,7 @@
 			<tr>
 				<td><input type="hidden" name="lat" id="lat"></td>
 				<td><input type="hidden" name="long" id="long"></td>
+				<td><input type="hidden" name="tipoU" id="tipoU" value="${UsuariosModel.tipoUsuario}"></td>
 				<td><form:hidden id="latLongRecidencia"
 						path="latLongRecidencia" /></td>
 				<td><form:errors path="latLongRecidencia" cssClass="error" /></td>
