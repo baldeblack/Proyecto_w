@@ -10,6 +10,7 @@ import com.Entities.Rescatista;
 import com.Entities.TipoRescatista;
 import com.Entities.Usuario;
 import com.Interfaces.ICUsuarios;
+import com.utils.generoUsr;
 import com.utils.tipoUsr;
 
 public class UsuariosModel {
@@ -30,7 +31,9 @@ public class UsuariosModel {
 	private List<TipoRescatista> tiposrescatistas;
 	private String latLongRecidencia;
 	private String residencia;
-	private List<tipoUsr> tipos;
+	private List<tipoUsr> tipos;	
+	private List<generoUsr> generos;
+	
 	String action;
 	
 	public UsuariosModel (Usuario u) throws ClassNotFoundException, SQLException{
@@ -65,10 +68,29 @@ public class UsuariosModel {
 		dos.setValue(1);
 		dos.setNombre("RESCATISTA");
 		this.tipos.add(dos);
+		
+		this.generos = new ArrayList<generoUsr>();
+		generoUsr g1 = new generoUsr();
+		g1.setNombre("MASCULINO");
+		g1.setValor("M");
+		generoUsr g2 = new generoUsr();
+		g2.setNombre("FEMENINO");
+		g2.setValor("F");
+		this.generos.add(g1);
+		this.generos.add(g2);
+				
 	}
 
 	public List<tipoUsr> getTipos() {
 		return tipos;
+	}
+
+	public List<generoUsr> getGeneros() {
+		return generos;
+	}
+
+	public void setGeneros(List<generoUsr> generos) {
+		this.generos = generos;
 	}
 
 	public void setTipos(List<tipoUsr> tipos) {

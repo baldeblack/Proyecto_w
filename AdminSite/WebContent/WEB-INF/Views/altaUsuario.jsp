@@ -40,10 +40,19 @@
 		</tr>
 		<tr>
 			<td>Sexo :</td>
-			<td><select name=sexo>
-					<option selected="selected" value="M">Masculino</option>
-					<option value="F">Femenino</option>
-			</select></td>
+			<td><form:select path="sexo" multiple="false" size="1"> 
+					<c:forEach var="s" varStatus="i" items="${UsuariosModel.generos}">
+						<c:choose>
+							<c:when test="${s.valor eq UsuariosModel.sexo}">
+								<option value="${s.valor}" selected="true">${s.nombre}</option>
+							</c:when>
+							<c:otherwise>
+								<option value="${s.valor}">${s.nombre}</option>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+				</form:select>
+				</td>
 		</tr>
 		<tr>
 			<td>Fecha de Nacimiento :</td>
