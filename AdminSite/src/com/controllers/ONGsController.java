@@ -1,4 +1,9 @@
 package com.controllers;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +17,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import Validadores.OngValidador;
 
+import com.Controllers.CCatastrofe;
 import com.Controllers.COngs;
+import com.Entities.Catastrofe;
 import com.Entities.ONG;
+import com.Interfaces.ICCatastrofe;
 import com.Interfaces.ICOngs;
 import com.models.OngModel;
 import com.models.OngsListModel;
+import com.models.ongCatastofeModel;
 
 @RequestMapping("/ongs")
 @Controller
@@ -42,6 +51,35 @@ public class ONGsController {
 		ongM.setAction("Crear");
 		model.addAttribute("OngModel", ongM);
 		return "altaONGs";
+	}
+	
+	@RequestMapping(value="/vincular/{tenantID}", method=RequestMethod.GET)
+	public String getVincularForm(@PathVariable int tenantID, ModelMap model) throws ClassNotFoundException, SQLException {
+		ICOngs io = new COngs();
+		ICCatastrofe ic = new CCatastrofe();
+		Catastrofe c = ic.getCatastrofeByID(tenantID);
+		ongCatastofeModel ongM = new ongCatastofeModel();
+		List<ONG> lstSis = new ArrayList<ONG>();
+		List<ONG> lstTnt = new ArrayList<ONG>();
+		lstSis = io.ListarOngs();
+		lstTnt = io.GetOngsTenant(tenantID);
+
+		for (Iterator<ONG> iterator = lstSis.iterator(); iterator.hasNext(); ) {
+			ONG o = iterator.next();
+			for (Iterator<ONG> iteratort = lstTnt.iterator(); iteratort.hasNext(); ) {
+				ONG ot = iteratort.next();
+		    if (o.getNombre().equals(ot.getNombre())) {
+		        iterator.remove();
+		    }
+			}
+		}
+		
+		ongM.setOngSistemaLst(lstSis);
+		ongM.setOngTenantLst(lstTnt);
+		ongM.setCtNombre(c.getNombre());
+		ongM.setIdCt(c.getIdCatastrofe());
+		model.addAttribute("ongCatastofeModel", ongM);
+		return "ongCatastrofe";
 	}
 	
 	@RequestMapping(value="/save", method = RequestMethod.POST)
@@ -93,4 +131,11 @@ public class ONGsController {
 		model.addAttribute("OngModel", oModel);
 		return "altaONGs";	
 		}
+	
+	@RequestMapping(value="/ongct", method = RequestMethod.POST)
+	public String ongTenant(@ModelAttribute("ongCatastofeModel") ongCatastofeModel ongCatastofeModel, BindingResult bindingResult){
+		
+		return "";
+		
+	}
 }

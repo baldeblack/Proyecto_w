@@ -66,7 +66,8 @@
             <tr>
                 <th>${o.nombre}</th>      
                 <th>${o.dominio}</th>   
-                <th><a href="/BackOffice/catastrofes/edit/${o.idCatastrofe}">Editar</a></th>                 
+                <th><a href="/BackOffice/catastrofes/edit/${o.idCatastrofe}">Editar</a></th>  
+                <th><a href="/BackOffice/ongs/vincular/${o.idCatastrofe}">Ong's</a></th>               
             </tr>
         </c:forEach>
       </tbody>

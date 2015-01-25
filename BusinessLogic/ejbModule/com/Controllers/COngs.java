@@ -1,5 +1,6 @@
 package com.Controllers;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import com.DAO.OngDAO;
@@ -36,6 +37,12 @@ public class COngs implements ICOngs {
 	public Integer maxOngId() {
 		// TODO Auto-generated method stub
 		return _dao.maxOngId();
+	}
+	@Override
+	public List<ONG> GetOngsTenant(int tenantId) throws ClassNotFoundException,
+			SQLException {
+		// TODO Auto-generated method stub
+		return _dao.GetOngsTenant(tenantId);
 	}
 	
 	
