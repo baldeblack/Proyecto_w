@@ -12,4 +12,5 @@ public interface ICOngs {
 	 void ActualizarOng(ONG o, Integer idOng);
 	 Integer maxOngId();
 	 List<ONG> GetOngsTenant(int tenantId) throws ClassNotFoundException, SQLException;
+	 void ActualizarOTenant(int tenantId, List<ONG> lstMod) throws ClassNotFoundException, SQLException;
 }

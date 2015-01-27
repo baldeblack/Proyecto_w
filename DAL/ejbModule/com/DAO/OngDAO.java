@@ -59,7 +59,7 @@ public class OngDAO {
 			String url = c.getStringConeccion();
 			String username = "root";
 			String pass = "123456";
-			Connection con = DriverManager.getConnection(url, username, pass);
+			Connection con = DriverManager.getConnection(url, username, pass);	
 			Statement statement = con.createStatement();
 			String query = "SELECT * FROM ongs";
 			ResultSet resultST = statement.executeQuery(query);
@@ -81,6 +81,52 @@ public class OngDAO {
 		return lstResult;
 	}
 
+	public void ActualizarOTenant(int tenantId, List<ONG> lstMod ) throws ClassNotFoundException, SQLException {
+		CatastrofeDAO cd = new CatastrofeDAO();
+		Catastrofe c = cd.getCatastrofeByID(tenantId);
+		Class.forName("com.mysql.jdbc.Driver");
+		String url = c.getStringConeccion();
+		String username = "root";
+		String pass = "123456";
+		Connection con = DriverManager.getConnection(url, username, pass);		
+	try {
+		int i = 0;
+		con.setAutoCommit(false);
+		Statement statement = con.createStatement();
+		String query = "DELETE FROM ongs";
+		statement.executeUpdate(query);
+		String queryMax = "select max(idONGs) from ongs";
+		ResultSet resultST = statement.executeQuery(queryMax);
+		
+		while (resultST.next()) {
+			 i = resultST.getInt("max(idONGs)") ;
+		}
+		
+			for (ONG o : lstMod) {
+				o.setIdONGs(i);
+				String queryIn = "INSERT INTO ongs ";
+				queryIn = queryIn +	"(idONGs, Nombre, Direccion, Telefono, ";
+				queryIn = queryIn + " Email, Web, Origen,DatosPayPal) VALUES ";
+				queryIn = queryIn + "("+ i +", '"+o.getNombre()+"', '"+o.getDireccion()+"', "+o.getTelefono()+" , '"+o.getEmail()+"', '"+o.getWeb()+"', '"+o.getOrigen()+"','"+o.getDatosPayPal()+"')";
+				statement.executeUpdate(queryIn);
+				i = 1 + i;
+			}	
+			con.commit();
+	} catch (Exception e) {
+		con.rollback();
+		throw e;
+	}
+	finally{
+		con.close();
+	}
+	}
+
+	
+	
+	
+	
+	
+	
 	public ONG getONG(int idOng) {
 		ONG o = _eManager.find(ONG.class, idOng);
 		return o;

@@ -1,34 +1,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>     
-<script>
-function Traspass(elem, idT){
-
-	if(idT == "ongs"){
-		$(elem).closest('.ongContainer').remove().clone().appendTo('#ongsMod');
-	}else if(idT == "ongsMod"){
-		$(elem).closest('.ongContainer').remove().clone().appendTo('#ongs');
-	}
-	updateName("ongs");
-	updateName("ongsMod");
-}
-
-function updateName(id){
-	var ind = 0;
-	if(id == "ongs"){	 
-		$('#ongs input').each(function(){    		  
-		    $(this).attr('name', "ongSistemaLst[" + ind + "]");    	
-		    ind = ind + 1;     		    	
-		 });
-	}else if(id == "ongsMod"){
-		ind = 0;	
-		$('#ongsMod input').each(function(){    		  
-		    $(this).attr('name', "ongTenantLst[" + ind + "]");    	
-		    ind = ind + 1;     		    	
-		});
-	}	 
-}
-
-</script>
+<script type="text/javascript"
+	src="<c:url value="/resources/ongscatastrofe.js" />"> </script>
 <style>
  .wrapper {
                 max-width: 1200px;
@@ -70,8 +43,9 @@ function updateName(id){
 						<c:forEach var="sis" items="${ongCatastofeModel.ongSistemaLst}"
 							varStatus="i">
 							<div class="ongContainer">
-						      <input style="width: 70px;" type="text" name="ongSistemaLst[${i.index}]" value="${sis.nombre}" readonly ondblclick="Traspass(this, $(this).closest('.ongs').attr('id'))"/>
-							</div>	
+						      <input style="width: 70px;" type="text" name="ongSistemaLst[${i.index}].nombre" value="${sis.nombre}" readonly ondblclick="Traspass(this, $(this).closest('.ongs').attr('id'))" onclick="fover(this)" onmouseout="fout(this)"/>
+						   	  <input type="hidden"  class="hd" name="ongSistemaLst[${i.index}].idONGs" value="${sis.idONGs}"/>
+						   	</div>	
 						</c:forEach>
 					
 				</c:if>
@@ -85,13 +59,21 @@ function updateName(id){
 						<c:forEach var="tnt" items="${ongCatastofeModel.ongTenantLst}"
 							varStatus="i">
 							<div class="ongContainer">
-						      <input style="width: 70px;" type="text" name="ongTenantLst[${i.index}]" value="${tnt.nombre}" readonly ondblclick="Traspass(this, $(this).closest('.ongs').attr('id'))"/>
+						      <input style="width: 70px;" type="text" name="ongTenantLst[${i.index}].nombre" value="${tnt.nombre}" readonly ondblclick="Traspass(this, $(this).closest('.ongs').attr('id'))" onclick="fover(this)" onmouseout="fout(this)"/>
+							  <input type="hidden"  class="hd" name="ongTenantLst[${i.index}].idONGs" value="${tnt.idONGs}"/>
 							</div>	
 						</c:forEach>
 					
 				</c:if>
 					</div>
 				</div>
+			</div>
+			
+			<div class="inner" id="divInfo" style="display: none">
+				<div id="divMail"></div>
+				<div id="divWeb"></div>
+				<div id="divDir"></div>
+				<div id="divTel"></div>
 			</div>
 </div>
 	

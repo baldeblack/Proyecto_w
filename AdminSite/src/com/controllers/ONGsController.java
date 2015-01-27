@@ -5,6 +5,8 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,8 +14,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import Validadores.OngValidador;
 
@@ -23,6 +27,7 @@ import com.Entities.Catastrofe;
 import com.Entities.ONG;
 import com.Interfaces.ICCatastrofe;
 import com.Interfaces.ICOngs;
+import com.google.gson.Gson;
 import com.models.OngModel;
 import com.models.OngsListModel;
 import com.models.ongCatastofeModel;
@@ -133,9 +138,42 @@ public class ONGsController {
 		}
 	
 	@RequestMapping(value="/ongct", method = RequestMethod.POST)
-	public String ongTenant(@ModelAttribute("ongCatastofeModel") ongCatastofeModel ongCatastofeModel, BindingResult bindingResult){
+	public String ongTenant(@ModelAttribute("ongCatastofeModel") ongCatastofeModel ongCatastofeModel, BindingResult bindingResult) throws ClassNotFoundException, SQLException{
+		ICOngs io = new COngs();
+		List<ONG> lstSis = new ArrayList<ONG>();
+		lstSis = io.ListarOngs();
 		
-		return "";
+	for(ONG o: lstSis){
+		for(ONG ot: ongCatastofeModel.getOngTenantLst()){
+			if(o.getNombre().equals(ot.getNombre())){
+				ot.setDatosPayPal(o.getDatosPayPal());
+				ot.setDireccion(o.getDireccion());
+				ot.setEmail(o.getEmail());
+				ot.setNombre(o.getNombre());
+				ot.setOrigen(o.getOrigen());
+				ot.setTelefono(o.getTelefono());
+				ot.setWeb(o.getWeb());
+			}
+		}
+	}
+		io.ActualizarOTenant(ongCatastofeModel.getIdCt(), ongCatastofeModel.getOngTenantLst());
+		return "Result";
 		
+	}
+	
+	@RequestMapping(value = "/getonginfo", method = RequestMethod.POST)
+	public @ResponseBody String getonginfo(@RequestBody String json, HttpServletResponse res, HttpServletRequest request) {
+		
+		Gson g = new Gson();
+		idC c = g.fromJson(json, idC.class);
+		Integer id = Integer.parseInt(c.id);
+		ICOngs io = new COngs();		
+		String jsonresp = g.toJson(io.getONG(id));
+		return jsonresp;
+	 
+	}
+	
+	public class idC {
+		String id;
 	}
 }

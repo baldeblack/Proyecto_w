@@ -44,6 +44,12 @@ public class COngs implements ICOngs {
 		// TODO Auto-generated method stub
 		return _dao.GetOngsTenant(tenantId);
 	}
+	@Override
+	public void ActualizarOTenant(int tenantId, List<ONG> lstMod)
+			throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		_dao.ActualizarOTenant(tenantId, lstMod);
+	}
 	
 	
 }
