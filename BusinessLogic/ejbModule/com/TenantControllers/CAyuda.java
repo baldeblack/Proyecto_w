@@ -55,7 +55,7 @@ public class CAyuda implements ICAyuda {
 		String body = String.format("Pedido de ayuda desde %s <br/>"
 				+ " el pedido es %s <br/> telefono $s <br/> Ubicación %s <br/>"
 				+ " mensaje %s", cat.getNombre(), 
-				help.getTipoSolicitor()==1?"Anonimo":help.getTipoSolicitor()==2?help.getUsuario().getApellido():"Para alguien mas",
+				help.getTipoSolicitor()==1?"Anonimo":help.getTipoSolicitor()==2?help.getUsuario().getNombre() +" "+help.getUsuario().getApellido():"Para alguien mas de parte de "+ help.getUsuario().getNombre() +" "+help.getUsuario().getApellido(),
 				help.getTelefono(), help.getUbicacion(), help.getMensaje());
 		
 		List<String> to = new ArrayList<String>();

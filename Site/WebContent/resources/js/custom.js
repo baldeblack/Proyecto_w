@@ -230,11 +230,13 @@ var cleanEco = function(){
 	$("#monto").val("");
 }
 
+
 var cleanServi = function(){
 	$("#hsServicio").val("");
 	$("#comienzo").val("");
 	$("#finalizacion").val("");
 }
+
 
 var cleanAll = function(){
 	$("#tipo").val("1");
@@ -245,6 +247,7 @@ var cleanAll = function(){
 	cleanEco();
 	cleanServi();
 }
+
 var jsonDataDonacion = function(){
 	
 	var tipo = $("#tipo").val();
@@ -259,15 +262,15 @@ var jsonDataDonacion = function(){
 	else if(tipo === "2"){//bienes
 		return JSON.stringify({
 			"cantidad" : $("#cantidad").val(),
-		    "fechaEntrega":$("#finalizacion").val(),
+		    "fechaEntrega":$("#fechaEntrega").val(),
 		    "ong":$("#idong").val(),
 		    "tipoDonacion":$("#tipo").val(),
 		    "descripcion":$("#descripcion").val(),});
 	}
 	else if(tipo === "3"){//servi
 		return JSON.stringify({
-			"comienzoServico":$("#fechaEntrega").val(),
-		    "FInalizacionServicio":$("#comienzo").val(),
+			"comienzoServico":$("#comienzo").val(),
+		    "FInalizacionServicio":$("#finalizacion").val(),
 		    "hsServicio":$("#hsServicio").val(),
 		    "ong":$("#idong").val(),
 		    "tipoDonacion":$("#tipo").val(),
@@ -287,12 +290,13 @@ function Donar(){
 	        datatype : "json",
 	        success : function(data) {
 	        	if(data==="onError"){
-	        		$("#responseDonacion").val("Ocurrió un error sepa disculparnos, esperamos vuelva a intentarlo mas tarde.");
+	        		$("#responseDonacion").html("Ocurrió un error sepa disculparnos, esperamos vuelva a intentarlo mas tarde.");
 	        	}
 	        	else{
-	        		$("#responseDonacion").val("Su donación ah sido enviada con exito, en breve la ong se pondra en contacto para coordinar las acciones correspondiente.");
+	        		$("#responseDonacion").html("Su donación ah sido enviada con exito, en breve la ong se pondra en contacto para coordinar las acciones correspondiente.");
 	        		cleanAll();
 	        		setTimeout(function(){
+	        			$("#responseDonacion").html("");
 	            		$("#btnDonarClose").click();
 	            	}, 8000);
 	        	}
@@ -303,4 +307,68 @@ function Donar(){
 	    });
 }
 
+var jsonDataLost = function(){
+	return JSON.stringify({
+	    "nombre":$("#nombre").val(),
+	    "apellido":$("#apellido").val(),
+	    "edad":$("#edad").val(),
+	    "fechaDesaparicion":$("#fecha").val(),
+	    "nombreContacto":$("#nombre_contacto").val(),
+	    "relacionContacto":$("#Parentesco").val(),
+	    "sexo":$("#sexo").val(),
+	    "telefonoContacto":$("#telefono").val(),
+	    "ultimoParadero":$("#paradero").val(),
+	    "foto":$("#inputImgDesap").val()});
+}
+
+function LostReport(){
+	var url = "/Site/lost/save";
+	$.ajax({
+        url : url,
+        type : "POST",
+        cache : false,
+        async : false,
+        contentType : "application/json; charset=UTF-8",
+        data : jsonDataLost(),
+        datatype : "json",
+        success : function(data) {
+        	if(data==="onError"){
+        		$("#responseLost").html("Ocurrió un error sepa disculparnos, por favor vuelva a intentarlo mas tarde o comuniquece al 1122.");
+        	}
+        	else{
+        		$("#responseLost").html("Su reporte se ah enviado con exito, en la brevedad nos comunicaremos con ud.");
+        		cleanAll();
+        		setTimeout(function(){
+        			$("#responseLost").html("");
+            		$("#btnLostClose").click();
+            	}, 8000);
+        	}
+        },
+        error : function(XMLHttpRequest, textStatus, errorThrown) {
+            alert(XMLHttpRequest.status + " : " + errorThrown);
+        }
+    });
+	
+}
+
+function uploadPic(){
+	$('#imageform').submit(function() {
+		  // Enviamos el formulario usando AJAX
+        $.ajax({
+            type: 'POST',
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            success: function(data) {
+            	if(data==="onError"){
+            		//mensaje de error de carga
+            	}
+            	else{
+            		$("#inputImgDesap").val(data);
+            		$("#imgDesap").attr('src', 'data:image/jpeg;base64,'+data);
+            	}
+            }
+        });        
+        return false;
+    }); 
+}
 

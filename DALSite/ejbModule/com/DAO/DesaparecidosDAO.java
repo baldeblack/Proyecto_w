@@ -59,7 +59,6 @@ public class DesaparecidosDAO {
 	public int InsertUpdateDesaparecido(Desaparecido input){
 		try
 		{
-			//TODO: ver si funciona esto bien...
 			_eManager.getTransaction().begin();
 		    _eManager.persist(input);
 			_eManager.getTransaction().commit();

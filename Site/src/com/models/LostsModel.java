@@ -17,7 +17,6 @@ public class LostsModel {
 	private String telefonoContacto;
 	private int TIpoUsuioReportado;
 	private String ultimoParadero;
-	private String ultimoParaderoLatLong;
 	private String foto;
 	
 	public LostsModel() {
@@ -136,13 +135,6 @@ public class LostsModel {
 		this.ultimoParadero = ultimoParadero;
 	}
 
-	public String getUltimoParaderoLatLong() {
-		return this.ultimoParaderoLatLong;
-	}
-
-	public void setUltimoParaderoLatLong(String ultimoParaderoLatLong) {
-		this.ultimoParaderoLatLong = ultimoParaderoLatLong;
-	}
 	
 	public String getFoto() {
 		return this.foto;

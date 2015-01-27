@@ -25,25 +25,18 @@
 			</property>
 		</bean>  
 		
-		<!-- <bean id="viewResolver"
-		    class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-		    <property name="viewClass">
-		        <value>
-		            org.springframework.web.servlet.view.tiles2.TilesView
-		        </value>
-		    </property>
-		</bean>
-		<bean id="tilesConfigurer"
-		    class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
-		    <property name="definitions">
-		        <list>
-		            <value>/WEB-INF/tiles.xml</value>
-		        </list>
-		    </property>
-		</bean> -->
-
+		<bean id="multipartResolver"
+	        class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	        <!-- max upload size in bytes -->
+	        <property name="maxUploadSize" value="20971520" /> <!-- 20MB -->
+	         
+	        <!-- max size of file in memory (in bytes) -->
+	        <property name="maxInMemorySize" value="1048576" /> <!-- 1MB --> 
+	    </bean>
+    
 		<mvc:interceptors>
 			<bean class="com.controllers.TenantInterceptor" />
 		</mvc:interceptors>
+		
 	</beans>
 </beans>

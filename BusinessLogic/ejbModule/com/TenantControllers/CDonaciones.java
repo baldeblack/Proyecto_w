@@ -63,7 +63,7 @@ public class CDonaciones implements ICDonaciones {
 				cat.getNombre(), 
 				don.getIdTipoDonacion()==1?"Económica":don.getIdTipoDonacion()==2?"De bienes":"De servicio",
 				us.getNombre() +" "+us.getApellido(), 
-				us.getEmail()+"-"+us.getEmail());
+				us.getEmail()+" - "+us.getCelular());
 				
 		if(don.getIdTipoDonacion()==1){
 			body+=String.format("<br/> Mas Detalles: %s <br/> Moneda: %s <br/> Monto: %s",don.getDescripcion(), don.getMoneda(), df.format(don.getMonto()));
