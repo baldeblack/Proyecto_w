@@ -79,23 +79,26 @@
 							</form>
 					    </div>
 						<div role="tabpanel" class="tab-pane" id="imagen">
-							<fieldset style="height:80px;width:400px;" color="#CCC">
-							<img src="" id="imgDesap"/>
 							<input type="hidden" id="inputImgDesap"/>
-								<form:form id="imageform" method="post" enctype="multipart/form-data" action='/Site/lost/uploadFile'>
-									<b>Cargar Imagen:</b> <input type="file" name="file" id="file"/><br><br/>
-									<div class="color_small">Formatos soportados (jpeg,jpg,gif,bmp,png) </div>
-									<button class="btn btn-default" onclick="uploadPic();"  >Cerrar</button>
-								</form:form>
-							</fieldset>
-							<br/>
-							<div id='preview'></div>
+								<form id="imageform" method="post" enctype="multipart/form-data" role="form-horizontal">
+									<div class="form-group">
+										<input type="file" name="file" id="file"/>
+									</div>
+									<div class="form-group">
+										<div class="color_small">Formatos soportados (jpeg,jpg,gif,bmp,png) </div>
+									</div>
+									<div class="row">
+									<div class="col-xs-6 col-md-6">
+									    <a href="#" class="thumbnail">
+									    	<img id="imgDesap" alt="...">
+									    </a>
+									</div>
+									</div>
+									<button class="btn btn-default" onclick="uploadPic();">Cargar</button>
+								</form>
 					    </div>
-
 					  </div>
-
 					</div>		        
-					
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-default" data-dismiss="modal" id="btnLostClose">Cerrar</button>

@@ -121,10 +121,11 @@ public class LostController {
 		return "onError";
 	}
 	
-	 @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
-	 public @ResponseBody
-	 String uploadFileHandler(@RequestParam("file") MultipartFile file) {
-		 if (!file.isEmpty()) {
+	  
+    @RequestMapping( value="/upload", method = RequestMethod.POST)
+	@ResponseBody
+	public String SendHelp(@RequestParam("file") MultipartFile file, HttpServletRequest request, HttpServletResponse response) {
+    	 if (!file.isEmpty()) {
 		     try {
 		    	 byte[] buffer = file.getBytes();
 		         return Base64.encodeBytes(buffer);  
@@ -134,6 +135,8 @@ public class LostController {
 		 } else {
              return "onError";
          }
-	 }
+    }
+	  
+	  
 	
 }

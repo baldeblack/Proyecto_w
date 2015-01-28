@@ -15,14 +15,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.entities.Ayuda;
 import com.entities.Catastrofe;
 import com.entities.Donacione;
 import com.entities.ONG;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.models.DonarModel;
-import com.models.HelpModel;
 import com.utilities.ServiceConnectionHelper;
 import com.utilities.SessionHandler;
 

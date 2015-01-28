@@ -352,23 +352,25 @@ function LostReport(){
 }
 
 function uploadPic(){
-	$('#imageform').submit(function() {
-		  // Enviamos el formulario usando AJAX
-        $.ajax({
-            type: 'POST',
-            url: $(this).attr('action'),
-            data: $(this).serialize(),
-            success: function(data) {
-            	if(data==="onError"){
-            		//mensaje de error de carga
-            	}
-            	else{
-            		$("#inputImgDesap").val(data);
-            		$("#imgDesap").attr('src', 'data:image/jpeg;base64,'+data);
-            	}
-            }
-        });        
-        return false;
-    }); 
+	$("#imageform").submit(function (e) {
+	    e.preventDefault();
+	    $.ajax({
+	        url: '/Site/lost/upload',
+	        data: new FormData($(this)[0]),
+	        cache: false,
+	        contentType: false,
+	        processData: false,
+	        type: 'POST',
+	        success: function (data) {
+	        	if(data==="onError"){
+	        		//mensaje de error de carga
+	        		alert("fallo");
+	        	}
+	        	else{
+	        		$("#inputImgDesap").val(data);
+	        		$("#imgDesap").attr('src', 'data:image/jpeg;base64,'+data);
+	        	}
+	        }
+	    }); 
+	});	
 }
-
