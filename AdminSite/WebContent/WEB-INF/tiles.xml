@@ -60,12 +60,7 @@
 		<put-attribute name="title" value="PLanes" />
 		<put-attribute name="body" value="/WEB-INF/Views/reportes.jsp" />
 	</definition>
-	
-	<definition name="altaplan" extends="base.definition">
-		<put-attribute name="title" value="PLanes" />
-		<put-attribute name="body" value="/WEB-INF/Views/altaplan.jsp" />
-	</definition>
-	
+		
 	<definition name="rptTablas" extends="base.definition">
 		<put-attribute name="title" value="PLanes" />
 		<put-attribute name="body" value="/WEB-INF/Views/rptTablas.jsp" />

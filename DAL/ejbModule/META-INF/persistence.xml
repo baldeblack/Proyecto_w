@@ -2,19 +2,17 @@
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="DAL">
 	<provider>org.hibernate.ejb.HibernatePersistence</provider>
-	<class>com.Entities.Administrador</class>
 	<class>com.Entities.Catastrofe</class>
-	<class>com.Entities.GestionRiesgo</class>
 	<class>com.Entities.ONG</class>
-	<class>com.Entities.PasosPlanEmergenca</class>
-	<class>com.Entities.PasosPlanEmergencaPK</class>
-	<class>com.Entities.PlanEmergencia</class>
 	<class>com.Entities.Rescatista</class>
 	<class>com.Entities.TipoRescatista</class>
-	<class>com.Entities.TipoRiesgo</class>
 	<class>com.Entities.Usuario</class>
-	<class>com.Entities.WorkFlow</class>
 	<class>com.Entities.Rptdata</class>
+	<class>com.Entities.Paso</class>
+	<class>com.Entities.Plan</class>
+	<class>com.Entities.Rescatistacatastrofe</class>
+	<class>com.Entities.RescatistacatastrofePK</class>
+	<class>com.Entities.Tipocatastrofe</class>
 		<properties>
 				 <property name="hibernate.show_sql" value="true"/>
 				 <property name="hibernate.format_sql" value="false"/>
