@@ -36,23 +36,21 @@ public class UsuarioDAO {
 		return result;
 	}
 	
-	public Usuario ExisteUsu(String mail, String pass){
+	public Usuario Login(String mail, String pass){
 		Usuario user = null;		
 		try {
-			Query query =_eManager.createQuery("Select c From Usuario c Where c.email =?1", Usuario.class);
+			Query query =_eManager.createQuery("Select c From Usuario c Where c.email =?1 and c.password =?2", Usuario.class);
 			query.setParameter(1, mail);	
-			user = (Usuario)query.getSingleResult();	
+			query.setParameter(2, pass);	
+			user = (Usuario)query.getSingleResult();
 			
-			if (pass.equals(user.getPassword())){
-				return user;
-			}				
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
 		
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-		return null;
+			return user;
 	}
-		
+	
 	public List<TipoRescatista> GetTipoRescatista(){
 		List<TipoRescatista> result = null;
 		try {
@@ -195,28 +193,5 @@ public class UsuarioDAO {
 		   con.close();
 		}
 	}
-	
-/*	public void ActualizarUsuario(Usuario u, Rescatista r, int usuId) throws Exception{
-		try {
-			
-			 Usuario usuMod = _eManager.find(Usuario.class, usuId);
-			 _eManager.getTransaction().begin();
-			 usuMod.setNombre(u.getNombre());
-			 usuMod.setApellido(u.getApellido());
-			 usuMod.setBorrado(u.getBorrado());
-			 usuMod.setCelular(u.getCelular());
-			 usuMod.setNacimiento(u.getNacimiento());
-			 usuMod.setDireccion(u.getDireccion());
-			 usuMod.setNick(u.getNick());
-			 usuMod.setSexo(u.getSexo());			 
-			 if(u.getTipoUsuario() == 1){
-				 ActualizarRescatista(r, usuId);
-			
-				//rMod.setUsuario(u);
-			}
-			 _eManager.getTransaction().commit();	
-		} catch (Exception e) {
-			throw e;
-		}
-	}*/
+
 }

@@ -15,7 +15,7 @@ public interface ICUsuarios {
 	void AltaRescatista(Rescatista r);
 	void ActualizarUsuario(Usuario u, Rescatista r, int usuId) throws Exception;
 	TipoRescatista getTipoByID(int ID);
-	Usuario ExisteUsu(String mail, String pass);
+	Usuario Login(String mail, String pass);
 	Integer maxResId();
 	Integer maxUsrId();
 	Usuario getUsuById(int id);

@@ -37,9 +37,9 @@ public class CUsuarios implements ICUsuarios{
 	}
 
 	@Override
-	public Usuario ExisteUsu(String mail, String pass) {
+	public Usuario Login(String mail, String pass) {
 		// TODO Auto-generated method stub
-		return _dao.ExisteUsu(mail, pass);
+		return _dao.Login(mail, pass);
 	}
 
 	@Override
