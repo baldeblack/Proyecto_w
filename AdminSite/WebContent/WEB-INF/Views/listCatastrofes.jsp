@@ -50,7 +50,8 @@
             <tr>
                 <th>Name</th> 
                  <th>Dom</th> 
-                  <th>Link</th>          
+                  <th>Link</th>  
+                  <th>LinkO</th>        
             </tr>
         </thead>
  
@@ -58,16 +59,17 @@
             <tr>
                  <th>Name</th> 
                  <th>Dom</th> 
-                  <th>Link</th>              
+                  <th>Link</th>
+                  <th>LinkO</th>              
             </tr>
         </tfoot>
     <tbody>
         <c:forEach var="o" items="${CatastrofeListModel.ctList}">
             <tr>
-                <th>${o.nombre}</th>      
-                <th>${o.dominio}</th>   
-                <th><a href="/BackOffice/catastrofes/edit/${o.idCatastrofe}">Editar</a></th>  
-                <th><a href="/BackOffice/ongs/vincular/${o.idCatastrofe}">Ong's</a></th>               
+                <td>${o.nombre}</td>      
+                <td>${o.dominio}</td>   
+                <td><a href="/BackOffice/catastrofes/edit/${o.idCatastrofe}">Editar</a></td>  
+                <td><a href="/BackOffice/ongs/vincular/${o.idCatastrofe}">Ong's</a></td>               
             </tr>
         </c:forEach>
       </tbody>

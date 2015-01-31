@@ -17,4 +17,6 @@ public interface ICCatastrofe {
 	void ActualizarCatastrofe(Catastrofe c, Integer tenatId);
 	
 	Catastrofe getCatastrofeByStringConnection(String conn);
+	
+	Integer minCtId();
 }

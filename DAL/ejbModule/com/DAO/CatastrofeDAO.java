@@ -85,6 +85,21 @@ public class CatastrofeDAO {
 		return c;
 	}
 	
+	public Integer minCtId(){
+		try {
+		
+		Integer i = (Integer)_eManager.createQuery("select min(c.id) from Catastrofe c").getSingleResult();
+		if(i == null){
+			i = 0;
+			return i;
+		}
+		return i + 1;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return null;
+	}
+	
 	public Catastrofe getCatastrofeByStringConnection(String conn){
 		Catastrofe result = null;
 		try {

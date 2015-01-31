@@ -48,4 +48,10 @@ public class CCatastrofe implements ICCatastrofe {
 		return _dao.getCatastrofeByStringConnection(conn);
 	}
 
+	@Override
+	public Integer minCtId() {
+		// TODO Auto-generated method stub
+		return _dao.minCtId();
+	}
+
 }
