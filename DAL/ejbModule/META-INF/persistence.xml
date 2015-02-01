@@ -10,9 +10,9 @@
 	<class>com.Entities.Rptdata</class>
 	<class>com.Entities.Paso</class>
 	<class>com.Entities.Plan</class>
-	<class>com.Entities.Rescatistacatastrofe</class>
-	<class>com.Entities.RescatistacatastrofePK</class>
 	<class>com.Entities.Tipocatastrofe</class>
+	<class>com.Entities.Rescatistacatastrofe</class>
+	<class>com.Entities.Catastrofetipo</class>
 		<properties>
 				 <property name="hibernate.show_sql" value="true"/>
 				 <property name="hibernate.format_sql" value="false"/>

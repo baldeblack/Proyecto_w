@@ -22,8 +22,6 @@ public class Plan implements Serializable {
 
 	private int estado;
 
-	private int idPlanEm;
-
 	private int idTipoCatastrofe;
 
 	private int idTipoPlan;
@@ -63,14 +61,6 @@ public class Plan implements Serializable {
 
 	public void setEstado(int estado) {
 		this.estado = estado;
-	}
-
-	public int getIdPlanEm() {
-		return this.idPlanEm;
-	}
-
-	public void setIdPlanEm(int idPlanEm) {
-		this.idPlanEm = idPlanEm;
 	}
 
 	public int getIdTipoCatastrofe() {

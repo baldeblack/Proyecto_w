@@ -13,18 +13,28 @@ import javax.persistence.*;
 public class Rescatistacatastrofe implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@EmbeddedId
-	private RescatistacatastrofePK id;
+	@Id
+	private int idrescatista;
+
+	private int idcatastrofe;
 
 	public Rescatistacatastrofe() {
 	}
 
-	public RescatistacatastrofePK getId() {
-		return this.id;
+	public int getIdrescatista() {
+		return this.idrescatista;
 	}
 
-	public void setId(RescatistacatastrofePK id) {
-		this.id = id;
+	public void setIdrescatista(int idrescatista) {
+		this.idrescatista = idrescatista;
+	}
+
+	public int getIdcatastrofe() {
+		return this.idcatastrofe;
+	}
+
+	public void setIdcatastrofe(int idcatastrofe) {
+		this.idcatastrofe = idcatastrofe;
 	}
 
 }
