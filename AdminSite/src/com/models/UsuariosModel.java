@@ -117,7 +117,17 @@ public class UsuariosModel {
 		tipoUsr dos = new tipoUsr();
 		dos.setValue(1);
 		dos.setNombre("RESCATISTA");
+		
 		this.tipos.add(dos);
+		this.generos = new ArrayList<generoUsr>();
+		generoUsr g1 = new generoUsr();
+		g1.setNombre("MASCULINO");
+		g1.setValor("M");
+		generoUsr g2 = new generoUsr();
+		g2.setNombre("FEMENINO");
+		g2.setValor("F");
+		this.generos.add(g1);
+		this.generos.add(g2);
 	};
 
 	public byte getBorrado() {
