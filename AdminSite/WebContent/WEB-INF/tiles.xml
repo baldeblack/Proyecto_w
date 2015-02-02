@@ -12,10 +12,6 @@
 		<put-attribute name="footer" value="/WEB-INF/Views/footer.jsp" />
 	</definition>
 
-	<definition name="contact" extends="base.definition">
-		<put-attribute name="title" value="Contact Manager" />
-		<put-attribute name="body" value="/WEB-INF/Views/contact.jsp" />
-	</definition>
 	
 	<definition name="altaCatastrofe" extends="base.definition">
 		<put-attribute name="title" value="Alta Catastrofe" />
@@ -51,11 +47,11 @@
 		<put-attribute name="body" value="/WEB-INF/Views/listOngs.jsp" />
 	</definition>
 	
-	<definition name="ongCatastrofe" extends="base.definition">
+	<definition name="vinculasOngs" extends="base.definition">
 		<put-attribute name="title" value="Usuarios del Sistema" />
-		<put-attribute name="body" value="/WEB-INF/Views/ongCatastrofe.jsp" />
+		<put-attribute name="body" value="/WEB-INF/Views/vinculasOngs.jsp" />
 	</definition>
-	
+		
 	<definition name="reportes" extends="base.definition">
 		<put-attribute name="title" value="PLanes" />
 		<put-attribute name="body" value="/WEB-INF/Views/reportes.jsp" />

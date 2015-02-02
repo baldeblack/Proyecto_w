@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.Entities.ONG;
+import com.Helper.ongsBorrado;
 
 public interface ICOngs {
 	 void AltaOng(ONG o);
@@ -11,6 +12,10 @@ public interface ICOngs {
 	 ONG getONG(int idOng);
 	 void ActualizarOng(ONG o, Integer idOng);
 	 Integer maxOngId();
-	 List<ONG> GetOngsTenant(int tenantId) throws ClassNotFoundException, SQLException;
-	 void ActualizarOTenant(int tenantId, List<ONG> lstMod) throws ClassNotFoundException, SQLException;
+	 List<ongsBorrado> GetOngsTenant(int tenantId) throws ClassNotFoundException, SQLException;
+	 void actualizaTodo(ONG o) throws ClassNotFoundException, SQLException;
+	 void InsertOTenant(int tenantId, ONG ong) throws ClassNotFoundException, SQLException;
+	 void DeleteOTenant(int tenantId, String nombreOng) throws ClassNotFoundException, SQLException;
+	 Integer GetOngByNombre(String nombre);
+	 
 }

@@ -1,5 +1,13 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<script type="text/javascript" >
+ 	jQuery(document).ready(function($) {	
+		
+		if($('#actionbtn').val() == "Modificar"){
+			$('#nombre').attr('readonly', true);
+		}
+			});
+</script>
         <h1>Alta ONGs</h1>
 
  <form:form method="POST" action="/BackOffice/ongs/save" commandName="OngModel"> 
@@ -7,7 +15,7 @@
         <table>
 			<tr>		
 				<td>Nombre :</td>
-				<td><form:input path="nombre" /></td>
+				<td><form:input id="nombre" path="nombre" /></td>
 				<td><form:errors path="nombre" cssClass="error" /></td>
 			</tr>					
 			<tr>

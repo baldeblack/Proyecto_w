@@ -3,18 +3,26 @@ package com.models;
 import java.util.List;
 
 import com.Entities.ONG;
+import com.Helper.ongsBorrado;
 
 public class ongCatastofeModel {
 	
 	private String ctNombre;
 	private Integer idCt;
 	private List<ONG> ongSistemaLst;
-	private List<ONG> ongTenantLst;
+	private List<ongsBorrado> ongTenantLst;
+	private String jsonData;
 	
-	public List<ONG> getOngTenantLst() {
+	public List<ongsBorrado> getOngTenantLst() {
 		return ongTenantLst;
 	}
-	public void setOngTenantLst(List<ONG> ongTenantLst) {
+	public String getJsonData() {
+		return jsonData;
+	}
+	public void setJsonData(String jsonData) {
+		this.jsonData = jsonData;
+	}
+	public void setOngTenantLst(List<ongsBorrado> ongTenantLst) {
 		this.ongTenantLst = ongTenantLst;
 	}
 	public List<ONG> getOngSistemaLst() {

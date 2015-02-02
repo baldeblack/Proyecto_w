@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.DAO.OngDAO;
 import com.Entities.ONG;
+import com.Helper.ongsBorrado;
 import com.Interfaces.ICOngs;
 
 public class COngs implements ICOngs {
@@ -39,16 +40,34 @@ public class COngs implements ICOngs {
 		return _dao.maxOngId();
 	}
 	@Override
-	public List<ONG> GetOngsTenant(int tenantId) throws ClassNotFoundException,
+	public List<ongsBorrado> GetOngsTenant(int tenantId) throws ClassNotFoundException,
 			SQLException {
 		// TODO Auto-generated method stub
 		return _dao.GetOngsTenant(tenantId);
 	}
+	
 	@Override
-	public void ActualizarOTenant(int tenantId, List<ONG> lstMod)
+	public void InsertOTenant(int tenantId, ONG ong)
 			throws ClassNotFoundException, SQLException {
+		_dao.InsertOTenant(tenantId, ong);
+		
+	}
+	@Override
+	public void DeleteOTenant(int tenantId, String nombreOng)
+			throws ClassNotFoundException, SQLException {
+		_dao.DeleteOTenant(tenantId, nombreOng);
+		
+	}
+	@Override
+	public Integer GetOngByNombre(String nombre) {
 		// TODO Auto-generated method stub
-		_dao.ActualizarOTenant(tenantId, lstMod);
+		return _dao.GetOngByNombre(nombre);
+	}
+	@Override
+	public void actualizaTodo(ONG o) throws ClassNotFoundException,
+			SQLException {
+		_dao.actualizaTodo(o);
+		
 	}
 	
 	

@@ -6,7 +6,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +24,7 @@ import com.Controllers.CCatastrofe;
 import com.Controllers.COngs;
 import com.Entities.Catastrofe;
 import com.Entities.ONG;
+import com.Helper.ongsBorrado;
 import com.Interfaces.ICCatastrofe;
 import com.Interfaces.ICOngs;
 import com.google.gson.Gson;
@@ -65,14 +65,14 @@ public class ONGsController {
 		Catastrofe c = ic.getCatastrofeByID(tenantID);
 		ongCatastofeModel ongM = new ongCatastofeModel();
 		List<ONG> lstSis = new ArrayList<ONG>();
-		List<ONG> lstTnt = new ArrayList<ONG>();
+		List<ongsBorrado> lstTnt = new ArrayList<ongsBorrado>();
 		lstSis = io.ListarOngs();
 		lstTnt = io.GetOngsTenant(tenantID);
 
 		for (Iterator<ONG> iterator = lstSis.iterator(); iterator.hasNext(); ) {
 			ONG o = iterator.next();
-			for (Iterator<ONG> iteratort = lstTnt.iterator(); iteratort.hasNext(); ) {
-				ONG ot = iteratort.next();
+			for (Iterator<ongsBorrado> iteratort = lstTnt.iterator(); iteratort.hasNext(); ) {
+				ongsBorrado ot = iteratort.next();
 		    if (o.getNombre().equals(ot.getNombre())) {
 		        iterator.remove();
 		    }
@@ -83,9 +83,12 @@ public class ONGsController {
 		ongM.setOngTenantLst(lstTnt);
 		ongM.setCtNombre(c.getNombre());
 		ongM.setIdCt(c.getIdCatastrofe());
+		Gson g = new Gson();
+		ongM.setJsonData(g.toJson(lstTnt).replaceAll("\"", "'"));
 		model.addAttribute("ongCatastofeModel", ongM);
-		return "ongCatastrofe";
+		return "vinculasOngs";
 	}
+	
 	
 	@RequestMapping(value="/save", method = RequestMethod.POST)
 	public String Alta(
@@ -103,17 +106,18 @@ public class ONGsController {
 			
 			o.setDatosPayPal(OngModel.getDatosPayPal());
 			o.setDireccion(OngModel.getDireccion());
-			o.setEmail(OngModel.getEmail());			
-			o.setNombre(OngModel.getNombre());
+			o.setEmail(OngModel.getEmail());
 			o.setTelefono(OngModel.getTelefono());
 			o.setWeb(OngModel.getWeb());
 			o.setOrigen(OngModel.getOrigen());
+			o.setNombre(OngModel.getNombre());
 			
 			if(OngModel.getAction().equals("Crear")){	
-				o.setIdONGs(io.maxOngId());								
+				o.setIdONGs(io.maxOngId());				
 				io.AltaOng(o);
 			}else{
 				io.ActualizarOng(o, (Integer)request.getSession().getAttribute("idOng"));
+				io.actualizaTodo(o);
 			}
 			}
 		return "Result";
@@ -137,43 +141,88 @@ public class ONGsController {
 		return "altaONGs";	
 		}
 	
-	@RequestMapping(value="/ongct", method = RequestMethod.POST)
-	public String ongTenant(@ModelAttribute("ongCatastofeModel") ongCatastofeModel ongCatastofeModel, BindingResult bindingResult) throws ClassNotFoundException, SQLException{
-		ICOngs io = new COngs();
-		List<ONG> lstSis = new ArrayList<ONG>();
-		lstSis = io.ListarOngs();
 		
-	for(ONG o: lstSis){
-		for(ONG ot: ongCatastofeModel.getOngTenantLst()){
-			if(o.getNombre().equals(ot.getNombre())){
-				ot.setDatosPayPal(o.getDatosPayPal());
-				ot.setDireccion(o.getDireccion());
-				ot.setEmail(o.getEmail());
-				ot.setNombre(o.getNombre());
-				ot.setOrigen(o.getOrigen());
-				ot.setTelefono(o.getTelefono());
-				ot.setWeb(o.getWeb());
-			}
-		}
-	}
-		io.ActualizarOTenant(ongCatastofeModel.getIdCt(), ongCatastofeModel.getOngTenantLst());
-		return "Result";
-		
-	}
-	
-	@RequestMapping(value = "/getonginfo", method = RequestMethod.POST)
-	public @ResponseBody String getonginfo(@RequestBody String json, HttpServletResponse res, HttpServletRequest request) {
+	@RequestMapping(value = "/addOng", method = RequestMethod.POST)
+	public @ResponseBody String addOng(@RequestBody String json, HttpServletResponse res, HttpServletRequest request) throws NumberFormatException, ClassNotFoundException, SQLException {
 		
 		Gson g = new Gson();
-		idC c = g.fromJson(json, idC.class);
-		Integer id = Integer.parseInt(c.id);
+		ids c = g.fromJson(json, ids.class);
+		ICOngs io = new COngs();
+		
+		io.InsertOTenant(Integer.parseInt(c.idc),io.getONG(Integer.parseInt(c.ido)));		
+		List<ONG> lstSis = new ArrayList<ONG>();
+		List<ongsBorrado> lstTnt = new ArrayList<ongsBorrado>();
+		lstSis = io.ListarOngs();
+		lstTnt = io.GetOngsTenant(Integer.parseInt(c.idc));
+
+		for (Iterator<ONG> iterator = lstSis.iterator(); iterator.hasNext(); ) {
+			ONG o = iterator.next();
+			for (Iterator<ongsBorrado> iteratort = lstTnt.iterator(); iteratort.hasNext(); ) {
+				ongsBorrado ot = iteratort.next();
+		    if (o.getNombre().equals(ot.getNombre())) {
+		        iterator.remove();
+		    }
+			}
+		}
+		
+		
+		String jsonresp = g.toJson(lstTnt);
+		return jsonresp;
+	}
+	
+	@RequestMapping(value = "/delOng", method = RequestMethod.POST)
+	public @ResponseBody String deleteOng(@RequestBody String json, HttpServletResponse res, HttpServletRequest request) throws NumberFormatException, ClassNotFoundException, SQLException {
+		
+		Gson g = new Gson();
+		ids c = g.fromJson(json, ids.class);
+		ICOngs io = new COngs();
+		
+		io.DeleteOTenant(Integer.parseInt(c.idc),c.ido);		
+		List<ONG> lstSis = new ArrayList<ONG>();
+		List<ongsBorrado> lstTnt = new ArrayList<ongsBorrado>();
+		lstSis = io.ListarOngs();
+		lstTnt = io.GetOngsTenant(Integer.parseInt(c.idc));
+
+		for (Iterator<ONG> iterator = lstSis.iterator(); iterator.hasNext(); ) {
+			ONG o = iterator.next();
+			for (Iterator<ongsBorrado> iteratort = lstTnt.iterator(); iteratort.hasNext(); ) {
+				ongsBorrado ot = iteratort.next();
+		    if (o.getNombre().equals(ot.getNombre())) {
+		        iterator.remove();
+		    }
+			}
+		}
+		
+		
+		String jsonresp = g.toJson(lstTnt);
+		return jsonresp;
+	}
+	
+	
+	@RequestMapping(value = "/getongid", method = RequestMethod.POST)
+	public @ResponseBody String getIdO(@RequestBody String json, HttpServletResponse res, HttpServletRequest request) {
+		
+		Gson g = new Gson();
+		nomO c = g.fromJson(json, nomO.class);		
 		ICOngs io = new COngs();		
-		String jsonresp = g.toJson(io.getONG(id));
+		ids result = new ids();
+		result.idc = io.GetOngByNombre(c.nombre).toString();
+		result.ido = c.nombre;
+		String jsonresp = g.toJson(result);
 		return jsonresp;
 	 
 	}
 	
 	public class idC {
 		String id;
+	}
+	
+	public class nomO {
+		String nombre;
+	}
+	
+	public class ids {
+		String idc;
+		String ido;
 	}
 }
