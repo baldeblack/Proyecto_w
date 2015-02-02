@@ -9,11 +9,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.TenantControllers.CDesaparecidos;
-import com.TenantControllers.CDonaciones;
 import com.TenantInterfaces.ICDesaparecidos;
-import com.TenantInterfaces.ICDonaciones;
 import com.entities.Desaparecido;
-import com.entities.Donacione;
 import com.google.gson.Gson;
 import com.utilities.MessageInput;
 

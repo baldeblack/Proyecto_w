@@ -70,10 +70,10 @@
 
 									<!--<input type="text" name="estado" id="estado" class="form-control input-lg" placeholder="Estado" tabindex="6">-->
 									<select name="Parentesco" id="Parentesco" placeholder="Seleccione estado" class="form-control input-lg" tabindex="6">
-									  <option>Padre/Madre</option>
-									  <option>Hermanos</option>
-									  <option>Pareja</option>
-									  <option>Otros</option>
+									  <option value="1">Padre/Madre</option>
+									  <option value="2">Hermanos</option>
+									  <option value="3">Pareja</option>
+									  <option value="4">Otros</option>
 									</select>
 								</div>
 							</form>
@@ -102,7 +102,7 @@
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-default" data-dismiss="modal" id="btnLostClose">Cerrar</button>
-		        <button type="button" class="btn btn-warning">Reportar</button>
+		        <button type="button" class="btn btn-warning" onclick="LostReport()">Reportar</button>
 		      </div>
 		    </div>
 		  </div>

@@ -3,11 +3,14 @@ package com.TenantControllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import sun.rmi.log.LogHandler;
+
 import com.Controllers.CCatastrofe;
 import com.DAO.AyudaDAO;
 import com.Entities.Catastrofe;
 import com.Interfaces.ICCatastrofe;
 import com.TenantInterfaces.ICAyuda;
+import com.Utilities.LogHelper;
 import com.Utilities.MailingHelper;
 import com.entities.Ayuda;
 import com.google.gson.Gson;
@@ -41,6 +44,7 @@ public class CAyuda implements ICAyuda {
 		int id = _dao.InsertUpdateAyuda(help);
 	
 		if(id>0){
+			LogHelper.HelpLoged(_connection);
 			SendHelpEmail(help);
 		}
 		return id;

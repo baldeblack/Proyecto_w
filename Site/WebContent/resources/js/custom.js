@@ -1,4 +1,8 @@
 
+/********************************/
+/**************LOGIN*************/
+/********************************/
+
 var login = function(mail, passwd){
 	 var url = "/Site/access/logon";
 	 
@@ -27,46 +31,15 @@ var login = function(mail, passwd){
 	    });
 }
 
-function LoadLostList(callback) {
-    $.ajax({
-        url : '/Site/lost/getAllView',
-        type: 'GET',
-        beforeSend: function(xhr) {
-          xhr.setRequestHeader("Accept", "application/json");
-          xhr.setRequestHeader("Content-Type", "application/json");
-        },
-        success : function(data) {
-            callback(data);
-        },
-        error:function(data,status,er) { 
-        	alert("error Lost: "+data+" status: "+status+" er:"+er);
-        }
-    });
-}
-
-function LoadOngList() {
-    $.ajax({
-        url : '/Site/ong/getAll',
-        type: 'GET',
-        beforeSend: function(xhr) {
-          xhr.setRequestHeader("Accept", "application/json");
-          xhr.setRequestHeader("Content-Type", "application/json");
-        },
-        success : function(data) {
-            $('#secOngs').html(data);
-        },
-        error:function(data,status,er) { 
-        	alert("error Ongs: "+data+" status: "+status+" er:"+er);
-        }
-    });
-}
-
 function doLogin() {
     var username = $("#exampleInputEmail2").val();
     var password = $("#exampleInputPassword2").val();
     login(username,password);
 }
 
+/********************************/
+/**************AYUDA*************/
+/********************************/
 function SendHelp(){
 	 var url = "/Site/help/ask";
 	 	var request = $('#typeRequest').val();
@@ -95,7 +68,7 @@ function SendHelp(){
 		            	$('#tel_ayuda').val("");
 		            	setTimeout(function(){
 		            		$("#closeModal").click();
-		            		$("#responseHelp").html("");
+		            		
 		            	}, 5000);
 		            	
 		            }
@@ -113,29 +86,46 @@ function SendHelp(){
 	    });
 }
 
+$("#closeModal").click(function(){
+	$("#responseHelp").html("");
+	$('#typeRequest').val(1);
+	$('#message').val("");
+	$('#ubicacion_ayuda').val("");
+	$('#tel_ayuda').val("");
+});
+
+/********************************/
+/************REGISTRO***********/
+/********************************/
 var validateReg = function(){
 	var error = false;
 	if($('#password').val() !=$('#password_confirmation').val()){
 		error = true;
+		alert("La contraseña y su confirmación no coinciden.")
 	}
 	if( $('#nombre_usuario').val() == "")
 	{
+		alert("El nombrre es requerido.")
 		error = true;
 	}
 	if( $('#apellido_usuario').val() == "")
 	{
+		alert("El apellido es requerido.")
 		error = true;
 	}
 	if( $('#email').val() == "")
 	{
+		alert("El mail es requerido.")
 		error = true;
 	}
 	if( $('#nick_usuario').val() == "")
 	{
+		alert("El nick es requerido.")
 		error = true;
 	}
 	if( $('#password').val() == "")
 	{
+		alert("La contraseña es requerida.")
 		error = true;
 	}
 	return !error;
@@ -192,6 +182,27 @@ function RegistUser(){
 	    });
 	}
 	    
+}
+
+/********************************/
+/*************DONACION***********/
+/********************************/
+
+function LoadOngList() {
+    $.ajax({
+        url : '/Site/ong/getAll',
+        type: 'GET',
+        beforeSend: function(xhr) {
+          xhr.setRequestHeader("Accept", "application/json");
+          xhr.setRequestHeader("Content-Type", "application/json");
+        },
+        success : function(data) {
+            $('#secOngs').html(data);
+        },
+        error:function(data,status,er) { 
+        	alert("error Ongs: "+data+" status: "+status+" er:"+er);
+        }
+    });
 }
 
 function showData(){
@@ -296,7 +307,6 @@ function Donar(){
 	        		$("#responseDonacion").html("Su donación ah sido enviada con exito, en breve la ong se pondra en contacto para coordinar las acciones correspondiente.");
 	        		cleanAll();
 	        		setTimeout(function(){
-	        			$("#responseDonacion").html("");
 	            		$("#btnDonarClose").click();
 	            	}, 8000);
 	        	}
@@ -305,6 +315,31 @@ function Donar(){
 	            alert(XMLHttpRequest.status + " : " + errorThrown);
 	        }
 	    });
+}
+
+$("#btnDonarClose").click(function(){
+	$("#responseDonacion").html("");
+	cleanAll();
+});
+/********************************/
+/**********DESAPARECIDOS*********/
+/********************************/
+
+function LoadLostList(callback) {
+    $.ajax({
+        url : '/Site/lost/getAllView',
+        type: 'GET',
+        beforeSend: function(xhr) {
+          xhr.setRequestHeader("Accept", "application/json");
+          xhr.setRequestHeader("Content-Type", "application/json");
+        },
+        success : function(data) {
+            callback(data);
+        },
+        error:function(data,status,er) { 
+        	alert("error Lost: "+data+" status: "+status+" er:"+er);
+        }
+    });
 }
 
 var jsonDataLost = function(){
@@ -319,6 +354,20 @@ var jsonDataLost = function(){
 	    "telefonoContacto":$("#telefono").val(),
 	    "ultimoParadero":$("#paradero").val(),
 	    "foto":$("#inputImgDesap").val()});
+}
+
+var cleanLostData= function(){
+	 $("#nombre").val("");
+	 $("#apellido").val("");
+	 $("#edad").val("");
+	 $("#fecha").val("");
+	 $("#nombre_contacto").val("");
+	 $("#Parentesco").val(1);
+	 $("#sexo").val("F");
+	 $("#telefono").val("");
+	 $("#paradero").val("");
+	 $("#inputImgDesap").val("");
+	 $("#imgDesap").attr('src', '');
 }
 
 function LostReport(){
@@ -337,10 +386,10 @@ function LostReport(){
         	}
         	else{
         		$("#responseLost").html("Su reporte se ah enviado con exito, en la brevedad nos comunicaremos con ud.");
-        		cleanAll();
+        		cleanLostData();
         		setTimeout(function(){
-        			$("#responseLost").html("");
             		$("#btnLostClose").click();
+            		 location.reload();
             	}, 8000);
         	}
         },
@@ -374,3 +423,10 @@ function uploadPic(){
 	    }); 
 	});	
 }
+
+$("#btnLostClose").click(function(){
+	$("#responseLost").html("");
+	cleanLostData();
+});
+
+

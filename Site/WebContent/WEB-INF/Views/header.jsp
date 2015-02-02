@@ -55,7 +55,8 @@
 											</div>
 										</div>
 									</div>
-						   			<a class="btn btn-facebook btn-lg" href="#"><i class="icon-facebook icon-large"></i> Facebook</a>
+									<fb:login-button class="btn btn-facebook btn-lg" scope="public_profile,email" onlogin="checkLoginState();"> </fb:login-button>
+						   			<!-- <a class="btn btn-facebook btn-lg" href="#"><i class="icon-facebook icon-large"></i> Facebook</a> -->
 						   			<a class="btn btn-google-plus btn-lg" href="#"><i class="icon-google-plus icon-large"></i> Google+</a>
 						   			<br><br>
 								  	<button onclick="doLogin()"  class="btn btn-default bton-login">Iniciar Sesion</button>

@@ -61,7 +61,6 @@ public class ServiceConnectionHelper {
 				uri+="/"+ URLEncoder.encode(param, "UTF-8");
 			}
 			URL url = new URL(uri);
-			
 		    connection = (HttpURLConnection) url.openConnection();
 			connection.setRequestMethod(typeS);
 			connection.setRequestProperty("Accept", "application/json");

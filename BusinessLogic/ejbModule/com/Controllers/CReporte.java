@@ -5,8 +5,11 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.DAO.ReportesDAO;
+import com.Entities.Catastrofe;
 import com.Entities.Rptdata;
+import com.Helper.RptType;
 import com.Helper.donacionesRpt;
+import com.Interfaces.ICCatastrofe;
 import com.Interfaces.ICReporte;
 
 public class CReporte implements ICReporte{
@@ -34,6 +37,13 @@ public class CReporte implements ICReporte{
 			throws SQLException, ClassNotFoundException {
 		// TODO Auto-generated method stub
 		return _dao.getRptDonaciones(idTenant, start, end);
+	}
+
+	@Override
+	public int InsertUpdateRptData(String strngCatastrofe, RptType plastType) {
+		ICCatastrofe cat = new CCatastrofe();
+		Catastrofe c = cat.getCatastrofeByStringConnection(strngCatastrofe);
+		return _dao.InsertUpdateRptData(c, plastType);
 	}
 
 }

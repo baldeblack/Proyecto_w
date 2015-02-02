@@ -20,7 +20,7 @@
 <link rel="stylesheet" href="<c:url value="/resources/fancybox/jquery.fancybox-v=2.1.5.css"/>" type="text/css" media="screen">
 <link rel="stylesheet" href="<c:url value="/resources/css/font-awesome.css"/>" rel="stylesheet">
 <link rel="prefetch" href="<c:url value="/resources/images/zoom.png"/>">
-
+<script src="<c:url value="/resources/js/fb.js" />"></script>
 <style>
 	#map-canvas 
 	{
@@ -39,6 +39,9 @@
 <!--  <title><tiles:insertAttribute name="title" ignore="true" /></title>-->
 </head>
 <body data-spy="scroll" data-target=".navbar-proyecto">
+
+
+
 <jsp:include page="header.jsp" />
 <jsp:include page="registro.jsp" />
 <jsp:include page="formDesaparecidos.jsp" />

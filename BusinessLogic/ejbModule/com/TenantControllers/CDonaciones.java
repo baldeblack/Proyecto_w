@@ -12,6 +12,7 @@ import com.Interfaces.ICCatastrofe;
 import com.TenantInterfaces.ICDonaciones;
 import com.TenantInterfaces.ICOng;
 import com.TenantInterfaces.ICUsuario;
+import com.Utilities.LogHelper;
 import com.Utilities.MailingHelper;
 import com.entities.Donacione;
 import com.entities.Ong;
@@ -35,8 +36,10 @@ public class CDonaciones implements ICDonaciones {
 		Donacione d =_gson.fromJson(input, Donacione.class);
 		int idDon = _dao.InsertUpdateDonacion(d);
 		
-		if(idDon>0)
+		if(idDon>0){
+			LogHelper.DonationLoged(_connection);
 			SendNotificacionDonacion(d);
+		}
 		return idDon;
 	}
 	

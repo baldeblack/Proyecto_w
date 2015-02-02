@@ -14,6 +14,7 @@ import javax.persistence.EntityManager;
 import com.Entities.Catastrofe;
 import com.Entities.Rptdata;
 import com.Helper.EntityManagerHelper;
+import com.Helper.RptType;
 import com.Helper.donacionesRpt;
 
 public class ReportesDAO {
@@ -82,5 +83,61 @@ public class ReportesDAO {
 				
 		return lst;
 		}
+	
+	public int InsertUpdateRptData(Catastrofe c, RptType plastType){
+		int incres=0;
+		try
+		{
+			Rptdata data = _eManager.find(Rptdata.class, c.getIdCatastrofe());
+			
+			if(data == null || data.getIdTenant() <= 0){
+				data = new Rptdata();
+				data.setConeccion(c.getStringConeccion());
+				data.setIdTenant(c.getIdCatastrofe());
+				data.setDesaparecidos(0);
+				data.setOngs(0);
+				data.setPedidos(0);
+				data.setUsuarios(0);
+			}
+			
+			switch (plastType) {
+			case Donacion:
+				incres = data.getOngs()+1;
+				data.setOngs(incres);
+				break;
+			case Desaparecido:
+				incres = data.getDesaparecidos()+1;
+				data.setDesaparecidos(incres);
+				break;
+			case Usuario:
+				incres = data.getUsuarios()+1;
+				data.setUsuarios(incres);
+				break;
+			case Ayuda:
+				incres = data.getPedidos()+1;
+				data.setPedidos(incres);
+				break;
+			default:
+				incres = -1;
+				break;
+			}
+			
+			_eManager.getTransaction().begin();
+		    _eManager.persist(data);
+			_eManager.getTransaction().commit();
+			_eManager.close();
+		
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		finally{
+			if(_eManager.isOpen())
+				_eManager.close();
+		}
+		
+		return incres;
+	}
 
 }
+
+

@@ -90,7 +90,7 @@ public class Desaparecido implements Serializable {
 		this.fechaDesaparicion = fechaDesaparicion;
 	}
 
-	public Object getFoto() {
+	public byte[] getFoto() {
 		return this.foto;
 	}
 
