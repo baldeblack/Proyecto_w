@@ -95,7 +95,7 @@
 		</div>
 		<input id="clickinpt" type="submit" value="Generar"/>
     <div id="divTable" style="width: 900px; height: 500px;">
-	<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%"><thead><tr></tr></thead><tfoot><tr></tr></tfoot><tbody></tbody></table>
+	
 	</div>
   
         </div>               
