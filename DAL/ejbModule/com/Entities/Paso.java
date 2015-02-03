@@ -14,26 +14,24 @@ import javax.persistence.*;
 public class Paso implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	private int idpasos;
+	@EmbeddedId
+	private PasoPK id;
 
 	private String descripcion;
 
 	private String estado;
-
-	private int idPlan;
 
 	private String nombre;
 
 	public Paso() {
 	}
 
-	public int getIdpasos() {
-		return this.idpasos;
+	public PasoPK getId() {
+		return this.id;
 	}
 
-	public void setIdpasos(int idpasos) {
-		this.idpasos = idpasos;
+	public void setId(PasoPK id) {
+		this.id = id;
 	}
 
 	public String getDescripcion() {
@@ -50,14 +48,6 @@ public class Paso implements Serializable {
 
 	public void setEstado(String estado) {
 		this.estado = estado;
-	}
-
-	public int getIdPlan() {
-		return this.idPlan;
-	}
-
-	public void setIdPlan(int idPlan) {
-		this.idPlan = idPlan;
 	}
 
 	public String getNombre() {
