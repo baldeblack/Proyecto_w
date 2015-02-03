@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +16,7 @@ import com.Entities.Catastrofe;
 import com.Entities.Rptdata;
 import com.Helper.EntityManagerHelper;
 import com.Helper.RptType;
+import com.Helper.ayudaRpt;
 import com.Helper.donacionesRpt;
 
 public class ReportesDAO {
@@ -81,6 +83,59 @@ public class ReportesDAO {
 		lst.add(result);
 		}
 				
+		return lst;
+		}
+	
+	public List<ayudaRpt> getRptAyuda(int idTenant, Date start, Date end) throws SQLException, ClassNotFoundException{
+		List<ayudaRpt> lst = new ArrayList<ayudaRpt>();
+		ayudaRpt result = null;
+		CatastrofeDAO cd = new CatastrofeDAO();
+		Catastrofe c = cd.getCatastrofeByID(idTenant);
+		Class.forName("com.mysql.jdbc.Driver");
+		String url = c.getStringConeccion();
+		String username = "root";
+		String pass = "123456";
+		Connection con = DriverManager.getConnection(url,username,pass);
+		Statement statement = con.createStatement();
+		String query = "select TipoSolicitor, Canal, Ubicacion, Fecha from ayuda where Fecha >= '" +start+"' and Fecha <= '" +end +"'";
+		ResultSet resultST = statement.executeQuery(query);
+		SimpleDateFormat SDF = new SimpleDateFormat("yyyy/MM/dd");
+		while (resultST.next())
+		{
+			result = new ayudaRpt();
+			
+			switch (resultST.getInt("Canal")) {
+			case 0:
+				result.setCanal("Móvil");
+				break;
+			case 1:
+				result.setCanal("Web");
+				break;		
+			default:
+				result.setCanal("");
+				break;
+			}
+			
+			switch (resultST.getInt("TipoSolicitor")) {
+			case 1:
+				result.setTipoSolicitor("Anonimo");
+				break;
+			case 2:
+				result.setTipoSolicitor("Personal");
+				break;
+			case 3:
+				result.setTipoSolicitor("De Terceros");
+				break;
+			default:
+				result.setTipoSolicitor("");
+				break;
+			}
+	
+		result.setUbicacion(resultST.getString("Ubicacion"));
+		result.setFecha(SDF.format(resultST.getTimestamp("Fecha").getTime()));
+		lst.add(result);
+		}
+		
 		return lst;
 		}
 	

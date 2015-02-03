@@ -8,6 +8,7 @@ import com.DAO.ReportesDAO;
 import com.Entities.Catastrofe;
 import com.Entities.Rptdata;
 import com.Helper.RptType;
+import com.Helper.ayudaRpt;
 import com.Helper.donacionesRpt;
 import com.Interfaces.ICCatastrofe;
 import com.Interfaces.ICReporte;
@@ -44,6 +45,13 @@ public class CReporte implements ICReporte{
 		ICCatastrofe cat = new CCatastrofe();
 		Catastrofe c = cat.getCatastrofeByStringConnection(strngCatastrofe);
 		return _dao.InsertUpdateRptData(c, plastType);
+	}
+
+	@Override
+	public List<ayudaRpt> getRptAyuda(int idTenant, Date start, Date end)
+			throws SQLException, ClassNotFoundException {
+		// TODO Auto-generated method stub
+		return _dao.getRptAyuda(idTenant, start, end);
 	}
 
 }

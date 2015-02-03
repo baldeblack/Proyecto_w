@@ -6,11 +6,15 @@
 <title>Reportes</title>
 <script type="text/javascript" src="<c:url value="/resources/js/jquery.js" />"></script>
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-<script type="text/javascript" src="<c:url value="/resources/rptTables.js" />"> </script>
+<script type="text/javascript" src="<c:url value="/resources/js/jquery.dataTables.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/dataTables.tableTools.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/bootstrap.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/rptTables.js" />"> </script>
 <link href="<c:url value="/resources/css/bootstrap.css"/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value="/resources/css/proyecto.css"/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value="/resources/css/dataTables.bootstrap.css"/>" rel="stylesheet" type="text/css" />
+
+
 
 </head>
 <body>
@@ -91,7 +95,7 @@
 		</div>
 		<input id="clickinpt" type="submit" value="Generar"/>
     <div id="divTable" style="width: 900px; height: 500px;">
-
+	<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%"><thead><tr></tr></thead><tfoot><tr></tr></tfoot><tbody></tbody></table>
 	</div>
   
         </div>               

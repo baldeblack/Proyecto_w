@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.Controllers.CReporte;
 import com.Entities.Rptdata;
+import com.Helper.ayudaRpt;
 import com.Helper.donacionesRpt;
 import com.Interfaces.ICReporte;
 import com.google.gson.Gson;
@@ -65,7 +66,7 @@ public class ReportesController {
 		donParameters d = g.fromJson(resf, donParameters.class);
 		ICReporte rpt = new CReporte();	
 		 List<donacionesRpt> lst = new ArrayList<donacionesRpt>();
-		donacionesRpt drpt = new donacionesRpt();
+		//donacionesRpt drpt = new donacionesRpt();
 		  String dateStr [] = d.start.split("-");
 	       
 	       Calendar cal = Calendar.getInstance();
@@ -86,6 +87,38 @@ public class ReportesController {
 	       java.sql.Date sqlDateE = new java.sql.Date(datend.getTime());
 	       
 	       lst = rpt.getRptDonaciones(Integer.parseInt(d.id), sqlDateS, sqlDateE);
+		String jsonresp = g.toJson(lst);
+		return jsonresp;	
+		}
+	
+	
+	@RequestMapping(value = "/rptayuda", method = RequestMethod.POST)
+	public @ResponseBody String getayudainfo(@RequestBody String resf, HttpServletResponse res, HttpServletRequest request) throws ClassNotFoundException, SQLException {
+		Gson g = new Gson();
+		donParameters d = g.fromJson(resf, donParameters.class);
+		ICReporte rpt = new CReporte();	
+		 List<ayudaRpt> lst = new ArrayList<ayudaRpt>();
+		//donacionesRpt drpt = new donacionesRpt();
+		  String dateStr [] = d.start.split("-");
+	       
+	       Calendar cal = Calendar.getInstance();
+	       cal.set(Calendar.YEAR, (Integer.parseInt(dateStr[0])));
+	       cal.set(Calendar.MONTH, (Integer.parseInt(dateStr[1])-1));
+	       cal.set(Calendar.DAY_OF_MONTH, (Integer.parseInt(dateStr[2])));
+	       Date datestar = cal.getTime();   
+	       
+	       String dateStre [] = d.end.split("-");
+	       
+	       Calendar cale = Calendar.getInstance();
+	       cale.set(Calendar.YEAR, (Integer.parseInt(dateStre[0])));
+	       cale.set(Calendar.MONTH, (Integer.parseInt(dateStre[1])-1));
+	       cale.set(Calendar.DAY_OF_MONTH, (Integer.parseInt(dateStre[2])));
+	       Date datend = cale.getTime();   
+	       
+	       java.sql.Date sqlDateS = new java.sql.Date(datestar.getTime());
+	       java.sql.Date sqlDateE = new java.sql.Date(datend.getTime());
+	       
+	       lst = rpt.getRptAyuda(Integer.parseInt(d.id), sqlDateS, sqlDateE);
 		String jsonresp = g.toJson(lst);
 		return jsonresp;	
 		}

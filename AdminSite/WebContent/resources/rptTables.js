@@ -22,49 +22,37 @@ var flag = true;
 				if(name == 'donRbt'){
 						$('#divTable').empty();
 						$('#divTable').append('<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%"><thead><tr></tr></thead><tfoot><tr></tr></tfoot><tbody></tbody></table>')		
-						drawTable(json, name);	
+						
+						LoadDon($("#select").val(), $('#start').val(), $('#end').val(), function(data) {
+							drawTable(data, name);							
+						});		
+						
 						isGraf = false;
+						
 							}else if(name == 'usoRbt'){
 							isGraf = true;
 							$('#divTable').empty();
-						$('#divTable').append('<div id="chart_lines" style="width: 900px; height: 500px;"></div>');
-						drawChart(graf);
+							$('#divTable').append('<div id="chart_lines" style="width: 900px; height: 500px;"></div>');
+							
+						LoadGrafica($("#select").val(), function(data) {
+							drawChart(data);						
+						});
+						
+					
 							}else if(name == 'pedRbt'){
+								
 							$('#divTable').empty();
 						$('#divTable').append('<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%"><thead><tr></tr></thead><tfoot><tr></tr></tfoot><tbody></tbody></table>')		
-							drawTable(jsondosp, name);	
+							
+						LoadAyuda($("#select").val(), $('#start').val(), $('#end').val(), function(data) {
+							drawTable(data, name);							
+						});	
+						
 						isGraf = false;							
 					 }
 		if(isGraf == false){
-		var table = $('#example').DataTable({
-	        "language": 
-	        {
-	        	"sProcessing":     "Procesando...",
-	        	"sLengthMenu":     "Mostrar _MENU_ registros",
-	        	"sZeroRecords":    "No se encontraron resultados",
-	        	"sEmptyTable":     "Ningun dato disponible en esta tabla",
-	        	"sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-	        	"sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-	        	"sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-	        	"sInfoPostFix":    "",
-	        	"sSearch":         "Buscar:",
-	        	"sUrl":            "",
-	        	"sInfoThousands":  ",",
-	        	"sLoadingRecords": "Cargando...",
-	        	"oPaginate": {
-	        		"sFirst":    "Primero",
-	        		"sLast":     "Ultimo",
-	        		"sNext":     "Siguiente",
-	        		"sPrevious": "Anterior"
-	        	},
-	        	"oAria": {
-	        		"sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-	        		"sSortDescending": ": Activar para ordenar la columna de manera descendente"
-	        	}
-	        }});
-				var tt = new $.fn.dataTable.TableTools( table );
-			 
-				$( tt.fnContainer() ).insertBefore('div.dataTables_wrapper');
+			
+
 				}
 				});
 		
@@ -81,8 +69,9 @@ var flag = true;
 		}
 		
 		function drawTable(obj, name) {			
-			var datap = JSON.parse(obj);
-				
+			//var datap = JSON.parse(obj);
+			var datap = obj;	
+			
 		var result = datap[0];			
 				for(key in result) {	
 					inHead(key);
@@ -98,17 +87,53 @@ var flag = true;
 												
 		}	
 		
+			var table = $('#example').DataTable({
+		        "language": 
+		        {
+		        	"sProcessing":     "Procesando...",
+		        	"sLengthMenu":     "Mostrar _MENU_ registros",
+		        	"sZeroRecords":    "No se encontraron resultados",
+		        	"sEmptyTable":     "Ningun dato disponible en esta tabla",
+		        	"sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+		        	"sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+		        	"sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+		        	"sInfoPostFix":    "",
+		        	"sSearch":         "Buscar:",
+		        	"sUrl":            "",
+		        	"sInfoThousands":  ",",
+		        	"sLoadingRecords": "Cargando...",
+		        	"oPaginate": {
+		        		"sFirst":    "Primero",
+		        		"sLast":     "Ultimo",
+		        		"sNext":     "Siguiente",
+		        		"sPrevious": "Anterior"
+		        	},
+		        	"oAria": {
+		        		"sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+		        		"sSortDescending": ": Activar para ordenar la columna de manera descendente"
+		        	}
+		        }});
+					var tt = new $.fn.dataTable.TableTools( table );
+				 
+					$( tt.fnContainer() ).insertBefore('div.dataTables_wrapper');
+					
+					var ttInstances = TableTools.fnGetMasters();
+
+					for (i in ttInstances) {						 
+						ttInstances[i].fnResizeButtons();
+					}
 	  }
 	  
 	  function drawChart(obj) {
-	  var datap = JSON.parse(obj);
+			//var datap = JSON.parse(obj);
+			var datap = obj;	
         var data = new google.visualization.DataTable();
 			data.addColumn('string', 'attr');
 			data.addColumn('number', 'cantidad');
-			var result = datap[0];							
-			for(key in result) {
+			//var result = datap[0];							
+			for(key in datap) {
 				if(key != 'idTenant' && key != 'coneccion' ){
-					data.addRows([[key, result[key]]]);
+					data.addRows([[key, datap[key]]]);
 					
 				}
 			}
@@ -140,10 +165,80 @@ var flag = true;
 	  }
 	  
 	  function inBody(key){	
-		$('#example tbody').append('<tr><td>' +key.id+ '</td><td>' +key.ongs+ '</td><td>' +key.ayuda+ '</td><td>' +key.desaparecidos+ '</td><td>' +key.usuarios+ '</td></tr>');
+		$('#example tbody').append('<tr><td>' +key.IdTipoDonacion+ '</td><td>' +key.Cantidad+ '</td><td>' +key.Moneda+ '</td><td>' +key.Monto+ '</td><td>' +key.HsServicio+ '</td><td>' +key.Nombre+ '</td><td>' +key.Apellido+ '</td><td>' +key.Nombreong+ '</td><td>' +key.Email+ '</td></tr>');
 	  }
-	  
+	
 	   function inBodyP(key){	
-		$('#example tbody').append('<tr><td>' +key.id+ '</td><td>' +key.ongs+ '</td><td>' +key.ayuda+ '</td><td>' +key.desaparecidos+ '</td></tr>');
+		$('#example tbody').append('<tr><td>' +key.TipoSolicitor+ '</td><td>' +key.Canal+ '</td><td>' +key.Ubicacion+ '</td><td>' +key.Fecha+ '</td></tr>');
 	  }
+	   
+	   
+	   function LoadGrafica(id, callback) {
+			  return $.ajax({
+			        url : '/BackOffice/rpt/rptuso',
+			        type: 'POST',
+			        data: JSON.stringify({
+			            "id" : id
+			        }),
+			        beforeSend: function(xhr) {
+			          xhr.setRequestHeader("Accept", "application/json");
+			          xhr.setRequestHeader("Content-Type", "application/json");
+			        },
+			        success : function(data) {
+			        	callback(data);
+			        },
+			        error:function(data,status,er) { 
+			        	alert("error Lost: "+data+" status: "+status+" er:"+er);
+			        }
+			    });
+			}
+		  
+		  function LoadDon(id, start, end, callback) {
+			  return $.ajax({
+			        url : '/BackOffice/rpt/rptdon',
+			        type: 'POST',
+			        data: JSON.stringify({
+			            "id" : id,
+			            "start" : start,
+			            "end" : end
+			        }),
+			        beforeSend: function(xhr) {
+			          xhr.setRequestHeader("Accept", "application/json");
+			          xhr.setRequestHeader("Content-Type", "application/json");
+			        },
+			        success : function(data) {
+			        	callback(data);
+			        },
+			        error:function(data,status,er) { 
+			        	alert("error Lost: "+data+" status: "+status+" er:"+er);
+			        }
+			    });
+			}
+		  
+		  function LoadAyuda(id, start, end, callback) {
+			  return $.ajax({
+			        url : '/BackOffice/rpt/rptayuda',
+			        type: 'POST',
+			        data: JSON.stringify({
+			            "id" : id,
+			            "start" : start,
+			            "end" : end
+			        }),
+			        beforeSend: function(xhr) {
+			          xhr.setRequestHeader("Accept", "application/json");
+			          xhr.setRequestHeader("Content-Type", "application/json");
+			        },
+			        success : function(data) {
+			        	callback(data);
+			        },
+			        error:function(data,status,er) { 
+			        	alert("error Lost: "+data+" status: "+status+" er:"+er);
+			        }
+			    });
+			}
+		  
+	   
+	   
+	   
+	   
 	  
