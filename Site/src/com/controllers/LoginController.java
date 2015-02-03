@@ -107,4 +107,49 @@ public class LoginController {
 			return "onError";
 		}
 	}
+	
+	@RequestMapping( value="/logonfb", method = RequestMethod.POST)
+	@ResponseBody
+	public String LoginRegistroFB(@RequestBody String json, HttpServletRequest request, HttpServletResponse response) {
+	
+		Gson g = new Gson();
+		try 
+		{
+			UserModel model = g.fromJson(json, UserModel.class);
+			if(model != null && model.getEmail() != ""){
+				Usuario usr;
+				 HttpSession session = request.getSession(true);
+				 Catastrofe c = (Catastrofe)session.getAttribute("Catastrofe");
+
+				 List<String> listProp = new ArrayList<String>();
+				 listProp.add(model.getEmail());
+				 
+				 String jspnresp = ServiceConnectionHelper.CallServiceMethoodPOST("AccessService", "Login", c.getStringConeccion(),listProp);
+					
+				 usr = g.fromJson(jspnresp, Usuario.class);
+				 if(usr != null){
+						 SessionHandler.getInstance().setActiveUser(usr, request);
+						 return "Sussess";
+				 }
+				 else{
+					 usr = new Usuario(model);
+					 String jsonresp = ServiceConnectionHelper.CallServiceMethoodPOST("AccessService", "Registro", c.getStringConeccion(), usr);
+					 if(Integer.parseInt(jsonresp) >0){
+						 SessionHandler.getInstance().setActiveUser(usr, request);
+						 return "Sussess";
+						}
+						else{
+							return "onError";
+						} 
+				 }
+				 
+			}
+		}
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+			return "onError";
+		}
+		return "";
+	}
 }

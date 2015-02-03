@@ -26,7 +26,10 @@ public class Usuario {
 		celular = m.getCelular();
 		direccion = m.getDireccion();
 		email = m.getEmail();
-		fechaNacimiento = m.getFechaNacimiento();
+		if(m.getFechaNacimiento() != null)
+			fechaNacimiento = m.getFechaNacimiento();
+		else
+			fechaNacimiento = new Date(0);
 		nik = m.getNik();
 		nombre = m.getNombre();
 		password = m.getPassword();

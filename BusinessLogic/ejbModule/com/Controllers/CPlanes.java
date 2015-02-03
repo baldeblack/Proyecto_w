@@ -2,8 +2,10 @@ package com.Controllers;
 
 import java.util.List;
 
+import com.DAO.PasosDAO;
 import com.DAO.PlanesDAO;
 import com.Entities.Paso;
+import com.Entities.PasoPK;
 import com.Entities.Plan;
 import com.Entities.Rescatistacatastrofe;
 import com.Entities.Tipocatastrofe;
@@ -13,27 +15,41 @@ public class CPlanes implements ICPlanes{
 	
 	PlanesDAO _dao;
 	public CPlanes() {
-		// TODO Auto-generated constructor stub
 		_dao = new PlanesDAO();
 	}
 	@Override
 	public Rescatistacatastrofe getRescatistacatastrofe(int idUsr) {
-		// TODO Auto-generated method stub
 		return _dao.getRescatistacatastrofe(idUsr);
 	}
 	@Override
 	public Tipocatastrofe getTipo(int ctId) {
-		// TODO Auto-generated method stub
 		return _dao.getTipo(ctId);
 	}
 	@Override
 	public List<Plan> getPlanes(int tipoCT) {
-		// TODO Auto-generated method stub
 		return _dao.getPlanes(tipoCT);
 	}
 	@Override
 	public List<Paso> getPasos(int idPlan) {
-		// TODO Auto-generated method stub
 		return _dao.getPasos(idPlan);
+	}
+	
+	@Override
+	public int InserUpdatePlanesWithPasos(Plan plan, List<Paso> pasos) {
+		
+		PasosDAO pdao = new PasosDAO();
+		int idPlan = _dao.InsertUpdatePlan(plan);
+		if(idPlan > 0){
+			for (Paso p : pasos) {
+				PasoPK pk = new PasoPK();
+				pk.setIdPlan(idPlan);
+				p.setId(pk);
+				
+				pdao.InsertUpdatePlan(p);
+			}
+		
+		}
+		
+		return idPlan;
 	}
 }

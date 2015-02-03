@@ -63,4 +63,22 @@ public class PlanesDAO {
 		    return pasos;
 		}
 		
+		public int InsertUpdatePlan(Plan input){
+			try
+			{
+				_eManager.getTransaction().begin();
+			    _eManager.persist(input);
+				_eManager.getTransaction().commit();
+				_eManager.close();
+			
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+			finally{
+				if(_eManager.isOpen())
+					_eManager.close();
+			}
+			return input.getIdPlan();
+		}
+		
 }

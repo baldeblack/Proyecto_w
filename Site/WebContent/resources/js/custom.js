@@ -19,7 +19,7 @@ var login = function(mail, passwd){
 	        datatype : "json",
 	        success : function(data) {
 	        	if(data==="onError"){
-	        		alert("Usuario o contraseña no válida.");
+	        		alert("Usuario o contrase&ntilde;a no válida.");
 	        	}
 	        	else{
 	        		 location.reload();
@@ -101,7 +101,7 @@ var validateReg = function(){
 	var error = false;
 	if($('#password').val() !=$('#password_confirmation').val()){
 		error = true;
-		alert("La contraseña y su confirmación no coinciden.")
+		alert("La contraseña y su confirmaci&oacute;n no coinciden.")
 	}
 	if( $('#nombre_usuario').val() == "")
 	{
@@ -301,10 +301,10 @@ function Donar(){
 	        datatype : "json",
 	        success : function(data) {
 	        	if(data==="onError"){
-	        		$("#responseDonacion").html("Ocurrió un error sepa disculparnos, esperamos vuelva a intentarlo mas tarde.");
+	        		$("#responseDonacion").html("Ocurri&oacute; un error sepa disculparnos, esperamos vuelva a intentarlo mas tarde.");
 	        	}
 	        	else{
-	        		$("#responseDonacion").html("Su donación ah sido enviada con exito, en breve la ong se pondra en contacto para coordinar las acciones correspondiente.");
+	        		$("#responseDonacion").html("Su donaci&oacute;n ah sido enviada con exito, en breve la ong se pondra en contacto para coordinar las acciones correspondiente.");
 	        		cleanAll();
 	        		setTimeout(function(){
 	            		$("#btnDonarClose").click();
@@ -371,32 +371,33 @@ var cleanLostData= function(){
 }
 
 function LostReport(){
-	var url = "/Site/lost/save";
-	$.ajax({
-        url : url,
-        type : "POST",
-        cache : false,
-        async : false,
-        contentType : "application/json; charset=UTF-8",
-        data : jsonDataLost(),
-        datatype : "json",
-        success : function(data) {
-        	if(data==="onError"){
-        		$("#responseLost").html("Ocurrió un error sepa disculparnos, por favor vuelva a intentarlo mas tarde o comuniquece al 1122.");
-        	}
-        	else{
-        		$("#responseLost").html("Su reporte se ah enviado con exito, en la brevedad nos comunicaremos con ud.");
-        		cleanLostData();
-        		setTimeout(function(){
-            		$("#btnLostClose").click();
-            		 location.reload();
-            	}, 8000);
-        	}
-        },
-        error : function(XMLHttpRequest, textStatus, errorThrown) {
-            alert(XMLHttpRequest.status + " : " + errorThrown);
-        }
-    });
+
+		var url = "/Site/lost/save";
+		$.ajax({
+	        url : url,
+	        type : "POST",
+	        cache : false,
+	        async : false,
+	        contentType : "application/json; charset=UTF-8",
+	        data : jsonDataLost(),
+	        datatype : "json",
+	        success : function(data) {
+	        	if(data==="onError"){
+	        		$("#responseLost").html("Ocurri&oacute; un error sepa disculparnos, por favor vuelva a intentarlo mas tarde o comuniquece al 1122.");
+	        	}
+	        	else{
+	        		$("#responseLost").html("Su reporte se ah enviado con exito, en la brevedad nos comunicaremos con ud.");
+	        		cleanLostData();
+	        		setTimeout(function(){
+	            		$("#btnLostClose").click();
+	            		 location.reload();
+	            	}, 8000);
+	        	}
+	        },
+	        error : function(XMLHttpRequest, textStatus, errorThrown) {
+	            alert(XMLHttpRequest.status + " : " + errorThrown);
+	        }
+	    });
 	
 }
 

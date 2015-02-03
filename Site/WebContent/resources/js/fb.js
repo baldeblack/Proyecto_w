@@ -54,9 +54,43 @@
   function testAPI() {
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
+    	
       console.log('Successful login for: ' + response.name);
-      alert('Thanks for logging in, ' + response.name + '!');
-        ;
+      Loginfb(response);
+      //alert('Thanks for logging in, ' + response.name + '!' +response.first_name);
+        
     });
+  }
+  
+  function Loginfb(responsefb){
+	  var sex  ="F"
+		  if(responsefb.gender != "female")
+			sex ="M";
+	  var url = "/Site/access/logonfb";
+	  $.ajax({
+	        url : url,
+	        type : "POST",
+	        cache : false,
+	        async : false,
+	        contentType : "application/json; charset=UTF-8",
+	        data : JSON.stringify({
+	        	 "apellido" : responsefb.last_name,
+	             "celular" : 'N/A',
+	             "email":responsefb.email,
+	             "nik" : responsefb.name,
+	             "nombre" : responsefb.first_name,
+	             "password" : 'FB',
+	             "sexo" : sex
+	        }),
+	        datatype : "json",
+	        success : function(data) {
+	        	 if(data==="success"){ 
+	        		 location.reload();
+		            }
+	        },
+	        error : function(XMLHttpRequest, textStatus, errorThrown) {
+	            alert(XMLHttpRequest.status + " : " + errorThrown);
+	        }
+	    });
   }
 	 

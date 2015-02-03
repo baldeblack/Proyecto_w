@@ -39,7 +39,12 @@
 	                        <td>${o.email}</td>
 	                        <td>${o.web}</td>
 	                        <td>${o.origen}</td>
-	                        <td><a href="" class="btn btn-warning" data-toggle="modal" data-target="#modalDonar" onclick="javascript:$('#idong').val('${o.idONGs}');">Donar</a></td>
+	                        <c:if test="${empty sessionScope.active_user}">
+	                        	<td><a href="" class="btn btn-warning" onclick="javascript:alert('Debe iniciar sesi&oacute;n para realizar una daonai&oacute;n.')">Donar</a></td>
+	                        </c:if>
+							<c:if test="${not empty sessionScope.active_user}">
+	                        	<td><a href="" class="btn btn-warning" data-toggle="modal" data-target="#modalDonar" onclick="javascript:$('#idong').val('${o.idONGs}');">Donar</a></td>
+	                     	</c:if>
 	                    </tr>
 	                </c:forEach>
 	                </tbody>

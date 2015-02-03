@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!-- CONTENIDO PRINCIPAL -->
 		<div id="contenido-principal">
 		  <div class="container">
@@ -55,7 +56,12 @@
 	                  </div>
 				<div class="col-xs-12 col-md-4 col-lg-2 pull-right botones-desaparecidos">
 					<a href="#" class="btn btn-warning bton-vermas">Ver mas</a>
-					<a class="btn btn-warning bton-reportar" data-toggle="modal" data-target="#modalDesp">Reportar</a>
+						<c:if test="${empty sessionScope.active_user}">
+							<a class="btn btn-warning bton-reportar" onclick="javascript:alert('Para reportar un desaparecido, debe iniciar sesi&oacute;n.')">Reportar</a>
+						</c:if>
+						<c:if test="${not empty sessionScope.active_user}">
+							<a class="btn btn-warning bton-reportar" data-toggle="modal" data-target="#modalDesp">Reportar</a>
+						</c:if>
 				</div>
 			</div>
 		</div>			

@@ -79,7 +79,7 @@ public class ServiceConnectionHelper {
 				msj +=output;
 			}
 			
-			return msj;
+			return HtmlCharacterHandler.Parse(msj);
 			
 		} catch (MalformedURLException e) {
 			 
@@ -129,7 +129,7 @@ public class ServiceConnectionHelper {
 				msj +=output;
 			}
 			
-			return msj;
+			return HtmlCharacterHandler.Parse(msj);
 			
 		} catch (MalformedURLException e) {
 			 

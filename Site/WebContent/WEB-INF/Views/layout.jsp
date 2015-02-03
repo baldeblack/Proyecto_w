@@ -40,7 +40,7 @@
 </head>
 <body data-spy="scroll" data-target=".navbar-proyecto">
 
-
+<input type="hidden" value="${empty sessionScope.active_user}" id="isLoged"/>
 
 <jsp:include page="header.jsp" />
 <jsp:include page="registro.jsp" />
