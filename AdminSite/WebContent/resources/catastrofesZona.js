@@ -1,4 +1,6 @@
 
+var palabrasCont = 0;
+var FilCont = 0;
 
 var drawingManager;
       var selectedShape;
@@ -105,6 +107,26 @@ var drawingManager;
        }
 
       function initialize() {
+    	  
+    		$('#PalabrasInput').click(function(){
+    			if(palabrasCont < 5){
+    		          	 $('#PalabrasDiv').append(
+    		      	             '<div class="palabraContainer"><input type="text" name="palabrasList[0]" ondblclick="deletePalabras(this)"/>'+
+    		      	             '</div>');
+    						var ind = 0;
+    						$('#PalabrasDiv input').each(function(){    		  
+    							$(this).attr('name', "palabrasList[" + ind + "]");    	
+    							ind = ind + 1;     		    	
+    						});
+    						
+    						palabrasCont = palabrasCont + 1
+    		              }
+    			else{
+    				alert('El numero de palabras claves no puede ser mayor a 5.');
+    			} 
+    			 return false;
+    			})
+    			    	  
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 10,
           center: new google.maps.LatLng(-34.7506398050501, -56.1785888671875),
@@ -237,92 +259,63 @@ var drawingManager;
         buildColorPalette();       
         
       }
+      
+      
+      
       google.maps.event.addDomListener(window, 'load', initialize);
       
+       
+      function deletePalabras(elem){
+    		$(elem).closest('.palabraContainer').remove();
+    		var ind = 0;
+    		$('#PalabrasDiv input').each(function(){    		  
+    			    $(this).attr('name', "palabrasList[" + ind + "]");    	
+    			    ind = ind + 1;     		    	
+    			 });
+    			 
+    		palabrasCont = palabrasCont - 1
+    	}
       
-      $( document ).ready(function() {
-    	
-    	  //OTROS CLICK
-          $('#addMoreFile').click(function(){
-     		 $('#uploadTable').append(
-     	             '<tr><td><input type="file" name="multiUploadedFileList['+ $('#uploadTable tr').length +']" />'+
-     	             '</td></tr>');
-          }) 
-          
-          $('#PalabrasInput').click(function(){
-          	 $('#palabrasT').append(
-      	             '<tr><td><input type="text" name="palabrasList['+ $('#palabrasT tr').length +']" ondblclick="deletePalabras(this)"/>'+
-      	             '</td></tr>');
-          	 
-          	 var ind = 0;
- 		    $('#palabrasT input').each(function(){    		  
- 		    	$(this).attr('name', "palabrasList[" + ind + "]");    	
- 		    	ind = ind + 1;     		    	
- 		    });
-             })       
-                                           
-    	});
-   
-      function deletePalabras(inpt){
-  		 var tr = inpt;
-  		    while(tr && tr.nodeName != "TR") tr = tr.parentNode;
-  		    if( !tr) throw new Error("Failed to find the row, was the function called correctly?");
-  		    tr.parentNode.removeChild(tr); // delete it
-  		    
-  		  var ind = 0;
-		    $('#palabrasT input').each(function(){    		  
-		    	$(this).attr('name', "palabrasList[" + ind + "]");    	
-		    	ind = ind + 1;     		    	
-		    });
-       	}
+      function deleteFile(elem){
+    	  $(elem).closest('.fileContainer').remove();
+    	  var ind = 0;
+    	  	$('#uploadTable input').each(function(){    
+    	  			if($(this).attr('type') != "image"){	
+    	  				$(this).attr('name', "multiUploadedFileList[" + ind + "]");    	
+    	  		    ind = ind + 1;     		 
+    	  			}			
+    	  		 });
+    	  		 
+    	  	FilCont = FilCont - 1
+    	  	return false;
+    	  }
       
-      function pp(inpt){
-  		var index = $('#palabrasTableR tr').length;
-    	 	 $('#palabrasTableR').append('<tr><td><input style="width: 70px;" readonly type="text" value="'+ inpt.value +'" name="fuenteDedatosMod['+ index +']" ondblclick="pp2(this)"/>'+
-    					'</td></tr>');
+      function Traspass(elem, idT){
 
-    	   var tr = inpt;
-    		    while(tr && tr.nodeName != "TR") tr = tr.parentNode;
-    		    if( !tr) throw new Error("Failed to find the row, was the function called correctly?");
-    		    tr.parentNode.removeChild(tr);
-    		    
-    		    var ind = 0;
-    		    $('#palabrasTableR input').each(function(){
-    		    	$(this).attr('name', "fuenteDedatosMod["+ ind +"]");    		   
-    		    	ind = ind + 1;
-    		    }); 
-    		    
-    		    var ind = 0;
-    		    $('#palabrasTable input').each(function(){    		  
-    		    	$(this).attr('name', "fuenteDedatos[" + ind + "]");    	
-    		    	ind = ind + 1;     		    	
-    		    });
-    		    
-    	    }
+    		if(idT == "fuenteDedatos"){
+    			$(elem).closest('.fuenteDedatosContainer').remove().clone().appendTo('#fuenteDedatosMod');
+    		}else if(idT == "fuenteDedatosMod"){
+    			$(elem).closest('.fuenteDedatosContainer').remove().clone().appendTo('#fuenteDedatos');
+    		}
+    		updateName("fuenteDedatos");
+    		updateName("fuenteDedatosMod");
+    	}
 
-    	function pp2(inpt){
-    		var index = $('#palabrasTable tr').length;
-    	 	 $('#palabrasTable').append('<tr><td><input style="width: 70px;" type="text" value="'+ inpt.value +'" name="fuenteDedatos['+ index +']" ondblclick="pp(this)" readonly/>'+'</td></tr>');
-
-
-    	   var tr = inpt;
-    		    while(tr && tr.nodeName != "TR") tr = tr.parentNode;
-    		    if( !tr) throw new Error("Failed to find the row, was the function called correctly?");
-    		    tr.parentNode.removeChild(tr);
-    		    
-    		    var ind = 0;
-    		    $('#palabrasTable input').each(function(){    		  
-    		    	$(this).attr('name', "fuenteDedatos[" + ind + "]");    	
-    		    	ind = ind + 1;     		    	
-    		    });
-    		    
-    		    var ind = 0;
-    		    $('#palabrasTableR input').each(function(){
-    		    	$(this).attr('name', "fuenteDedatosMod["+ ind +"]");    		   
-    		    	ind = ind + 1;
-    		    }); 
-    	
-    	    }
+    	function updateName(id){
+    		var ind = 0;
+    		if(id == "fuenteDedatos"){	 
+    			$('#fuenteDedatos input').each(function(){    		  
+    			    $(this).attr('name', "fuenteDedatos[" + ind + "]");    	
+    			    ind = ind + 1;     		    	
+    			 });
+    		}else if(id == "fuenteDedatosMod"){
+    			ind = 0;	
+    			$('#fuenteDedatosMod input').each(function(){    		  
+    			    $(this).attr('name', "fuenteDedatosMod[" + ind + "]");    	
+    			    ind = ind + 1;     		    	
+    			});
+    		}	 
+    	}
 
     	function borrar(img){
     		 var div = $(img).parent().closest('div');
@@ -334,3 +327,23 @@ var drawingManager;
     		  });
     	}
      
+		function addFilClick(){
+			if(FilCont < 8){
+		          	 $('#uploadTable').append(
+		      	             '<div class="fileContainer" style="border: 1px solid black;"><input name="multiUploadedFileList[0]" type="file" style="margin-bottom: 16px;"/>'+
+		      	             '<input type="image" src="http://localhost/img/ic_cancel_24px.svg" "name="image" style="margin-left: 30px; width:30px; height:30px" onclick="javascript:return deleteFile(this)" /></div>');
+						var ind = 0;
+						$('#uploadTable input').each(function(){    
+							if($(this).attr('type') != "image"){
+							$(this).attr('name', "multiUploadedFileList[" + ind + "]");    	
+							ind = ind + 1;     	
+							}					
+						});
+						
+						FilCont = FilCont + 1
+		              }
+			else{
+				alert('El numero de palabras claves no puede ser mayor a 9.');
+			} 
+			 return false;
+			}
