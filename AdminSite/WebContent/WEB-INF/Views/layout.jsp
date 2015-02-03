@@ -1,4 +1,3 @@
-<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML>
@@ -77,32 +76,6 @@
                     <li>
 						<a href="/BackOffice/rpt"><i class="fa fa-fw fa-file"></i>Reportes en el tiempo</a>
 					</li> 
-                    <!-- <li class="active">
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="fa fa-fw fa-user"></i> Usuarios <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo2" class="collapse">
-                            <li>
-                                <a href="#">Admin</a>
-                            </li>
-                            <li>
-                                <a href="#">Crear</a>
-                            </li>
-                        </ul>
-                    </li>-->
-                    <!-- <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Catástrofes <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse">
-                            <li>
-                                <a href="#">Item 1</a>
-                            </li>
-                            <li>
-                                <a href="#">Item 2</a>
-                            </li>
-                        </ul>
-                    </li>-->
-                    
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
         </nav>
         <div id="contenedor_web_contenido">
             <div class="container-fluid">
@@ -110,22 +83,7 @@
             </div>               
         </div>  
    </div>  
-<!-- <table width= "100%" height="100%" border="1" cellpadding="2" cellspacing="2" align="center">
-    <tr>
-        <td height="20%" colspan="2"><tiles:insertAttribute name="header" />
-        </td>
-    </tr>
-    <tr>
-        <td width="15%" height="70%"><tiles:insertAttribute name="menu" /></td>
-        <td width="85%" height="70%"><tiles:insertAttribute name="body" /></td>
-    </tr>
-    <tr>
-        <td height="10%" colspan="2"><tiles:insertAttribute name="footer" />
-        </td>
-    </tr>
-</table>
-<script type="text/javascript" src="<c:url value="/resources/OpenLayers/OpenLayers.js" />"> </script>
-<script type="text/javascript" src="<c:url value="/resources/jquery-1.6.4.min.js" />"></script>-->
+
 <script type="text/javascript" src="<c:url value="/resources/js/bootstrap.js" />"></script>
 </body>
 </html>

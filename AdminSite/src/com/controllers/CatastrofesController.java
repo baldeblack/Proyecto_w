@@ -34,6 +34,7 @@ import com.Interfaces.ICBasedeDatos;
 import com.Interfaces.ICCatastrofe;
 import com.models.CatastrofeListModel;
 import com.models.CatastrofeModel;
+import com.utils.accessControl;
 import com.utils.imagenShow;
 
 @RequestMapping("/catastrofes")
@@ -52,14 +53,22 @@ public class CatastrofesController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String CatastrofesGet(ModelMap model) {
+	public String CatastrofesGet(ModelMap model, HttpServletRequest request) {
+		accessControl ac = new accessControl();
+		if(!ac.tieneAcceso(request, "listCatastrofes")){
+			return "redirect:/forbhiden";
+		}
 		CatastrofeListModel cModel = new CatastrofeListModel();
 		model.addAttribute("CatastrofeListModel", cModel);		
 		return "listCatastrofes";
 	}
 	
 	@RequestMapping(value="/create", method = RequestMethod.GET)
-	public String CatastrofeCreate(ModelMap model) {
+	public String CatastrofeCreate(ModelMap model, HttpServletRequest request) {
+		accessControl ac = new accessControl();
+		if(!ac.tieneAcceso(request, "create")){
+			return "redirect:/forbhiden";
+		}
 		CatastrofeModel cModel = new CatastrofeModel();
 		cModel.setAction("Crear");
 		model.addAttribute("CatastrofeModel", cModel);
@@ -70,6 +79,11 @@ public class CatastrofesController {
 	public String CatastrofeSave(
 			@ModelAttribute("CatastrofeModel") CatastrofeModel CatastrofeModel,
 			BindingResult bindingResult, HttpServletRequest request) throws Exception {	
+		
+		accessControl ac = new accessControl();
+		if(!ac.tieneAcceso(request, "save")){
+			return "redirect:/forbhiden";
+		}
 		
 		String clavesToSave = "";
 		String fuentesToSave = "";
@@ -217,7 +231,11 @@ public class CatastrofesController {
 	
 	@RequestMapping(value="/edit/{tenantID}", method = RequestMethod.GET)
 	public String CatastrofeUpdate(@PathVariable int tenantID, ModelMap model, HttpServletRequest request) throws Exception {		
-			
+		
+		accessControl ac = new accessControl();
+		if(!ac.tieneAcceso(request, "edit")){
+			return "redirect:/forbhiden";
+		}
 		request.getSession().setAttribute("tenantID", tenantID);
 		ICCatastrofe ic = new CCatastrofe();
 		Catastrofe c = ic.getCatastrofeByID(tenantID);

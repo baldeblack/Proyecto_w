@@ -31,6 +31,7 @@ import com.google.gson.Gson;
 import com.models.OngModel;
 import com.models.OngsListModel;
 import com.models.ongCatastofeModel;
+import com.utils.accessControl;
 
 @RequestMapping("/ongs")
 @Controller
@@ -44,14 +45,22 @@ public class ONGsController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public String OngsGet(ModelMap model) {
+	public String OngsGet(ModelMap model, HttpServletRequest request) {
+		accessControl ac = new accessControl();
+		if(!ac.tieneAcceso(request, "listOngs")){
+			return "redirect:/forbhiden";
+		}
 		 OngsListModel uModel = new OngsListModel();
 		model.addAttribute("OngsListModel", uModel);		
 		return "listOngs";
 	}
 	
 	@RequestMapping(value="/create", method=RequestMethod.GET)
-	public String getCreateForm(ModelMap model) {
+	public String getCreateForm(ModelMap model, HttpServletRequest request) {
+		accessControl ac = new accessControl();
+		if(!ac.tieneAcceso(request, "create")){
+			return "redirect:/";
+		}
 		OngModel ongM = new OngModel();
 		ongM.setAction("Crear");
 		model.addAttribute("OngModel", ongM);
@@ -59,7 +68,11 @@ public class ONGsController {
 	}
 	
 	@RequestMapping(value="/vincular/{tenantID}", method=RequestMethod.GET)
-	public String getVincularForm(@PathVariable int tenantID, ModelMap model) throws ClassNotFoundException, SQLException {
+	public String getVincularForm(@PathVariable int tenantID, ModelMap model, HttpServletRequest request) throws ClassNotFoundException, SQLException {
+		accessControl ac = new accessControl();
+		if(!ac.tieneAcceso(request, "vincular")){
+			return "redirect:/forbhiden";
+		}
 		ICOngs io = new COngs();
 		ICCatastrofe ic = new CCatastrofe();
 		Catastrofe c = ic.getCatastrofeByID(tenantID);
@@ -94,7 +107,11 @@ public class ONGsController {
 	public String Alta(
 			@ModelAttribute("OngModel") OngModel OngModel,
 			BindingResult bindingResult, HttpServletRequest request) throws Exception {			
-
+			
+			accessControl ac = new accessControl();
+			if(!ac.tieneAcceso(request, "vincular")){
+				return "redirect:/forbhiden";
+			}
 			CValidador.validate(OngModel, bindingResult);
 			
 			if (bindingResult.hasErrors()) {
@@ -125,6 +142,10 @@ public class ONGsController {
 
 	@RequestMapping(value="/edit/{idOng}", method = RequestMethod.GET)
 	public String UsuUpdate(@PathVariable int idOng, ModelMap model, HttpServletRequest request) throws Exception {
+		accessControl ac = new accessControl();
+		if(!ac.tieneAcceso(request, "edit")){
+			return "redirect:/forbhiden";
+		}
 		request.getSession().setAttribute("idOng", idOng);
 		ICOngs io = new COngs();
 		ONG o = io.getONG(idOng);

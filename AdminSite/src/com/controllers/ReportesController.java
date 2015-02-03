@@ -22,13 +22,19 @@ import com.Helper.donacionesRpt;
 import com.Interfaces.ICReporte;
 import com.google.gson.Gson;
 import com.models.ReporteModel;
+import com.utils.accessControl;
 
 @RequestMapping("/rpt")
 @Controller
 public class ReportesController {
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String getPage(ModelMap model) {
+	public String getPage(ModelMap model, HttpServletRequest request) {
+		
+		accessControl ac = new accessControl();
+		if(!ac.tieneAcceso(request, "rptTablas")){
+			return "redirect:/forbhiden";
+		}
 		 ReporteModel rModel = new ReporteModel();
 		 
 		model.addAttribute("ReporteModel", rModel);	

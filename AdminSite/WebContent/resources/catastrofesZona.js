@@ -324,4 +324,13 @@ var drawingManager;
     	
     	    }
 
+    	function borrar(img){
+    		 var div = $(img).parent().closest('div');
+    		 $(div).parent().closest('div').remove();
+    		 var ind = 0;
+    		  $('#fd input').each(function(){    		  
+    		  	$(this).attr('name', "imagenesNuevas[" + ind + "]");    	
+    		  	ind = ind + 1;     		    	
+    		  });
+    	}
      

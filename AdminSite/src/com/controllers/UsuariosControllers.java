@@ -22,6 +22,7 @@ import com.Entities.Usuario;
 import com.Interfaces.ICUsuarios;
 import com.models.UsuariosListModel;
 import com.models.UsuariosModel;
+import com.utils.accessControl;
 
 @RequestMapping("/usuarios")
 @Controller
@@ -36,7 +37,11 @@ public class UsuariosControllers {
 
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public String UsuariosGet(ModelMap model) {
+	public String UsuariosGet(ModelMap model, HttpServletRequest request) {
+		accessControl ac = new accessControl();
+		if(!ac.tieneAcceso(request, "listUsuarios")){
+			return "redirect:/forbhiden";
+		}
 		 UsuariosListModel uModel = new UsuariosListModel();
 		model.addAttribute("UsuariosListModel", uModel);		
 		return "listUsuarios";
@@ -44,18 +49,27 @@ public class UsuariosControllers {
 	
 	
 	@RequestMapping(value = "create", method = RequestMethod.GET)
-	public String getCreateForm(ModelMap model) {
+	public String getCreateForm(ModelMap model, HttpServletRequest request) {
+		accessControl ac = new accessControl();
+		if(!ac.tieneAcceso(request, "create")){
+			return "redirect:/forbhiden";
+		}
 		UsuariosModel usuM = new UsuariosModel();
 		usuM.setAction("Crear");
 		model.addAttribute("UsuariosModel", usuM);
 		return "altaUsuario";
 	}
-
+	
+	
 	@RequestMapping(value = "save", method = RequestMethod.POST)
 	public String Alta(
 			@ModelAttribute("UsuariosModel") UsuariosModel UsuarioModel,
 			BindingResult bindingResult, HttpServletRequest request) throws Exception {
-
+		accessControl ac = new accessControl();
+		if(!ac.tieneAcceso(request, "save")){
+			return "redirect:/forbhiden";
+		}
+		
 		CValidador.validate(UsuarioModel, bindingResult);
 		ICUsuarios icu = new CUsuarios();
 		Usuario usr = new Usuario();
@@ -126,6 +140,10 @@ public class UsuariosControllers {
 
 	@RequestMapping(value="/edit/{idUsuarios}", method = RequestMethod.GET)
 	public String UsuUpdate(@PathVariable int idUsuarios, ModelMap model, HttpServletRequest request) throws Exception {
+		accessControl ac = new accessControl();
+		if(!ac.tieneAcceso(request, "edit")){
+			return "redirect:/forbhiden";
+		}
 		request.getSession().setAttribute("idUsuarios", idUsuarios);
 		ICUsuarios ic = new CUsuarios();
 		Usuario u = ic.getUsuById(idUsuarios);
