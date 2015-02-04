@@ -8,12 +8,12 @@
 	<class>com.Entities.TipoRescatista</class>
 	<class>com.Entities.Usuario</class>
 	<class>com.Entities.Rptdata</class>
-	<class>com.Entities.Paso</class>
-	<class>com.Entities.Plan</class>
 	<class>com.Entities.Tipocatastrofe</class>
 	<class>com.Entities.Rescatistacatastrofe</class>
 	<class>com.Entities.Catastrofetipo</class>
+	<class>com.Entities.Paso</class>
 	<class>com.Entities.PasoPK</class>
+	<class>com.Entities.Plan</class>
 		<properties>
 				 <property name="hibernate.show_sql" value="true"/>
 				 <property name="hibernate.format_sql" value="false"/>

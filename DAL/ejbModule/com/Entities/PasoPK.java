@@ -1,6 +1,7 @@
 package com.Entities;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
 
 /**
@@ -14,6 +15,7 @@ public class PasoPK implements Serializable {
 
 	private int idPlan;
 
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idpasos;
 
 	public PasoPK() {
