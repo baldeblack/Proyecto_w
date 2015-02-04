@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.DAO.CatastrofeDAO;
 import com.Entities.Catastrofe;
+import com.Entities.Tipocatastrofe;
 import com.Interfaces.ICCatastrofe;
 
 public class CCatastrofe implements ICCatastrofe {
@@ -52,6 +53,12 @@ public class CCatastrofe implements ICCatastrofe {
 	public Integer minCtId() {
 		// TODO Auto-generated method stub
 		return _dao.minCtId();
+	}
+
+	@Override
+	public List<Tipocatastrofe> getTiposCT() {
+		// TODO Auto-generated method stub
+		return _dao.getTiposCT();
 	}
 
 }

@@ -3,6 +3,7 @@ package com.Interfaces;
 import java.util.List;
 
 import com.Entities.Catastrofe;
+import com.Entities.Tipocatastrofe;
 
 public interface ICCatastrofe {
 
@@ -19,4 +20,6 @@ public interface ICCatastrofe {
 	Catastrofe getCatastrofeByStringConnection(String conn);
 	
 	Integer minCtId();
+	
+	List<Tipocatastrofe> getTiposCT();
 }

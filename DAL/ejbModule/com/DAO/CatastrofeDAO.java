@@ -7,6 +7,7 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import com.Entities.Catastrofe;
+import com.Entities.Tipocatastrofe;
 import com.Helper.EntityManagerHelper;
 
 public class CatastrofeDAO {
@@ -119,6 +120,13 @@ public class CatastrofeDAO {
 			throw e;
 		}
 		return result;
+	}
+	
+	public List<Tipocatastrofe> getTiposCT(){
+		TypedQuery<Tipocatastrofe> query =
+			      _eManager.createNamedQuery("Tipocatastrofe.findAll", Tipocatastrofe.class);
+			  List<Tipocatastrofe> results = query.getResultList();
+			  return results;
 	}
 
 }

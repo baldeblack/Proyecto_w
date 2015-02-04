@@ -97,6 +97,8 @@
 							class="fa fa-fw fa-file"></i> Alta Catastrofe</a></li>
 					<li><a href="/BackOffice/rpt"><i class="fa fa-fw fa-file"></i>Reportes
 							en el tiempo</a></li>
+					<li><a href="/BackOffice/planes/create"><i class="fa fa-fw fa-file"></i>Alta
+							Plan</a></li>
 				</ul>
 			</div>
 		</nav>
