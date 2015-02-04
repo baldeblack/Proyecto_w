@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import com.Controllers.CCatastrofe;
 import com.Controllers.CPlanes;
@@ -77,7 +79,6 @@ public class boServices {
 		
 	}
 	
-	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/getpasos/{idPlan}")
@@ -91,6 +92,15 @@ public class boServices {
 		response = g.toJson(lstPl);
 		return (callback + "(" + response + ")");
 		
-	}	
+	}
+	
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/updatePaso/{idPlan}/{idPaso}/{idRescatista}")
+	public Response UpdatePasoStep(int idPlan, int idPaso, int idRescatista){
+		ICPlanes ip = new CPlanes();
+		boolean res = ip.UpdatePasoStep(idPlan, idPaso, idRescatista);
+		return Response.ok(res).build(); 
+	}
 
 }

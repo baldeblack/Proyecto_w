@@ -2,41 +2,37 @@ package com.DAO;
 
 import javax.persistence.EntityManager;
 
-import com.Entities.Paso;
-import com.Entities.PasoPK;
+import com.Entities.Rescatistacatastrofe;
 import com.Helper.EntityManagerHelper;
 
-public class PasosDAO {
-	
+public class RescatistaCatastrofeDAO {
+
 	EntityManager _eManager;
-	
-	public PasosDAO(){
+	public RescatistaCatastrofeDAO(){
 		_eManager = EntityManagerHelper.getInstance().getJPAFactory().createEntityManager();
 	}
 	
-	public Paso GetPasoByPK(PasoPK pk){
-		return _eManager.find(Paso.class, pk);
-	}
 	
-	public int InsertUpdatePlan(Paso input){
+	public boolean DeleteRescatista(int idRescatista){
 		try
 		{
-			
+			Rescatistacatastrofe obj =  _eManager.find(Rescatistacatastrofe.class, idRescatista);
 			_eManager.getTransaction().begin();
-		    _eManager.persist(input);
+			_eManager.remove(obj);
 			_eManager.getTransaction().commit();
 			_eManager.close();
-			return input.getId().getIdpasos();
 		
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			return -1;
 		}
 		finally{
 			if(_eManager.isOpen())
 				_eManager.close();
 		}
 		
+		if(_eManager.find(Rescatistacatastrofe.class, idRescatista) == null)
+			return true;
+		else
+			return false;
 	}
-
 }

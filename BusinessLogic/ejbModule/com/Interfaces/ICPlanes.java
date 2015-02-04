@@ -14,4 +14,5 @@ public interface ICPlanes {
 	List<Paso> getPasos(int idPlan);
 	
 	int InserUpdatePlanesWithPasos(Plan plan, List<Paso> pasos);
+	boolean UpdatePasoStep(int idPlan, int idPaso, int IdRescatista);
 }

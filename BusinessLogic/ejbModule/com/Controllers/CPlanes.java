@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.DAO.PasosDAO;
 import com.DAO.PlanesDAO;
+import com.DAO.RescatistaCatastrofeDAO;
 import com.Entities.Paso;
 import com.Entities.PasoPK;
 import com.Entities.Plan;
@@ -51,5 +52,22 @@ public class CPlanes implements ICPlanes{
 		}
 		
 		return idPlan;
+	}
+	
+	public boolean UpdatePasoStep(int idPlan, int idPaso, int IdRescatista){
+		
+		PasosDAO pdao = new PasosDAO();
+		PasoPK pk = new PasoPK();
+		Paso p = pdao.GetPasoByPK(pk);
+		if(p != null){
+			p.setEstado("1");
+			int res = pdao.InsertUpdatePlan(p);
+			if(res > 0){
+				RescatistaCatastrofeDAO rdao = new RescatistaCatastrofeDAO();
+				return rdao.DeleteRescatista(IdRescatista);
+			}
+		}
+		
+		return false;
 	}
 }
