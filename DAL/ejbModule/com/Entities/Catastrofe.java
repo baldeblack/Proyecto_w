@@ -6,7 +6,7 @@ import java.util.Date;
 
 
 /**
- * The persistent class for the Catastrofe database table.
+ * The persistent class for the catastrofe database table.
  * 
  */
 @Entity
@@ -17,45 +17,39 @@ public class Catastrofe implements Serializable {
 	@Id
 	private int idCatastrofe;
 
-	@Column(name="Activa")
 	private byte activa;
 
+	private String apiFb;
+
+	private String apiTw;
+
 	@Lob
-	@Column(name="CarpetaImagenes")
 	private String carpetaImagenes;
 
 	@Lob
-	@Column(name="Css")
 	private String css;
 
-	@Column(name="Dominio")
 	private String dominio;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="FechaCreacion")
 	private Date fechaCreacion;
 
-	@Column(name="FuentesDatos")
 	private String fuentesDatos;
 
 	@Lob
-	@Column(name="Informacion")
 	private String informacion;
 
 	@Lob
-	@Column(name="Logo")
 	private byte[] logo;
 
-	@Column(name="Nombre")
 	private String nombre;
 
-	@Column(name="PalabrasClaves")
 	private String palabrasClaves;
 
-	@Column(name="StringConeccion")
 	private String stringConeccion;
 
-	@Column(name="ZonaAfectada")
+	private int tipo;
+
 	private String zonaAfectada;
 
 	public Catastrofe() {
@@ -75,6 +69,22 @@ public class Catastrofe implements Serializable {
 
 	public void setActiva(byte activa) {
 		this.activa = activa;
+	}
+
+	public String getApiFb() {
+		return this.apiFb;
+	}
+
+	public void setApiFb(String apiFb) {
+		this.apiFb = apiFb;
+	}
+
+	public String getApiTw() {
+		return this.apiTw;
+	}
+
+	public void setApiTw(String apiTw) {
+		this.apiTw = apiTw;
 	}
 
 	public String getCarpetaImagenes() {
@@ -155,6 +165,14 @@ public class Catastrofe implements Serializable {
 
 	public void setStringConeccion(String stringConeccion) {
 		this.stringConeccion = stringConeccion;
+	}
+
+	public int getTipo() {
+		return this.tipo;
+	}
+
+	public void setTipo(int tipo) {
+		this.tipo = tipo;
 	}
 
 	public String getZonaAfectada() {

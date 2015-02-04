@@ -114,6 +114,9 @@ public class CatastrofesController {
 				cEntity.setInformacion(CatastrofeModel.getInformacion());				
 				cEntity.setZonaAfectada(CatastrofeModel.getZonaAfectada());				
 				cEntity.setLogo(CatastrofeModel.getLogo().getBytes());
+				cEntity.setApiFb(CatastrofeModel.getApiFb());
+				cEntity.setApiTw(CatastrofeModel.getApiTw());
+				cEntity.setTipo(CatastrofeModel.getTipo());
 				 //alta tenant en archivo hosts
 				 File hosts = new File("C:/Windows/System32/drivers/etc/hosts");			
 				 hosts.setWritable(true);
@@ -176,6 +179,9 @@ public class CatastrofesController {
 					c.setDominio(CatastrofeModel.getDominio());
 					c.setInformacion(CatastrofeModel.getInformacion());				
 					c.setZonaAfectada(CatastrofeModel.getZonaAfectada());
+					c.setApiFb(CatastrofeModel.getApiFb());
+					c.setApiTw(CatastrofeModel.getApiTw());
+					c.setTipo(CatastrofeModel.getTipo());
 					
 					if (CatastrofeModel.getLogo().getSize() > 0 ){
 					c.setLogo(CatastrofeModel.getLogo().getBytes());

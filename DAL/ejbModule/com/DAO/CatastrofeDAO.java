@@ -66,6 +66,9 @@ public class CatastrofeDAO {
 			 cMod.setLogo(c.getLogo());
 			 cMod.setPalabrasClaves(c.getPalabrasClaves());
 			 cMod.setZonaAfectada(c.getZonaAfectada());
+			 cMod.setApiFb(c.getApiFb());
+			 cMod.setApiTw(c.getApiTw());
+			 cMod.setTipo(c.getTipo());
 			 _eManager.getTransaction().commit();			
 		} catch (Exception e) {
 			throw e;

@@ -164,6 +164,8 @@
 							class="fa fa-fw fa-file"></i> Alta Catastrofe</a></li>
 					<li><a href="/BackOffice/rpt"><i class="fa fa-fw fa-file"></i>Reportes
 							en el tiempo</a></li>
+					<li><a href="/BackOffice/planes/create"><i class="fa fa-fw fa-file"></i>Alta
+							Plan</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -200,6 +202,24 @@
 							</div>
 							<div>
 								<form:errors path="informacion" cssClass="error" />
+							</div>
+						</div>
+							<div>
+							<div>Key Facebook :</div>
+							<div>
+								<form:input path="apiFb" required="true" />
+							</div>
+							<div>
+								<form:errors path="apiFb" cssClass="error" />
+							</div>
+						</div>
+							<div>
+							<div>Key Twitter :</div>
+							<div>
+								<form:input path="apiTw" required="true" />
+							</div>
+							<div>
+								<form:errors path="apiTw" cssClass="error" />
 							</div>
 						</div>
 						<div>
@@ -266,7 +286,23 @@
 								</select>
 							</div>
 						</div>
-						<div></div>
+						</div>
+						<div>
+						<div>Tipo :</div>
+						<div><form:select path="tipo" multiple="false" size="1">
+								<c:forEach var="s" varStatus="i"
+									items="${CatastrofeModel.tipos}">
+									<c:choose>
+										<c:when test="${s.idtipocatastrofe eq CatastrofeModel.tipo}">
+											<option value="${s.idtipocatastrofe}" selected="true">${s.nombre}</option>
+										</c:when>
+										<c:otherwise>
+											<option value="${s.idtipocatastrofe}">${s.nombre}</option>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+							</form:select></div>
+						</div>
 						<div class="wrapper">
 							<div class="inner">
 								<div id="div1">

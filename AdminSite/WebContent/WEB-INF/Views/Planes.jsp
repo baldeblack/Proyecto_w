@@ -84,6 +84,8 @@
 							class="fa fa-fw fa-file"></i> Alta Catastrofe</a></li>
 					<li><a href="/BackOffice/rpt"><i class="fa fa-fw fa-file"></i>Reportes
 							en el tiempo</a></li>
+					<li><a href="/BackOffice/planes/create"><i class="fa fa-fw fa-file"></i>Alta
+							Plan</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -155,7 +157,7 @@
 							<input type="text" name="pasos[0].nombre" value="" />
 						</div>
 						<div class="col">
-								<form:textarea path="pasos[0].descripcion" id="desc" rows="3" cols="20" />
+								<textarea name="pasos[0].descripcion" id="desc" rows="3" cols="20" ></textarea>
 						</div>
 						<div class="col">
 							<input type="image" src="http://localhost/img/ic_cancel_24px.svg" type="image"

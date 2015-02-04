@@ -7,7 +7,10 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
+import com.Controllers.CCatastrofe;
 import com.Entities.Catastrofe;
+import com.Entities.Tipocatastrofe;
+import com.Interfaces.ICCatastrofe;
 import com.utils.imagenShow;
 
 public class CatastrofeModel {
@@ -31,6 +34,43 @@ public class CatastrofeModel {
 	List<imagenShow> imagenes;
 	List<String> imagenesNuevas;
 	String action;
+	String apiFb;
+	String apiTw;
+	int tipo;	
+	List<Tipocatastrofe> tipos;
+	
+	public List<Tipocatastrofe> getTipos() {
+		return tipos;
+	}
+
+	public void setTipos(List<Tipocatastrofe> tipos) {
+		this.tipos = tipos;
+	}
+
+	public String getApiFb() {
+		return apiFb;
+	}
+
+	public void setApiFb(String apiFb) {
+		this.apiFb = apiFb;
+	}
+
+	public String getApiTw() {
+		return apiTw;
+	}
+
+	public void setApiTw(String apiTw) {
+		this.apiTw = apiTw;
+	}
+
+	public int getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(int tipo) {
+		tipo = tipo;
+	}
+
 	
 	public CatastrofeModel(Catastrofe c) {
 		this.activa = c.getActiva();
@@ -43,6 +83,9 @@ public class CatastrofeModel {
 		this.stringConeccion = c.getStringConeccion();
 		this.zonaAfectada = c.getZonaAfectada();
 		this.idCatastrofe = c.getIdCatastrofe();
+		this.apiFb = c.getApiFb();
+		this.apiTw = c.getApiTw();
+		this.tipo = c.getTipo();
 		this.fuenteDedatos = new ArrayList<String>();
 		this.palabrasList = new ArrayList<String>();
 		this.fuenteDedatosMod = new ArrayList<String>();
@@ -68,7 +111,10 @@ public class CatastrofeModel {
 				this.palabrasList.add(palabras);
 			}
 		}
-
+		
+		ICCatastrofe ic = new CCatastrofe();
+		this.tipos = new ArrayList<Tipocatastrofe>();
+		this.tipos = ic.getTiposCT();
 	}
 
 	public String getLogoString() {
@@ -118,6 +164,10 @@ public class CatastrofeModel {
 		fuenteDedatos.add("youTube");
 		fuenteDedatos.add("Twitter");
 		fuenteDedatos.add("RSS");
+		
+		ICCatastrofe ic = new CCatastrofe();
+		this.tipos = new ArrayList<Tipocatastrofe>();
+		this.tipos = ic.getTiposCT();
 	}
 
 	public byte getActiva() {
