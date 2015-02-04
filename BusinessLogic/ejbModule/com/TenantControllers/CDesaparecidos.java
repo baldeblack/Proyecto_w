@@ -20,6 +20,7 @@ import com.Utilities.MailingHelper;
 import com.entities.Desaparecido;
 import com.entities.Usuario;
 import com.google.gson.Gson;
+import com.helper.DesaparecidoMobile;
 
 
 public class CDesaparecidos implements ICDesaparecidos {
@@ -114,6 +115,19 @@ public class CDesaparecidos implements ICDesaparecidos {
 		mh.SendHtmlEmail(cat.getDominio()+"@SIC.com", to, "Alta Desapareido: "+cat.getNombre() , body);
 		
 		
+	}
+
+	@Override
+	public String GetAllDesaparecidosMobile() {
+		List<Desaparecido> list = _dao.getAllDesaparecidos();
+		List<DesaparecidoMobile> listM = new ArrayList<DesaparecidoMobile>();
+		if( list != null){
+			for (Desaparecido d : list) {
+				listM.add(new DesaparecidoMobile(d));
+			}
+		}
+		
+		return _gson.toJson(listM, List.class);
 	}
 	
 }

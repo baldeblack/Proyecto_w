@@ -29,6 +29,7 @@ public class DesaparecidosDAO {
 		}
 		return result;
 	}
+
 	
 	public List<Desaparecido> getAllDesaparecidosByState(short state){
 		List<Desaparecido> result = null;

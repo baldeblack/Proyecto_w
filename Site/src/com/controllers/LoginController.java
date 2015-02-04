@@ -1,6 +1,7 @@
 package com.controllers;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -132,6 +133,7 @@ public class LoginController {
 						 return "Sussess";
 				 }
 				 else{
+					 
 					 usr = new Usuario(model);
 					 String jsonresp = ServiceConnectionHelper.CallServiceMethoodPOST("AccessService", "Registro", c.getStringConeccion(), usr);
 					 if(Integer.parseInt(jsonresp) >0){

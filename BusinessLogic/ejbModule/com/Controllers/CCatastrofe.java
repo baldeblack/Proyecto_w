@@ -5,6 +5,7 @@ import java.util.List;
 import com.DAO.CatastrofeDAO;
 import com.Entities.Catastrofe;
 import com.Entities.Tipocatastrofe;
+import com.Helper.CatastrofeMobile;
 import com.Interfaces.ICCatastrofe;
 
 public class CCatastrofe implements ICCatastrofe {
@@ -22,6 +23,10 @@ public class CCatastrofe implements ICCatastrofe {
 	@Override
 	public Catastrofe GetCatastrofeByDomain(String domain) {
 		return _dao.GetCatastrofeByDomain(domain);
+	}
+	
+	public CatastrofeMobile GetCatastrofeByDomainMobile(String domain) {
+		return new CatastrofeMobile(_dao.GetCatastrofeByDomain(domain));
 	}
 
 	@Override

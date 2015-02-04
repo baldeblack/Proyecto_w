@@ -29,7 +29,7 @@ public class Usuario {
 		if(m.getFechaNacimiento() != null)
 			fechaNacimiento = m.getFechaNacimiento();
 		else
-			fechaNacimiento = new Date(0);
+			fechaNacimiento = new Date(Long.MIN_VALUE);
 		nik = m.getNik();
 		nombre = m.getNombre();
 		password = m.getPassword();

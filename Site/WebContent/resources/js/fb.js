@@ -80,7 +80,8 @@
 	             "nik" : responsefb.name,
 	             "nombre" : responsefb.first_name,
 	             "password" : 'FB',
-	             "sexo" : sex
+	             "sexo" : sex,
+	             "fechaNacimiento" : '01-01-1900',
 	        }),
 	        datatype : "json",
 	        success : function(data) {

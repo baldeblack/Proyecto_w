@@ -29,6 +29,18 @@ public class LostsServies {
 		return Response.ok(response).build();
 	}
 	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/AllDesaparecidosMobile/{input}")
+	public Response GetAllDesaparecidosMobile(@PathParam("input") String input){
+		Gson gson = new Gson();
+		MessageInput request = gson.fromJson(input, MessageInput.class);
+		ICDesaparecidos controller = new CDesaparecidos(request.getBdConnection());
+	
+		String response =  controller.GetAllDesaparecidosMobile();
+		return Response.ok(response).build();
+	}
+	
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/LostReport/{input}")

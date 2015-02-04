@@ -12,6 +12,7 @@ import javax.ws.rs.core.Response;
 
 import com.Controllers.CCatastrofe;
 import com.Entities.Catastrofe;
+import com.Helper.CatastrofeMobile;
 import com.Interfaces.ICCatastrofe;
 import com.TenantControllers.CUsuario;
 import com.TenantInterfaces.ICUsuario;
@@ -40,6 +41,16 @@ public class AccessService {
 		ICCatastrofe controller = new CCatastrofe();
 		Gson gson = new Gson();
 		String dataString =  gson.toJson(controller.GetCatastrofeByDomain(domain), Catastrofe.class);
+		return Response.ok(dataString).build();
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/CatastrofeByDomainMobile/{domain}")
+	public Response getCatastrofeByDomainMobile(@PathParam("domain") String domain){
+		ICCatastrofe controller = new CCatastrofe();
+		Gson gson = new Gson();
+		String dataString =  gson.toJson(controller.GetCatastrofeByDomainMobile(domain), CatastrofeMobile.class);
 		return Response.ok(dataString).build();
 	}
 	
