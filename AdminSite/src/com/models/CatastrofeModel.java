@@ -161,9 +161,9 @@ public class CatastrofeModel {
 		fuenteDedatos = new ArrayList<String>();
 		fuenteDedatosMod = new ArrayList<String>();
 		palabrasList = new ArrayList<String>();
-		fuenteDedatos.add("youTube");
-		fuenteDedatos.add("Twitter");
-		fuenteDedatos.add("RSS");
+		fuenteDedatos.add("www.youtube.com");
+		fuenteDedatos.add("www.cnn.com");
+		fuenteDedatos.add("www.soychile.cl");
 		
 		ICCatastrofe ic = new CCatastrofe();
 		this.tipos = new ArrayList<Tipocatastrofe>();

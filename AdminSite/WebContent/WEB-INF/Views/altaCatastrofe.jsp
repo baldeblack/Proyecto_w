@@ -279,10 +279,7 @@
 								<select name="css">
 									<option selected="selected" value="Style1.css">TEMA 1</option>
 									<option value="Style2.css">TEMA 2</option>
-									<option value="Style2.css">TEMA 3</option>
-									<option value="Style1.css">TEMA 4</option>
-									<option value="Style1.css">TEMA 5</option>
-									<option value="Style1.css">TEMA 6</option>
+									
 								</select>
 							</div>
 						</div>
