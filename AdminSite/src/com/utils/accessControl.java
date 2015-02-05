@@ -26,6 +26,8 @@ public class accessControl {
 		this.prmisosAdm.add("rptTablas");		
 		this.prmisosAdm.add("vincular");
 		this.prmisosAdm.add("planes");
+		this.prmisosAdm.add("vincresc");
+		
 		this.prmisosAdm.add("Result");
 		this.prmisosAdm.add("otra");
 		

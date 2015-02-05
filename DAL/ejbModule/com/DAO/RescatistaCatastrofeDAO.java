@@ -13,6 +13,17 @@ public class RescatistaCatastrofeDAO {
 	}
 	
 	
+	public void AltaRel(Rescatistacatastrofe r){
+		try {
+			_eManager.getTransaction().begin();
+			_eManager.persist(r);	
+			_eManager.flush();
+			_eManager.getTransaction().commit();
+		} catch (Exception e) {
+			throw e;
+		}
+			
+	}
 	public boolean DeleteRescatista(int idRescatista){
 		try
 		{

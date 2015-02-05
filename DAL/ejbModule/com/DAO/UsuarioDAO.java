@@ -12,8 +12,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import com.Entities.Catastrofe;
 import com.Entities.Rescatista;
 import com.Entities.TipoRescatista;
+import com.Entities.Tipocatastrofe;
 import com.Entities.Usuario;
 import com.Helper.EntityManagerHelper;
 
@@ -193,5 +195,24 @@ public class UsuarioDAO {
 		   con.close();
 		}
 	}
-
+	
+	public List<Rescatista> getRescatistas(){
+		TypedQuery<Rescatista> query =
+			      _eManager.createNamedQuery("Rescatista.findAll", Rescatista.class);
+			  List<Rescatista> results = query.getResultList();
+			  return results;
+	}	
+	
+	public List<Usuario> GetUsuByTipo(int tipo){
+		TypedQuery<Usuario> query =_eManager.createQuery("Select u From Usuario u Where u.tipoUsuario =?1 ", Usuario.class);
+		query.setParameter(1, tipo);	
+		 List<Usuario> results = query.getResultList();		
+		return results;
+	}
+	
+	public int estaAsociadoR(int idUSU){
+		TypedQuery<Integer> query = _eManager.createQuery("SELECT IF( EXISTS(SELECT r FROM Rescatistacatastrofe r WHERE r.idrescatista  =?1 ), 1, 0)", int.class);
+		query.setParameter(1, idUSU);	
+		return query.getSingleResult();
+	}
 }

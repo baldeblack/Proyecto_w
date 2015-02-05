@@ -21,6 +21,8 @@ import com.Entities.Rescatistacatastrofe;
 import com.Entities.Tipocatastrofe;
 import com.Entities.Usuario;
 import com.Entities.Plan;
+import com.Helper.PasoUtil;
+import com.Helper.PlanUtil;
 import com.Interfaces.ICCatastrofe;
 import com.Interfaces.ICPlanes;
 import com.Interfaces.ICUsuarios;
@@ -71,7 +73,7 @@ public class boServices {
 		ICPlanes ip = new CPlanes();
 		Tipocatastrofe tipo =  new Tipocatastrofe();
 		tipo = ip.getTipo(idCt);
-		List<Plan> lstPl = new ArrayList<Plan>();
+		List<PlanUtil> lstPl = new ArrayList<PlanUtil>();
 		lstPl = ip.getPlanes(tipo.getIdtipocatastrofe());
 		Gson g = new Gson();
 		response = g.toJson(lstPl);
@@ -85,9 +87,18 @@ public class boServices {
 	public String getPasos(@PathParam("idPlan") Integer idPlan, @QueryParam("callback") String callback){
 		
 		String response = null;
-		ICPlanes ip = new CPlanes();		
-		List<Paso> lstPl = new ArrayList<Paso>();
-		lstPl = ip.getPasos(idPlan);
+		ICPlanes ip = new CPlanes();	
+		Plan p = new Plan();
+		List<PasoUtil> lstPl = new ArrayList<PasoUtil>();
+		p = ip.getPlan(idPlan);
+		
+		for(Paso paso: p.getPasos()){
+			PasoUtil pl = new PasoUtil();
+			pl.setDescripcion(paso.getDescripcion());			
+			pl.setIdpasos(paso.getIdpasos());
+			pl.setNombre(paso.getNombre());		
+			lstPl.add(pl);
+		}	
 		Gson g = new Gson();
 		response = g.toJson(lstPl);
 		return (callback + "(" + response + ")");
@@ -97,7 +108,7 @@ public class boServices {
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/updatePaso/{idPlan}/{idPaso}/{idRescatista}")
-	public Response UpdatePasoStep(int idPlan, int idPaso, int idRescatista){
+	public Response UpdatePasoStep(@PathParam("idPlan") int idPlan,@PathParam("idPaso") int idPaso, @PathParam("idRescatista") int idRescatista){
 		ICPlanes ip = new CPlanes();
 		boolean res = ip.UpdatePasoStep(idPlan, idPaso, idRescatista);
 		return Response.ok(res).build(); 

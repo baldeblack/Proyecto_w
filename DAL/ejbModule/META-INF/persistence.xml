@@ -12,7 +12,6 @@
 	<class>com.Entities.Rescatistacatastrofe</class>
 	<class>com.Entities.Catastrofetipo</class>
 	<class>com.Entities.Paso</class>
-	<class>com.Entities.PasoPK</class>
 	<class>com.Entities.Plan</class>
 		<properties>
 				 <property name="hibernate.show_sql" value="true"/>

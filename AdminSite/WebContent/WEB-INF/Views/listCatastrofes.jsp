@@ -116,6 +116,7 @@
 							<th>Dom</th>
 							<th>Link</th>
 							<th>LinkO</th>
+							<th>LinkR</th>
 						</tr>
 					</thead>
 
@@ -125,6 +126,7 @@
 							<th>Dom</th>
 							<th>Link</th>
 							<th>LinkO</th>
+							<th>LinkR</th>
 						</tr>
 					</tfoot>
 					<tbody>
@@ -135,6 +137,7 @@
 								<td><a
 									href="/BackOffice/catastrofes/edit/${o.idCatastrofe}">Editar</a></td>
 								<td><a href="/BackOffice/ongs/vincular/${o.idCatastrofe}">Ong's</a></td>
+								<td><a href="/BackOffice/usuarios/vincresc/${o.idCatastrofe}">Rescatistas</a></td>
 							</tr>
 						</c:forEach>
 					</tbody>

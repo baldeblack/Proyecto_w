@@ -1,10 +1,10 @@
 package com.DAO;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
@@ -14,6 +14,7 @@ import com.Entities.Plan;
 import com.Entities.Rescatistacatastrofe;
 import com.Entities.Tipocatastrofe;
 import com.Helper.EntityManagerHelper;
+import com.Helper.PlanUtil;
 
 public class PlanesDAO {
 
@@ -23,6 +24,34 @@ public class PlanesDAO {
 			_eManager = EntityManagerHelper.getInstance().getJPAFactory().createEntityManager();
 		}
 		
+		public boolean getPlanStatus(int idPlan){
+			boolean result = false;
+			_eManager.getTransaction().begin();
+			 Plan pMod = _eManager.find(Plan.class, idPlan);
+			 int contador = 0;		
+			 for(Paso p: pMod.getPasos())
+				 if(p.getEstado().equals(Integer.toString(1)))
+					 contador = contador + 1;
+			 
+			 if(contador == pMod.getPasos().size())
+				 result = true;
+			 
+			 return result;
+		}
+		
+		public Plan getPlan(int idPlan){
+			Plan plan = new Plan();
+			_eManager.getTransaction().begin();
+			plan= _eManager.find(Plan.class, idPlan);
+			return plan;
+		}
+		
+		public void removeRC(int idUs){
+			_eManager.getTransaction().begin();
+			Rescatistacatastrofe rDel = _eManager.find(Rescatistacatastrofe.class, idUs);
+			_eManager.remove(rDel);
+			_eManager.getTransaction().commit();
+		}
 		
 		public Rescatistacatastrofe getRescatistacatastrofe(int idUsr){
 			Rescatistacatastrofe result; 
@@ -47,12 +76,25 @@ public class PlanesDAO {
 			
 		}
 		
-		public List<Plan> getPlanes(int tipoCT){
+		public List<PlanUtil> getPlanes(int tipoCT){
 			List<Plan> lstPlanes = new ArrayList<Plan>();
 			TypedQuery<Plan> query =_eManager.createQuery("Select p From Plan p Where p.idTipoCatastrofe =?1 ", Plan.class);
 			query.setParameter(1, tipoCT);	
 			lstPlanes = query.getResultList();
-			return lstPlanes; 				
+			
+			List<PlanUtil> lspu = new ArrayList<PlanUtil>();
+			for(Plan p: lstPlanes){
+				PlanUtil pu = new PlanUtil();
+				pu.setCantidadPasos(p.getCantidadPasos());
+				pu.setDescripcion(p.getDescripcion());
+				pu.setEstado(p.getEstado());
+				pu.setIdPlan(p.getIdPlan());
+				pu.setIdTipoCatastrofe(p.getIdTipoCatastrofe());
+				pu.setIdTipoPlan(p.getIdTipoPlan());
+				pu.setNombre(p.getNombre());
+				lspu.add(pu);
+			}
+			return lspu; 				
 		}
 		
 		public List<Paso> getPasos(int idPlan){
@@ -64,20 +106,40 @@ public class PlanesDAO {
 		}
 		
 		public int InsertUpdatePlan(Plan input){
+			EntityTransaction _etitytransaction = null;			
 			try
 			{
-				_eManager.getTransaction().begin();
-			    _eManager.persist(input);
-				_eManager.getTransaction().commit();
+			
+				_etitytransaction = _eManager.getTransaction();
+				_etitytransaction.begin();
+				 Plan pMod = _eManager.find(Plan.class, input.getIdPlan());
+				
+				 if(pMod == null){
+					 _eManager.persist(input);
+				 }else{
+					 _eManager.merge(input);
+				 }
+				
+			    for(Paso p: input.getPasos())
+			    {
+			    	p.setPlan(input);
+			    	Paso psMod = _eManager.find(Paso.class, p.getIdpasos());
+			    	
+			    	 if(psMod == null){
+						 _eManager.persist(p);
+					 }else{
+						 _eManager.merge(p);
+					 }			    	
+			    }
+			    _etitytransaction.commit();
 				_eManager.close();
 			
 			} catch (Exception e) {
+				if(_etitytransaction.isActive())
+					_etitytransaction.rollback();
 				System.out.println(e.getMessage());
 			}
-			finally{
-				if(_eManager.isOpen())
-					_eManager.close();
-			}
+			
 			return input.getIdPlan();
 		}
 		

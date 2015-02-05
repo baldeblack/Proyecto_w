@@ -1,7 +1,5 @@
 package com.controllers;
 
-import java.io.Console;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -38,6 +36,7 @@ public class PlanesControl {
 		if(!ac.tieneAcceso(request, "create")){
 			return "redirect:/forbhiden";
 		}
+	
 		PlanModel PlanModel = new PlanModel();
 		PlanModel.setAction("Crear");
 		model.addAttribute("PlanModel", PlanModel);
@@ -57,7 +56,7 @@ public class PlanesControl {
 			if(PlanModel.getAction().equals("Crear")){
 			try {
 				  ICPlanes ip = new CPlanes();
-				  Plan p = new Plan();
+				  Plan p = new Plan();						
 				  p.setCantidadPasos(PlanModel.getPasos().size());
 				  p.setDescripcion(PlanModel.getDesc());
 				  p.setEstado(0);

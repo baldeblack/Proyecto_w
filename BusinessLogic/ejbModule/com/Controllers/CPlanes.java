@@ -2,14 +2,12 @@ package com.Controllers;
 
 import java.util.List;
 
-import com.DAO.PasosDAO;
 import com.DAO.PlanesDAO;
-import com.DAO.RescatistaCatastrofeDAO;
 import com.Entities.Paso;
-import com.Entities.PasoPK;
 import com.Entities.Plan;
 import com.Entities.Rescatistacatastrofe;
 import com.Entities.Tipocatastrofe;
+import com.Helper.PlanUtil;
 import com.Interfaces.ICPlanes;
 
 public class CPlanes implements ICPlanes{
@@ -27,47 +25,36 @@ public class CPlanes implements ICPlanes{
 		return _dao.getTipo(ctId);
 	}
 	@Override
-	public List<Plan> getPlanes(int tipoCT) {
+	public List<PlanUtil> getPlanes(int tipoCT) {
 		return _dao.getPlanes(tipoCT);
 	}
 	@Override
 	public List<Paso> getPasos(int idPlan) {
 		return _dao.getPasos(idPlan);
 	}
-	
 	@Override
-	public int InserUpdatePlanesWithPasos(Plan plan, List<Paso> pasos) {
-		
-		PasosDAO pdao = new PasosDAO();
-		int idPlan = _dao.InsertUpdatePlan(plan);
-		if(idPlan > 0){
-			for (Paso p : pasos) {
-				PasoPK pk = new PasoPK();
-				pk.setIdPlan(idPlan);
-				p.setId(pk);
-				
-				pdao.InsertUpdatePlan(p);
-			}
-		
-		}
-		
-		return idPlan;
+	public int InserUpdatePlanesWithPasos(Plan input, List<Paso> pasos) {
+		// TODO Auto-generated method stub
+		input.setPasos(pasos);
+		return _dao.InsertUpdatePlan(input);
 	}
-	
-	public boolean UpdatePasoStep(int idPlan, int idPaso, int IdRescatista){
+	@Override
+	public boolean UpdatePasoStep(int idPlan, int idPaso, int idRescatista) {
+		// TODO Auto-generated method stub
+		boolean result = false;
 		
-		PasosDAO pdao = new PasosDAO();
-		PasoPK pk = new PasoPK();
-		Paso p = pdao.GetPasoByPK(pk);
-		if(p != null){
-			p.setEstado("1");
-			int res = pdao.InsertUpdatePlan(p);
-			if(res > 0){
-				RescatistaCatastrofeDAO rdao = new RescatistaCatastrofeDAO();
-				return rdao.DeleteRescatista(IdRescatista);
-			}
+		if(_dao.getPlanStatus(idPlan)){
+			_dao.removeRC(idRescatista);
+				Plan p = new Plan();
+					p.setEstado(1);
+					result = true;
 		}
 		
-		return false;
+		return result;
+	}
+	@Override
+	public Plan getPlan(int idPlan) {
+		// TODO Auto-generated method stub
+		return _dao.getPlan(idPlan);
 	}
 }

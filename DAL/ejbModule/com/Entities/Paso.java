@@ -14,8 +14,9 @@ import javax.persistence.*;
 public class Paso implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@EmbeddedId
-	private PasoPK id;
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int idpasos;
 
 	private String descripcion;
 
@@ -23,15 +24,20 @@ public class Paso implements Serializable {
 
 	private String nombre;
 
+	//bi-directional many-to-one association to Plan
+	@ManyToOne
+	@JoinColumn(name="idPlan")
+	private Plan plan;
+
 	public Paso() {
 	}
 
-	public PasoPK getId() {
-		return this.id;
+	public int getIdpasos() {
+		return this.idpasos;
 	}
 
-	public void setId(PasoPK id) {
-		this.id = id;
+	public void setIdpasos(int idpasos) {
+		this.idpasos = idpasos;
 	}
 
 	public String getDescripcion() {
@@ -56,6 +62,14 @@ public class Paso implements Serializable {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	public Plan getPlan() {
+		return this.plan;
+	}
+
+	public void setPlan(Plan plan) {
+		this.plan = plan;
 	}
 
 }

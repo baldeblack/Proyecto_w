@@ -2,6 +2,7 @@ package com.Entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.List;
 
 
 /**
@@ -14,7 +15,7 @@ public class Plan implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int idPlan;
 
 	private int cantidadPasos;
@@ -28,6 +29,10 @@ public class Plan implements Serializable {
 	private int idTipoPlan;
 
 	private String nombre;
+
+	//bi-directional many-to-one association to Paso
+	@OneToMany(mappedBy="plan")
+	private List<Paso> pasos;
 
 	public Plan() {
 	}
@@ -86,6 +91,28 @@ public class Plan implements Serializable {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	public List<Paso> getPasos() {
+		return this.pasos;
+	}
+
+	public void setPasos(List<Paso> pasos) {
+		this.pasos = pasos;
+	}
+
+	public Paso addPaso(Paso paso) {
+		getPasos().add(paso);
+		paso.setPlan(this);
+
+		return paso;
+	}
+
+	public Paso removePaso(Paso paso) {
+		getPasos().remove(paso);
+		paso.setPlan(null);
+
+		return paso;
 	}
 
 }
