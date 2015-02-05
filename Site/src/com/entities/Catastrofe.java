@@ -9,8 +9,12 @@ public class Catastrofe implements Serializable {
 
 	
 	private int idCatastrofe;
-
+	
 	private byte activa;
+	
+	private String apiFb;
+
+	private String apiTw;
 
 	private String carpetaImagenes;
 
@@ -46,6 +50,23 @@ public class Catastrofe implements Serializable {
 	public void setIdCatastrofe(int idCatastrofe) {
 		this.idCatastrofe = idCatastrofe;
 	}
+	
+	public String getApiFb() {
+		return this.apiFb;
+	}
+
+	public void setApiFb(String apiFb) {
+		this.apiFb = apiFb;
+	}
+
+	public String getApiTw() {
+		return this.apiTw;
+	}
+
+	public void setApiTw(String apiTw) {
+		this.apiTw = apiTw;
+	}
+	
 
 	public byte getActiva() {
 		return this.activa;

@@ -8,7 +8,6 @@ import javax.persistence.TypedQuery;
 
 import com.Entities.Catastrofe;
 import com.Entities.Tipocatastrofe;
-import com.Helper.CatastrofeMobile;
 import com.Helper.EntityManagerHelper;
 
 public class CatastrofeDAO {

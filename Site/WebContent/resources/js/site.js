@@ -5,8 +5,12 @@ function eventLost(callback){
 
 $(document).ready(function(){
 	
+var estilo_actual=document.getElementsByTagName("link")[1];
 	 LoadLostList(function(data){
+		if(estilo_actual.getAttribute("title")=='Style1.css'){
+		
 		 $('#secDesaparecidos').html(data);
+		 $('.estilo2').hide();
 		 $(".search").hide();
 			$(".lista_desaparecidos").hide();
 			$(".bton-vermas").click(function(){
@@ -44,11 +48,45 @@ $(document).ready(function(){
 			            elem.slideUp( 100 );
 			        }
 			    });
+		}
+		else
+		{
+			$('.navbar-proyecto').hide();
+			$('.estilo1').hide();
+			$('.informacion').hide();
+			$('.story').hide();
+			$('.desaparecidos_titulo').hide();
+			$('.desaparecidos').hide();
+			$('.ong_titulo').hide();
+			$('.ongs').hide();
+
+			$('.scroll-top').click(function(){
+			  $('body,html').animate({scrollTop:0},800);
+			})
+			/* smooth scrolling for scroll down */
+			$('.scroll-down').click(function(){
+			  $('body,html').animate({scrollTop:$(window).scrollTop()+800},1000);
+			})
+
+			/* highlight the top nav as scrolling occurs */
+			$('body').scrollspy({ target: '#navbar' })
+
+			$(".fancybox").fancybox({
+			        openEffect: "none",
+			        closeEffect: "none"
+		    	});
+
+			$('#carousel-example-generic').carousel({
+	    			interval: 2000
+			});
+		}
 	 });
 	 
 	 LoadOngList();
 	
 	 showData();
+	 
+	 LoadNews()
 	 
 	$('[data-toggle="tooltip"]').tooltip();
 	

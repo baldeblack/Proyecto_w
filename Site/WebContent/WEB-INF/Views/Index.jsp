@@ -69,4 +69,6 @@
 	
 	<div id="secDesaparecidos"></div>
 		
-		<div id="secOngs"></div>
+	<div id="secOngs"></div>
+		
+	<jsp:include page="noticias.jsp" />
