@@ -207,7 +207,7 @@
 							<div>
 							<div>Key Facebook :</div>
 							<div>
-								<form:input path="apiFb" required="true" />
+								<form:input path="apiFb" />
 							</div>
 							<div>
 								<form:errors path="apiFb" cssClass="error" />
@@ -216,7 +216,7 @@
 							<div>
 							<div>Key Twitter :</div>
 							<div>
-								<form:input path="apiTw" required="true" />
+								<form:input path="apiTw" />
 							</div>
 							<div>
 								<form:errors path="apiTw" cssClass="error" />
