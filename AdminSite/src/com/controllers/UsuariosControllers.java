@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import Validadores.UsuarioValidador;
 
 import com.Controllers.CCatastrofe;
+import com.Controllers.CPlanes;
 import com.Controllers.CUsuarios;
 import com.Entities.Catastrofe;
 import com.Entities.Rescatista;
@@ -29,6 +30,7 @@ import com.Entities.Rescatistacatastrofe;
 import com.Entities.TipoRescatista;
 import com.Entities.Usuario;
 import com.Interfaces.ICCatastrofe;
+import com.Interfaces.ICPlanes;
 import com.Interfaces.ICUsuarios;
 import com.controllers.ONGsController.ids;
 import com.google.gson.Gson;
@@ -185,15 +187,20 @@ public class UsuariosControllers {
 		List<RescatistaUtil> lstru = new ArrayList<RescatistaUtil>();
 		List<Rescatista> lstr = new ArrayList<Rescatista>();
 		lstu = iu.GetUsuByTipo(1);
-	
+		
+		ICPlanes ip = new CPlanes();
 		for (Usuario u: lstu){
+			Rescatistacatastrofe rct = ip.getRescatistacatastrofe(u.getIdUsuarios()) ;
+			if(rct == null){
 			Rescatista r = new Rescatista();
 			r = iu.getRescatistaByUsuID(u.getIdUsuarios());
 			r.setUsuario(u);
 			lstr.add(r);
+			}
 		}
-		
+				
 		for (Rescatista r: lstr){
+			
 			RescatistaUtil ru = new RescatistaUtil();
 			ru.setNombre(r.getUsuario().getNombre());
 			ru.setCelular(r.getUsuario().getCelular());
@@ -202,9 +209,8 @@ public class UsuariosControllers {
 			ru.setIdUsuarios(r.getUsuario().getIdUsuarios());
 			TipoRescatista ti = iu.getTipoByID(r.getIdTipoRescatista());
 			ru.setTipoRescatista(ti.getNombre());
-			lstru.add(ru);
-		}
-		
+			lstru.add(ru);		
+		}		
 		
 		RescatistaModel rMod = new RescatistaModel();
 		rMod.setCtNombre(c.getNombre());
@@ -233,15 +239,20 @@ public class UsuariosControllers {
 		List<RescatistaUtil> lstru = new ArrayList<RescatistaUtil>();
 		List<Rescatista> lstr = new ArrayList<Rescatista>();
 		lstu = iu.GetUsuByTipo(1);
-	
+		ICPlanes ip = new CPlanes();
+		
 		for (Usuario u: lstu){
+			Rescatistacatastrofe rct = ip.getRescatistacatastrofe(u.getIdUsuarios()) ;
+			if(rct == null){
 			Rescatista r = new Rescatista();
 			r = iu.getRescatistaByUsuID(u.getIdUsuarios());
 			r.setUsuario(u);
 			lstr.add(r);
+			}
 		}
 		
-		for (Rescatista r: lstr){
+		
+		for (Rescatista r: lstr){			
 			RescatistaUtil ru = new RescatistaUtil();
 			ru.setNombre(r.getUsuario().getNombre());
 			ru.setCelular(r.getUsuario().getCelular());

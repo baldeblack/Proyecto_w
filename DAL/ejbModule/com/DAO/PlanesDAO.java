@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
@@ -54,10 +55,16 @@ public class PlanesDAO {
 		}
 		
 		public Rescatistacatastrofe getRescatistacatastrofe(int idUsr){
-			Rescatistacatastrofe result; 
-			Query query =_eManager.createQuery("Select c From Rescatistacatastrofe c Where c.idrescatista =?1 ", Rescatistacatastrofe.class);
-			query.setParameter(1, idUsr);	
-			result = (Rescatistacatastrofe)query.getSingleResult();
+			Rescatistacatastrofe result = null; 
+			
+			try {				
+				Query query =_eManager.createQuery("Select c From Rescatistacatastrofe c Where c.idrescatista =?1 ", Rescatistacatastrofe.class);
+				query.setParameter(1, idUsr);	
+				result = (Rescatistacatastrofe)query.getSingleResult();
+			} catch (NoResultException e) {
+				return result;
+			}
+			
 			return result;
 			
 		}
