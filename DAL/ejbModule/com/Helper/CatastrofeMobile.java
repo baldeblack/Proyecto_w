@@ -2,7 +2,7 @@ package com.Helper;
 
 import java.util.Date;
 
-import org.picketbox.commons.cipher.Base64;
+import org.apache.commons.codec.binary.Base64;
 
 import com.Entities.Catastrofe;
 
@@ -55,7 +55,8 @@ public class CatastrofeMobile {
 		fechaCreacion = c.getFechaCreacion();
 		fuentesDatos = c.getFuentesDatos();
 		informacion = c.getInformacion();
-		logo = Base64.encodeBytes(c.getLogo());
+		logo = Base64.encodeBase64String(c.getLogo());
+		//logo = Base64.encodeBytes(c.getLogo());
 		nombre = c.getNombre();
 		palabrasClaves = c.getPalabrasClaves();
 		stringConeccion = c.getStringConeccion();

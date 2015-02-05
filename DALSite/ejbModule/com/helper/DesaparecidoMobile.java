@@ -2,9 +2,7 @@ package com.helper;
 
 import java.util.Date;
 
-
-
-import org.picketbox.commons.cipher.Base64;
+import org.apache.commons.codec.binary.Base64;
 
 import com.entities.Desaparecido;
 
@@ -48,7 +46,7 @@ public class DesaparecidoMobile {
 		edad = d.getEdad();
 		estadoBusqueda = d.getEstadoBusqueda();
 		fechaDesaparicion = d.getFechaDesaparicion();
-		foto = Base64.encodeBytes(d.getFoto());
+		foto = Base64.encodeBase64String(d.getFoto());
 		idUsuarioReportado = d.getIdUsuarioReportado();
 		nombre  = d.getNombre();
 		nombreContacto = d.getNombreContacto();

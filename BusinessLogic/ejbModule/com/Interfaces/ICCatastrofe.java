@@ -4,11 +4,14 @@ import java.util.List;
 
 import com.Entities.Catastrofe;
 import com.Entities.Tipocatastrofe;
+import com.Helper.CatastrofeLight;
 import com.Helper.CatastrofeMobile;
 
 public interface ICCatastrofe {
 
 	List<Catastrofe> getAllCatastrofes();
+	
+	List<CatastrofeLight> getAllCatastrofesLight();
 	
 	Catastrofe GetCatastrofeByDomain(String domain);
 	

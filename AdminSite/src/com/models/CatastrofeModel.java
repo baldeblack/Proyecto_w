@@ -90,9 +90,9 @@ public class CatastrofeModel {
 		this.palabrasList = new ArrayList<String>();
 		this.fuenteDedatosMod = new ArrayList<String>();
 		this.imagenes = new ArrayList<imagenShow>();
-		this.fuenteDedatos.add("youTube");
-		this.fuenteDedatos.add("Twitter");
-		this.fuenteDedatos.add("RSS");
+		fuenteDedatos.add("www.youtube.com");
+		fuenteDedatos.add("www.cnn.com");
+		fuenteDedatos.add("www.soychile.cl");
 
 		String[] partsFuentes = c.getFuentesDatos().split(";");
 		for (String fuente : partsFuentes) {

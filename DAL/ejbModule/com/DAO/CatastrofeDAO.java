@@ -1,5 +1,6 @@
 package com.DAO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -8,6 +9,7 @@ import javax.persistence.TypedQuery;
 
 import com.Entities.Catastrofe;
 import com.Entities.Tipocatastrofe;
+import com.Helper.CatastrofeLight;
 import com.Helper.EntityManagerHelper;
 
 public class CatastrofeDAO {
@@ -31,9 +33,9 @@ public class CatastrofeDAO {
 	public Catastrofe GetCatastrofeByDomain(String domain){
 		Catastrofe result = null;
 		try {
-		Query query =_eManager.createQuery("Select c From Catastrofe c Where c.Dominio =?1 and c.Activa =?2", Catastrofe.class);
+		Query query =_eManager.createQuery("Select c From Catastrofe c Where c.dominio =?1", Catastrofe.class);
 		query.setParameter(1, domain);
-		query.setParameter(2, 1);
+		//query.setParameter(2, 1);
 		result = (Catastrofe)query.getSingleResult();
 		} catch (Exception e) {
 			throw e;
@@ -131,5 +133,26 @@ public class CatastrofeDAO {
 			  List<Tipocatastrofe> results = query.getResultList();
 			  return results;
 	}
+	
+
+	public List<CatastrofeLight> GetAllCatastrofesLight() {
+		List<CatastrofeLight> result = new ArrayList<CatastrofeLight>();
+		try {
+			TypedQuery<Catastrofe> query =_eManager.createQuery("Select c From Catastrofe c", Catastrofe.class);
+			List<Catastrofe>resultado = query.getResultList();
+			
+			for (Catastrofe u: resultado){
+                CatastrofeLight r = new CatastrofeLight(u);
+                result.add(r);
+			}
+		
+		
+		
+		} catch (Exception e) {
+			throw e;
+		}
+		return result;
+	}
+
 
 }
