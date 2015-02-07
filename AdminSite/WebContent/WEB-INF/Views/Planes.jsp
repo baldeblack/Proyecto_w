@@ -12,6 +12,8 @@
 	src="<c:url value="/resources/planes.js" />"></script>
 <link href="<c:url value="/resources/css/bootstrap.css"/>"
 	rel="stylesheet" type="text/css" />
+		<link href="<c:url value="/resources/css/font-awesome.css"/>"
+	rel="stylesheet" type="text/css" />
 <link href="<c:url value="/resources/css/proyecto.css"/>"
 	rel="stylesheet" type="text/css" />
 <style>
@@ -63,29 +65,21 @@
 					<ul class="dropdown-menu">
 						<li class="divider"></li>
 						<li><a href="/BackOffice/dologout"><i
-								class="fa fa-fw fa-power-off"></i> Cerrar Sesion</a></li>
+								class="fa fa-power-off"></i> Cerrar Sesion</a></li>
 					</ul></li>
 			</ul>
 
 			<!-- MENU VERTICAL -->
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 				<ul class="nav navbar-nav side-nav">
-					<li><a href="/BackOffice/catastrofes"><i
-							class="fa fa-fw fa-file"></i> Lista Catastrofe</a></li>
-					<li><a href="/BackOffice/usuarios"><i
-							class="fa fa-fw fa-file"></i> Lista Usuarios</a></li>
-					<li><a href="/BackOffice/ongs"><i class="fa fa-fw fa-file"></i>
-							Lista ONGs</a></li>
-					<li><a href="/BackOffice/ongs/create"><i
-							class="fa fa-fw fa-file"></i> Alta Ong's</a></li>
-					<li><a href="/BackOffice/usuarios/create"><i
-							class="fa fa-fw fa-file"></i> Alta Usuarios</a></li>
-					<li><a href="/BackOffice/catastrofes/create"><i
-							class="fa fa-fw fa-file"></i> Alta Catastrofe</a></li>
-					<li><a href="/BackOffice/rpt"><i class="fa fa-fw fa-file"></i>Reportes
-							en el tiempo</a></li>
-					<li><a href="/BackOffice/planes/create"><i class="fa fa-fw fa-file"></i>Alta
-							Plan</a></li>
+					<li><a href="/BackOffice/catastrofes"><i class="fa fa-list"></i> Lista Catastrofe</a></li>
+					<li><a href="/BackOffice/usuarios"><i class="fa fa-list"></i> Lista Usuarios</a></li>
+					<li><a href="/BackOffice/ongs"><i class="fa fa-list"></i> Lista ONGs</a></li>
+					<li><a href="/BackOffice/ongs/create"><i class="fa fa-plus-square"></i> Alta Ong's</a></li>
+					<li><a href="/BackOffice/usuarios/create"><i class="fa fa-plus-square"></i> Alta Usuarios</a></li>
+					<li><a href="/BackOffice/catastrofes/create"><i class="fa fa-plus-square"></i> Alta Catastrofe</a></li>	
+					<li><a href="/BackOffice/planes/create"><i class="fa fa-plus-square"></i> Alta Plan</a></li>
+					<li><a href="/BackOffice/rpt"><i class="fa fa-file"></i> Reportes en el tiempo</a></li>
 				</ul>
 			</div>
 		</nav>

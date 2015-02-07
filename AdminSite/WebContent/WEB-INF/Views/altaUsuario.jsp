@@ -4,25 +4,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Usuario</title>
-<script type="text/javascript"
-	src="<c:url value="/resources/js/jquery.js" />"></script>
+
+<script type="text/javascript" src="<c:url value="/resources/js/jquery.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/bootstrap.js" />"></script>
-<script type="text/javascript"
-	src="<c:url value="/resources/js/jquery.dataTables.js" />"></script>
-<script type="text/javascript"
-	src="<c:url value="/resources/js/dataTables.tableTools.js" />"></script>
-<script type="text/javascript"
-	src="<c:url value="/resources/js/dataTables.bootstrap.js" />"></script>
-<script type="text/javascript"
-	src="http://maps.google.com/maps/api/js?sensor=false&libraries=drawing"></script>
-<script type="text/javascript"
-	src="<c:url value="/resources/altausuario.js" />"> </script>
-<link href="<c:url value="/resources/css/bootstrap.css"/>"
-	rel="stylesheet" type="text/css" />
-<link href="<c:url value="/resources/css/proyecto.css"/>"
-	rel="stylesheet" type="text/css" />
-<link href="<c:url value="/resources/css/dataTables.bootstrap.css"/>"
-	rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<c:url value="/resources/js/jquery.dataTables.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/dataTables.tableTools.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/dataTables.bootstrap.js" />"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&libraries=drawing"></script>
+<script type="text/javascript" src="<c:url value="/resources/altausuario.js" />"> </script>
+<link href="<c:url value="/resources/css/bootstrap.css"/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value="/resources/css/proyecto.css"/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value="/resources/css/font-awesome.css"/>" rel="stylesheet" type="text/css" />
+<link href="<c:url value="/resources/css/dataTables.bootstrap.css"/>" rel="stylesheet" type="text/css" />
+
 </head>
 <body>
 	<div id="contenedor_web">
@@ -43,7 +37,7 @@
 						<b class="caret"></b></a>
 					<ul class="dropdown-menu">					
 						<li class="divider"></li>
-						<li><a href="/BackOffice/dologout"><i class="fa fa-fw fa-power-off"></i>
+						<li><a href="/BackOffice/dologout"><i class="fa fa-power-off"></i>
 								Cerrar Sesion</a></li>
 					</ul></li>
 			</ul>

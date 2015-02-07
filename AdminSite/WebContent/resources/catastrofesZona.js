@@ -1,6 +1,7 @@
 
 var palabrasCont = 0;
 var FilCont = 0;
+var map;
 
 var drawingManager;
       var selectedShape;
@@ -111,7 +112,7 @@ var drawingManager;
     		$('#PalabrasInput').click(function(){
     			if(palabrasCont < 5){
     		          	 $('#PalabrasDiv').append(
-    		      	             '<div class="palabraContainer"><input type="text" name="palabrasList[0]" ondblclick="deletePalabras(this)"/>'+
+    		      	             '<div class="palabraContainer"><input class="form-control" type="text" name="palabrasList[0]" ondblclick="deletePalabras(this)"/>'+
     		      	             '</div>');
     						var ind = 0;
     						$('#PalabrasDiv input').each(function(){    		  
@@ -127,7 +128,7 @@ var drawingManager;
     			 return false;
     			})
     			    	  
-        var map = new google.maps.Map(document.getElementById('map'), {
+         map = new google.maps.Map(document.getElementById('map'), {
           zoom: 10,
           center: new google.maps.LatLng(-34.7506398050501, -56.1785888671875),
           mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -256,7 +257,7 @@ var drawingManager;
         google.maps.event.addListener(map, 'click', clearSelection);
         google.maps.event.addDomListener(document.getElementById('delete-button'), 'click', deleteModShape);
         google.maps.event.addDomListener(document.getElementById('delete-button'), 'click', deletedrawedShape);
-        buildColorPalette();       
+   
         
       }
       
@@ -347,3 +348,8 @@ var drawingManager;
 			} 
 			 return false;
 			}
+		
+		function rezice(){
+			google.maps.event.trigger(map, "resize");
+		}
+		

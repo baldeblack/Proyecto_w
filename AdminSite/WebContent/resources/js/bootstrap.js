@@ -1976,7 +1976,7 @@ if (typeof jQuery === 'undefined') {
 
   var Tab = function (element) {
     this.element = $(element)
-  }
+     }
 
   Tab.VERSION = '3.3.0'
 
