@@ -277,7 +277,7 @@
 							if ($(this).css('display') != 'none'){					
 								if(defaults.ignoreColumn.indexOf(index) == -1){
 									var colPosition = startColPosition+ (index * 100);									
-									doc.text(colPosition,20, parseString($(this)));
+									doc.text(colPosition,60, parseString($(this)));
 								}
 							}
 						});									
@@ -285,7 +285,7 @@
 				
 				
 					// Row Vs Column
-					var startRowPosition = 20; var page =1;var rowPosition=0;
+					var startRowPosition = 60; var page =1;var rowPosition=0;
 					$(el).find('tbody').find('tr').each(function(index,data) {
 						rowCalc = index+1;
 						
@@ -309,8 +309,10 @@
 					});					
 										
 					// Output as Data URI
-					//doc.output('datauri');
-					doc.save('uso.pdf');
+					//doc.output('datauri');	
+					doc.setFontSize(20);
+					doc.text(40, 25, tipoRpt + ' de ' + sitio + '.');
+					doc.save(tipoRpt + ' de ' + sitio + '.pdf');
 				}
 				
 				
