@@ -49,7 +49,7 @@
 
 
 <body>
-	<div id="contenedor_web">
+	<div class="contenedor-header">
 		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 
 			<div class="navbar-header">
@@ -58,132 +58,132 @@
 					<span class="sr-only">Menu</span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span> <span class="icon-bar"></span>
 				</button>
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex2-collapse">
+                    <span>User</span> 
+                </button>
 				<a class="navbar-brand" href="">Backend</a>
 			</div>
-
-			<ul class="nav navbar-right top-nav">
-				<li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown"><i class="fa fa-user"></i>
-						${sessionScope.user.nick} <b class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li class="divider"></li>
-						<li><a href="/BackOffice/dologout"><i
-								class="fa fa-power-off"></i> Cerrar Sesion</a></li>
-					</ul></li>
-			</ul>
-
+			
+			<div class="collapse navbar-collapse navbar-ex2-collapse">
+				<!-- <h2 class="navbar-text">Crear Plan</h2>-->
+				<ul class="nav navbar-right top-nav">
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown"><i class="fa fa-user"></i>
+							${sessionScope.user.nick} <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li class="divider"></li>
+							<li><a href="/BackOffice/dologout"><i
+									class="fa fa-power-off"></i> Cerrar Sesion</a></li>
+						</ul></li>
+				</ul>
+			</div>
+			
 			<!-- MENU VERTICAL -->
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 				<ul class="nav navbar-nav side-nav">
-					<li><a href="/BackOffice/catastrofes"><i
-							class="fa fa-list"></i> Lista Catastrofe</a></li>
-					<li><a href="/BackOffice/usuarios"><i class="fa fa-list"></i>
-							Lista Usuarios</a></li>
-					<li><a href="/BackOffice/ongs"><i class="fa fa-list"></i>
-							Lista ONGs</a></li>
-					<li><a href="/BackOffice/ongs/create"><i
-							class="fa fa-plus-square"></i> Alta Ong's</a></li>
-					<li><a href="/BackOffice/usuarios/create"><i
-							class="fa fa-plus-square"></i> Alta Usuarios</a></li>
-					<li><a href="/BackOffice/catastrofes/create"><i
-							class="fa fa-plus-square"></i> Alta Catastrofe</a></li>
-					<li><a href="/BackOffice/planes/create"><i
-							class="fa fa-plus-square"></i> Alta Plan</a></li>
-					<li><a href="/BackOffice/rpt"><i class="fa fa-file"></i>
-							Reportes en el tiempo</a></li>
+					<li><a href="/BackOffice/catastrofes"><i class="fa fa-list"></i> Lista Catastrofe</a></li>
+					<li><a href="/BackOffice/usuarios"><i class="fa fa-list"></i> Lista Usuarios</a></li>
+					<li><a href="/BackOffice/ongs"><i class="fa fa-list"></i> Lista ONGs</a></li>
+					<li><a href="/BackOffice/ongs/create"><i class="fa fa-plus-square"></i> Alta Ong's</a></li>
+					<li><a href="/BackOffice/usuarios/create"><i class="fa fa-plus-square"></i> Alta Usuarios</a></li>
+					<li><a href="/BackOffice/catastrofes/create"><i class="fa fa-plus-square"></i> Alta Catastrofe</a></li>	
+					<li><a href="/BackOffice/planes/create"><i class="fa fa-plus-square"></i> Alta Plan</a></li>
+					<li><a href="/BackOffice/rpt"><i class="fa fa-file"></i> Reportes</a></li>
 				</ul>
 			</div>
 		</nav>
-
-		<div id="contenedor_web_contenido">
-			<div id="radios">
-				<input type="radio" id="usoRbt" name="usoRbt" value="fle"
-					checked="checked">Uso sitio<br> <input type="radio"
-					id="donRbt" name="donRbt" value="m">Donaciones en el
-				tiempo.<br> <input type="radio" id="pedRbt" name="pedRbt"
-					value="fe">Pedido de ayuda en el tiempo<br>
-			</div>
-			<div id="selectDiv" class="form-group">
-				<select id="select" name="Catastrofes">
-					<c:if test="${not empty ReporteModel.lstCT}">
-						<option value="g" selected="selected">General</option>
-						<c:forEach var="sis" items="${ReporteModel.lstCT}" varStatus="i">
-							<option value="${sis.idCatastrofe}">${sis.nombre}</option>
-
-						</c:forEach>
-
-					</c:if>
-
-				</select>
-			</div>
-			<div id="dateDiv" class="form-group">
-				<input id="start" type="date" name="start" class="form-control"
-					required> <input id="end" type="date" name="end"
-					class="form-control" required>
-			</div>
-			<div class="row">
-				<div class="col-md-12">
-
-					<div class="box">
-
-						<div class="box-body table-responsive" id='ptable'>
-							<div id="exportdp" class="btn-group">
-								<button class="btn btn-warning btn-sm dropdown-toggle"
-									data-toggle="dropdown">
-									<i class="fa fa-bars"></i>Exportar
-								</button>
-								<ul class="dropdown-menu " role="menu">
-
-									<li class="tableMenu"><a id="ecsv" href="#"
-										onClick="exportT(this)"> <img
-											src='resources/images/csv.png' width='24px'> CSV
-									</a></li>
-									<li class="divider"></li>
-
-									<li class="tableMenu"><a id="exls" href="#"
-										onClick="exportT(this)"> <img
-											src='resources/images/xls.png' width='24px'> XLS
-									</a></li>
-									<li class="divider"></li>
-
-									<li class="tableMenu"><a id="epng" href="#"
-										onClick="exportT(this)"> <img
-											src='resources/images/png.png' width='24px'> PNG
-									</a></li>
-									<li class="divider"></li>
-
-									<li class="tableMenu"><a id="epdf" href="#"
-										onClick="exportT(this)"> <img
-											src='resources/images/pdf.png' width='24px'> PDF
-									</a></li>
-
-									<li class="chartMenu"><a id="eChartpng" href="#"
-										onClick="exportChart(this)"> <img
-											src='resources/images/png.png' width='24px'> PNG
-									</a></li>
-									<li class="divider chart"></li>
-									<li class="chartMenu"><a id="eChartpdf" href="#"
-										onClick="exportChart(this)"> <img
-											src='resources/images/pdf.png' width='24px'> PDF
-									</a></li>
-								</ul>
-
-							</div>
-
-							<div id="rptContainer"></div>
-
-						</div>
-						<!-- /.box-body -->
-
+		<div class="row">
+			<div class="contenido"><br>
+        		<div class="col-md-12"><br>
+					<div id="radios">
+						<input type="radio" id="usoRbt" name="usoRbt" value="fle"
+							checked="checked">Uso sitio<br> <input type="radio"
+							id="donRbt" name="donRbt" value="m">Donaciones en el
+						tiempo.<br> <input type="radio" id="pedRbt" name="pedRbt"
+							value="fe">Pedido de ayuda en el tiempo<br>
 					</div>
-					<!-- /.box -->
-
-
+					<div id="selectDiv" class="form-group">
+						<select id="select" name="Catastrofes">
+							<c:if test="${not empty ReporteModel.lstCT}">
+								<option value="g" selected="selected">General</option>
+								<c:forEach var="sis" items="${ReporteModel.lstCT}" varStatus="i">
+									<option value="${sis.idCatastrofe}">${sis.nombre}</option>
+		
+								</c:forEach>
+		
+							</c:if>
+		
+						</select>
+					</div>
+					<div id="dateDiv" class="form-group">
+						<input id="start" type="date" name="start" class="form-control"
+							required> <input id="end" type="date" name="end"
+							class="form-control" required>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+		
+							<div class="box">
+		
+								<div class="box-body table-responsive" id='ptable'>
+									<div id="exportdp" class="btn-group">
+										<button class="btn btn-warning btn-sm dropdown-toggle"
+											data-toggle="dropdown">
+											<i class="fa fa-bars"></i>Exportar
+										</button>
+										<ul class="dropdown-menu " role="menu">
+		
+											<li class="tableMenu"><a id="ecsv" href="#"
+												onClick="exportT(this)"> <img
+													src='resources/images/csv.png' width='24px'> CSV
+											</a></li>
+											<li class="divider"></li>
+		
+											<li class="tableMenu"><a id="exls" href="#"
+												onClick="exportT(this)"> <img
+													src='resources/images/xls.png' width='24px'> XLS
+											</a></li>
+											<li class="divider"></li>
+		
+											<li class="tableMenu"><a id="epng" href="#"
+												onClick="exportT(this)"> <img
+													src='resources/images/png.png' width='24px'> PNG
+											</a></li>
+											<li class="divider"></li>
+		
+											<li class="tableMenu"><a id="epdf" href="#"
+												onClick="exportT(this)"> <img
+													src='resources/images/pdf.png' width='24px'> PDF
+											</a></li>
+		
+											<li class="chartMenu"><a id="eChartpng" href="#"
+												onClick="exportChart(this)"> <img
+													src='resources/images/png.png' width='24px'> PNG
+											</a></li>
+											<li class="divider chart"></li>
+											<li class="chartMenu"><a id="eChartpdf" href="#"
+												onClick="exportChart(this)"> <img
+													src='resources/images/pdf.png' width='24px'> PDF
+											</a></li>
+										</ul>
+		
+									</div>
+		
+									<div id="rptContainer"></div>
+		
+								</div>
+								<!-- /.box-body -->
+		
+							</div>
+							<!-- /.box -->
+		
+		
+						</div>
+						<!-- /.col -->
+		
+					</div>
 				</div>
-				<!-- /.col -->
-
 			</div>
-
 		</div>
 	</div>
 </body>

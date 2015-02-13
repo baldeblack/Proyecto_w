@@ -1,16 +1,34 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <link href="<c:url value="/resources/css/bootstrap.css"/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value="/resources/css/proyecto.css"/>" rel="stylesheet" type="text/css" />
+<!-- <link href="<c:url value="/resources/css/proyecto.css"/>" rel="stylesheet" type="text/css" />-->
 <link href="<c:url value="/resources/css/font-awesome.css"/>" rel="stylesheet" type="text/css" />
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>NO ACCESS</title>
 
 <style type="text/css">
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300|Oswald:300,400:latin,latin-ext);
+
+body{
+
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    
+	background:
+	linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+	linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+	linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+	linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+	linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+	linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+	background-color: #131313;
+	background-size: 20px 20px;
+}
 
 .icono_error{
 	font-size: 250px;
