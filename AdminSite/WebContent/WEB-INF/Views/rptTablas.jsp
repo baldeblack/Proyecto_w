@@ -3,12 +3,12 @@
 <html>
 <head>
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	src="resources/reportes/required/jquery.min.js"></script>
 <script type="text/javascript" async=""
-	src="http://www.google-analytics.com/ga.js"></script>
-<script id="twitter-wjs" src="http://platform.twitter.com/widgets.js"></script>
+	src="resources/reportes/required/ga.js"></script>
+<script id="twitter-wjs" src="resources/reportes/required/widgets.js"></script>
 <script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	src="resources/reportes/required/bootstrap.min.js"></script>
 
 <script type="text/javascript" src="resources/reportes/tableExport.js"></script>
 <script type="text/javascript" src="resources/reportes/jquery.base64.js"></script>
@@ -42,9 +42,8 @@
 <link href="<c:url value="/resources/css/proyecto.css"/>"
 	rel="stylesheet" type="text/css" />
 
-
-<link rel="stylesheet" media="all"
-	href="https://s3.amazonaws.com/dynatable-docs-assets/css/jquery.dynatable.css" />
+<link href="<c:url value="resources/reportes/required/jquery.dynatable.css"/>"
+	rel="stylesheet" type="text/css" />
 
 </head>
 
