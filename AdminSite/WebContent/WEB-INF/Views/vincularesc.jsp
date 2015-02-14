@@ -62,17 +62,27 @@
 			</div>
 		</nav>
 		<div class="row">
-			<h1>${RescatistaModel.ctNombre}ONGs</h1>
-			<input type="hidden" id="idCt" name="idCt"
-				value="${RescatistaModel.idCt}" /> 
-				 <input id="add" type="button" name="add" value="Agregar" />
-
-			<div id="tableContainer" style="width: 500px, height:500px">
-				<div id="table"></div>
+			<div class="contenido"><br>
+        		<div class="col-md-12"><br>
+		            <div class="panel panel-primary">
+		                <div class="panel-heading">${RescatistaModel.ctNombre}ONGs</div>
+		                <div class="panel-body">
+							<input type="hidden" id="idCt" name="idCt"
+								value="${RescatistaModel.idCt}" /> 
+							<input id="add" type="button" name="add" value="Agregar" />
+				
+							<div id="tableContainer" style="width: 500px, height:500px">
+								<div id="table"></div>
+							</div>
+				
+							<input type="hidden" id="jsonTable"
+								value="${RescatistaModel.jsonData}" /> 
+						</div>
+					</div>
+				</div>
 			</div>
+				
 
-			<input type="hidden" id="jsonTable"
-				value="${RescatistaModel.jsonData}" /> 
 		</div>
 
 	</div>

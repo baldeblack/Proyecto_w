@@ -266,6 +266,26 @@
 			                      </div>
 			                  </div>
 			                  <div class="col-md-6">
+				                  	<div class="form-group">
+				                  		<label for="tiposrescatistas">Tipo Rescatista</label>
+				                        <form:select path="tiporescatisa" id="tiposrescatistas" multiple="false" size="1" class="form-control">
+											<c:forEach var="rt" varStatus="i"
+											items="${UsuariosModel.tiposrescatistas}">
+											<c:choose>
+											<c:when
+											test="${rt.nombre eq UsuariosModel.tiporescatisa.nombre}">
+											<option value="${rt.idTipoRescatista}" selected="true">${rt.nombre}</option>
+											</c:when>
+											<c:otherwise>
+											<option value="${rt.idTipoRescatista}">${rt.nombre}</option>
+											</c:otherwise>
+											</c:choose>
+											</c:forEach>
+										</form:select>
+		
+				                      	
+				                    </div>
+		                  
 			                      <div id="map_container" style="width: 500px; height: 500px;"></div>
 			                      <input type="hidden" name="lat" id="lat">
 			                      <input type="hidden" name="long" id="long">
