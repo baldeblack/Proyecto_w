@@ -7,14 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Ong's Catastrofe</title>
 
-<script type="text/javascript" src="<c:url value="/resources/js/jquery.js" />"></script>
-<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-<script type="text/javascript" src="<c:url value="/resources/vinculasOngs.js" />"> </script>
-
-<link href="<c:url value="/resources/css/bootstrap.css"/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value="/resources/css/font-awesome.css"/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value="/resources/css/proyecto.css"/>" rel="stylesheet" type="text/css" />
-<link href="<c:url value="/resources/css/dataTables.bootstrap.css"/>" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="<c:url value="/resources/js/jquery.js" />"></script>
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript" src="<c:url value="/resources/vinculasOngs.js" />"> </script>
+	
+	<link href="<c:url value="/resources/css/bootstrap.css"/>" rel="stylesheet" type="text/css" />
+	<link href="<c:url value="/resources/css/font-awesome.css"/>" rel="stylesheet" type="text/css" />
+	<link href="<c:url value="/resources/css/proyecto.css"/>" rel="stylesheet" type="text/css" />
+	<link href="<c:url value="/resources/css/dataTables.bootstrap.css"/>" rel="stylesheet" type="text/css" />
+	<link href="<c:url value="/resources/css/animate.css"/>" rel="stylesheet" type="text/css" />
 
 </head>
 <body>
@@ -62,9 +63,12 @@
 			</div>
 		</nav>
         <div class="row">
+        	<div class="notification ">
+	          
+	        </div>
           <div class="contenido"><br>
         	<div class="col-md-12"><br>
-        		<div class="panel panel-primary">
+        		<div class="panel panel-primary ani_panel animated bounceInUp">
 		              <div class="panel-heading">${ongCatastofeModel.ctNombre}ONGs</div>
 		                <div class="panel-body">
 

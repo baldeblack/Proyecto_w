@@ -11,6 +11,8 @@
 	<script type="text/javascript" src="<c:url value="/resources/js/bootstrap.js" />"></script>
 	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&libraries=drawing"></script>
 	<script type="text/javascript" src="<c:url value="/resources/catastrofesZona.js" />">
+	
+	
 		
 	</script>
 	<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
@@ -24,6 +26,7 @@
 	<link href="<c:url value="/resources/css/bootstrap.css"/>" rel="stylesheet" type="text/css" />
 	<link href="<c:url value="/resources/css/font-awesome.css"/>" rel="stylesheet" type="text/css" />
 	<link href="<c:url value="/resources/css/proyecto.css"/>" rel="stylesheet" type="text/css" />
+	<link href="<c:url value="/resources/css/animate.css"/>" rel="stylesheet" type="text/css" />
 
 <style type="text/css">
 
@@ -171,15 +174,20 @@
 			</div>
 		</nav>
 		<div class="row">
+			<div class="notification ">
+	          
+	        </div>
+			
 			<div class="contenido">
                 <br>
 				<!-- <h1>Alta Catastrofe</h1>-->
-
+				<!-- <a href="#" class="btn btn-danger btn-lg " onclick='message("Error - Error 303 :(","error");'> Error </a>-->
 				<form:form method="POST" action="/BackOffice/catastrofes/save"
 					commandName="CatastrofeModel" enctype="multipart/form-data">
 					<form:errors path="*" cssClass="errorblock" element="div" />
-					<div class="panel with-nav-tabs panel-primary">
+					<div class="panel with-nav-tabs panel-primary ani_panel animated bounceInUp">
                 	  <div class="panel-heading">
+                	 
 						<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
 					        <li class="active"><a href="#general" data-toggle="tab">General</a></li>
 					        <li><a href="#ubicacion"  data-toggle="tab">Ubicacion</a></li>
@@ -189,12 +197,13 @@
 					    </ul>
 					  </div>
 					
-					  <div class="panel-body">				 
+					  <div class="panel-body ">				 
 					    <div id="my-tab-content" class="tab-content">
 					        <div class="tab-pane active" id="general">
 				      		 	<div class="col-md-6">
 				      				<div class="form-group">
 										<label>Nombre :</label>
+										
 										<div>
 											<form:input class="form-control" path="nombre" required="true" />
 										</div>
@@ -446,7 +455,8 @@
 									<div class="form-group">
 										<input type="submit" class="btn btn-lg btn-success" name="action"
 											value="${CatastrofeModel.action}" />
-									</div>								
+									</div>
+																	
 								</div>		
 							</div>
 					    </div>

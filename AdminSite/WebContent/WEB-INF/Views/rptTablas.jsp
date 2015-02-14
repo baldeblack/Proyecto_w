@@ -44,6 +44,7 @@
 
 <link href="<c:url value="resources/reportes/required/jquery.dynatable.css"/>"
 	rel="stylesheet" type="text/css" />
+	<link href="<c:url value="/resources/css/animate.css"/>" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -93,6 +94,9 @@
 			</div>
 		</nav>
 		<div class="row">
+			<div class="notification ">
+	          
+	        </div>
 			<div class="contenido"><br>
         		<div class="col-md-12"><br>
 					<div id="radios">

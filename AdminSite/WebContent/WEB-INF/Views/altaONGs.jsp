@@ -12,6 +12,7 @@
 	<link href="<c:url value="/resources/css/bootstrap.css"/>" rel="stylesheet" type="text/css" />
 	<link href="<c:url value="/resources/css/font-awesome.css"/>" rel="stylesheet" type="text/css" />
 	<link href="<c:url value="/resources/css/proyecto.css"/>" rel="stylesheet" type="text/css" />
+    <link href="<c:url value="/resources/css/animate.css"/>" rel="stylesheet" type="text/css" />
 	<script type="text/javascript" >
 	 	jQuery(document).ready(function($) {	
 			
@@ -67,6 +68,9 @@
 			</div>
 		</nav>
         <div class="row">
+        	<div class="notification ">
+	          
+	        </div>
         	<div class="contenido">
 				<br>
  <!--<form:form method="POST" action="/BackOffice/ongs/save" commandName="OngModel"> 
@@ -119,7 +123,7 @@
          
          
          		<div class="col-md-12"><br>
-		            <div class="panel panel-primary">
+		            <div class="panel panel-primary ani_panel animated bounceInUp">
 		                <div class="panel-heading">Alta ONGs</div>
 		                <div class="panel-body">
 		                	<form:form method="POST" action="/BackOffice/ongs/save" commandName="OngModel">
