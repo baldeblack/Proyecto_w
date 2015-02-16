@@ -9,40 +9,16 @@
 	
 	<script type="text/javascript" src="<c:url value="/resources/js/jquery.js" />"></script>
 	<script type="text/javascript" src="<c:url value="/resources/js/bootstrap.js" />"></script>
-	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&libraries=drawing"></script>
-	<script type="text/javascript" src="<c:url value="/resources/catastrofesZona.js" />">
 	
-	
-		
-	</script>
-	<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
-		
-	</script>
-	<script type="text/javascript">
-		_uacct = "UA-162157-1";
-		urchinTracker();
-	</script>
-
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&signed_in=true&libraries=places,drawing"></script>
+	<script type="text/javascript" src="<c:url value="/resources/catastrofesZona.js" />"></script>
+	<script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>	
 	<link href="<c:url value="/resources/css/bootstrap.css"/>" rel="stylesheet" type="text/css" />
 	<link href="<c:url value="/resources/css/font-awesome.css"/>" rel="stylesheet" type="text/css" />
 	<link href="<c:url value="/resources/css/proyecto.css"/>" rel="stylesheet" type="text/css" />
 	<link href="<c:url value="/resources/css/animate.css"/>" rel="stylesheet" type="text/css" />
 
 <style type="text/css">
-
-/*
-#panel {
-	width: 800px;
-	font-family: Arial, sans-serif;
-	font-size: 13px;
-	float: right;
-	margin: 10px;
-}*/
-/*
-#color-palette {
-	clear: both;
-}
-*/
 #panel_color {
 	display: absolute;
 	float:righ;
@@ -126,6 +102,53 @@
 	/*border: 1px solid #D1D1D1;
 	background-color: #00F;*/
 }
+
+     .controls {
+        margin-top: 16px;
+        border: 1px solid transparent;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        height: 32px;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      }
+
+      #pac-input {
+        background-color: #fff;
+        padding: 0 11px 0 13px;
+        width: 400px;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        text-overflow: ellipsis;
+      }
+
+      #pac-input:focus {
+        border-color: #4d90fe;
+        margin-left: -1px;
+        padding-left: 14px;  /* Regular padding-left + 1. */
+        width: 401px;
+      }
+
+      .pac-container {
+        font-family: Roboto;
+      }
+
+      #type-selector {
+        color: #fff;
+        background-color: #4d90fe;
+        padding: 5px 11px 0px 11px;
+      }
+
+      #type-selector label {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 300;
+      }
+}
+
+   
 </style>
 
 </head>
@@ -297,6 +320,7 @@
 									</div>
 								</div>
 								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+									<input id="pac-input" class="controls" type="text" style="z-index:200;" placeholder="Buscar">
 									<div id="map"></div>
 					            </div>
 								<div>
@@ -472,11 +496,13 @@
 	<script>
 	 	$('#tabs').tab();
 
-		$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-			initialize();       
+		$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {		
+			if($('.nav-tabs .active').text() == "Ubicacion"){
+				initialize();  
+			google.maps.event.trigger(map, 'resize');	
+			}		 
 		});
-
-		buildColorPalette();
+		
 	</script>
 </body>
 </html>
