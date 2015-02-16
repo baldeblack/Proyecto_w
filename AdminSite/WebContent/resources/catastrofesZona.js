@@ -14,13 +14,13 @@ jQuery(document)
 										if (palabrasCont < 5) {
 											$('#PalabrasDiv')
 													.append(
-															'<div class="palabraContainer"><input class="form-control" type="text" name="palabrasList[0]" ondblclick="deletePalabras(this)"/>'
+															'<div class="col-lg-12 palabraContainer"><input class="form-control" type="text" name="palabrasList[0]" ondblclick="deletePalabras(this)"/>'
 																	+ '</div>');
 											var ind = 0;
 											$('#PalabrasDiv input').each(
 													function() {
 														$(this).attr(
-																'name',
+																'name',								
 																"palabrasList["
 																		+ ind
 																		+ "]");
