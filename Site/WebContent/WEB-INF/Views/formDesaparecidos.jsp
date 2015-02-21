@@ -19,64 +19,91 @@
 					  <!-- Tab panes -->
 					  <div class="tab-content">
 					    <div role="tabpanel" class="tab-pane active" id="persona">
-					    	<form role="form">
+					    	<form role="form" data-toggle="validator">
 								<div class="row">
 									<div class="col-xs-12 col-sm-6 col-md-6">
 										<div class="form-group">
-					                        <input type="text" name="nombre" id="nombre" class="form-control input-lg" placeholder="Nombre" tabindex="1">
+											<label class="control-label" for="nombre">Nombre</label>
+					                        <input type="text" name="nombre" id="nombre" class="form-control" placeholder="" tabindex="1" required>
+											<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                							<!-- <div class="help-block with-errors"></div> -->
 										</div>
 									</div>
 									<div class="col-xs-12 col-sm-6 col-md-6">
 										<div class="form-group">
-											<input type="text" name="apellido" id="apellido" class="form-control input-lg" placeholder="Apellido" tabindex="2">
+											<label class="control-label">Apellido</label>
+											<input type="text" name="apellido" id="apellido" class="form-control" placeholder="" tabindex="2" required>
+											<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                							<!-- <div class="help-block with-errors"></div> -->
 										</div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-xs-12 col-sm-6 col-md-6">
 										<div class="form-group">
-											<input type="number" name="edad" id="edad" class="form-control input-lg" placeholder="Edad" tabindex="3">
+											<label class="control-label">Edad</label>
+											<input type="number" name="edad" id="edad" class="form-control" placeholder="" tabindex="3" required>
+											<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                							<!-- <div class="help-block with-errors"></div> -->
 										</div>
 									</div>
 									<div class="col-xs-12 col-sm-6 col-md-6">
 									<div class="form-group">
-										<select  id="sexo" class="form-control input-lg" tabindex="4">
+										<label class="control-label">Sexo</label>
+										<select  id="sexo" class="form-control" tabindex="4">
 											<option value="F" selected="selected">Femenino</option>
 											<option value="M">Masculino</option>
 											<option value="O">Otro</option>
 										</select>
+										<!-- <span class="glyphicon form-control-feedback" aria-hidden="true"></span> -->
+               							<!-- <div class="help-block with-errors"></div> -->
 									</div>
 									</div>
 								</div>
 								<div class="form-group">
-									<input type="date" name="fecha" id="fecha" class="form-control input-lg" placeholder="Fecha creacion" tabindex="5">
+									<label>Fecha creacion</label>
+									<input type="date" name="fecha" id="fecha" class="form-control" placeholder="" tabindex="5" required>
+									<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+              						<!-- <div class="help-block with-errors"></div> -->
 								</div>
 								<div class="form-group">
-									<input type="text" name="paradero" id="paradero" class="form-control input-lg" placeholder="UltimoParadero" tabindex="6">
+									<label>Ultimo paradero</label>
+									<input type="text" name="paradero" id="paradero" class="form-control" placeholder="" tabindex="6" required>
+									<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+              						<!-- <div class="help-block with-errors"></div> -->								
 								</div>
 												
 							</form>
 					    </div>
 					    <div role="tabpanel" class="tab-pane" id="contacto">
-							<form role="form-horizontal">
+							<!-- <form role="form-horizontal"> -->
 								<div class="form-group">
-									<input type="text" name="nombre_contacto" id="nombre_contacto" class="form-control input-lg" placeholder="Nombre contacto" tabindex="1">
+									<label>Nombre contacto</label>
+									<input type="text" name="nombre_contacto" id="nombre_contacto" class="form-control" placeholder="" tabindex="1" required>
+									<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+              						<!-- <div class="help-block with-errors"></div> -->
 								</div>
 								<div class="form-group">
-									<input type="text" name="telefono" id="telefono" class="form-control input-lg" placeholder="Telefono contacto" tabindex="4">
+									<label>Telefono contacto</label>
+									<input type="text" name="telefono" id="telefono" class="form-control" placeholder="" tabindex="4" required>
+									<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+              						<!-- <div class="help-block with-errors"></div> -->
 								</div>
 								<div class="form-group">
 									<!--<input type="text" name="phone" id="phone" class="form-control input-lg" placeholder="Email Address" tabindex="4">-->
 
 									<!--<input type="text" name="estado" id="estado" class="form-control input-lg" placeholder="Estado" tabindex="6">-->
-									<select name="Parentesco" id="Parentesco" placeholder="Seleccione estado" class="form-control input-lg" tabindex="6">
+									<label>Parentesco</label>
+									<select name="Parentesco" id="Parentesco" placeholder="Seleccione estado" class="form-control" tabindex="6">
 									  <option value="1">Padre/Madre</option>
 									  <option value="2">Hermanos</option>
 									  <option value="3">Pareja</option>
 									  <option value="4">Otros</option>
 									</select>
+									<!-- <span class="glyphicon form-control-feedback" aria-hidden="true"></span>  -->
+              						<!-- <div class="help-block with-errors"></div> -->
 								</div>
-							</form>
+							<!-- </form>-->
 					    </div>
 						<div role="tabpanel" class="tab-pane" id="imagen">
 							<input type="hidden" id="inputImgDesap"/>

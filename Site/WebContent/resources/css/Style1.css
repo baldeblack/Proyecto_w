@@ -381,8 +381,9 @@ h1,h2,h3,.highlight,.navbar a,#contenido-principal h4 {
 }
 
 .thumbnail > img{
-  height: 300px;
+  height: 330px;
 }
+
 .botones-desaparecidos{
   padding-top: 25px;
 }
@@ -433,4 +434,58 @@ footer {
   background-color:#cecece;
   height: 500px;
  
+}
+
+
+/*--------------------------*/
+
+.thumbnail {
+    position:relative;
+    overflow:hidden;
+}
+ 
+.caption {
+    position:absolute;
+    top:0;
+    right:0;
+    background:rgba(32, 32, 32, 0.75);
+    width:100%;
+    height:100%;
+    padding:2%;
+    display: none;
+    text-align:center;
+    color:#fff !important;
+    z-index:2;
+}
+
+.bton-cerrarvermas{
+  position: fixed;
+  top: 55px;
+  right: 5px;
+  color: #000044;
+}
+.bton-cerrarvermas:hover{
+  color: #000044;
+}
+
+@media screen and (min-width: 767px) {
+
+h1 {
+  font-size:50px;
+}
+.navbar-collapse2{
+  display: block;
+}
+.menu_login {
+    position: fixed;
+    float: left;
+    top: 0px;
+    right: 20px;
+}
+
+.navbar-nav > li {
+    float: none;
+    display: inline-block;
+}
+
 }

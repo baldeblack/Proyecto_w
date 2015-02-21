@@ -11,39 +11,64 @@
 		      </div>
 		      <input type="hidden" id="idong">
 		      <div class="modal-body">		        
-					<form role="form">
+					<form role="form" data-toggle="validator">
 						<div class="form-group">
-							<select id="tipo" placeholder="Seleccione estado" class="form-control input-lg" tabindex="1" onchange="showData()">
+							<label>Estado</label>
+							<select id="tipo" placeholder="Seleccione estado" class="form-control" tabindex="1" onchange="showData()" required>
 							  <option value="1">Econ&oacute;mica</option>
 							  <option value="2">De bienes</option>
 							  <option value="3">De servicios</option>
 							</select>
 						</div>
-						<textarea id="descripcion" class="form-control" placeholder="Descripcion.." rows="3" tabindex="2"></textarea><br>
-						<div class="form-group bienes">
-							<input type="number"  name="cantidad" id="cantidad" class="form-control input-lg" placeholder="Cantidad" tabindex="3">
+						<div class="form-group">
+							<label class="control-label" >Descripcion</label>
+							<textarea id="descripcion" class="form-control" placeholder="Descripcion.." rows="3" tabindex="2" required></textarea><br>
+							<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                			<!-- <div class="help-block with-errors"></div> -->		
 						</div>
 						<div class="form-group bienes">
-							<input type="date" name="fechaEntrega" id="fechaEntrega" class="form-control input-lg" placeholder="Fecha entrega" tabindex="4">
+							<label class="control-label">Cantidad</label>
+							<input type="number"  name="cantidad" id="cantidad" class="form-control" placeholder="" tabindex="3" required>
+							<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                			<!-- <div class="help-block with-errors"></div> -->		
+						</div>
+						<div class="form-group bienes">
+							<label class="control-label">Fecha entrega</label>
+							<input type="date" name="fechaEntrega" id="fechaEntrega" class="form-control" placeholder="" tabindex="4" required>
+							<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                			<!-- <div class="help-block with-errors"></div> -->		
 						</div>
 						<div class="form-group eco">
-							<select id="moneda" placeholder="Seleccione moneda" class="form-control input-lg" tabindex="3">
+							<label class="control-label">Moneda</label>
+							<select id="moneda" placeholder="Seleccione moneda" class="form-control" tabindex="3" required>
 							  <option value="Dol">Dolares</option>
 							  <option value="Pes">Pesos</option>
 							  <option value="Eur">Euros</option>
 							</select>
 						</div>
 						<div class="form-group eco">
-							<input type="number" name="monto" id="monto" class="form-control input-lg" placeholder="Monto" tabindex="4">
+							<label class="control-label">Monto</label>
+							<input type="number" name="monto" id="monto" class="form-control" placeholder="" tabindex="4" required>
+							<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                			<!-- <div class="help-block with-errors"></div> -->		
 						</div>
 						<div class="form-group servi">
-							<input type="number" name="hsServicio" id="hsServicio" class="form-control input-lg" placeholder="Hs de Servicio" tabindex="3">
+							<label class="control-label">Hs de Servicio</label>
+							<input type="number" name="hsServicio" id="hsServicio" class="form-control" placeholder="" tabindex="3" required>
+							<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                			<!-- <div class="help-block with-errors"></div> -->								
 						</div>
 						<div class="form-group servi">
-							<input type="date" name="comienzo" id="comienzo" class="form-control input-lg" placeholder="Comienzo servicio" tabindex="4">
+							<label class="control-label">Comienzo servicio</label>
+							<input type="date" name="comienzo" id="comienzo" class="form-control" placeholder="" tabindex="4" required>
+							<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                			<!-- <div class="help-block with-errors"></div> -->		
 						</div>
 						<div class="form-group servi">
-							<input type="date" name="finalizacion" id="finalizacion" class="form-control input-lg" placeholder="Finalización servicio" tabindex="5">
+							<label class="control-label">Finalización servicio</label>
+							<input type="date" name="finalizacion" id="finalizacion" class="form-control" placeholder="" tabindex="5" required>
+							<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                			<!-- <div class="help-block with-errors"></div> -->						
 						</div>
 					</form>
 		      </div>

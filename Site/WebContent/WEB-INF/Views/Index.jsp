@@ -1,14 +1,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!-- CONTENIDO PRINCIPAL -->
-		<div id="contenido-principal">
+		<div id="contenido-principal" class="header alt vert">
 		  <div class="container">
 			<div class="row">
-			  <div class="col-md-7">
+			  <div class="col-md-7 titulo_principal"">
 				<h1>${sessionScope.Catastrofe.nombre}
 				  <p class="lead"></p>
 				</h1>
 			  </div>		  
-			  <div class="col-md-5"><br><br>
+			  <div class="col-md-5 boton_solayu"><br><br>
 				<a href="#" class="btn btn-danger bton-sos" data-toggle="modal" data-target="#modalAyuda" data-placement="bottom" title="Solicitar Ayuda"><i class="glyphicon glyphicon-warning-sign"></i></a>
 			  </div>
 			</div> 
@@ -63,6 +63,7 @@
 							<a class="btn btn-warning bton-reportar" data-toggle="modal" data-target="#modalDesp">Reportar</a>
 						</c:if>
 				</div>
+				<a href="#" class="btn btn-lg bton-cerrarvermas pull-right"><i class="glyphicon glyphicon-remove"></i></a>
 			</div>
 		</div>			
 	</div>

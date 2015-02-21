@@ -3,7 +3,7 @@ google.load("feeds", "1");
 function LoadNews(){
 	var palabrasClaves = $("#palabrasClaves").val();
 	var fuentesDatos = $("#fuentesDatos").val();
-	
+
 	if(fuentesDatos != null){
 		if(palabrasClaves !=  null)
 			palabrasClaves = palabrasClaves.replace(/;/g, " ");

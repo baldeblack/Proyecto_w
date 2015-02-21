@@ -7,27 +7,47 @@ $(document).ready(function(){
 	
 var estilo_actual=document.getElementsByTagName("link")[1];
 	 LoadLostList(function(data){
-		if(estilo_actual.getAttribute("title")=='Style1.css'){
+		if(estilo_actual.getAttribute("title")=='Style2.css'){
+			$('.navbar-proyecto').addClass('alt');
+			$('.navbar-brand').addClass('hidden');
+			//$('.menu_login').removeClass('navbar-right');
+			$('.glyphicon-warning-sign').addClass('hidden');
+			$('.titulo_principal').removeClass('col-md-7').addClass('col-md-12');
+			$('.boton_solayu').removeClass('col-md-5').addClass('col-md-12');
+			$('.bton-sos').addClass('btn-lg');
+			$('.bton-sos').append('Solicitar ayuda');
+			$('.columna-desp').removeClass('col-md-6 col-lg-6').addClass('col-md-12 col-lg-12');
+			//$('.columna-desp').removeClass('col-lg-6').addClass('col-lg-12');
+			$('.botones-desaparecidos').removeClass('col-md-4 col-lg-2 pull-right').addClass('col-lg-12 text-center');
+			$('.bton-vermas').removeClass('btn-warning').addClass('btn-default btn-lg');
+			$('.bton-reportar').removeClass('btn-warning').addClass('btn-default btn-lg');
+			$('.search').removeClass('col-lg-6').addClass('col-lg-12');
+		}
 		
 		 $('#secDesaparecidos').html(data);
 		 $('.estilo2').hide();
 		 $(".search").hide();
-			$(".lista_desaparecidos").hide();
+		 $(".lista_desaparecidos").hide();
+		 $(".bton-cerrarvermas").hide();
 			$(".bton-vermas").click(function(){
 				$("#contenido-principal").hide();
 				$(".informacion").hide();
 				$(".story").hide();
+				$(".noticia_titulo").hide();
+				$(".noticia").hide();
 				$(".ong_titulo").hide();
 				$(".ongs").hide();
 				$(".slider_desaparecidos").hide();
 				$(".botones-desaparecidos").hide();
 				
 				$(".search").show();
+				$(".bton-cerrarvermas").show();
 				$(".lista_desaparecidos").slideDown();
 			});
 			$(".bton-cerrarvermas").click(function(){
 				$(".lista_desaparecidos").slideUp();
 				$(".search").hide();
+				$(".bton-cerrarvermas").hide();
 				$("#contenido-principal").show();
 				$(".botones-desaparecidos").show();
 				$(".informacion").show();
@@ -35,51 +55,33 @@ var estilo_actual=document.getElementsByTagName("link")[1];
 				$(".ong_titulo").show();
 				$(".ongs").show();
 				$(".slider_desaparecidos").show();
+				$(".noticia_titulo").show();
+				$(".noticia").show();
 			});
-
-			 $( '#searchable-container' ).searchable({
-			        searchField: '#container-search',
-			        selector: '.col-md-3',
-			        childSelector: '.nm',
-			        show: function( elem ) {
-			            elem.slideDown(100);
+			
+			
+			$('.thumbnail').hover(
+			        function(){
+			            $(this).find('.caption').slideDown(250); //.fadeIn(250)
 			        },
-			        hide: function( elem ) {
-			            elem.slideUp( 100 );
+			        function(){
+			            $(this).find('.caption').slideUp(250); //.fadeOut(205)
 			        }
-			    });
-		}
-		else
-		{
-			$('.navbar-proyecto').hide();
-			$('.estilo1').hide();
-			$('.informacion').hide();
-			$('.story').hide();
-			$('.desaparecidos_titulo').hide();
-			$('.desaparecidos').hide();
-			$('.ong_titulo').hide();
-			$('.ongs').hide();
+			); 
 
-			$('.scroll-top').click(function(){
-			  $('body,html').animate({scrollTop:0},800);
-			})
-			/* smooth scrolling for scroll down */
-			$('.scroll-down').click(function(){
-			  $('body,html').animate({scrollTop:$(window).scrollTop()+800},1000);
-			})
-
-			/* highlight the top nav as scrolling occurs */
-			$('body').scrollspy({ target: '#navbar' })
-
-			$(".fancybox").fancybox({
-			        openEffect: "none",
-			        closeEffect: "none"
-		    	});
-
-			$('#carousel-example-generic').carousel({
-	    			interval: 2000
+			$( '#searchable-container' ).searchable({
+			    searchField: '#container-search',
+			    selector: '.col-md-3',
+			    childSelector: '.nm',
+			    show: function( elem ) {
+			        elem.slideDown(100);
+			    },
+			    hide: function( elem ) {
+			        elem.slideUp( 100 );
+			    }
 			});
-		}
+
+
 	 });
 	 
 	 LoadOngList();

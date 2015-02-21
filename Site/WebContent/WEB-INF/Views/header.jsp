@@ -10,6 +10,10 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			  </button>
+			  
+			  <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse2">
+				<span>Login</span>
+			  </button>
 			  <a href="#" class="navbar-brand">Home</a>
 			</div>
 
@@ -27,30 +31,36 @@
 				<li>
 				  <a href="#cont">Contacto</a>
 				</li>
+			</nav>
+			<nav class="collapse navbar-collapse2" role="navigation">
 			  </ul>
  				<c:if test="${empty sessionScope.active_user}">
-				  	<ul class="nav navbar-right navbar-nav">
+				  	<ul class="nav navbar-right navbar-nav menu_login">
 				 
 						<li class="dropdown">
 					  		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user fa-lg"></i></a>
 					  		<ul class="dropdown-menu" style="padding:12px;">
-							  	<form class="form-horizontal" >
+							  	<form class="form-horizontal" data-toggle="validator">
 								  	<div class="row contenedor-form">
 									  	<div class="col-xs-12 col-lg-12">
 											<div class="form-group">
 											    <div class="input-group">
-											      <label class="sr-only" for="exampleInputEmail2">Correo</label>
+											      <label class="sr-only" class="control-label" for="exampleInputEmail2">Correo</label>
 											      <div class="input-group-addon">@</div>
-											      <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
+											      <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email" required>
+											      <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+               									  <!-- <div class="help-block with-errors"></div> -->
 											    </div>
 											</div>
 										</div>
 										<div class="col-xs-12 col-lg-12">
 											<div class="form-group">
 											  	<div class="input-group">
-												    <label class="sr-only" for="exampleInputPassword2">Password</label>
+												    <label class="sr-only" class="control-label" for="exampleInputPassword2">Password</label>
 												    <div class="input-group-addon">***</div>
-												    <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+												    <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
+													<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+               									    <!-- <div class="help-block with-errors"></div> -->
 												</div>
 											</div>
 										</div>

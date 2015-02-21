@@ -12,10 +12,12 @@
         <h3 id="responseHelp"></h3>
       </div>
       
-     <!-- <form id="helpForm">--> 		        
+     <!-- <form id="helpForm">--> 	        
 		<div class="modal-body">
+			<form data-toggle="validator"> 
 			<div class="form-group">
-				<select  id="typeRequest" class="form-control input-lg" tabindex="1">
+				<label class="control-label">Tipo de ayuda</label>
+				<select  id="typeRequest" class="form-control" tabindex="1" required>
 				<c:if test="${empty sessionScope.active_user}">
 					<option value="1" selected="selected">Anonimo</option>
 				</c:if> 	
@@ -25,12 +27,25 @@
 				</c:if>
 				</select>
 			</div>
-			<textarea id="message" class="form-control" placeholder="Mensaje.." rows="3" tabindex="2"></textarea><br>
 			<div class="form-group">
-				<input type="text" name="tel_ayuda" id="tel_ayuda" class="form-control input" placeholder="Telefono" tabindex="3"/>
-				<br/>
-				<input type="text" name="ubicacion_ayuda" id="ubicacion_ayuda" class="form-control input-lg" placeholder="Ubicacion" tabindex="4"/>
+				<label class="control-label">Mensaje</label>
+				<textarea id="message" class="form-control" placeholder="Mensaje.." rows="3" tabindex="2" required></textarea><br>
+				<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                <!-- <div class="help-block with-errors"></div> -->
 			</div>
+			<div class="form-group">
+				<label class="control-label">Telefono</label>
+				<input type="text" name="tel_ayuda" id="tel_ayuda" class="form-control" placeholder="" tabindex="3" required/>
+				<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                <!-- <div class="help-block with-errors"></div> -->
+			</div>
+			<div class="form-group">	
+				<label class="control-label">Ubicacion</label>
+				<input type="text" name="ubicacion_ayuda" id="ubicacion_ayuda" class="form-control" placeholder="" tabindex="4" required/>
+				<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                <!-- <div class="help-block with-errors"></div> -->	
+			</div>
+			</form>
 		</div>
 		<div class="modal-footer">
 		     <button type="button" class="btn btn-default" data-dismiss="modal" tabindex="5">Cerrar</button>
