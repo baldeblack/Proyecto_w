@@ -12,10 +12,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
-import com.Entities.Catastrofe;
 import com.Entities.Rescatista;
 import com.Entities.TipoRescatista;
-import com.Entities.Tipocatastrofe;
 import com.Entities.Usuario;
 import com.Helper.EntityManagerHelper;
 

@@ -120,19 +120,15 @@
 									<tr>
 										<th>Name</th>
 										<th>Dom</th>
-										<th>Link</th>
-										<th>LinkO</th>
-										<th>LinkR</th>
+										<th>Vincular Ong's y/o Rescatistas</th>										
 									</tr>
 								</thead>
 			
 								<tfoot>
 									<tr>
 										<th>Name</th>
-										<th>Dom</th>
-										<th>Link</th>
-										<th>LinkO</th>
-										<th>LinkR</th>
+										<th>Dom</th>									
+										<th></th>
 									</tr>
 								</tfoot>
 								<tbody>
@@ -140,10 +136,7 @@
 										<tr>
 											<td>${o.nombre}</td>
 											<td>${o.dominio}</td>
-											<td><a
-												href="/BackOffice/catastrofes/edit/${o.idCatastrofe}">Editar</a></td>
-											<td><a href="/BackOffice/ongs/vincular/${o.idCatastrofe}">Ong's</a></td>
-											<td><a href="/BackOffice/usuarios/vincresc/${o.idCatastrofe}">Rescatistas</a></td>
+											<td><a href="/BackOffice/vincular/init/${o.idCatastrofe}">Ir</a></td>							
 										</tr>
 									</c:forEach>
 								</tbody>

@@ -43,6 +43,21 @@ public class CatastrofeDAO {
 		return result;
 	}
 	
+	public Integer maxCatId(){
+		try {
+		Integer i = (Integer)_eManager.createQuery("select max(c.id) from Catastrofe c").getSingleResult();
+		if(i == null){
+			i = 0;
+			return i;
+		}
+		return i;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return null;
+	}
+	
+	
 	public void AltaCtastrofe(Catastrofe c){
 		try {
 			_eManager.getTransaction().begin();

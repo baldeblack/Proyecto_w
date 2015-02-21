@@ -32,7 +32,7 @@ public class CCatastrofe implements ICCatastrofe {
 
 	@Override
 	public void GuardarCatastrofe(Catastrofe c) {
-		_dao.AltaCtastrofe(c);
+		  _dao.AltaCtastrofe(c);
 		
 	}
 
@@ -71,6 +71,12 @@ public class CCatastrofe implements ICCatastrofe {
 	public List<CatastrofeLight> getAllCatastrofesLight() {
 		// TODO Auto-generated method stub
 		return _dao.GetAllCatastrofesLight();
+	}
+
+	@Override
+	public Integer maxCatId() {
+		// TODO Auto-generated method stub
+		return _dao.maxCatId();
 	}
 
 }

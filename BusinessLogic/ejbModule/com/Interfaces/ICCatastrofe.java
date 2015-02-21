@@ -28,4 +28,6 @@ public interface ICCatastrofe {
 	Integer minCtId();
 	
 	List<Tipocatastrofe> getTiposCT();
+	
+	Integer maxCatId();
 }

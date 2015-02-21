@@ -87,13 +87,14 @@ public class CatastrofesController {
 		
 		String clavesToSave = "";
 		String fuentesToSave = "";
-		
+		int idcat;
 		//CValidador.validate(CatastrofeModel, bindingResult);
 		
 		//if (bindingResult.hasErrors()) {
 			//return "altaCatastrofe";
 		//} else {
-			
+		ICCatastrofe ic = new CCatastrofe();
+		
 			if(CatastrofeModel.getAction().equals("Crear")){
 			try {
 				  
@@ -159,7 +160,7 @@ public class CatastrofesController {
 					cEntity.setFuentesDatos(fuentesToSave.trim());
 					cEntity.setCarpetaImagenes(theDir.getAbsolutePath());
 					
-					ICCatastrofe ic = new CCatastrofe();
+					
 					ICBasedeDatos ib = new CBasedeDatos();
 					ic.GuardarCatastrofe(cEntity);	
 					ib.CrearTenantDB(tenantIdentifier/*CatastrofeModel.getNombre() + s.replace("-", "").trim()*/);
@@ -171,7 +172,7 @@ public class CatastrofesController {
 			
 			}else{
 				
-					ICCatastrofe ic = new CCatastrofe();
+					
 					Catastrofe c = ic.getCatastrofeByID((Integer)request.getSession().getAttribute("tenantID"));				
 					c.setActiva(CatastrofeModel.getActiva());
 					c.setNombre(CatastrofeModel.getNombre());
@@ -231,7 +232,7 @@ public class CatastrofesController {
 				return "Result";
 			}	
 	
- 		return "Result";
+ 		return "redirect:/vincular/init/"+ String.valueOf(ic.maxCatId());
 
 	}
 	
