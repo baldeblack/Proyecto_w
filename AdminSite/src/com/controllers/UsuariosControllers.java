@@ -102,7 +102,7 @@ public class UsuariosControllers {
 	}
 	
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public @ResponseBody String createresc(@RequestBody String json, HttpServletResponse res, HttpServletRequest request) throws Exception {
+	public @ResponseBody String updateForm(@RequestBody String json, HttpServletResponse res, HttpServletRequest request) throws Exception {
 		
 		Gson g = new Gson();
 		String jsonresp = "";

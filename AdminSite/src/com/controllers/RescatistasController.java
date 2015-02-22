@@ -22,7 +22,6 @@ import com.Interfaces.ICCatastrofe;
 import com.Interfaces.ICOngs;
 import com.google.gson.Gson;
 import com.models.VincularModel;
-import com.models.ongCatastofeModel;
 import com.utils.accessControl;
 
 @RequestMapping("/rescatista")

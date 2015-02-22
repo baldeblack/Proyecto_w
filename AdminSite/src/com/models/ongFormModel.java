@@ -20,6 +20,8 @@ public class ongFormModel {
 
 	private String web;
 	
+	private String accion;
+	
 	public int getIdC() {
 		return idC;
 	}
@@ -90,6 +92,14 @@ public class ongFormModel {
 
 	public void setWeb(String web) {
 		this.web = web;
+	}
+
+	public String getAccion() {
+		return accion;
+	}
+
+	public void setAccion(String accion) {
+		this.accion = accion;
 	}
 
 }
