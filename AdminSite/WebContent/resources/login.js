@@ -21,6 +21,21 @@ $( document ).ready(function() {
 				  }
 			});
 	});
+	
+	$(document).keypress(function(e) {
+		  if(e.which == 13) {
+			  var mail = $('#mail').val();
+				var pass = $('#password').val();
+				
+				doLogin(mail, pass, function(data) {
+					if(data != null){
+					  window.location.href = data;
+					  }else{
+						  $('#lgnerror').show();
+					  }
+				});
+		  }
+		});
 
 });
 

@@ -14,7 +14,6 @@
 	<mvc:annotation-driven conversion-service="conversionService" />
 
 	<bean class="Validadores.CatastrofeValidador" />
-	<bean class="Validadores.UsuarioValidador" />
 	<bean class="Validadores.OngValidador" />
 
 	<bean id="conversionService"

@@ -99,6 +99,7 @@ jQuery(document).ready(function($) {
 		    			type : 'POST',
 		    			data : JSON.stringify({
 		    					"idC": $('#idCt').val(),
+		    					"idUsu": 0,
 		    					"apellido":$('#apellidou').val(),
 		    					 "borrado":0,
 		    					 "celular":$('#celular').val(),
@@ -106,7 +107,7 @@ jQuery(document).ready(function($) {
 		    					 "direccion":$('#direccionu').val(),
 		    					 "email":$('#emailu').val(),
 		    					"nacimiento":$('#nacimiento').val(),
-		    					"nick":"",
+		    					"nick":$('#nick').val(),
 		    					"nombre":$('#nombreu').val(),
 		    					"password":$('#pass').val(),
 		    					"sexo":$('#sexo').val(),

@@ -5,6 +5,7 @@ import java.util.Date;
 public class usuarioFormModel {
 
 	private int idC;
+	private int idUsu;
 	private String apellido;
 	private byte borrado;
 	private String celular;
@@ -19,6 +20,7 @@ public class usuarioFormModel {
 	private int tipoUsuario;
 	private int tiporescatisa;
 	private String residencia;
+	private String accion;
 
 	
 	public int getIdC() {
@@ -111,6 +113,18 @@ public class usuarioFormModel {
 	}
 	public void setTiporescatisa(int tiporescatisa) {
 		this.tiporescatisa = tiporescatisa;
+	}
+	public int getIdUsu() {
+		return idUsu;
+	}
+	public void setIdUsu(int idUsu) {
+		this.idUsu = idUsu;
+	}
+	public String getAccion() {
+		return accion;
+	}
+	public void setAccion(String accion) {
+		this.accion = accion;
 	}
 	
 }

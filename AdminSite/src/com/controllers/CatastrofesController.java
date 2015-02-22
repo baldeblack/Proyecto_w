@@ -87,7 +87,7 @@ public class CatastrofesController {
 		
 		String clavesToSave = "";
 		String fuentesToSave = "";
-		int idcat;
+	
 		//CValidador.validate(CatastrofeModel, bindingResult);
 		
 		//if (bindingResult.hasErrors()) {
