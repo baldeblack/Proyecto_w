@@ -25,6 +25,7 @@ var estilo_actual=document.getElementsByTagName("link")[1];
 		}
 		
 		 $('#secDesaparecidos').html(data);
+		 $('.item:first').addClass('active');
 		 $('.estilo2').hide();
 		 $(".search").hide();
 		 $(".lista_desaparecidos").hide();

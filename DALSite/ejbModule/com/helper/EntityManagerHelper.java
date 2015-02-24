@@ -12,15 +12,11 @@ public class EntityManagerHelper {
 	private static String _currentConnection = "";
 	
 	private EntityManagerHelper(String connection){
-		if(myFactory == null) {
-			   synchronized (EntityManagerHelper.class) {
-				   if(myFactory == null) {
-					    Map<String, Object> configOverrides = new HashMap<String, Object>();
-						configOverrides.put("hibernate.connection.url", connection);
-					     myFactory =  Persistence.createEntityManagerFactory("DALSite", configOverrides);
-					 }
-			   }
-		}
+		   synchronized (EntityManagerHelper.class) {
+				    Map<String, Object> configOverrides = new HashMap<String, Object>();
+					configOverrides.put("hibernate.connection.url", connection);
+				     myFactory =  Persistence.createEntityManagerFactory("DALSite", configOverrides);
+		   }
 	}
 	
 

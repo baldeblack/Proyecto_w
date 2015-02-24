@@ -2,7 +2,7 @@
 <!-- === SLide 3 - Portfolio -->
 <%@page import="com.entities.Catastrofe"%>
 <%@page import="java.util.List"%>
-<%@ page session="true"%>
+
 <div class="slide story" id="slide-3" data-slide="3">
 	<div class="row">
 	<%  Catastrofe cat = (Catastrofe)request.getSession(true).getAttribute("Catastrofe"); 

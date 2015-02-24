@@ -2,13 +2,13 @@ package com.controllers;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.entities.Catastrofe;
+import com.utilities.SessionHandler;
 import com.utilities.SingletonTenant;
 
 @Component
@@ -21,15 +21,15 @@ public class TenantInterceptor implements HandlerInterceptor{
 		if(request != null)
 		{
 			String baseUrl = String.format("%s", request.getServerName());
-			HttpSession session = request.getSession(true);
+			Catastrofe current = SessionHandler.getInstance().getCurrentSite(request);
 			
-			String param = (String)session.getAttribute("CurrentSite");
-	        if (param == null) {
-	            session.setAttribute("CurrentSite", baseUrl);
+			String param = "";
+			if (current != null) {
+	        	param = current.getDominio();
 	        }
 	        
 	        Catastrofe c = SingletonTenant.getInstance(baseUrl, param).getSite();
-	        session.setAttribute("Catastrofe", c);
+	        SessionHandler.getInstance().setCurrentSite(c, request);
 		}
 		return true;
     }

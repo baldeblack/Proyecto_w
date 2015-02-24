@@ -33,9 +33,7 @@ public class OngController {
 		
 		Gson gson = new Gson();
 		ModelAndView  model = new ModelAndView("ong");
-	
-		HttpSession session = request.getSession(true);
-		Catastrofe c = (Catastrofe)session.getAttribute("Catastrofe");
+		Catastrofe c = SessionHandler.getInstance().getCurrentSite(request);
 		
 		String jspnresp = ServiceConnectionHelper.CallServiceMethoodGET("ContentServies", "AllONGs", c.getStringConeccion());
 		Type listType = new TypeToken<List<ONG>>() {}.getType();
@@ -53,9 +51,7 @@ public class OngController {
 		DonarModel model = g.fromJson(json, DonarModel.class);
 		 try {
 			 if(model != null && model.getTipoDonacion() > 0){
-				 HttpSession session = request.getSession(true);
-				 Catastrofe c = (Catastrofe)session.getAttribute("Catastrofe");
-
+				 Catastrofe c = SessionHandler.getInstance().getCurrentSite(request);
 				 Donacione don = new Donacione();
 				 don.setDescripcion(model.getDescripcion());
 				 don.setIdTipoDonacion(model.getTipoDonacion());

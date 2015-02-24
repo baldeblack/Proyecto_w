@@ -1,20 +1,17 @@
 package com.entities;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class Catastrofe implements Serializable {
-	private static final long serialVersionUID = 1L;
-
+public class Catastrofe {
 	
 	private int idCatastrofe;
-	
-	private byte activa;
 	
 	private String apiFb;
 
 	private String apiTw;
+
+	private byte activa;
 
 	private String carpetaImagenes;
 

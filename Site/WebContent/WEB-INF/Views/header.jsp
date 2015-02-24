@@ -3,7 +3,6 @@
 <header class="navbar navbar-bright navbar-fixed-top navbar-proyecto" data-spy="affix" data-offset-top="1000">
   <div class="container">
 			<div class="navbar-header">
-
 			  <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
 				<span class="sr-only">Toggle navigation</span>
 				<span class="icon-bar"></span>
@@ -31,12 +30,12 @@
 				<li>
 				  <a href="#cont">Contacto</a>
 				</li>
+			 </ul>
 			</nav>
 			<nav class="collapse navbar-collapse2" role="navigation">
-			  </ul>
+			 
  				<c:if test="${empty sessionScope.active_user}">
 				  	<ul class="nav navbar-right navbar-nav menu_login">
-				 
 						<li class="dropdown">
 					  		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user fa-lg"></i></a>
 					  		<ul class="dropdown-menu" style="padding:12px;">
@@ -65,9 +64,9 @@
 											</div>
 										</div>
 									</div>
-									<fb:login-button class="btn btn-facebook btn-lg" scope="public_profile,email" onlogin="checkLoginState();"> </fb:login-button>
-						   			<!-- <a class="btn btn-facebook btn-lg" href="#"><i class="icon-facebook icon-large"></i> Facebook</a> -->
-						   			<a class="btn btn-google-plus btn-lg" href="#"><i class="icon-google-plus icon-large"></i> Google+</a>
+									<c:if test="${not empty sessionScope.catastrofe.apiFb}">
+										<fb:login-button class="btn btn-facebook btn-lg" scope="public_profile,email" onlogin="checkLoginState();"> </fb:login-button>
+						   			</c:if>
 						   			<br><br>
 								  	<button onclick="doLogin()"  class="btn btn-default bton-login">Iniciar Sesion</button>
 									<a data-toggle="modal" class="pull-right bton-registrarse" data-target="#myModal">Registrarse</a>
@@ -77,10 +76,10 @@
 					 </ul>
 				</c:if>	
 				 <c:if test="${not empty sessionScope.active_user}">
-				 <ul class="nav navbar-right navbar-nav">
-				 	<li><h4 style="padding-top: 6px;">Bienvenid@ ${sessionScope.active_user_nick}</h3></li>
-				 	<li><a href="/Site/access/logOut" class="btn btn-link">Cerrar Sesion</a></li>	
-				 </ul>
+					 <ul class="nav navbar-right navbar-nav">
+					 	<li><h4 style="padding-top: 6px;">Bienvenid@ ${sessionScope.active_user_nick}</h3></li>
+					 	<li><a href="/Site/access/logOut" class="btn btn-link">Cerrar Sesion</a></li>	
+					 </ul>
 				 </c:if>
 			 
 			</nav>

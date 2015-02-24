@@ -47,10 +47,35 @@
 							</select>
 						</div>
 						<div class="form-group eco">
+								para realizar una donación economica, puede indicar el monto y precionar donar, con lo cual un agente de la Ong se estará contactando con ud.
+								o simplemente si cuenta con una cuenta pay pal debe presionar el boton de "Donate" pay pal y realizar la transferencia automatica de dinero.
+								desde ya le estamos agradecidos.
+						</div>
+						<div class="form-group eco">
+							
+						
 							<label class="control-label">Monto</label>
 							<input type="number" name="monto" id="monto" class="form-control" placeholder="" tabindex="4" required>
 							<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                 			<!-- <div class="help-block with-errors"></div> -->		
+						</div>
+						<div class="form-group eco">
+							<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+								<input type="hidden" name="cmd" value="_donations">
+								<input type="hidden" name="business" id="business" value="JGS9UFT3MLTHN">
+								<input type="hidden" name="lc" value="AL">
+								<input type="hidden" name="item_name" value="${sessionScope.catastrofe.nombre}">
+								<input type="hidden" name="no_note" value="0">
+								<input type="hidden" name="cn" value="Dar instrucciones especiales al vendedor:">
+								<input type="hidden" name="no_shipping" value="1">
+								<input type="hidden" name="rm" value="1">
+								<input type="hidden" name="return" value="http://${sessionScope.catastrofe.dominio}">
+								<input type="hidden" name="cancel_return" value="http://${sessionScope.catastrofe.dominio}">
+								<input type="hidden" name="currency_code" value="USD">
+								<input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHosted">
+								<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+								<img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
+							</form>
 						</div>
 						<div class="form-group servi">
 							<label class="control-label">Hs de Servicio</label>

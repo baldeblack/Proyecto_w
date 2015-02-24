@@ -1,12 +1,5 @@
 package com.entities;
 
-import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.OneToMany;
-
 public class ONG {
 
 	private int idONGs;
@@ -17,7 +10,6 @@ public class ONG {
 	private String origen;
 	private String telefono;
 	private String web;
-	private List<Donacione> donaciones;
 
 	public ONG() {
 	}
@@ -86,11 +78,4 @@ public class ONG {
 		this.web = web;
 	}
 
-	public List<Donacione> getDonaciones() {
-		return this.donaciones;
-	}
-
-	public void setDonaciones(List<Donacione> donaciones) {
-		this.donaciones = donaciones;
-	}
 }

@@ -1,12 +1,10 @@
 package com.controllers;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -37,7 +35,7 @@ public class LoginController {
 		} catch (ServletException e) {
 			e.printStackTrace();
 		}
-		 return "layout";
+		 return "redirect:/";
 	}
 	
 	
@@ -54,8 +52,7 @@ public class LoginController {
 			 else{
 				 LoginModel model = g.fromJson(json, LoginModel.class);
 				 if(model != null && model.getEmail() != "" && model.getPassword() != ""){
-					 HttpSession session = request.getSession(true);
-					 Catastrofe c = (Catastrofe)session.getAttribute("Catastrofe");
+					 Catastrofe c = SessionHandler.getInstance().getCurrentSite(request);
 
 					 List<String> listProp = new ArrayList<String>();
 					 listProp.add(model.getEmail());
@@ -88,8 +85,7 @@ public class LoginController {
 		{
 			UserModel model = g.fromJson(json, UserModel.class);
 			if(model != null && model.getEmail() != ""){
-				HttpSession session = request.getSession(true);
-				Catastrofe c = (Catastrofe)session.getAttribute("Catastrofe");
+				Catastrofe c = SessionHandler.getInstance().getCurrentSite(request);
 				model.setPassword(HashHandler.getSecurePassword(model.getPassword()));
 				String jsonresp = ServiceConnectionHelper.CallServiceMethoodPOST("AccessService", "Registro", c.getStringConeccion(), new Usuario(model));
 				
@@ -119,8 +115,7 @@ public class LoginController {
 			UserModel model = g.fromJson(json, UserModel.class);
 			if(model != null && model.getEmail() != ""){
 				Usuario usr;
-				 HttpSession session = request.getSession(true);
-				 Catastrofe c = (Catastrofe)session.getAttribute("Catastrofe");
+				Catastrofe c = SessionHandler.getInstance().getCurrentSite(request);
 
 				 List<String> listProp = new ArrayList<String>();
 				 listProp.add(model.getEmail());

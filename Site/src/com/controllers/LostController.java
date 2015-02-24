@@ -41,9 +41,7 @@ public class LostController {
 	
 	@RequestMapping(value = "/getAll", method = RequestMethod.GET)
 	public @ResponseBody String getAllDesaparecidos(HttpServletResponse res, HttpServletRequest request) {
-		
-		HttpSession session = request.getSession(true);
-		Catastrofe c = (Catastrofe)session.getAttribute("Catastrofe");
+		Catastrofe c = SessionHandler.getInstance().getCurrentSite(request);
 		String jsonresp = ServiceConnectionHelper.CallServiceMethoodGET("LostsServies", "AllDesaparecidos", c.getStringConeccion());
 		return jsonresp;
 	 
@@ -55,9 +53,7 @@ public class LostController {
 		
 		Gson gson = new Gson();
 		List<LostsModel> listModel = null; 
-		HttpSession session = request.getSession(true);
-		Catastrofe c = (Catastrofe)session.getAttribute("Catastrofe");
-		
+		Catastrofe c = SessionHandler.getInstance().getCurrentSite(request);
 		String jspnresp = ServiceConnectionHelper.CallServiceMethoodGET("LostsServies", "AllDesaparecidos", c.getStringConeccion());
 		
 			Type listType = new TypeToken<List<Desaparecido>>() {}.getType();
@@ -87,9 +83,8 @@ public class LostController {
 		LostFormModel model = g.fromJson(json, LostFormModel.class);
 		try {
 			if(model != null && model.getNombre() != null){
-				 HttpSession session = request.getSession(true);
-				 Catastrofe c = (Catastrofe)session.getAttribute("Catastrofe");
-				 
+				 Catastrofe c = SessionHandler.getInstance().getCurrentSite(request);
+				
 				 Desaparecido des = new Desaparecido();
 				 des.setApellido(model.getApellido());
 				 des.setEdad(model.getEdad());
