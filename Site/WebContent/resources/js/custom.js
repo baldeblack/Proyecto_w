@@ -2,7 +2,6 @@
 /********************************/
 /**************LOGIN*************/
 /********************************/
-
 var login = function(mail, passwd){
 	 var url = "/Site/access/logon";
 	 
@@ -34,18 +33,29 @@ var login = function(mail, passwd){
 function doLogin() {
     var username = $("#exampleInputEmail2").val();
     var password = $("#exampleInputPassword2").val();
-    login(username,password);
+    if(username == ""){
+    	$("#exampleInputEmail2").addClass("has-error has-feedback");
+    }
+    if (password == ""){
+    	$("#exampleInputPassword2").addClass("has-error has-feedback");
+    }
+    
+    if(username != "" && password != "")
+    	login(username,password);
 }
 
 /********************************/
 /**************AYUDA*************/
 /********************************/
 function SendHelp(){
+	if(validateHelp()){
+		
 	 var url = "/Site/help/ask";
 	 	var request = $('#typeRequest').val();
 	    var msg = $('#message').val();
 	    var tel = $('#tel_ayuda').val();
 	    var loc = $('#ubicacion_ayuda').val();
+	    
 	    $.ajax({
 	        url : url,
 	        type : "POST",
@@ -84,6 +94,7 @@ function SendHelp(){
 	            alert(XMLHttpRequest.status + " : " + errorThrown);
 	        }
 	    });
+	}
 }
 
 $("#closeModal").click(function(){
@@ -92,7 +103,30 @@ $("#closeModal").click(function(){
 	$('#message').val("");
 	$('#ubicacion_ayuda').val("");
 	$('#tel_ayuda').val("");
+	$("input").removeClass("has-error has-feedback");
 });
+
+var validateHelp = function(){
+	var error = false;
+	
+	if($("#responseHelp").html()== ""){
+		error = true;
+		$("#responseHelp").addClass("has-error has-feedback");
+	}
+	if($('#message').val() == ""){
+		error = true;
+		$("#message").addClass("has-error has-feedback");
+	}
+	if($('#ubicacion_ayuda').val()==""){
+		error = true;
+		$("#ubicacion_ayuda").addClass("has-error has-feedback");
+	}
+	if($('#tel_ayuda').val()==""){
+		error = true;
+		$("#tel_ayuda").addClass("has-error has-feedback");
+	}
+	return !error;
+}
 
 /********************************/
 /************REGISTRO***********/
@@ -101,33 +135,37 @@ var validateReg = function(){
 	var error = false;
 	if($('#password').val() !=$('#password_confirmation').val()){
 		error = true;
+		$('#password').addClass("has-error has-feedback");
+		$('#password_confirmation').addClass("has-error has-feedback");
+		
 		alert("La contraseña y su confirmaci&oacute;n no coinciden.")
 	}
 	if( $('#nombre_usuario').val() == "")
 	{
-		alert("El nombrre es requerido.")
+		$('#nombre_usuario').addClass("has-error has-feedback");
 		error = true;
 	}
 	if( $('#apellido_usuario').val() == "")
 	{
-		alert("El apellido es requerido.")
+		$('#apellido_usuario').addClass("has-error has-feedback");
 		error = true;
 	}
 	if( $('#email').val() == "")
 	{
-		alert("El mail es requerido.")
+		$('#email').addClass("has-error has-feedback");
 		error = true;
 	}
 	if( $('#nick_usuario').val() == "")
 	{
-		alert("El nick es requerido.")
+		$('#nick_usuario').addClass("has-error has-feedback");
 		error = true;
 	}
 	if( $('#password').val() == "")
 	{
-		alert("La contraseña es requerida.")
+		$('#password').addClass("has-error has-feedback");
 		error = true;
 	}
+	
 	return !error;
 }
 
@@ -233,12 +271,14 @@ function showData(){
 var cleanBienes = function(){
 	$("#cantidad").val("");
 	$("#fechaEntrega").val("");
+	$("input").removeClass("has-error has-feedback");
 	
 }
 
 var cleanEco = function(){
 	$("#moneda").val("Dol");
 	$("#monto").val("");
+	$("input").removeClass("has-error has-feedback");
 }
 
 
@@ -246,6 +286,7 @@ var cleanServi = function(){
 	$("#hsServicio").val("");
 	$("#comienzo").val("");
 	$("#finalizacion").val("");
+	$("input").removeClass("has-error has-feedback");
 }
 
 
@@ -289,6 +330,8 @@ var jsonDataDonacion = function(){
 	}
 }
 function Donar(){
+	
+	if(validateDonacion()){
 	var url = "/Site/ong/donate";
 	 
 	 $.ajax({
@@ -315,6 +358,59 @@ function Donar(){
 	            alert(XMLHttpRequest.status + " : " + errorThrown);
 	        }
 	    });
+	}
+}
+
+var validateDonacion = function(){
+	var error = false;
+	var tipo = $("#tipo").val();
+	if(tipo === "1"){//eco
+		if($("#moneda").val() == ""){
+			error = true;
+			$('#moneda').addClass("has-error has-feedback");
+		}
+		if($("#monto").val() == ""){
+			error = true;
+			$('#monto').addClass("has-error has-feedback");
+		}
+		if($("#descripcion").val() ==  ""){
+			error = true;
+			$('#descripcion').addClass("has-error has-feedback");
+		}
+	}
+	else if(tipo === "2"){//bienes
+		if($("#cantidad").val() ==  ""){
+			error = true;
+			$('#cantidad').addClass("has-error has-feedback");
+		}
+		if($("#fechaEntrega").val() == ""){
+			error = true;
+			$('#fechaEntrega').addClass("has-error has-feedback");
+		}
+		if($("#descripcion").val() == ""){
+			error = true;
+			$('#descripcion').addClass("has-error has-feedback");
+		}
+	}
+	else if(tipo === "3"){//servi
+		if($("#comienzo").val() ==""){
+			error = true;
+			$('#comienzo').addClass("has-error has-feedback");
+		}
+		if($("#finalizacion").val() ==""){
+			error = true;
+			$('#finalizacion').addClass("has-error has-feedback");
+		}
+		if($("#hsServicio").val() ==""){
+			error = true;
+			$('#hsServicio').addClass("has-error has-feedback");
+		}
+		if($("#descripcion").val()==""){
+			error = true;
+			$('#descripcion').addClass("has-error has-feedback");
+		}
+	}
+	return !error;
 }
 
 $("#btnDonarClose").click(function(){
@@ -356,6 +452,43 @@ var jsonDataLost = function(){
 	    "foto":$("#inputImgDesap").val()});
 }
 
+var validateLost = function(){
+	if($("#nombre").val() ==""){
+		error = true;
+		$('#nombre').addClass("has-error has-feedback");
+	}
+	if($("#apellido").val()==""){
+		error = true;
+		$('#apellido').addClass("has-error has-feedback");
+	}
+	if($("#edad").val() ==""){
+		error = true;
+		$('#edad').addClass("has-error has-feedback");
+	}
+	if($("#fecha").val()!=""){
+		error = true;
+		$('#fecha').addClass("has-error has-feedback");
+	}
+	if($("#nombre_contacto").val()==""){
+		error = true;
+		$('#nombre_contacto').addClass("has-error has-feedback");
+	}
+	if($("#telefono").val()==""){
+		error = true;
+		$('#telefono').addClass("has-error has-feedback");
+	}
+	if($("#paradero").val()==""){
+		error = true;
+		$('#paradero').addClass("has-error has-feedback");
+	}
+	if($("#inputImgDesap").val() ==""){
+		error = true;
+		$('#file').addClass("has-error has-feedback");
+	}
+	
+	return !error;
+}
+
 var cleanLostData= function(){
 	 $("#nombre").val("");
 	 $("#apellido").val("");
@@ -368,10 +501,12 @@ var cleanLostData= function(){
 	 $("#paradero").val("");
 	 $("#inputImgDesap").val("");
 	 $("#imgDesap").attr('src', '');
+	 $("input").removeClass("has-error has-feedback");
 }
 
 function LostReport(){
 
+	if(validateLost()){
 		var url = "/Site/lost/save";
 		$.ajax({
 	        url : url,
@@ -398,7 +533,7 @@ function LostReport(){
 	            alert(XMLHttpRequest.status + " : " + errorThrown);
 	        }
 	    });
-	
+	}
 }
 
 function uploadPic(){
