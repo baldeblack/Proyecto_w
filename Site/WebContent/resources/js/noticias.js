@@ -27,16 +27,22 @@ function findFeeds(query) {
 		var notirss = result.entries;
 		var rssoutput="";
 		for (var j=0; j < 4; j++){
-			 var fun = 'LoadIframe("'+notirss[j].title+'", "'+ notirss[j].link+'");';
-				rssoutput+="<tr>"+
-					"<td>" + notirss[j].title+"</td>"+
-					"<td>" +
-						"<a href='' class='btn btn-warning' data-toggle='modal' data-target='#modalNews' onclick='javasript:"+fun+"'>Ir!</a>"+
-					"</td>" +
-				"</tr>"
-						
+			var texto = notirss[j].link;
+			if(texto.search('youtube')>0){
+				var link=notirss[j].link;
+				var link_c = link.replace("watch?v=", "embed/");
+				var titulo='<li class="media"><a class="pull-left">'+'<iframe width="100" height="100" class="embed-responsive-item" src="'+link_c+'" allowfullscreen></iframe></a>'
+		
+			}
+			else{
+				var img='/Site/resources/images/rss2.png';
+				var titulo='<li class="media"><a class="pull-left img-rss">'+'<img class="media-object" src="'+img+'" alt="Expandable Input" /></a>'
+			}	
+
+			rssoutput+= titulo+'<div class="media-body"><a class="media-heading" href="'+notirss[j].link+'">'+notirss[j].title+'</a><p>'+notirss[j].contentSnippet+'</p></div></li>'
+				
 		}
-		$("#noticias").append(rssoutput);
+		$(".media-list").append(rssoutput);
     }
 }
 

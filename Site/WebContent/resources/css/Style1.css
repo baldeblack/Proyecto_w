@@ -489,3 +489,14 @@ h1 {
 }
 
 }
+
+.img-rss img{
+	width: 100px;
+}
+
+.media{
+	line-height: 1.42857143;
+  	background-color: #ffffff;
+  	border: 1px solid #dddddd;
+	margin-bottom:5px !important;
+}

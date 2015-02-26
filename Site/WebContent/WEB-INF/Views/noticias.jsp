@@ -12,20 +12,13 @@
 <div class="noticias">
 	<div class="container noticias">
 		<div class="row">
-			<div class="table-responsive">
-				<table class="table">
-					 <thead>
-	                    <tr class="filters">
-	                        <th>Titulo</th>
-	                        <th>Ver</th>
-	                    </tr>
-	                </thead>
-	                <tbody id="noticias">
-	               
-	                	
-	               
-	                </tbody>
-				</table>
+			<div class="col-lg-12 rss">
+					<div id="rss">
+						<ul class="media-list">
+
+										 
+						</ul>
+					</div>
 			</div>
 		</div>
 	</div>

@@ -81,6 +81,23 @@ var estilo_actual=document.getElementsByTagName("link")[1];
 			        elem.slideUp( 100 );
 			    }
 			});
+			
+			$('#rss').easyTicker({
+				direction: 'up', // up or down
+				easing: 'swing', // easing options
+				speed: 'slow', // animation speed
+				interval: 2000,
+				height: 'auto',
+				visible: 3, // change the number of default visible elements.
+				mousePause: 1, // pause on hover
+				controls: {
+				up: '',
+				down: '',
+				toggle: '',
+				playText: 'Play',
+				stopText: 'Stop'
+				}
+			});
 
 
 	 });

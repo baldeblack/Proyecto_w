@@ -10,7 +10,6 @@
 <!-- STILOS -->
 <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
 
-<link title="${sessionScope.Catastrofe.css}" href="<c:url value="/resources/css/${sessionScope.Catastrofe.css}" />" rel="stylesheet">
 
 <!-- JAVASCRIPTS -->
 
@@ -19,9 +18,11 @@
 <script src="<c:url value="/resources/js/mapa.js" />"></script>
 
 <link rel="stylesheet" href="<c:url value="/resources/fancybox/jquery.fancybox-v=2.1.5.css"/>" type="text/css" media="screen">
-<link rel="stylesheet" href="<c:url value="/resources/css/font-awesome.css"/>" rel="stylesheet">
+<link rel="stylesheet" href="<c:url value="/resources/css/font-awesome.css"/>">
 <link rel="prefetch" href="<c:url value="/resources/images/zoom.png"/>">
 <script src="<c:url value="/resources/js/fb.js" />"></script>
+
+<link title="${sessionScope.Catastrofe.css}" href="<c:url value="/resources/css/${sessionScope.Catastrofe.css}"/>" rel="stylesheet"  type="text/css" >
 
 <style>
 	#map-canvas 
@@ -37,8 +38,12 @@
 <!--[if lt IE 9]>
 	<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
+<link title="${sessionScope.Catastrofe.css}" href="<c:url value="/resources/css/${sessionScope.Catastrofe.css}"/>" rel="stylesheet"  type="text/css" >
+
 <title>${sessionScope.Catastrofe.nombre}</title>
 <!--  <title><tiles:insertAttribute name="title" ignore="true" /></title>-->
+
+
 </head>
 <body data-spy="scroll" data-target=".navbar-proyecto">
 
@@ -73,6 +78,9 @@
 		<script type="text/javascript" src="<c:url value="/resources/js/site.js" />"></script>
 		<script type="text/javascript" src="<c:url value="/resources/js/jquery.searchable.js" />"></script>
 		<script type="text/javascript" src="<c:url value="/resources/js/validacion.js" />"></script>
+		<script type="text/javascript" src="<c:url value="/resources/js/jquery.easy-ticker.min.js" />"></script>
+		
+		<link title="${sessionScope.Catastrofe.css}" href="<c:url value="/resources/css/${sessionScope.Catastrofe.css}"/>" rel="stylesheet"  type="text/css" >
 		
 		<!-- fancybox init -->
 		<script>
