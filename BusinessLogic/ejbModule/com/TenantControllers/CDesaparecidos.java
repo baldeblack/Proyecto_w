@@ -32,6 +32,13 @@ public class CDesaparecidos implements ICDesaparecidos {
 		_gson= new Gson();
 		_connection = connection;
 	}
+	
+	public CDesaparecidos(Integer idCat){
+		ICCatastrofe ic = new CCatastrofe();
+		_connection  = ic.getCatastrofeByID(idCat).getStringConeccion();
+		_dao = new DesaparecidosDAO(_connection );
+		_gson= new Gson();
+	}
 
 	@Override
 	public String GetAllDesaparecidos() {
@@ -128,6 +135,14 @@ public class CDesaparecidos implements ICDesaparecidos {
 		}
 		
 		return _gson.toJson(listM, List.class);
+	}
+
+	@Override
+	public boolean UpdateDesaparecidoState(int idDes, short state) {
+		Desaparecido des = _dao.getDesaparecidoById(idDes);
+		des.setEstadoBusqueda(state);
+		_dao.InsertUpdateDesaparecido(des);
+		return des.getEstadoBusqueda() == state;
 	}
 	
 }

@@ -5,6 +5,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -51,5 +52,16 @@ public class LostsServies {
 		
 		int response =  controller.InsertUpdateDesaparecido(gson.toJson(request.getEntity()));
 		return Response.ok(response).build();
+	}
+	
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/LostChangeState/{idCat}/{idDes}/{state}")
+	public String ChangeStateLost(@PathParam("idCat") int idCat, @PathParam("idDes") int idDes, @PathParam("state") Short state,  @QueryParam("callback") String callback){
+	    
+		ICDesaparecidos controller = new CDesaparecidos(idCat);
+		boolean response = controller.UpdateDesaparecidoState(idDes, state);
+		
+		return (callback + "(" + response + ")");
 	}
 }
