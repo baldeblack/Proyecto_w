@@ -113,14 +113,15 @@
 			    		String direccion = request.getSession().getServletContext().getRealPath("imagenesDB/");
 						%>
 			
-						<c:if test="${not empty CatastrofeListModel.ctList}">
+				<c:if test="${not empty CatastrofeListModel.ctList}">
 							<table id="lstTable" class="table table-striped table-bordered"
 								cellspacing="0" width="70%">
 								<thead>
 									<tr>
 										<th>Name</th>
 										<th>Dom</th>
-										<th>Vincular Ong's y/o Rescatistas</th>										
+										<th>Editar</th>
+										<th>Vincular</th>										
 									</tr>
 								</thead>
 			
@@ -129,6 +130,7 @@
 										<th>Name</th>
 										<th>Dom</th>									
 										<th></th>
+										<th></th>
 									</tr>
 								</tfoot>
 								<tbody>
@@ -136,6 +138,7 @@
 										<tr>
 											<td>${o.nombre}</td>
 											<td>${o.dominio}</td>
+											<td><a href="/BackOffice/catastrofes/edit/${o.idCatastrofe}">Editar</a></td> 
 											<td><a href="/BackOffice/vincular/init/${o.idCatastrofe}">Ir</a></td>							
 										</tr>
 									</c:forEach>

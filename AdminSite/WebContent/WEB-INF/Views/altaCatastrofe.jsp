@@ -17,7 +17,9 @@
 	<link href="<c:url value="/resources/css/font-awesome.css"/>" rel="stylesheet" type="text/css" />
 	<link href="<c:url value="/resources/css/proyecto.css"/>" rel="stylesheet" type="text/css" />
 	<link href="<c:url value="/resources/css/animate.css"/>" rel="stylesheet" type="text/css" />
+		<link href="<c:url value="/resources/css/fileinput.min.css"/>" rel="stylesheet" type="text/css" />
 	<script type="text/javascript" src="<c:url value="/resources/js/validacion.js" />"></script>
+	<script type="text/javascript" src="<c:url value="/resources/js/fileinput.min.js" />"></script>
 
 <style type="text/css">
 #panel_color {
@@ -365,19 +367,21 @@
 										</div>
 						      		</div>
 								</div>  
-						      	<div class="col-md-6">
+						     	<div class="col-md-6">
 							      	<div class="form-group">
-										<label class="control-label">Logo :</label>
+										<label>Logo :</label>
 										<div>
-											<form:input class="form-control" type="file" path="logo" />
-											<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+											<form:input id="lofoinput"class="form-control" type="file" path="logo" />
 										</div>
 										<div>
-											<img class="imgShow" alt="" title=""
+											<form:errors path="logo" cssClass="error" />
+										</div>
+										<div style="display:none">
+											<img id="logoimg" class="imgShow" alt="" title=""
 												src="data:image/jpeg;base64,${CatastrofeModel.logoString}">
 										</div>
 									</div>
-								</div>  
+								</div>
 						   	</div>
 							<div class="tab-pane" id="conf">
 								<div class="col-md-12">

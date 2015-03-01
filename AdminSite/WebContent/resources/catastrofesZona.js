@@ -33,6 +33,17 @@ jQuery(document)
 										}
 										return false;
 									})
+									
+					var imgLogo = $('#logoimg').attr('src');
+					$('#lofoinput').fileinput({
+						browseClass: "btn btn-primary btn-block",
+						showCaption: false,
+						showRemove: false,
+						showUpload: false,
+						  initialPreview: [
+					        "<img src='"+imgLogo+"' class='file-preview-image' alt='The Moon' title='The Moon'>",
+					    ]
+					});
 
 				});
 

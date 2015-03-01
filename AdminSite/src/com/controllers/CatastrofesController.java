@@ -229,7 +229,7 @@ public class CatastrofesController {
 			
 					ic.ActualizarCatastrofe(c, (Integer)request.getSession().getAttribute("tenantID"));
 					
-				return "Result";
+				return "redirect:/vincular/init/"+ (Integer)request.getSession().getAttribute("tenantID");
 			}	
 	
  		return "redirect:/vincular/init/"+ String.valueOf(ic.maxCatId());
