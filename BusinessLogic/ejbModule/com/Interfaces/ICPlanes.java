@@ -13,8 +13,9 @@ public interface ICPlanes {
 	Tipocatastrofe getTipo(int ctId);
 	List<PlanUtil> getPlanes(int tipoCT);
 	List<Paso> getPasos(int idPlan);
-	
+	List<Plan> getPlanesBO(int tipoCT);
 	int InserUpdatePlanesWithPasos(Plan input, List<Paso> pasos);
-	boolean UpdatePasoStep(int idPlan, int idPaso, int idRescatista);
+	int UpdatePasoStep(int idPlan, int idPaso, int idRescatista);
 	 Plan getPlan(int idPlan);
+	 int maxPasoId();
 }

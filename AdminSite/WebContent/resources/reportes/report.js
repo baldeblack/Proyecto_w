@@ -1,6 +1,3 @@
-var myRecords = JSON.parse('[{"IdTipoDonacion":2,"Cantidad":4545,"Moneda":"$","Monto":456456.00,"HsServicio":3,"Nombre":"Sandino","Apellido":"Fratti","Nombreong":"ongUnod","Email":"ongUno@gmail.com"},{"IdTipoDonacion":1,"Cantidad":3,"Moneda":"$","Monto":43.00,"HsServicio":3,"Nombre":"yenni","Apellido":"herr","Nombreong":"ongUnod","Email":"ongUno@gmail.com"},{"IdTipoDonacion":1,"Cantidad":3,"Moneda":"$","Monto":43.00,"HsServicio":3,"Nombre":"yenni","Apellido":"herr","Nombreong":"ongUnod","Email":"ongUno@gmail.com"},{"IdTipoDonacion":1,"Cantidad":3,"Moneda":"$","Monto":43.00,"HsServicio":3,"Nombre":"yenni","Apellido":"herr","Nombreong":"ongUnod","Email":"ongUno@gmail.com"},{"IdTipoDonacion":1,"Cantidad":3,"Moneda":"$","Monto":43.00,"HsServicio":3,"Nombre":"yenni","Apellido":"herr","Nombreong":"ongUnod","Email":"ongUno@gmail.com"},{"IdTipoDonacion":1,"Cantidad":3,"Moneda":"$","Monto":43.00,"HsServicio":3,"Nombre":"yenni","Apellido":"herr","Nombreong":"ongUnod","Email":"ongUno@gmail.com"},{"IdTipoDonacion":1,"Cantidad":3,"Moneda":"$","Monto":43.00,"HsServicio":3,"Nombre":"yenni","Apellido":"herr","Nombreong":"ongUnod","Email":"ongUno@gmail.com"},{"IdTipoDonacion":1,"Cantidad":3,"Moneda":"$","Monto":43.00,"HsServicio":3,"Nombre":"yenni","Apellido":"herr","Nombreong":"ongUnod","Email":"ongUno@gmail.com"},{"IdTipoDonacion":1,"Cantidad":3,"Moneda":"$","Monto":43.00,"HsServicio":3,"Nombre":"yenni","Apellido":"herr","Nombreong":"ongUnod","Email":"ongUno@gmail.com"},{"IdTipoDonacion":1,"Cantidad":3,"Moneda":"$","Monto":43.00,"HsServicio":3,"Nombre":"yenni","Apellido":"herr","Nombreong":"ongUnod","Email":"ongUno@gmail.com"},{"IdTipoDonacion":1,"Cantidad":3,"Moneda":"$","Monto":43.00,"HsServicio":3,"Nombre":"yenni","Apellido":"herr","Nombreong":"ongUnod","Email":"ongUno@gmail.com"},{"IdTipoDonacion":1,"Cantidad":3,"Moneda":"$","Monto":43.00,"HsServicio":3,"Nombre":"yenni","Apellido":"herr","Nombreong":"ongUnod","Email":"ongUno@gmail.com"}]');
-		var myRecordsdos = JSON.parse('[{"TipoSolicitor":"Anonimo","Canal":"Web","Ubicacion":"ertwrwr","Fecha":"2015/01/18"},{"TipoSolicitor":"Anonimo","Canal":"Web","Ubicacion":"en casa","Fecha":"2015/01/18"},{"TipoSolicitor":"Anonimo","Canal":"Web","Ubicacion":"sdfsdfs","Fecha":"2015/01/18"},{"TipoSolicitor":"Anonimo","Canal":"Web","Ubicacion":"sdasda","Fecha":"2015/01/18"},{"TipoSolicitor":"Anonimo","Canal":"Web","Ubicacion":"en tu casa","Fecha":"2015/01/18"},{"TipoSolicitor":"Anonimo","Canal":"Web","Ubicacion":"en tu casa","Fecha":"2015/01/18"},{"TipoSolicitor":"Anonimo","Canal":"Web","Ubicacion":"en tu casa","Fecha":"2015/01/18"},{"TipoSolicitor":"Anonimo","Canal":"Web","Ubicacion":"en tu casa","Fecha":"2015/01/18"},{"TipoSolicitor":"Anonimo","Canal":"Web","Ubicacion":"en tu casa","Fecha":"2015/01/18"},{"TipoSolicitor":"Anonimo","Canal":"Web","Ubicacion":"en tu casa","Fecha":"2015/01/18"},{"TipoSolicitor":"Anonimo","Canal":"Web","Ubicacion":"en tu casa","Fecha":"2015/01/18"},{"TipoSolicitor":"Anonimo","Canal":"Web","Ubicacion":"en tu casa","Fecha":"2015/01/18"},{"TipoSolicitor":"Anonimo","Canal":"Web","Ubicacion":"en tu casa","Fecha":"2015/01/18"},{"TipoSolicitor":"Anonimo","Canal":"Web","Ubicacion":"en tu casa","Fecha":"2015/01/18"},{"TipoSolicitor":"Anonimo","Canal":"Web","Ubicacion":"en tu casa","Fecha":"2015/01/18"},{"TipoSolicitor":"Anonimo","Canal":"Web","Ubicacion":"en tu casa","Fecha":"2015/01/18"},{"TipoSolicitor":"Anonimo","Canal":"Web","Ubicacion":"en tu casa","Fecha":"2015/01/18"},{"TipoSolicitor":"Anonimo","Canal":"Web","Ubicacion":"en tu casa","Fecha":"2015/01/18"},{"TipoSolicitor":"Anonimo","Canal":"Web","Ubicacion":"en tu casa","Fecha":"2015/01/18"}]');
-		var myRecordstres = JSON.parse('{"desaparecidos":4,"ongs":3,"pedidos":4,"usuarios":4}');
 		var chart;
 		var tipoRpt;
 		var sitio;
@@ -25,8 +22,9 @@ var myRecords = JSON.parse('[{"IdTipoDonacion":2,"Cantidad":4545,"Moneda":"$","M
 		                $(this).attr('checked', false);
 		            }
 		        });
-				  load(current);
+				
 		      if (current == 'usoRbt') {
+		    	  	load(current);
 		            $('.chartMenu').show();
 					$('.divider').hide();
 					$('.tableMenu').hide();
@@ -56,13 +54,29 @@ var myRecords = JSON.parse('[{"IdTipoDonacion":2,"Cantidad":4545,"Moneda":"$","M
 				 sitio = $(this).find("option:selected").text();
 				 
 				 $('#radios input').each(function() {
-		            if ($(this).is(':checked')) {
+		            if ($(this).is(':checked') && $(this).attr('name') == "usoRbt") {
 						load($(this).attr('name'))
 					}
 		        });
 				
 			});
 				
+
+			$('#rptform').validator().on('submit', function (e) {
+
+				  if (e.isDefaultPrevented()) {
+				    // handle the invalid form...
+				  } else {
+					  e.preventDefault();
+					  $('#radios input').each(function() {
+						  var current = $(this).attr('name');
+						  if (current != 'usoRbt' && $(this).is(':checked')) {
+							  load($(this).attr('name'))
+						  }
+					    })
+					  
+				  }
+			});
 
 		});
 

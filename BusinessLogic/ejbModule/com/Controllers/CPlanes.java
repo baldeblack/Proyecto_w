@@ -1,5 +1,6 @@
 package com.Controllers;
 
+import java.util.Iterator;
 import java.util.List;
 
 import com.DAO.PlanesDAO;
@@ -39,15 +40,23 @@ public class CPlanes implements ICPlanes{
 		return _dao.InsertUpdatePlan(input);
 	}
 	@Override
-	public boolean UpdatePasoStep(int idPlan, int idPaso, int idRescatista) {
+	public int UpdatePasoStep(int idPlan, int idPaso, int idRescatista) {
 		// TODO Auto-generated method stub
-		boolean result = false;
+		
+		Plan p = _dao.getPlan(idPlan);
+		
+		for (Iterator<Paso> iterator = p.getPasos().iterator(); iterator.hasNext(); ) {
+			Paso pi = iterator.next();
+			if(pi.getIdpasos() == idPaso){
+				pi.setEstado(String.valueOf(1));
+			}
+		}
+		int result = _dao.InsertUpdatePlan(p);
 		
 		if(_dao.getPlanStatus(idPlan)){
-			_dao.removeRC(idRescatista);
-				Plan p = new Plan();
+			_dao.removeRC(idRescatista);			
 					p.setEstado(1);
-					result = true;
+					_dao.InsertUpdatePlan(p);
 		}
 		
 		return result;
@@ -56,5 +65,15 @@ public class CPlanes implements ICPlanes{
 	public Plan getPlan(int idPlan) {
 		// TODO Auto-generated method stub
 		return _dao.getPlan(idPlan);
+	}
+	@Override
+	public int maxPasoId() {
+		// TODO Auto-generated method stub
+		return _dao.maxPasoId();
+	}
+	@Override
+	public List<Plan> getPlanesBO(int tipoCT) {
+		// TODO Auto-generated method stub
+		return _dao.getPlanesBO(tipoCT);
 	}
 }

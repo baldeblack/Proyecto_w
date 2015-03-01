@@ -32,8 +32,9 @@
 <script type="text/javascript"
 	src="resources/reportes/jspdf.plugin.standard_fonts_metrics.js"></script>
 <script type="text/javascript" src="resources/reportes/FileSaver.js"></script>
+<script type="text/javascript" src="resources/js/validacion.js"></script>
 <script type="text/javascript" src="resources/reportes/report.js"></script>
-<!--link rel="stylesheet" media="all" href="https://s3.amazonaws.com/dynatable-docs-assets/css/bootstrap-2.3.2.min.css" /-->
+
 
 <link href="<c:url value="/resources/css/bootstrap.css"/>"
 	rel="stylesheet" type="text/css" />
@@ -79,7 +80,6 @@
 				</ul>
 			</div>
 			
-			<!-- MENU VERTICAL -->
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 				<ul class="nav navbar-nav side-nav">
 					<li><a href="/BackOffice/catastrofes"><i class="fa fa-list"></i> Lista Catastrofe</a></li>
@@ -99,15 +99,23 @@
 	        </div>
 			<div class="contenido"><br>
         		<div class="col-md-12"><br>
+        		<div class="panel panel-primary ani_panel animated bounceInUp">
+						<div class="panel-heading">Reportes</div>
+						<div class="panel-body">
+					<div class="col-md-3">
+					<div class="form-group">
 					<div id="radios">
 						<input type="radio" id="usoRbt" name="usoRbt" value="fle"
-							checked="checked">Uso sitio<br> <input type="radio"
-							id="donRbt" name="donRbt" value="m">Donaciones en el
-						tiempo.<br> <input type="radio" id="pedRbt" name="pedRbt"
-							value="fe">Pedido de ayuda en el tiempo<br>
+							checked="checked">Uso sitio<br>
+							 <input type="radio" id="donRbt" name="donRbt" value="m">Donaciones en el tiempo.<br> 
+						<input type="radio" id="pedRbt" name="pedRbt" value="fe">Pedido de ayuda en el tiempo<br>
 					</div>
-					<div id="selectDiv" class="form-group">
-						<select id="select" name="Catastrofes">
+					</div>
+					</div>
+					<div class="col-md-3">
+					<div class="form-group">
+					<div id="selectDiv">
+						<select id="select"  class="form-control" name="Catastrofes">
 							<c:if test="${not empty ReporteModel.lstCT}">
 								<option value="g" selected="selected">General</option>
 								<c:forEach var="sis" items="${ReporteModel.lstCT}" varStatus="i">
@@ -119,10 +127,25 @@
 		
 						</select>
 					</div>
-					<div id="dateDiv" class="form-group">
-						<input id="start" type="date" name="start" class="form-control"
-							required> <input id="end" type="date" name="end"
-							class="form-control" required>
+					<div>
+					<form id="rptform" method="post" data-toggle="validator" role="form">
+						<div id="dateDiv" class="form-group">
+						  <label for="start" class="control-label">Fecha de Inicio</label>
+							<input id="start" type="date" name="start" class="form-control"
+								required> 
+								 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+						           <div class="help-block with-errors"></div>
+						          <label for="end" class="control-label">Fecha de Fin</label>
+								<input id="end" type="date" name="end" class="form-control" required>
+								 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+						           <div class="help-block with-errors"></div>
+							<div class="btn-group" role="group" aria-label="...">
+								<button id="generar" class="btn btn-default" type="submit">GENERAR</button>						
+							</div>
+						</div>
+					</form>
+					</div>
+					</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12">
@@ -185,6 +208,8 @@
 						</div>
 						<!-- /.col -->
 		
+					</div>
+				</div>
 					</div>
 				</div>
 			</div>

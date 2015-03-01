@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
@@ -48,7 +47,9 @@ public class PlanesDAO {
 		}
 		
 		public void removeRC(int idUs){
-			_eManager.getTransaction().begin();
+			if (!_eManager.getTransaction().isActive()) {
+				_eManager.getTransaction().begin();
+			}	
 			Rescatistacatastrofe rDel = _eManager.find(Rescatistacatastrofe.class, idUs);
 			_eManager.remove(rDel);
 			_eManager.getTransaction().commit();
@@ -83,6 +84,16 @@ public class PlanesDAO {
 			
 		}
 		
+		public List<Plan> getPlanesBO(int tipoCT){
+			List<Plan> lstPlanes = new ArrayList<Plan>();
+			TypedQuery<Plan> query =_eManager.createQuery("Select p From Plan p Where p.idTipoCatastrofe =?1 and p.estado =?2", Plan.class);
+			query.setParameter(1, tipoCT);	
+			query.setParameter(2, 0);	
+			lstPlanes = query.getResultList();
+			
+			return lstPlanes; 				
+		}
+		
 		public List<PlanUtil> getPlanes(int tipoCT){
 			List<Plan> lstPlanes = new ArrayList<Plan>();
 			TypedQuery<Plan> query =_eManager.createQuery("Select p From Plan p Where p.idTipoCatastrofe =?1 ", Plan.class);
@@ -112,13 +123,12 @@ public class PlanesDAO {
 		    return pasos;
 		}
 		
-		public int InsertUpdatePlan(Plan input){
-			EntityTransaction _etitytransaction = null;			
+		public int InsertUpdatePlan(Plan input){			
 			try
-			{
-			
-				_etitytransaction = _eManager.getTransaction();
-				_etitytransaction.begin();
+			{			
+				if (!_eManager.getTransaction().isActive()) {
+					_eManager.getTransaction().begin();
+				}
 				 Plan pMod = _eManager.find(Plan.class, input.getIdPlan());
 				
 				 if(pMod == null){
@@ -138,16 +148,34 @@ public class PlanesDAO {
 						 _eManager.merge(p);
 					 }			    	
 			    }
-			    _etitytransaction.commit();
-				_eManager.close();
-			
-			} catch (Exception e) {
-				if(_etitytransaction.isActive())
-					_etitytransaction.rollback();
+				_eManager.getTransaction().commit();
+			} catch (Exception e) {				
+				_eManager.getTransaction().rollback();
 				System.out.println(e.getMessage());
 			}
 			
 			return input.getIdPlan();
 		}
 		
+		public Integer maxPasoId() {		
+			try {
+				if (!_eManager.getTransaction().isActive()) {
+					_eManager.getTransaction().begin();
+				}
+				
+				Integer i = (Integer) _eManager.createQuery(
+						"select max(p.id) from Paso p").getSingleResult();
+				if (i == null) {
+					i = 0;
+					return i;
+				}
+				_eManager.getTransaction().commit();			
+				return i;
+						
+			} catch (Exception e) {				
+				_eManager.getTransaction().rollback();
+				System.out.println(e.getMessage());
+			}
+			return null;
+		}
 }

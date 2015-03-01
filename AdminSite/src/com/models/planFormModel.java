@@ -1,10 +1,6 @@
-package com.utils;
+package com.models;
 
-import java.util.List;
-
-import com.models.pasoFormModel;
-
-public class PlanUtil {
+public class planFormModel {
 	
 	private int idPlan;
 
@@ -19,8 +15,12 @@ public class PlanUtil {
 	private int idTipoPlan;
 
 	private String nombre;
+	
+	private String nombre_paso;
+	
+	private String descripcion_paso;
 
-	private List<pasoFormModel> pasos;
+	private String accion;
 	
 	public int getIdPlan() {
 		return idPlan;
@@ -78,11 +78,27 @@ public class PlanUtil {
 		this.nombre = nombre;
 	}
 
-	public List<pasoFormModel> getPasos() {
-		return pasos;
+	public String getNombre_paso() {
+		return nombre_paso;
 	}
 
-	public void setPasos(List<pasoFormModel> pasos) {
-		this.pasos = pasos;
+	public void setNombre_paso(String nombre_paso) {
+		this.nombre_paso = nombre_paso;
+	}
+
+	public String getDescripcion_paso() {
+		return descripcion_paso;
+	}
+
+	public void setDescripcion_paso(String descripcion_paso) {
+		this.descripcion_paso = descripcion_paso;
+	}
+
+	public String getAccion() {
+		return accion;
+	}
+
+	public void setAccion(String accion) {
+		this.accion = accion;
 	}
 }
