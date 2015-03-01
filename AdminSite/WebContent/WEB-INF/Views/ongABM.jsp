@@ -104,8 +104,7 @@
 											class="glyphicon form-control-feedback" aria-hidden="true"></span>
 										<div class="help-block with-errors"></div>
 									</div>
-								</div>
-								<div class="col-md-6">
+							
 									<div class="form-group">
 										<label for="web" class="control-label">Web</label> <input
 											id="web" type="text" class="form-control" required /> <span
@@ -135,9 +134,7 @@
 											aria-hidden="true"></span>
 										<div class="help-block with-errors"></div>
 									</div>
-								</div>
 
-								<div class="col-md-6">
 									<div class="form-group">
 										<label for="origen" class="control-label">Origen</label> <input
 											id="origen" type="text" class="form-control" required /> <span
@@ -145,10 +142,10 @@
 										<div class="help-block with-errors"></div>
 									</div>
 									<div class="form-group">
-										<div class="col-xs-5 col-xs-offset-3">
+										
 											<button type="submit"  class="btn btn-success btn-lg"
 												id="actionbtn" name="action" value="${action}">${action}</button>
-										</div>
+										
 									</div>
 								</div>
 							</form>

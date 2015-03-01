@@ -109,33 +109,33 @@
 						
 									<div class="form-group">
 										<label for="nick" class="control-label">Nick</label> <input
-											id="nick" type="text" class="form-control" required /> <span
+											id="nick" type="text" class="form-control"  required /> <span
 											class="glyphicon form-control-feedback" aria-hidden="true"></span>
 										<div class="help-block with-errors"></div>
 									</div>
 									<div class="form-group">
 										<label for="email" class="control-label">Mail</label> <input
-											type="email" class="form-control" id="email" required /> <span
+											type="email" class="form-control" id="email" autocomplete="off" required /> <span
 											class="glyphicon form-control-feedback" aria-hidden="true"></span>
 										<div class="help-block with-errors"></div>
 									</div>
 								
 									<div id="passdiv" class="form-group">
 										<label for="password" class="control-label">Contraseña</label>
-										<input type="password" class="form-control" id="password"
+										<input type="password" class="form-control" id="password" autocomplete="off"
 											required /> <span class="glyphicon form-control-feedback"
 											aria-hidden="true"></span>
 										<div class="help-block with-errors"></div>
 									</div>
-								
+								</div>
+								<div class="col-md-6">
 									<div class="form-group">
 										<label for="celular" class="control-label">Celular</label> <input
 											id="celular" class="form-control" type="tel" required /> <span
 											class="glyphicon form-control-feedback" aria-hidden="true"></span>
 										<div class="help-block with-errors"></div>
 									</div>
-								</div>
-								<div class="col-md-6">
+								
 									<div class="form-group">
 										<label for="direccion" class="control-label">Direccion</label>
 										<input id="direccion" class="form-control" required /> <span
@@ -177,7 +177,8 @@
 
 									</div>
 								</div>
-								<div class="form-group">
+								
+								<div class="col-lg-12 form-group">
 									<button type="submit" class="btn btn-success btn-lg"
 										id="actionbtn" name="action" value="${action}">${action}</button>
 								</div>

@@ -43,8 +43,7 @@
 <link href="<c:url value="/resources/css/proyecto.css"/>"
 	rel="stylesheet" type="text/css" />
 
-<link href="<c:url value="resources/reportes/required/jquery.dynatable.css"/>"
-	rel="stylesheet" type="text/css" />
+<link href="<c:url value="resources/reportes/required/jquery.dynatable.css"/>" rel="stylesheet" type="text/css" />
 	<link href="<c:url value="/resources/css/animate.css"/>" rel="stylesheet" type="text/css" />
 
 </head>
@@ -104,47 +103,53 @@
 						<div class="panel-body">
 					<div class="col-md-3">
 					<div class="form-group">
-					<div id="radios">
-						<input type="radio" id="usoRbt" name="usoRbt" value="fle"
-							checked="checked">Uso sitio<br>
-							 <input type="radio" id="donRbt" name="donRbt" value="m">Donaciones en el tiempo.<br> 
-						<input type="radio" id="pedRbt" name="pedRbt" value="fe">Pedido de ayuda en el tiempo<br>
+					<div id="radios">					
+						<input type="radio" id="usoRbt" name="usoRbt" value="fle" checked="checked">Uso sitio<br>
+						<input type="radio" id="donRbt" name="donRbt" value="m">Donaciones en el tiempo<br> 
+						<input type="radio" id="pedRbt" name="pedRbt" value="fe">Pedido de ayuda en el tiempo<br>			
 					</div>
 					</div>
 					</div>
-					<div class="col-md-3">
-					<div class="form-group">
-					<div id="selectDiv">
-						<select id="select"  class="form-control" name="Catastrofes">
-							<c:if test="${not empty ReporteModel.lstCT}">
-								<option value="g" selected="selected">General</option>
-								<c:forEach var="sis" items="${ReporteModel.lstCT}" varStatus="i">
-									<option value="${sis.idCatastrofe}">${sis.nombre}</option>
-		
-								</c:forEach>
-		
-							</c:if>
-		
-						</select>
-					</div>
-					<div>
-					<form id="rptform" method="post" data-toggle="validator" role="form">
-						<div id="dateDiv" class="form-group">
-						  <label for="start" class="control-label">Fecha de Inicio</label>
-							<input id="start" type="date" name="start" class="form-control"
-								required> 
-								 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-						           <div class="help-block with-errors"></div>
-						          <label for="end" class="control-label">Fecha de Fin</label>
-								<input id="end" type="date" name="end" class="form-control" required>
-								 <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-						           <div class="help-block with-errors"></div>
-							<div class="btn-group" role="group" aria-label="...">
-								<button id="generar" class="btn btn-default" type="submit">GENERAR</button>						
+					<div class="col-md-9">
+						<div class="col-md-6">
+							<div class="form-group">
+								<div id="selectDiv">
+									<select id="select"  class="form-control" name="Catastrofes">
+										<c:if test="${not empty ReporteModel.lstCT}">
+											<option value="g" selected="selected">General</option>
+											<c:forEach var="sis" items="${ReporteModel.lstCT}" varStatus="i">
+												<option value="${sis.idCatastrofe}">${sis.nombre}</option>
+					
+											</c:forEach>
+					
+										</c:if>
+					
+									</select>
+								</div>
 							</div>
 						</div>
-					</form>
-					</div>
+					
+					
+					<div class="col-md-12">
+						<div class="form-group">
+						<form id="rptform" class="form-inline" method="post" data-toggle="validator" role="form">
+							<div id="dateDiv">
+									<div class="form-group">
+									  	<label for="start" class="control-label">Fecha de Inicio</label>
+										<input id="start" type="date" name="start" class="form-control" required> 				 
+								        
+							        </div>	
+									<div class="form-group">		           
+							          	<label for="end" class="control-label">Fecha de Fin</label>
+										<input id="end" type="date" name="end" class="form-control" required>
+							           	
+							        </div>
+								
+									<button id="generar" class="btn btn-default" type="submit">GENERAR</button>						
+								
+							</div>
+						</form>
+						</div>
 					</div>
 					</div>
 					<div class="row">
