@@ -42,9 +42,15 @@ public class PlanesControl {
 		if(!ac.tieneAcceso(request, "planes")){
 			return "redirect:/forbhiden";
 		}
-		PlanModel PlanModel = new PlanModel();
-		model.addAttribute("PlanModel", PlanModel);		
-		return "listCatastrofes";
+		 ICPlanes ip = new CPlanes();
+		 List <Plan> planes = new ArrayList<Plan>();
+		 planes = ip.getPlanes();
+		model.addAttribute("planes", planes);	
+		ICCatastrofe ic = new CCatastrofe();
+		List<Tipocatastrofe> tiposct = new ArrayList<Tipocatastrofe>();
+		tiposct = ic.getTiposCT();
+		model.addAttribute("tiposct", tiposct);	
+		return "listPlanes";
 	}
 	
 	@RequestMapping(value="/edit/{planid}", method=RequestMethod.GET)
@@ -110,8 +116,8 @@ public class PlanesControl {
 		model.addAttribute("tiposCatastrofe", lst);
 		model.addAttribute("idPlan", "");
 		model.addAttribute("jsondata", "");
-		//return "Plan";		
-		return "redirect:/planes/edit/29";
+		return "Plan";		
+		//return "redirect:/planes/edit/29";
 	}
 	
 	

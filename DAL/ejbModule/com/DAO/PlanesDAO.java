@@ -94,6 +94,19 @@ public class PlanesDAO {
 			return lstPlanes; 				
 		}
 		
+		public List<Plan> getPlanes(){
+			List<Plan> lstPlanes = new ArrayList<Plan>();
+			try {
+				TypedQuery<Plan> query =_eManager.createQuery("Select p From Plan p", Plan.class);
+				
+				lstPlanes = query.getResultList();
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+						
+			return lstPlanes; 				
+		}
+		
 		public List<PlanUtil> getPlanes(int tipoCT){
 			List<Plan> lstPlanes = new ArrayList<Plan>();
 			TypedQuery<Plan> query =_eManager.createQuery("Select p From Plan p Where p.idTipoCatastrofe =?1 ", Plan.class);

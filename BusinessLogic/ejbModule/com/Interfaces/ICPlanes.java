@@ -18,4 +18,5 @@ public interface ICPlanes {
 	int UpdatePasoStep(int idPlan, int idPaso, int idRescatista);
 	 Plan getPlan(int idPlan);
 	 int maxPasoId();
+	 List<Plan> getPlanes();
 }

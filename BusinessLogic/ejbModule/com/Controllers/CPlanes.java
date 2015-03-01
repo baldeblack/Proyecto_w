@@ -76,4 +76,9 @@ public class CPlanes implements ICPlanes{
 		// TODO Auto-generated method stub
 		return _dao.getPlanesBO(tipoCT);
 	}
+	@Override
+	public List<Plan> getPlanes() {
+		// TODO Auto-generated method stub
+		return _dao.getPlanes();
+	}
 }

@@ -72,6 +72,7 @@
 							class="fa fa-plus-square"></i> Alta Catastrofe</a></li>
 					<li><a href="/BackOffice/planes/create"><i
 							class="fa fa-plus-square"></i> Alta Plan</a></li>
+					<li><a href="/BackOffice/planes"><i class="fa fa-plus-square"></i> Planes</a></li>
 					<li><a href="/BackOffice/rpt"><i class="fa fa-file"></i>
 							Reportes</a></li>
 				</ul>

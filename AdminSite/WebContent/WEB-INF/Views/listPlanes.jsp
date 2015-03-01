@@ -1,15 +1,17 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Usuarios</title>
+	<title>Catastrofes</title>
 	
 	<script type="text/javascript" src="<c:url value="/resources/js/jquery.js" />"></script>
 	<script type="text/javascript" src="<c:url value="/resources/js/jquery.dataTables.js" />"></script>
 	<script type="text/javascript" src="<c:url value="/resources/js/dataTables.tableTools.js" />"></script>
+	<script type="text/javascript" src="<c:url value="/resources/js/bootstrap.js" />">
+	</script>
 	<script type="text/javascript" src="<c:url value="/resources/js/dataTables.bootstrap.js" />"></script>
 	<script type="text/javascript">
 			$(document).ready(function() {			 
@@ -52,7 +54,7 @@
 	<link href="<c:url value="/resources/css/proyecto.css"/>" rel="stylesheet" type="text/css" />
 	<link href="<c:url value="/resources/css/dataTables.bootstrap.css"/>" rel="stylesheet" type="text/css" />
 	<link href="<c:url value="/resources/css/animate.css"/>" rel="stylesheet" type="text/css" />
-	
+
 </head>
 <body>
 <div class="contenedor-header">
@@ -71,7 +73,7 @@
 			</div>
 			
 			<div class="collapse navbar-collapse navbar-ex2-collapse">
-				<!-- <h2 class="navbar-text">Lista Usuarios</h2>-->
+				<!-- <h2 class="navbar-text">Lista Catastrofes</h2>-->
 				<ul class="nav navbar-right top-nav">
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown"><i class="fa fa-user"></i>
@@ -87,8 +89,8 @@
 			<!-- MENU VERTICAL -->
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 				<ul class="nav navbar-nav side-nav">
-					<li><a href="/BackOffice/catastrofes"><i class="fa fa-list"></i> Lista Catastrofe</a></li>
-					<li class="active"><a href="/BackOffice/usuarios"><i class="fa fa-list"></i> Lista Usuarios</a></li>
+					<li class="active"><a href="/BackOffice/catastrofes"><i class="fa fa-list"></i> Lista Catastrofe</a></li>
+					<li><a href="/BackOffice/usuarios"><i class="fa fa-list"></i> Lista Usuarios</a></li>
 					<li><a href="/BackOffice/ongs"><i class="fa fa-list"></i> Lista ONGs</a></li>
 					<li><a href="/BackOffice/ongs/create"><i class="fa fa-plus-square"></i> Alta Ong's</a></li>
 					<li><a href="/BackOffice/usuarios/create"><i class="fa fa-plus-square"></i> Alta Usuarios</a></li>
@@ -103,45 +105,54 @@
         	<div class="notification ">
 	          
 	        </div>
-			<div class="contenido"><br>
+        	<div class="contenido"><br>
         		<div class="col-md-12"><br>
 		            <div class="panel panel-primary ani_panel animated bounceInUp">
-		                <div class="panel-heading">Lista Usuarios</div>
+		                <div class="panel-heading">Lista Planes</div>
 		                <div class="panel-body">
-							<%
-							    String direccion = request.getSession().getServletContext().getRealPath("imagenesDB/");
-							%>
-
-							<c:if test="${not empty UsuariosListModel.lstUsuarios}">
-						    <table id="lstTable" class="table table-striped table-bordered" cellspacing="0" width="70%">
-						     <thead>
-						            <tr>
-						                <th>Nombre</th>               
-						                  <th>Link</th>          
-						            </tr>
-						        </thead>
-						 
-						        <tfoot>
-						            <tr>
-						                 <th>Nombre</th>              
-						                  <th>Link</th>              
-						            </tr>
-						        </tfoot>
-						    <tbody>
-						        <c:forEach var="o" items="${UsuariosListModel.lstUsuarios}">
-						            <tr>
-						                <th>${o.nombre}</th>
-						                <th><a href="/BackOffice/usuarios/edit/${o.idUsuarios}">Editar</a></th>                 
-						            </tr>
-						        </c:forEach>
-						      </tbody>
-						    </table>
-						</c:if> 
-					</div> 
-   				</div>
-   			</div>
-   		</div>               
-      </div>
-   </div>  
+			
+			
+				<c:if test="${not empty planes}">
+							<table id="lstTable" class="table table-striped table-bordered"
+								cellspacing="0" width="70%">
+								<thead>
+									<tr>
+										<th>Nombre</th>
+										<th>Descripcion</th>
+										<th>Tipo Catastrofe</th>
+										<th>Editar</th>										
+									</tr>
+								</thead>
+			
+								<tfoot>
+									<tr>
+										<th></th>
+										<th></th>									
+										<th></th>
+										<th></th>
+									</tr>
+								</tfoot>
+								<tbody>
+									<c:forEach var="p" items="${planes}">
+										<tr>
+											<td>${p.nombre}</td>
+											<td>${p.descripcion}</td>
+											<c:forEach var="t" items="${tiposct}">
+											<c:if test="${p.idTipoCatastrofe == t.idtipocatastrofe}">
+													<td>${t.nombre}</td> 
+											</c:if>
+											</c:forEach>											
+											<td><a href="/BackOffice/planes/edit/${p.idPlan}">Ir</a></td>							
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+						</c:if>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
