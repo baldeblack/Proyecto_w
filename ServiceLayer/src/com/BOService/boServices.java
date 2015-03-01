@@ -110,7 +110,7 @@ public class boServices {
 	@Path("/updatePaso/{idPlan}/{idPaso}/{idRescatista}")
 	public Response UpdatePasoStep(@PathParam("idPlan") int idPlan,@PathParam("idPaso") int idPaso, @PathParam("idRescatista") int idRescatista){
 		ICPlanes ip = new CPlanes();
-		boolean res = ip.UpdatePasoStep(idPlan, idPaso, idRescatista);
+		int res = ip.UpdatePasoStep(idPlan, idPaso, idRescatista);
 		return Response.ok(res).build(); 
 	}
 
