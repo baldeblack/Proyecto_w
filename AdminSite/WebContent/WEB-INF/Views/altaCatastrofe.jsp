@@ -17,6 +17,7 @@
 	<link href="<c:url value="/resources/css/font-awesome.css"/>" rel="stylesheet" type="text/css" />
 	<link href="<c:url value="/resources/css/proyecto.css"/>" rel="stylesheet" type="text/css" />
 	<link href="<c:url value="/resources/css/animate.css"/>" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="<c:url value="/resources/js/validacion.js" />"></script>
 
 <style type="text/css">
 #panel_color {
@@ -190,7 +191,7 @@
 					<li><a href="/BackOffice/ongs"><i class="fa fa-list"></i> Lista ONGs</a></li>
 					<li><a href="/BackOffice/ongs/create"><i class="fa fa-plus-square"></i> Alta Ong's</a></li>
 					<li><a href="/BackOffice/usuarios/create"><i class="fa fa-plus-square"></i> Alta Usuarios</a></li>
-					<li><a href="/BackOffice/catastrofes/create"><i class="fa fa-plus-square"></i> Alta Catastrofe</a></li>	
+					<li class="active"><a href="/BackOffice/catastrofes/create"><i class="fa fa-plus-square"></i> Alta Catastrofe</a></li>	
 					<li><a href="/BackOffice/planes/create"><i class="fa fa-plus-square"></i> Alta Plan</a></li>
 					<li><a href="/BackOffice/rpt"><i class="fa fa-file"></i> Reportes</a></li>
 				</ul>
@@ -205,9 +206,8 @@
                 <br>
 				<!-- <h1>Alta Catastrofe</h1>-->
 				<!-- <a href="#" class="btn btn-danger btn-lg " onclick='message("Error - Error 303 :(","error");'> Error </a>-->
-				<form:form method="POST" action="/BackOffice/catastrofes/save"
-					commandName="CatastrofeModel" enctype="multipart/form-data">
-					<form:errors path="*" cssClass="errorblock" element="div" />
+				
+					<!--<form:errors path="*" cssClass="errorblock" element="div" />-->
 					<div class="panel with-nav-tabs panel-primary ani_panel animated bounceInUp">
                 	  <div class="panel-heading">
                 	 
@@ -215,85 +215,66 @@
 					        <li class="active"><a href="#general" data-toggle="tab">General</a></li>
 					        <li><a href="#ubicacion"  data-toggle="tab">Ubicacion</a></li>
 					        <li><a href="#imagenes" data-toggle="tab">Imagenes</a></li>
-					        <li><a href="#conf" data-toggle="tab">Configuracion</a></li>
+					        <li><a href="#conf" data-toggle="tab">Configuracio</a></li>
 				
 					    </ul>
 					  </div>
 					
-					  <div class="panel-body ">				 
+					  <div class="panel-body ">	
+					  	<form:form method="POST" data-toggle="validator" action="/BackOffice/catastrofes/save"
+					commandName="CatastrofeModel" enctype="multipart/form-data">
 					    <div id="my-tab-content" class="tab-content">
 					        <div class="tab-pane active" id="general">
 				      		 	<div class="col-md-6">
 				      				<div class="form-group">
-										<label>Nombre :</label>
-										
-										<div>
-											<form:input class="form-control" path="nombre" required="true" />
-										</div>
-										<div>
-											<form:errors path="nombre" cssClass="error" />
-										</div>
+										<label class="control-label">Nombre :</label>
+										<form:input class="form-control" path="nombre" required="true" />
+ 										<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
 									</div>
 									<div class="form-group">
-										<label>Dominio :</label>
-										<div>
-											<form:input class="form-control" path="dominio" required="true" />
-										</div>
-										<div>
-											<form:errors path="dominio" cssClass="error" />
-										</div>
+										<label class="control-label">Dominio :</label>
+										<form:input class="form-control" path="dominio" required="true" />
+										<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
 									</div>
 									<div class="form-group">
-										<label>Informacion :</label>
-										<div>
-											<form:textarea class="form-control" path="informacion" required="true" />
-										</div>
-										<div>
-											<form:errors path="informacion" cssClass="error" />
-										</div>
+										<label class="control-label">Informacion :</label>
+										<form:textarea class="form-control" path="informacion" required="true" />
+										<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
 									</div>
 									<div class="form-group">
-										<label>Key Facebook :</label>
-										<div>
-											<form:input class="form-control" path="apiFb" required="true" />
-										</div>
-										<div>
-											<form:errors path="apiFb" cssClass="error" />
-										</div>
+										<label class="control-label">Key Facebook :</label>
+										<form:input class="form-control" path="apiFb" required="true" />
+										<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
 									</div>
 				      			</div>
 					      		<div class="col-md-6">
 					      			<div class="form-group">
-										<label>Key Twitter :</label>
-										<div>
-											<form:input class="form-control" path="apiTw" required="true" />
-										</div>
-										<div>
-											<form:errors path="apiTw" cssClass="error" />
-										</div>
+										<label class="control-label">Key Twitter :</label>
+										<form:input class="form-control" path="apiTw" required="true" />
+										<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
 									</div>
 					      			<div class="form-group">
-										<label>Activa :</label>
-										<div>
-											<select class="form-control" name="activa">
-												<option selected="selected" value="1">SI</option>
-												<option value="0">NO</option>
-											</select>
-										</div>
+										<label class="control-label">Activa :</label>									
+										<select class="form-control" name="activa">
+											<option selected="selected" value="1">SI</option>
+											<option value="0">NO</option>
+										</select>
+										
+										
 									</div>
 									<div class="form-group">
-										<label>Temas :</label>
-										<div>
+										<label class="control-label">Temas :</label>
+										
 											<select class="form-control" name="css">
 												<option selected="selected" value="Style1.css">TEMA 1</option>
 												<option value="Style2.css">TEMA 2</option>
 												
 											</select>
-										</div>
+										
 									</div>
 			      		 			<div class="form-group">
-										<label>Tipo :</label>
-										<div><form:select class="form-control" path="tipo" multiple="false" size="1">
+										<label class="control-label">Tipo :</label>
+										<form:select class="form-control" path="tipo" multiple="false" size="1">
 											<c:forEach var="s" varStatus="i"
 												items="${CatastrofeModel.tipos}">
 												<c:choose>
@@ -306,7 +287,8 @@
 												</c:choose>
 											</c:forEach>
 										</form:select>
-										</div>
+										
+										
 									</div>
     		
 			      		 		</div>
@@ -328,9 +310,7 @@
 										<form:hidden id="zonaAfectada" path="zonaAfectada"
 											required="true" />
 										
-										<div>
-											<form:errors path="zonaAfectada" cssClass="error" />
-										</div>
+										<div class="help-block with-errors"></div>
 									</div>
 								</div>							    
 									            
@@ -387,12 +367,10 @@
 								</div>  
 						      	<div class="col-md-6">
 							      	<div class="form-group">
-										<label>Logo :</label>
+										<label class="control-label">Logo :</label>
 										<div>
 											<form:input class="form-control" type="file" path="logo" />
-										</div>
-										<div>
-											<form:errors path="logo" cssClass="error" />
+											<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
 										</div>
 										<div>
 											<img class="imgShow" alt="" title=""
@@ -484,9 +462,10 @@
 								</div>		
 							</div>
 					    </div>
+					    </form:form>
 					  </div>
 					</div>
-				</form:form>
+				
 			
 			</div>
 		</div>
@@ -504,5 +483,6 @@
 		});
 		
 	</script>
+	
 </body>
 </html>

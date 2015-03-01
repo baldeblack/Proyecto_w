@@ -8,8 +8,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <!-- STILOS -->
-<link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
 
+<link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
+<link title="${sessionScope.Catastrofe.css}" href="<c:url value="/resources/css/${sessionScope.Catastrofe.css}"/>" rel="stylesheet"  type="text/css" >
 
 <!-- JAVASCRIPTS -->
 
@@ -22,7 +23,7 @@
 <link rel="prefetch" href="<c:url value="/resources/images/zoom.png"/>">
 <script src="<c:url value="/resources/js/fb.js" />"></script>
 
-<link title="${sessionScope.Catastrofe.css}" href="<c:url value="/resources/css/${sessionScope.Catastrofe.css}"/>" rel="stylesheet"  type="text/css" >
+<!-- <link title="${sessionScope.Catastrofe.css}" href="<c:url value="/resources/css/${sessionScope.Catastrofe.css}"/>" rel="stylesheet"  type="text/css" >-->
 
 <style>
 	#map-canvas 
@@ -80,7 +81,7 @@
 		<script type="text/javascript" src="<c:url value="/resources/js/validacion.js" />"></script>
 		<script type="text/javascript" src="<c:url value="/resources/js/jquery.easy-ticker.min.js" />"></script>
 		
-		<link title="${sessionScope.Catastrofe.css}" href="<c:url value="/resources/css/${sessionScope.Catastrofe.css}"/>" rel="stylesheet"  type="text/css" >
+		
 		
 		<!-- fancybox init -->
 		<script>

@@ -64,7 +64,7 @@
 							Lista Usuarios</a></li>
 					<li><a href="/BackOffice/ongs"><i class="fa fa-list"></i>
 							Lista ONGs</a></li>
-					<li><a href="/BackOffice/ongs/create"><i
+					<li class="active"><a href="/BackOffice/ongs/create"><i
 							class="fa fa-plus-square"></i> Alta Ong's</a></li>
 					<li><a href="/BackOffice/usuarios/create"><i
 							class="fa fa-plus-square"></i> Alta Usuarios</a></li>

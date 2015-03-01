@@ -67,7 +67,7 @@
 							Lista ONGs</a></li>
 					<li><a href="/BackOffice/ongs/create"><i
 							class="fa fa-plus-square"></i> Alta Ong's</a></li>
-					<li><a href="/BackOffice/usuarios/create"><i
+					<li class="active"><a href="/BackOffice/usuarios/create"><i
 							class="fa fa-plus-square"></i> Alta Usuarios</a></li>
 					<li><a href="/BackOffice/catastrofes/create"><i
 							class="fa fa-plus-square"></i> Alta Catastrofe</a></li>
@@ -106,8 +106,7 @@
 											class="glyphicon form-control-feedback" aria-hidden="true"></span>
 										<div class="help-block with-errors"></div>
 									</div>
-								</div>
-								<div class="col-md-6">
+						
 									<div class="form-group">
 										<label for="nick" class="control-label">Nick</label> <input
 											id="nick" type="text" class="form-control" required /> <span
@@ -120,8 +119,7 @@
 											class="glyphicon form-control-feedback" aria-hidden="true"></span>
 										<div class="help-block with-errors"></div>
 									</div>
-								</div>
-								<div class="col-md-6">
+								
 									<div id="passdiv" class="form-group">
 										<label for="password" class="control-label">Contraseña</label>
 										<input type="password" class="form-control" id="password"
@@ -129,6 +127,7 @@
 											aria-hidden="true"></span>
 										<div class="help-block with-errors"></div>
 									</div>
+								
 									<div class="form-group">
 										<label for="celular" class="control-label">Celular</label> <input
 											id="celular" class="form-control" type="tel" required /> <span
@@ -151,8 +150,7 @@
 											<option value="F">FEMENINOD</option>
 										</select>
 									</div>
-								</div>
-								<div class="col-md-6">
+
 									<div class="form-group">
 										<label for="nacimiento" class="control-label">Fecha de
 											Nacimiento</label> <input type="date" id="nacimiento"
@@ -168,8 +166,8 @@
 											<option value="1">RESCATISTA</option>
 										</select>
 									</div>
-								</div>
-								<div class="col-md-6">
+								
+								
 									<div id="rescatistaDiv" class="form-group"
 										style="display: none">
 										<label for="tiposrescatistas" class="control-label">Tipo

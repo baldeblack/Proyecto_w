@@ -9,10 +9,13 @@
 	
 	<script type="text/javascript" src="<c:url value="/resources/js/jquery.js" />"></script>
 	<script type="text/javascript" src="<c:url value="/resources/js/bootstrap.js" />"></script>
-		<script type="text/javascript" src="<c:url value="/resources/planesresc.js" />"></script>
+	<script type="text/javascript" src="<c:url value="/resources/planesresc.js" />"></script>
+	<script type="text/javascript" src="<c:url value="/resources/js/message.js" />"></script>
+	<script type="text/javascript" src="<c:url value="/resources/js/jquery.searchable.js" />"></script>
 	<link href="<c:url value="/resources/css/bootstrap.css"/>" rel="stylesheet" type="text/css" />
 	<link href="<c:url value="/resources/css/font-awesome.css"/>" rel="stylesheet" type="text/css" />
 	<link href="<c:url value="/resources/css/rescatista.css"/>" rel="stylesheet" type="text/css" />
+	<link href="<c:url value="/resources/css/animate.css"/>" rel="stylesheet" type="text/css" />
 
 	<title>Rescatista Home</title>
 	
@@ -83,20 +86,16 @@
             </div> 
             <!-- /.navbar-collapse -->
         </nav>
-            
-            <div class="row ">
-                <i><h1> Titulo<small> /create</small></h1></i>
-                <div class="panel panel-danger fondo_alt2">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Panel title</h3>                        
-                    </div>
-                    <div id="mainContent" class="panel-body">Panel content</div>
-                </div>
-
+            <div class="notification ">
+	          
+	        </div>
+            <div class="row " id="mainContent"><br>
+              
             </div>
              
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br><br><br><br>
         </div>
+
 
 </body>
 </html>
