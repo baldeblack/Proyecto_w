@@ -83,7 +83,7 @@ function SendHelp(){
 		            	
 		            }
 		            else {
-		            	$("#responseHelp").html("Hubo un error al procesar su solicitud por favor vuelva a intentarlo o comuniquece al: 112233");
+		            	$("#responseHelp").html("Hubo un error al procesar su solicitud por favor vuelva a intentarlo o comuniquece telefonicaemte");
 		            	setTimeout(function(){
 		            		$("#responseHelp").html("");
 		            	}, 8000);
@@ -109,10 +109,6 @@ $("#closeModal").click(function(){
 var validateHelp = function(){
 	var error = false;
 	
-	if($("#responseHelp").html()== ""){
-		error = true;
-		$("#responseHelp").addClass("has-error has-feedback");
-	}
 	if($('#message').val() == ""){
 		error = true;
 		$("#message").addClass("has-error has-feedback");
@@ -208,7 +204,7 @@ function RegistUser(){
 		            	login(email,psswd);
 		            }
 		            else {
-		            	$("#responseReg").html("Hubo un error al procesar su solicitud por favor vuelva a intentarlo o comuniquece al: 112233");
+		            	$("#responseReg").html("Hubo un error al procesar su solicitud por favor vuelva a intentarlo o comuniquece telefonicamente.");
 		            	setTimeout(function(){
 		            		$("#responseReg").html("");
 		            	}, 8000);
@@ -453,6 +449,8 @@ var jsonDataLost = function(){
 }
 
 var validateLost = function(){
+	
+	var error = false;
 	if($("#nombre").val() ==""){
 		error = true;
 		$('#nombre').addClass("has-error has-feedback");
@@ -465,7 +463,7 @@ var validateLost = function(){
 		error = true;
 		$('#edad').addClass("has-error has-feedback");
 	}
-	if($("#fecha").val()!=""){
+	if($("#fecha").val()==""){
 		error = true;
 		$('#fecha').addClass("has-error has-feedback");
 	}
@@ -518,7 +516,7 @@ function LostReport(){
 	        datatype : "json",
 	        success : function(data) {
 	        	if(data==="onError"){
-	        		$("#responseLost").html("Ocurri&oacute; un error sepa disculparnos, por favor vuelva a intentarlo mas tarde o comuniquece al 1122.");
+	        		$("#responseLost").html("Ocurri&oacute; un error sepa disculparnos, por favor vuelva a intentarlo mas tarde o comuniquece telefonicamente.");
 	        	}
 	        	else{
 	        		$("#responseLost").html("Su reporte se ah enviado con exito, en la brevedad nos comunicaremos con ud.");

@@ -30,9 +30,8 @@ public class OngController {
 
 	@RequestMapping(value = "/getAll", method = RequestMethod.GET)
 	public ModelAndView getAllONGs(HttpServletRequest request) {
-		
 		Gson gson = new Gson();
-		ModelAndView  model = new ModelAndView("RTRTR");
+		ModelAndView  model = new ModelAndView("ong");
 		Catastrofe c = SessionHandler.getInstance().getCurrentSite(request);
 		
 		String jspnresp = ServiceConnectionHelper.CallServiceMethoodGET("ContentServies", "AllONGs", c.getStringConeccion());

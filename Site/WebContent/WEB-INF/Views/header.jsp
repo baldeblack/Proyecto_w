@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@ page session="true"%>
 <header class="navbar navbar-bright navbar-fixed-top navbar-proyecto" data-spy="affix" data-offset-top="1000">
   <div class="container">
 			<div class="navbar-header">
@@ -28,7 +28,7 @@
 				  <a href="#ong">ONG'S</a>
 				</li>
 				<li>
-				  <a href="#cont">Contacto</a>
+				  <a href="#not">Noticias</a>
 				</li>
 			 </ul>
 			</nav>
@@ -64,9 +64,9 @@
 											</div>
 										</div>
 									</div>
-									<c:if test="${not empty sessionScope.catastrofe.apiFb}">
+									<!--<c:if test="${not empty sessionScope.catastrofe.apiFb}">-->
 										<fb:login-button class="btn btn-facebook btn-lg" scope="public_profile,email" onlogin="checkLoginState();"> </fb:login-button>
-						   			</c:if>
+						   			<!--</c:if>-->
 						   			<br><br>
 								  	<button onclick="doLogin()"  class="btn btn-default bton-login">Iniciar Sesion</button>
 									<a data-toggle="modal" class="pull-right bton-registrarse" data-target="#myModal">Registrarse</a>

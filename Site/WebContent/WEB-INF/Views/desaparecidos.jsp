@@ -27,7 +27,7 @@
 						 <!-- Imagenes -->
 						  <div class="carousel-inner" role="listbox">
 							<c:forEach var="lost" items="${Losts}" varStatus="loop" >
-								<c:if test="${loop.index % 4 == 0}">
+								<c:if test="${loop.index % 3 == 0}">
 									<c:if test="${loop.index  != 0}">
 										</div>
 									</c:if>
