@@ -35,16 +35,24 @@ jQuery(document)
 									})
 									
 					var imgLogo = $('#logoimg').attr('src');
-					$('#lofoinput').fileinput({
-						browseClass: "btn btn-primary btn-block",
-						showCaption: false,
-						showRemove: false,
-						showUpload: false,
-						  initialPreview: [
-					        "<img src='"+imgLogo+"' class='file-preview-image' alt='The Moon' title='The Moon'>",
-					    ]
-					});
-
+					if(imgLogo == 'data:image/jpeg;base64,'){
+						$('#lofoinput').fileinput({
+							browseClass: "btn btn-primary btn-block",
+							showCaption: false,
+							showRemove: false,
+							showUpload: false							
+						});
+					}else{
+						$('#lofoinput').fileinput({
+							browseClass: "btn btn-primary btn-block",
+							showCaption: false,
+							showRemove: false,
+							showUpload: false,
+							  initialPreview: [
+						        "<img src='"+imgLogo+"' class='file-preview-image' alt='resources/images/photo_default.png' title='Logo'>",
+						    ]
+						});
+					}
 				});
 
 var drawingManager;
