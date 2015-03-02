@@ -13,7 +13,7 @@
 <div class="noticias">
 	<div class="container noticias">
 		<div class="row">
-			<div class="col-lg-12 rss">
+			<div class="col-lg-8 rss">
 					<div id="rss">
 						<ul class="media-list">
 

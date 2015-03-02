@@ -18,14 +18,16 @@ var login = function(mail, passwd){
 	        datatype : "json",
 	        success : function(data) {
 	        	if(data==="onError"){
-	        		alert("Usuario o contrase&ntilde;a no válida.");
+	        		mensaje("Login","Usuario o contraseña no válida","error");
+	        		//alert("Usuario o contrase&ntilde;a no válida.");
 	        	}
 	        	else{
 	        		 location.reload();
 	        	}
 	        },
 	        error : function(XMLHttpRequest, textStatus, errorThrown) {
-	            alert(XMLHttpRequest.status + " : " + errorThrown);
+	            //alert(XMLHttpRequest.status + " : " + errorThrown);
+	            mensaje("Error","No se pudo realizar la operacion","error");
 	        }
 	    });
 }
@@ -91,7 +93,8 @@ function SendHelp(){
 		            }
 	        },
 	        error : function(XMLHttpRequest, textStatus, errorThrown) {
-	            alert(XMLHttpRequest.status + " : " + errorThrown);
+	        	mensaje("Error","No se pudo realizar la operacion","error");
+	            //alert(XMLHttpRequest.status + " : " + errorThrown);
 	        }
 	    });
 	}
@@ -134,7 +137,8 @@ var validateReg = function(){
 		$('#password').addClass("has-error has-feedback");
 		$('#password_confirmation').addClass("has-error has-feedback");
 		
-		alert("La contraseña y su confirmaci&oacute;n no coinciden.")
+		//alert("La contraseña y su confirmaci&oacute;n no coinciden.")
+		mensaje("Valdación","La contraseña y su confirmación no coinciden.","warning");
 	}
 	if( $('#nombre_usuario').val() == "")
 	{
@@ -211,7 +215,8 @@ function RegistUser(){
 		            }
 	        },
 	        error : function(XMLHttpRequest, textStatus, errorThrown) {
-	            alert(XMLHttpRequest.status + " : " + errorThrown);
+	        	mensaje("Error","No se pudo completar la operación","error");
+	            //alert(XMLHttpRequest.status + " : " + errorThrown);
 	        }
 	    });
 	}
@@ -234,7 +239,8 @@ function LoadOngList() {
             $('#secOngs').html(data);
         },
         error:function(data,status,er) { 
-        	alert("error Ongs: "+data+" status: "+status+" er:"+er);
+        	mensaje("Error","No se pudo completar la operacion","error");
+        	//alert("error Ongs: "+data+" status: "+status+" er:"+er);
         }
     });
 }
@@ -351,7 +357,8 @@ function Donar(){
 	        	}
 	        },
 	        error : function(XMLHttpRequest, textStatus, errorThrown) {
-	            alert(XMLHttpRequest.status + " : " + errorThrown);
+	        	mensaje("Error","No se pudo completar la operación","error");
+	            //alert(XMLHttpRequest.status + " : " + errorThrown);
 	        }
 	    });
 	}
@@ -429,7 +436,8 @@ function LoadLostList(callback) {
             callback(data);
         },
         error:function(data,status,er) { 
-        	alert("error Lost: "+data+" status: "+status+" er:"+er);
+        	mensaje("Error","No se pudo completar la operación","error");
+        	//alert("error Lost: "+data+" status: "+status+" er:"+er);
         }
     });
 }
@@ -528,7 +536,8 @@ function LostReport(){
 	        	}
 	        },
 	        error : function(XMLHttpRequest, textStatus, errorThrown) {
-	            alert(XMLHttpRequest.status + " : " + errorThrown);
+	        	mensaje("Error","No se pudo completar la operación","error");
+	            //alert(XMLHttpRequest.status + " : " + errorThrown);
 	        }
 	    });
 	}
@@ -547,7 +556,8 @@ function uploadPic(){
 	        success: function (data) {
 	        	if(data==="onError"){
 	        		//mensaje de error de carga
-	        		alert("fallo");
+	        		mensaje("Error","Error al cargar la imagen","error");
+	        		//alert("fallo");
 	        	}
 	        	else{
 	        		$("#inputImgDesap").val(data);

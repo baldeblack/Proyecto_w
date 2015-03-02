@@ -5,13 +5,15 @@ function eventLost(callback){
 
 $(document).ready(function(){
 	
-mensaje("Titulo","texto","success");
+//mensaje("Titulo","texto","success");
 var estilo_actual=document.getElementsByTagName("link")[1];
 	
 	 LoadLostList(function(data){
 		if(estilo_actual.getAttribute("title")=='Style2.css'){
 			$('.navbar-proyecto').addClass('alt');
 			$('.navbar-brand').addClass('hidden');
+			$('.rss').addClass('col-lg-offset-2');
+			
 			//$('.menu_login').removeClass('navbar-right');
 			$('.glyphicon-warning-sign').addClass('hidden');
 			$('.titulo_principal').removeClass('col-md-7').addClass('col-md-12');
@@ -37,7 +39,7 @@ var estilo_actual=document.getElementsByTagName("link")[1];
 				$(".informacion").hide();
 				$(".story").hide();
 				$(".noticia_titulo").hide();
-				$(".noticia").hide();
+				$(".noticias").hide();
 				$(".ong_titulo").hide();
 				$(".ongs").hide();
 				$(".slider_desaparecidos").hide();
@@ -59,7 +61,7 @@ var estilo_actual=document.getElementsByTagName("link")[1];
 				$(".ongs").show();
 				$(".slider_desaparecidos").show();
 				$(".noticia_titulo").show();
-				$(".noticia").show();
+				$(".noticias").show();
 			});
 			
 
@@ -336,10 +338,3 @@ function mensaje(titulo,texto,tipo){
    
 });
 
-function mensaje(titulo,texto,tipo){
-	swal({
-		title: titulo,   
-		text: texto,   
-		type: tipo,
-		});
-}

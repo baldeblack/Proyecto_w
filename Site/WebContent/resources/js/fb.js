@@ -11,11 +11,13 @@
       testAPI();
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
-    	alert('Please log ' + 'into this app.');
+    	mensaje("Error","Por favor loguese en la aplicación","error");
+    	//alert('Please log ' + 'into this app.');
     } else {
       // The person is not logged into Facebook, so we're not sure if
       // they are logged into this app or not.
-    	alert('Please log ' + 'into Facebook.');
+    	//alert('Please log ' + 'into Facebook.');
+    	mensaje("Error","Por favor loguese en facebook","error")
     }
   }
   
@@ -90,7 +92,8 @@
 		            }
 	        },
 	        error : function(XMLHttpRequest, textStatus, errorThrown) {
-	            alert(XMLHttpRequest.status + " : " + errorThrown);
+	        	mensaje("Error","No se pudo cargar la operación","error");
+	            //alert(XMLHttpRequest.status + " : " + errorThrown);
 	        }
 	    });
   }

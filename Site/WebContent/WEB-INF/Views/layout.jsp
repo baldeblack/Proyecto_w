@@ -82,6 +82,7 @@
 		<script type="text/javascript" src="<c:url value="/resources/js/validacion.js" />"></script>
 		<script type="text/javascript" src="<c:url value="/resources/js/jquery.easy-ticker.min.js" />"></script>
 		<script type="text/javascript" src="<c:url value="/resources/js/sweet-alert.js" />"></script>
+		<script type="text/javascript" src="<c:url value="/resources/js/alert.js" />"></script>
 		
 		
 		<!-- fancybox init -->
