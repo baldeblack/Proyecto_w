@@ -226,7 +226,7 @@ function pasoRemove(id){
 function addPaso(id){
 var nombre = $('#nombre_paso').val();
 var desc =  $('#desc_paso').val();
-	$('#pasosContainer').append('<div id="primary_' + id +'" class="panel panel-primary">' +                  
+	$('#pasosContainer').append('<div class="col-md-6"><div id="primary_' + id +'" class="panel panel-primary">' +                  
             '<div id="ph_' + id +'" class="panel-heading"> <p id="lbl_'+ id +'">'+nombre+'</p> <a id="ar_' + id +'" class="close" style=" margin-top: -27px; "aria-label="Close" href="#" onClick="pasoRemove('+id+')"><i class="glyphicon glyphicon-remove"></i></a><a id="ae_' + id +'" class="close" style="margin-right: 30px; margin-top: -27px;" aria-label="Close" onClick="pasoEdit('+id+')" href="#"><i class="glyphicon glyphicon-pencil"></i></a></div>' +
                 '<div class="panel-body">' +
 				 '<form id="pasoform_' + id +'" data-toggle="validator_' + id +'" role="form" >' +                     
@@ -247,7 +247,7 @@ var desc =  $('#desc_paso').val();
 					 '</div>' +  
 					 '</div>' +   
                 '</div>' +
-         '</div>');		
+         '</div></div>');		
 		// id = id + 1
 }
 
@@ -280,8 +280,7 @@ function add_Paso(){
 	}
 
 function addPasoIncial(){
-	 $('#pasoIncialRow').append('<div class="col-md-4">' +
-			'<div class="panel panel-primary">' +                
+	 $('#pasoIncialRow').append('<div class="panel panel-primary">' +                
                         '<div id="pHeading" class="panel-heading">Nuevo Paso</div>' +
                             '<div class="panel-body">' +
 							 '<form id="pasoforminit" data-toggle="validatorinit" role="form" >' +    
@@ -300,8 +299,7 @@ function addPasoIncial(){
 							 '</div>' + 
 							   '</form>' +
                             '</div>' +
-                       '</div>' +
-                    '</div>');
+                       '</div>');
 
 }
 

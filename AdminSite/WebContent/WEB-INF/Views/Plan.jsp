@@ -70,7 +70,7 @@
 							class="fa fa-plus-square"></i> Alta Usuarios</a></li>
 					<li><a href="/BackOffice/catastrofes/create"><i
 							class="fa fa-plus-square"></i> Alta Catastrofe</a></li>
-					<li><a href="/BackOffice/planes/create"><i
+					<li class="active"><a href="/BackOffice/planes/create"><i
 							class="fa fa-plus-square"></i> Alta Plan</a></li>
 					<li><a href="/BackOffice/planes"><i class="fa fa-plus-square"></i> Planes</a></li>
 					<li><a href="/BackOffice/rpt"><i class="fa fa-file"></i>
@@ -84,85 +84,86 @@
 				<br>
 				<div class="col-md-12">
 					<br>
-					<div class="panel panel-primary ani_panel animated bounceInUp">
+					<!-- <div class="panel panel-primary ani_panel animated bounceInUp">
 						<div class="panel-heading">Planes</div>
-						<div class="panel-body">
+						<div class="panel-body">-->
 						<input type="hidden" id="idPlan" name="idPlan" value="${idPlan}">
 							<input type="hidden" id="jsondata" name="jsondata"
 								value="${jsondata}"> 
 								
 								 <div class="row">
-        <div class="col-md-4"><br>
-            <div class="panel panel-primary">
-                <div class="panel-heading">Alta Plan <a data-toggle="collapse" data-target="#altaP" href="#altaP"><i class="glyphicon glyphicon-chevron-up"></i></a>
-				</div>
-                <div id="altaP" class="panel-body panel-collapse collapse in">
-                     <form id="altaPlanForm" data-toggle="validator" role="form" >
-                      <div class="form-group">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" placeholder="" required>						
-						<div class="help-block with-errors"></div>
-                      </div>
-                      <div class="form-group">
-                        <label for="descripcion">Descripcion</label>
-                        <textarea id="descripcion" name="desc0" placeholder="Description" class="form-control" required></textarea>
-						<div class="help-block with-errors"></div>
-                      </div>
-                      <div class="form-group">
-                        <label for="selp">Tipo de Plan</label>
-                        <select id="selp" name="selp" class="form-control">
-        			        <option value="0">Gestion</option>
-					        <option value="1">Emergencia</option>    				       
-					    </select>
-                      </div>
-                      <div class="form-group">
-                        <label for="selt">Tipo de Catastrofe</label>
-                        <select id="selt" name="selt" class="form-control">
-    				      			<c:if test="${not empty tiposCatastrofe}">
-															<c:forEach var="s" varStatus="i" items="${tiposCatastrofe}">																
-																		<option value="${s.idtipocatastrofe}">${s.nombre}</option>																	
-															</c:forEach>
-							
-							
-														</c:if>
-					    </select>
-                      </div>     
-				
-            <div id="colPasoInical" class="col-md-12">
-			<div class="panel panel-primary">                  
-                        <div id="pHeading" class="panel-heading">Paso Inicial</div>
-                            <div class="panel-body">
-                              <div class="form-group">
-                                <label class="sr-only" for="nombre_paso">Nombre</label>
-                                <input type="text" class="form-control" id="nombre_paso" placeholder="Nombre paso" required>
-								<div class="help-block with-errors"></div>
-                              </div>
-                              <div class="form-group">
-                                <label class="sr-only" for="desc_paso">Descripcion</label>
-                                <textarea name="desc0" id="desc_paso" placeholder="Descripcion ..." class="form-control" required></textarea>
-								<div class="help-block with-errors"></div>
-                              </div>
-                            </div>
-                       </div>
-                    </div>	<div class="form-group">				  
-                      <button id="createP" type="submit" class="btn btn-default" value="Crear">Crear</button>
-					  </div>
-                    </form>
-                </div>
-            </div>
-        </div>	
-       
-		 <div id="pasosContainer" class="col-md-4">
-		
-		 </div>
-		 </div>
-		<div id="pasoIncialRow" class="row">
-			
-		</div>
+							        <div class="col-md-4">
+							            <div class="panel panel-primary">
+							                <div class="panel-heading">Alta Plan <a data-toggle="collapse" data-target="#altaP" href="#altaP"><i class="glyphicon glyphicon-chevron-up"></i></a>
+											</div>
+							                <div id="altaP" class="panel-body panel-collapse collapse in">
+							                    <form id="altaPlanForm" data-toggle="validator" role="form" >
+							                      <div class="form-group">
+							                        <label for="nombre">Nombre</label>
+							                        <input type="text" class="form-control" id="nombre" placeholder="" required>						
+													<div class="help-block with-errors"></div>
+							                      </div>
+							                      <div class="form-group">
+							                        <label for="descripcion">Descripcion</label>
+							                        <textarea id="descripcion" name="desc0" placeholder="Description" class="form-control" required></textarea>
+													<div class="help-block with-errors"></div>
+							                      </div>
+							                      <div class="form-group">
+							                        <label for="selp">Tipo de Plan</label>
+							                        <select id="selp" name="selp" class="form-control">
+							        			        <option value="0">Gestion</option>
+												        <option value="1">Emergencia</option>    				       
+												    </select>
+							                      </div>
+							                      <div class="form-group">
+							                        <label for="selt">Tipo de Catastrofe</label>
+							                        <select id="selt" name="selt" class="form-control">
+							    				      			<c:if test="${not empty tiposCatastrofe}">
+																						<c:forEach var="s" varStatus="i" items="${tiposCatastrofe}">																
+																									<option value="${s.idtipocatastrofe}">${s.nombre}</option>																	
+																						</c:forEach>
+														
+														
+																					</c:if>
+												    </select>
+							                      </div>     
+											
+							            	  <div id="colPasoInical" class="col-md-12">
+												<div class="panel panel-primary">                  
+							                        <div id="pHeading" class="panel-heading">Paso Inicial</div>
+							                            <div class="panel-body">
+							                              <div class="form-group">
+							                                <label class="sr-only" for="nombre_paso">Nombre</label>
+							                                <input type="text" class="form-control" id="nombre_paso" placeholder="Nombre paso" required>
+															<div class="help-block with-errors"></div>
+							                              </div>
+							                              <div class="form-group">
+							                                <label class="sr-only" for="desc_paso">Descripcion</label>
+							                                <textarea name="desc0" id="desc_paso" placeholder="Descripcion ..." class="form-control" required></textarea>
+															<div class="help-block with-errors"></div>
+							                              </div>
+							                            </div>
+							                       </div>
+							                    </div>	<div class="form-group">				  
+							                      <button id="createP" type="submit" class="btn btn-default" value="Crear">Crear</button>
+												  </div>
+							                    </form>
+							                </div>
+							            </div>
+							            <div id="pasoIncialRow">
+										
+										</div>
+							        </div>	
+							       
+									 <div id="pasosContainer" class="col-md-8">
+									
+									 </div>
+									</div>
+									
 								
 				
-						</div>
-					</div>
+						<!--  </div>-->
+					<!-- </div>-->
 				</div>
 			</div>
 		</div>
