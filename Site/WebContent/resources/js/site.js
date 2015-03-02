@@ -5,7 +5,9 @@ function eventLost(callback){
 
 $(document).ready(function(){
 	
+mensaje("Titulo","texto","success");
 var estilo_actual=document.getElementsByTagName("link")[1];
+	
 	 LoadLostList(function(data){
 		if(estilo_actual.getAttribute("title")=='Style2.css'){
 			$('.navbar-proyecto').addClass('alt');
@@ -60,7 +62,7 @@ var estilo_actual=document.getElementsByTagName("link")[1];
 				$(".noticia").show();
 			});
 			
-			
+
 			$('.thumbnail').hover(
 			        function(){
 			            $(this).find('.caption').slideDown(250); //.fadeIn(250)
@@ -311,7 +313,13 @@ jQuery(document).ready(function ($) {
 	});
 });
 
-
+function mensaje(titulo,texto,tipo){
+	swal({
+		title: titulo,   
+		text: texto,   
+		type: tipo,
+		});
+}
 
 
 //search
@@ -327,3 +335,11 @@ jQuery(document).ready(function ($) {
 
    
 });
+
+function mensaje(titulo,texto,tipo){
+	swal({
+		title: titulo,   
+		text: texto,   
+		type: tipo,
+		});
+}

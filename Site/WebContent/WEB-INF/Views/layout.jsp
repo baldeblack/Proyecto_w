@@ -20,6 +20,7 @@
 
 <link rel="stylesheet" href="<c:url value="/resources/fancybox/jquery.fancybox-v=2.1.5.css"/>" type="text/css" media="screen">
 <link rel="stylesheet" href="<c:url value="/resources/css/font-awesome.css"/>">
+<link rel="stylesheet" href="<c:url value="/resources/css/sweet-alert.css"/>">
 <link rel="prefetch" href="<c:url value="/resources/images/zoom.png"/>">
 <script src="<c:url value="/resources/js/fb.js" />"></script>
 
@@ -80,7 +81,7 @@
 		<script type="text/javascript" src="<c:url value="/resources/js/jquery.searchable.js" />"></script>
 		<script type="text/javascript" src="<c:url value="/resources/js/validacion.js" />"></script>
 		<script type="text/javascript" src="<c:url value="/resources/js/jquery.easy-ticker.min.js" />"></script>
-		
+		<script type="text/javascript" src="<c:url value="/resources/js/sweet-alert.js" />"></script>
 		
 		
 		<!-- fancybox init -->
