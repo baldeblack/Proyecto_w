@@ -76,8 +76,9 @@
 					 </ul>
 				</c:if>	
 				 <c:if test="${not empty sessionScope.active_user}">
-					 <ul class="nav navbar-right navbar-nav">
-					 	<li><h4 style="padding-top: 6px;">Bienvenid@ ${sessionScope.active_user_nick}</h3></li>
+					 <ul class="nav navbar-right navbar-nav menu_login">
+					 	<!--  <li><h4 style="padding-top: 6px;">Bienvenid@ ${sessionScope.active_user_nick}</h3></li>-->
+					 	<li><h4 style="font-size=12px;">Bienvenid@ ${sessionScope.active_user_nick}</h3></li>
 					 	<li><a href="/Site/access/logOut" class="btn btn-link">Cerrar Sesion</a></li>	
 					 </ul>
 				 </c:if>
