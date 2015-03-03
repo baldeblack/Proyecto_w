@@ -117,21 +117,30 @@
 							    <table id="lstTable" class="table table-striped table-bordered" cellspacing="0" width="70%">
 							     <thead>
 							            <tr>
-							                <th>Name</th>               
-							                  <th>Link</th>          
+							                <th>Nombre</th> 
+							                <th>Mail</th>  
+							                <th>Web</th>  
+							                <th>Telefono</th>                
+							                  <th></th>  		
 							            </tr>
 							        </thead>
 							 
 							        <tfoot>
 							            <tr>
-							                 <th>Name</th>              
-							                  <th>Link</th>              
+							                <th>Nombre</th> 
+							                <th>Mail</th>  
+							                <th>Web</th>  
+							                <th>Telefono</th>                
+							                <th></th>  	              
 							            </tr>
 							        </tfoot>
 							    <tbody>
 							        <c:forEach var="o" items="${OngsListModel.lstOngs}">
 							            <tr>
 							                <th>${o.nombre}</th>
+							                 <th>${o.email}</th>
+							                  <th>${o.web}</th>
+							                   <th>${o.telefono}</th>
 							                <th><a href="/BackOffice/ongs/edit/${o.idONGs}" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fa fa-pencil"></i></a></th>                 
 							            </tr>
 							        </c:forEach>

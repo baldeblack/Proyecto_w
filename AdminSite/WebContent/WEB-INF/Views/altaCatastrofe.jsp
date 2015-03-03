@@ -413,15 +413,9 @@
 									<div class="col-md-12">
 										<div class="col-md-6">
 											<div class="form-group">
-												<div class="innerTwo">
-													<!-- 											<div class="form-inline"> -->
-													<!-- 												Palabras Claves:  <input id="PalabrasInput" type="image" -->
-													<!-- 													src="http://localhost/img/ic_add_box_24px.svg" /> -->
-													<!-- 											</div> -->
-
+												<div class="innerTwo">								
 													<div id="PalabrasDiv" class="row">
-
-
+													
 														<c:if test="${not empty CatastrofeModel.palabrasList}">
 
 															<c:forEach var="palabras"

@@ -5,6 +5,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -13,6 +14,7 @@ import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.picketbox.commons.cipher.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,19 +23,28 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import Validadores.CatastrofeValidador;
 
 import com.Controllers.CBasedeDatos;
 import com.Controllers.CCatastrofe;
+import com.Controllers.CPlanes;
 import com.Entities.Catastrofe;
+import com.Entities.Paso;
+import com.Entities.Plan;
 import com.Interfaces.ICBasedeDatos;
 import com.Interfaces.ICCatastrofe;
+import com.Interfaces.ICPlanes;
+import com.controllers.PlanesControl.idp;
+import com.google.gson.Gson;
 import com.models.CatastrofeListModel;
 import com.models.CatastrofeModel;
+import com.models.pasoFormModel;
 import com.utils.accessControl;
 import com.utils.imagenShow;
 
@@ -282,6 +293,38 @@ public class CatastrofesController {
 		model.addAttribute("CatastrofeModel", cModel);
 			return "altaCatastrofe";	
 
+	}
+	
+	@RequestMapping(value = "/deactivate", method = RequestMethod.POST)
+	public @ResponseBody String deactivate(@RequestBody String json, HttpServletResponse res, HttpServletRequest request) throws ClassNotFoundException, SQLException {
+		String estadocurrent = "";
+		String estadonuevo = "";
+		Gson g = new Gson();
+		idCt idc = new idCt();
+		idc = g.fromJson(json, idCt.class);
+		estadocurrent = idc.estado;
+		ICCatastrofe ic = new CCatastrofe();
+		Catastrofe c = ic.getCatastrofeByID(idc.idc);
+		if(estadocurrent.equals("Activa")){
+			byte es = 0;
+			c.setActiva(es);
+			estadonuevo = "Inactiva";
+		}else if(estadocurrent.equals("Inactiva")){
+			byte est = 1;
+			c.setActiva(est);
+			estadonuevo = "Activa";
+		}
+	
+		ic.ActualizarCatastrofe(c, idc.idc);
+		idc.estado = estadonuevo;
+		String jsonresp = "";
+		jsonresp = g.toJson(idc);
+		return jsonresp;
+	}
+	
+	public class idCt{
+		int idc;
+		String estado;
 	}
 
 }

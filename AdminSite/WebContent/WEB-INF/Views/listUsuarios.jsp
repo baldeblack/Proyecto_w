@@ -116,21 +116,27 @@
 						    <table id="lstTable" class="table table-striped table-bordered" cellspacing="0" width="70%">
 						     <thead>
 						            <tr>
-						                <th>Nombre</th>               
-						                  <th>Link</th>          
+						             	<th>Mail</th>   
+						                <th>Nombre</th>
+						                 <th>Nick</th>
+						                  <th></th>          
 						            </tr>
 						        </thead>
 						 
 						        <tfoot>
 						            <tr>
-						                 <th>Nombre</th>              
-						                  <th>Link</th>              
+						                  <th>Mail</th>  
+						                 <th>Nombre</th> 
+						                 <th>Nick</th>
+						                  <th></th>               
 						            </tr>
 						        </tfoot>
 						    <tbody>
 						        <c:forEach var="o" items="${UsuariosListModel.lstUsuarios}">
 						            <tr>
+						                <th>${o.email}</th>
 						                <th>${o.nombre}</th>
+						                <th>${o.nick}</th>						              
 						                <th><a href="/BackOffice/usuarios/edit/${o.idUsuarios}" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fa fa-pencil"></i></a></th>                 
 						            </tr>
 						        </c:forEach>

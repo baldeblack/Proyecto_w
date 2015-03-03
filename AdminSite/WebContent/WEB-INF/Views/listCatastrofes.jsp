@@ -13,42 +13,7 @@
 	<script type="text/javascript" src="<c:url value="/resources/js/bootstrap.js" />">
 	</script>
 	<script type="text/javascript" src="<c:url value="/resources/js/dataTables.bootstrap.js" />"></script>
-	<script type="text/javascript">
-			$(document).ready(function() {			 
-	    var table = $('#lstTable').DataTable( {
-	        "language": 
-	        {
-	        	"sProcessing":     "Procesando...",
-	        	"sLengthMenu":     "Mostrar _MENU_ registros",
-	        	"sZeroRecords":    "No se encontraron resultados",
-	        	"sEmptyTable":     "Ningun dato disponible en esta tabla",
-	        	"sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-	        	"sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-	        	"sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-	        	"sInfoPostFix":    "",
-	        	"sSearch":         "Buscar:",
-	        	"sUrl":            "",
-	        	"sInfoThousands":  ",",
-	        	"sLoadingRecords": "Cargando...",
-	        	"oPaginate": {
-	        		"sFirst":    "Primero",
-	        		"sLast":     "Ultimo",
-	        		"sNext":     "Siguiente",
-	        		"sPrevious": "Anterior"
-	        	},
-	        	"oAria": {
-	        		"sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-	        		"sSortDescending": ": Activar para ordenar la columna de manera descendente"
-	        	}
-	        }
-	    });
-	    
-	    var tt = new $.fn.dataTable.TableTools( table );
-	 
-	    $( tt.fnContainer() ).insertBefore('div.dataTables_wrapper');
-	} );
-		</script>
-	
+	<script type="text/javascript" src="<c:url value="/resources/listcatastrofes.js" />"></script>
 	<link href="<c:url value="/resources/css/bootstrap.css"/>" rel="stylesheet" type="text/css" />
 	<link href="<c:url value="/resources/css/font-awesome.css"/>" rel="stylesheet" type="text/css" />
 	<link href="<c:url value="/resources/css/proyecto.css"/>" rel="stylesheet" type="text/css" />
@@ -119,17 +84,21 @@
 								cellspacing="0" width="70%">
 								<thead>
 									<tr>
-										<th>Name</th>
-										<th>Dom</th>
-										<th>Editar</th>
-										<th>Vincular</th>										
+										<th>Nombre</th>
+										<th>Dominio</th>
+										<th>Estado</th>
+										<th>Fecha de Creacion</th>
+										<th></th>
+										<th></th>										
 									</tr>
 								</thead>
 			
 								<tfoot>
 									<tr>
-										<th>Name</th>
-										<th>Dom</th>									
+										<th>Nombre</th>
+										<th>Dominio</th>
+										<th>Estado</th>		
+										<th>Fecha de Creacion</th>							
 										<th></th>
 										<th></th>
 									</tr>
@@ -139,6 +108,15 @@
 										<tr>
 											<td>${o.nombre}</td>
 											<td>${o.dominio}</td>
+											<c:choose>
+											<c:when test="${o.activa == 0}">
+											<td><a href="#" onclick="deactive(this,${o.idCatastrofe}, event)">Inactiva</a></td>
+											</c:when>
+											<c:otherwise>
+											<td><a href="#" onclick="deactive(this,${o.idCatastrofe}, event)">Activa</a></td>
+											</c:otherwise>
+											</c:choose>
+											<td>${o.fechaCreacion}</td>
 											<td><a href="/BackOffice/catastrofes/edit/${o.idCatastrofe}" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fa fa-pencil"></i></a></td> 
 											<td><a href="/BackOffice/vincular/init/${o.idCatastrofe}" data-toggle="tooltip" data-placement="top" title="Vincular"><i class="fa fa-external-link"></i></a></td>							
 										</tr>
