@@ -100,6 +100,7 @@ public class boServices {
 			pl.setDescripcion(paso.getDescripcion());			
 			pl.setIdpasos(paso.getIdpasos());
 			pl.setNombre(paso.getNombre());		
+			pl.setEstado(paso.getEstado());
 			lstPl.add(pl);
 		}	
 		Gson g = new Gson();
@@ -108,13 +109,13 @@ public class boServices {
 		
 	}
 	
-	@POST
+	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/updatePaso/{idPlan}/{idPaso}/{idRescatista}")
-	public Response UpdatePasoStep(@PathParam("idPlan") int idPlan,@PathParam("idPaso") int idPaso, @PathParam("idRescatista") int idRescatista){
+	public String UpdatePasoStep(@PathParam("idPlan") int idPlan,@PathParam("idPaso") int idPaso, @PathParam("idRescatista") int idRescatista, @QueryParam("callback") String callback){
 		ICPlanes ip = new CPlanes();
 		int res = ip.UpdatePasoStep(idPlan, idPaso, idRescatista);
-		return Response.ok(res).build(); 
+		return (callback + "(" + res + ")");
 	}
 	
 	@GET

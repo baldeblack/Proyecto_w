@@ -146,9 +146,9 @@ public class CDesaparecidos implements ICDesaparecidos {
 	}
 
 	@Override
-	public List<Desaparecido> GetDesaparecidosByIdBO(int id) {
+	public List<Desaparecido> GetDesaparecidosByIdBO(short state) {
 		// TODO Auto-generated method stub
-		return _dao.getAllDesaparecidos();
+		return _dao.getAllDesaparecidosByState(state);
 	}
 	
 }

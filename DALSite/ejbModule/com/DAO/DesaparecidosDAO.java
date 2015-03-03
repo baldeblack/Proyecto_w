@@ -34,7 +34,7 @@ public class DesaparecidosDAO {
 	public List<Desaparecido> getAllDesaparecidosByState(short state){
 		List<Desaparecido> result = null;
 		try {
-		TypedQuery<Desaparecido> query =_eManager.createQuery("Select d From Desaparecido d where d.EstadoBusqueda = ?1", Desaparecido.class);
+		TypedQuery<Desaparecido> query =_eManager.createQuery("Select d From Desaparecido d where d.estadoBusqueda = ?1", Desaparecido.class);
 		query.setParameter(1, state);
 		result = query.getResultList();
 		

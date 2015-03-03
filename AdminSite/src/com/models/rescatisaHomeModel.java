@@ -35,7 +35,8 @@ public class rescatisaHomeModel {
 		ct = ic.getCatastrofeByID(rc.getIdcatastrofe());	
 		lstPlanes = ip.getPlanesBO(ct.getTipo());		
 		ICDesaparecidos id = new CDesaparecidos(rc.getIdcatastrofe());
-		lstdesaparecidos = id.GetDesaparecidosByIdBO(rc.getIdcatastrofe());	
+		short i = 1;
+		lstdesaparecidos = id.GetDesaparecidosByIdBO(i);	
 		}
 		
 	}

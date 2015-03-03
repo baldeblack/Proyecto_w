@@ -120,10 +120,11 @@ public class RescatistasController {
 	
 	@RequestMapping(value="/desaparecidos", method = RequestMethod.POST)
 	 public ModelAndView getDesa(@RequestBody String json, HttpServletResponse res,HttpServletRequest request) { 
-	//	Gson g = new  Gson();
-	//idPl result = g.fromJson(json, idPl.class);		
-		ICDesaparecidos id = new CDesaparecidos(25);
-		List<Desaparecido> lstdesa = id.GetDesaparecidosByIdBO(25);
+		Gson g = new  Gson();
+		idPl result = g.fromJson(json, idPl.class);		
+		ICDesaparecidos id = new CDesaparecidos(result.id);
+		short i = 1;
+		List<Desaparecido> lstdesa = id.GetDesaparecidosByIdBO(i);
 		List<String> strlst = new ArrayList<String>();
 		for(Desaparecido d: lstdesa){
 			String encodedLogo= Base64.encodeBytes(d.getFoto());
