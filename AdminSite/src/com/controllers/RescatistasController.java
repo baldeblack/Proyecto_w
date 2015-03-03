@@ -136,6 +136,17 @@ public class RescatistasController {
       return model;
   }
 	
+	@RequestMapping(value="/reportar", method = RequestMethod.POST)
+	 public @ResponseBody String  reportar(@RequestBody String json, HttpServletResponse res,HttpServletRequest request) { 
+		Gson g = new  Gson();
+		update result = g.fromJson(json, update.class);		
+		ICDesaparecidos id = new CDesaparecidos(result.idplan);
+		short state = 2;
+		id.ChangeStateDesaparecido(result.idpaso, state);
+		String jsonresp = g.toJson(result);
+		return jsonresp;
+ }
+	
 	@RequestMapping(value = "/updatepaso", method = RequestMethod.POST)
 	public @ResponseBody String deleteOng(@RequestBody String json, HttpServletResponse res, HttpServletRequest request) throws NumberFormatException, ClassNotFoundException, SQLException {
 		

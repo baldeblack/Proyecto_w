@@ -16,7 +16,7 @@
   
  			 <c:if test="${not empty desaparecidos}">                      
                        	<c:forEach var="d" varStatus="j" items="${desaparecidos}">						
-						 <div class="col-sm-3 opcion animated bounceInUp">
+						 <div id="div-${d.idDesaparecidos}"class="col-sm-3 opcion animated bounceInUp">
 				             <div class="hero-widget well well-sm">
 				                 <p class="fecha_des">${d.fechaDesaparicion}</p>
 				                 <img src="data:image/jpeg;base64,${fotos[j.index]}" alt="">				
@@ -25,7 +25,7 @@
 				                     <p class="lugar_des">${d.ultimoParadero}</p>
 				                 </div>
 				                 <div class="options">
-				                     <a href="#" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-plus"></i>${d.estadoBusqueda}</a>
+				                     <a href="#" id="${d.idDesaparecidos}" onclick="reportar(${d.idDesaparecidos})" class="btn btn-primary btn-lg"><i class="fa fa-check"></i>ENCONTRADO</a>
 				                 </div>
 				             </div>
 				         </div>

@@ -25,8 +25,8 @@ public class LostsServies {
 		Gson gson = new Gson();
 		MessageInput request = gson.fromJson(input, MessageInput.class);
 		ICDesaparecidos controller = new CDesaparecidos(request.getBdConnection());
-	
-		String response =  controller.GetAllDesaparecidos();
+		short state = 1;
+		String response =  controller.GetDesaparecidosByState(state);
 		return Response.ok(response).build();
 	}
 	

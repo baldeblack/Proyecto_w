@@ -69,7 +69,7 @@ $(document).ready(function() {
 	    			success : function(data) {
 	    				$('#mainContent').html("");
 	    				$('#mainContent').html(data);
-	    				 stepsWizard();
+	    				 //stepsWizard();
 	    			},
 	    			error : function(data, status, er) {
 	    				message("No se pudo realizar la operacion.","error");
@@ -197,6 +197,25 @@ function updatestep(elem , idp){
 
 }
 
+function reportar(id){
+	var ctid = $('ul#dataMenu li:first').attr('id');
+	 $.ajax({
+			url : '/BackOffice/rescatista/reportar',
+			type : 'POST',
+			data : JSON.stringify({"idplan" : ctid, "idpaso":id}),
+			beforeSend : function(xhr) {
+				xhr.setRequestHeader("Accept", "application/json");
+				xhr.setRequestHeader("Content-Type", "application/json");
+			},
+			success : function(data) {
+				$('#div-'+id).remove();				
+				message("La operacion se realizo con exito.","success")
+			},
+			error : function(data, status, er) {
+				message("No se pudo realizar la operacion.","error");
+			}
+		});
+}
 
 function showMap(){   
 	
