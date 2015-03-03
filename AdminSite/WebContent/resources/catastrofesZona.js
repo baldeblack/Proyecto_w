@@ -4,6 +4,7 @@ var map;
 var bounds;
 var newShape;
 var input;
+var fileId = 0;
 jQuery(document)
 		.ready(
 				function($) {
@@ -14,17 +15,19 @@ jQuery(document)
 										if (palabrasCont < 5) {
 											$('#PalabrasDiv')
 													.append(
-															'<div class="col-lg-12 palabraContainer"><input class="form-control" type="text" name="palabrasList[0]" ondblclick="deletePalabras(this)"/>'
-																	+ '</div>');
+															'<div class="col-lg-12 palabraContainer"> <div class="form-group"><input class="form-control" type="text" name="palabrasList[0]" ondblclick="deletePalabras(this)"/>'
+																	+ '</div></div>');
 											var ind = 0;
 											$('#PalabrasDiv input').each(
 													function() {
+													if ($(this).attr('type') != "image") {
 														$(this).attr(
 																'name',								
 																"palabrasList["
 																		+ ind
 																		+ "]");
 														ind = ind + 1;
+														}
 													});
 
 											palabrasCont = palabrasCont + 1
@@ -53,6 +56,36 @@ jQuery(document)
 						    ]
 						});
 					}
+					
+					$('#file-0').fileinput({
+						browseClass: "btn btn-primary btn-block",
+						showCaption: false,
+						showRemove: false,
+						showUpload: false							
+						});
+					
+					$('#uploadTable').on('DOMNodeInserted', function(e) {										   
+						   var ind = 0;
+							$('#uploadTable input').each(function() {
+								if ($(this).attr('type') != "image") {
+									$(this).attr('name', "multiUploadedFileList[" + ind + "]");
+									ind = ind + 1;
+								}
+							});
+
+				
+					});
+					
+					$("#uploadTable").on("DOMNodeRemoved", function (e) {
+						   var ind = 0;
+							$('#uploadTable input').each(function() {
+								if ($(this).attr('type') != "image") {
+									$(this).attr('name', "multiUploadedFileList[" + ind + "]");
+									ind = ind + 1;
+								}
+							});
+					})
+					
 				});
 
 var drawingManager;
@@ -288,6 +321,7 @@ function initialize() {
 //  google.maps.event.addDomListener(window, 'load', initialize);
 
 function deletePalabras(elem) {
+//if(elem.name =! "palabrasList[0]"){
 	$(elem).closest('.palabraContainer').remove();
 	var ind = 0;
 	$('#PalabrasDiv input').each(function() {
@@ -296,6 +330,7 @@ function deletePalabras(elem) {
 	});
 
 	palabrasCont = palabrasCont - 1
+	//}
 }
 
 function deleteFile(elem) {
@@ -353,21 +388,29 @@ function borrar(img) {
 
 function addFilClick() {
 	if (FilCont < 8) {
-		$('#uploadTable')
-				.append(
-						'<div class="fileContainer" style="border: 1px solid black;"><input name="multiUploadedFileList[0]" type="file" style="margin-bottom: 16px;"/>'
-								+ '<input type="image" src="http://localhost/img/ic_cancel_24px.svg" "name="image" style="margin-left: 30px; width:30px; height:30px" onclick="javascript:return deleteFile(this)" /></div>');
-		var ind = 0;
-		$('#uploadTable input').each(function() {
-			if ($(this).attr('type') != "image") {
-				$(this).attr('name', "multiUploadedFileList[" + ind + "]");
-				ind = ind + 1;
-			}
-		});
+
+		fileId = fileId + 1;
+		var toadd = '<div class="fileContainer" style="border: 1px solid black;"><input id="file-'+fileId+'" name="multiUploadedFileList[0]" type="file" style="margin-bottom: 16px;"/>' +
+	'<input type="image" src="http://localhost/img/ic_cancel_24px.svg" "name="image" style="margin-left: 30px; width:30px; height:30px" onclick="javascript:return deleteFile(this)" /></div>'
+		$('#uploadTable').append(toadd);
+
+		$('#file-'+fileId).fileinput({
+		browseClass: "btn btn-primary btn-block",
+		showCaption: false,
+		showRemove: false,
+		showUpload: false
+	});
+//		var ind = 0;
+//		$('#uploadTable input').each(function() {
+//			if ($(this).attr('type') != "image") {
+//				$(this).attr('name', "multiUploadedFileList[" + ind + "]");
+//				ind = ind + 1;
+//			}
+//		});
 
 		FilCont = FilCont + 1
 	} else {
-		alert('El numero de palabras claves no puede ser mayor a 9.');
+		alert('El numero de archivos claves no puede ser mayor a 9.');
 	}
 	return false;
 }

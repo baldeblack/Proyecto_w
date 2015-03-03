@@ -145,6 +145,7 @@ public class CatastrofesController {
 
 					for (MultipartFile multipartFile : files) {
 						String fileName = multipartFile.getOriginalFilename();
+						if(!fileName.equals(""))
 						multipartFile.transferTo(new File(theDir.getAbsolutePath() + "/" + fileName));
 					}
 				 
@@ -209,10 +210,12 @@ public class CatastrofesController {
 					List<MultipartFile> files = CatastrofeModel
 							.getMultiUploadedFileList();
 
-					
-					for (MultipartFile multipartFile : files) {
-						String fileName = multipartFile.getOriginalFilename();
-						multipartFile.transferTo(new File(imgFolder.getAbsolutePath() + "/" + fileName));
+					if(files != null){
+						for (MultipartFile multipartFile : files) {						
+							String fileName = multipartFile.getOriginalFilename();
+							if(!fileName.equals(""))
+							multipartFile.transferTo(new File(imgFolder.getAbsolutePath() + "/" + fileName));
+						}
 					}
 					
 					}
@@ -221,6 +224,7 @@ public class CatastrofesController {
 					}
 					
 					for (String fuente : CatastrofeModel.getFuenteDedatosMod()) {
+						if(!fuente.equals("") && !fuente.equals(null))
 						fuentesToSave += fuente + ";".toString();
 					}
 

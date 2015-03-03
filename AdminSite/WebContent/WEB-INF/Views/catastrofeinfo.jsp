@@ -7,13 +7,14 @@
                 <h2>Catastrofe</h2>
                 <div class="row">
                     <div class="col-sm-5">
-                     <img src="resources/images/logo.png" alt="">
+                     <img src="data:image/jpeg;base64,${logo}" alt="">
                     </div>
                    <div class="col-sm-7">
                         <div class="text">
-                            <p>Nombre: Canelones</p>
-                            <p>Tipo: Canelones</p>
-                            <p>Descripción: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+                            <p>${catastrofe.nombre}</p>
+                            <p>${catastrofe.dominio}</p>
+                            <p>${tipoc}</p>
+                            <p>${catastrofe.informacion}</p>
                         </div>
                    </div>
                 </div>
@@ -31,9 +32,9 @@
                     </div>
                    <div class="col-sm-7">
                         <div class="text">
-                            <p>Nombre: Juan</p>
-                            <p>Tipo: Medico</p>
-                            <p>Edad: 22</p>
+                            <p>${rescatista.usuario.nombre}</p>
+                            <p>${tipor}</p>
+                            <p>${rescatista.usuario.email}</p>
                         </div>
                    </div>
                 </div>
@@ -43,8 +44,8 @@
         <div class="col-sm-12">
             <div class="mapa well well-sm">
                 <h2>Localización</h2>
-                <div id="map-canvas"></div>
-               
+                <div id="map-canvas" style="width: 100%; height: 380px;"></div>
+               <input type="hidden" id="zonaAfectada" value="${catastrofe.zonaAfectada}"/>
             </div>
         </div>
         

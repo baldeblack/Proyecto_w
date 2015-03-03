@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.picketbox.commons.cipher.Base64;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,14 +22,23 @@ import org.springframework.web.servlet.ModelAndView;
 import com.Controllers.CCatastrofe;
 import com.Controllers.COngs;
 import com.Controllers.CPlanes;
+import com.Controllers.CUsuarios;
 import com.Entities.Catastrofe;
 import com.Entities.ONG;
 import com.Entities.Plan;
+import com.Entities.Rescatista;
+import com.Entities.Rescatistacatastrofe;
+import com.Entities.TipoRescatista;
+import com.Entities.Tipocatastrofe;
 import com.Entities.Usuario;
 import com.Helper.ongsBorrado;
 import com.Interfaces.ICCatastrofe;
 import com.Interfaces.ICOngs;
 import com.Interfaces.ICPlanes;
+import com.Interfaces.ICUsuarios;
+import com.TenantControllers.CDesaparecidos;
+import com.TenantInterfaces.ICDesaparecidos;
+import com.entities.Desaparecido;
 import com.google.gson.Gson;
 import com.models.VincularModel;
 import com.models.rescatisaHomeModel;
@@ -44,24 +54,59 @@ public class RescatistasController {
 		if(!ac.tieneAcceso(request, "rescatistahome")){
 			return "redirect:/forbhiden";
 		}
+		
 		 HttpSession session = request.getSession(true);
-		 Usuario u = (Usuario) session.getAttribute("user");
-
-		rescatisaHomeModel rh = new rescatisaHomeModel(u.getIdUsuarios());
-		model.addAttribute("model", rh);		
-		//Plan p = 
+		 Usuario u = (Usuario) session.getAttribute("user");	
+		 rescatisaHomeModel rh = new rescatisaHomeModel(u.getIdUsuarios());			
+		model.addAttribute("model", rh);	
+		
 		return "rescatistahome";
 	}
 	
-	@RequestMapping(value="/ctinfo", method = RequestMethod.GET)
-	 public ModelAndView getPlan(HttpServletRequest request) {     
+	@RequestMapping(value="/ctinfo", method = RequestMethod.POST)
+	 public ModelAndView getCTInfo(@RequestBody String json, HttpServletResponse res,HttpServletRequest request) throws ClassNotFoundException, SQLException {  
+		Gson g = new  Gson();
+		idPl result = g.fromJson(json, idPl.class);	
+		ICCatastrofe ic = new CCatastrofe();
+		Catastrofe c = new Catastrofe();
+		c = ic.getCatastrofeByID(result.id);
+		HttpSession session = request.getSession(true);
+		 Usuario u = (Usuario) session.getAttribute("user");
+		 ICUsuarios iu = new CUsuarios();
+		 Rescatista r = new Rescatista();
+		 r = iu.getRescatistaByUsuID(u.getIdUsuarios());
+		List<Tipocatastrofe> tipos = new ArrayList<Tipocatastrofe>();
+		tipos = ic.getTiposCT();
+		String tipoct = "";
+		String tiporesc = "";
+		for(Tipocatastrofe t: tipos){
+			if(t.getIdtipocatastrofe() == c.getTipo()){
+				tipoct = t.getNombre();
+			}
+		}
+		List<TipoRescatista> ti = new ArrayList<TipoRescatista>();
+		ti = iu.GetTipoRescatista();
+		
+		for (TipoRescatista t: ti){
+			if(t.getIdTipoRescatista() == r.getIdTipoRescatista()){
+				tiporesc = t.getNombre();
+			}
+		}
+		
+		String encodedLogo= Base64.encodeBytes(c.getLogo());	
+		String zona = c.getZonaAfectada().replaceAll("\"", "'");
+		c.setZonaAfectada(zona);
 		ModelAndView  model = new ModelAndView("catastrofeinfo");
-		model.addObject( "nombre", "vamoo" );
+		model.addObject("catastrofe", c);
+		model.addObject("rescatista", r);
+		model.addObject("tipoc", tipoct);
+		model.addObject("tipor", tiporesc);
+		model.addObject("logo", encodedLogo);
         return model;
     }
 	
 	@RequestMapping(value="/planes", method = RequestMethod.POST)
-	 public ModelAndView getCTInfo(@RequestBody String json, HttpServletResponse res,HttpServletRequest request) { 
+	 public ModelAndView getPlan(@RequestBody String json, HttpServletResponse res,HttpServletRequest request) { 
 		Gson g = new  Gson();
 		idPl result = g.fromJson(json, idPl.class);		
 		Plan plan = new Plan();
@@ -72,6 +117,23 @@ public class RescatistasController {
 		model.addObject( "plan", plan);
        return model;
    }
+	
+	@RequestMapping(value="/desaparecidos", method = RequestMethod.POST)
+	 public ModelAndView getDesa(@RequestBody String json, HttpServletResponse res,HttpServletRequest request) { 
+	//	Gson g = new  Gson();
+	//idPl result = g.fromJson(json, idPl.class);		
+		ICDesaparecidos id = new CDesaparecidos(25);
+		List<Desaparecido> lstdesa = id.GetDesaparecidosByIdBO(25);
+		List<String> strlst = new ArrayList<String>();
+		for(Desaparecido d: lstdesa){
+			String encodedLogo= Base64.encodeBytes(d.getFoto());
+			strlst.add(encodedLogo);
+		}
+		ModelAndView  model = new ModelAndView("desaparecidos");
+		model.addObject("desaparecidos", lstdesa);
+		model.addObject("fotos", strlst);
+      return model;
+  }
 	
 	@RequestMapping(value = "/updatepaso", method = RequestMethod.POST)
 	public @ResponseBody String deleteOng(@RequestBody String json, HttpServletResponse res, HttpServletRequest request) throws NumberFormatException, ClassNotFoundException, SQLException {

@@ -8,6 +8,9 @@
         <dependent-module archiveName="DAL.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/DAL/DAL">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="DALSite.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/DALSite/DALSite">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
 		<property name="java-output-path" value="/BackOffice/build/classes"/>
         <property name="context-root" value="BackOffice"/>
 	</wb-module>

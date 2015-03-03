@@ -9,6 +9,7 @@
 	
 	<script type="text/javascript" src="<c:url value="/resources/js/jquery.js" />"></script>
 	<script type="text/javascript" src="<c:url value="/resources/js/bootstrap.js" />"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&signed_in=true"></script>
 	<script type="text/javascript" src="<c:url value="/resources/planesresc.js" />"></script>
 	<script type="text/javascript" src="<c:url value="/resources/js/message.js" />"></script>
 	<script type="text/javascript" src="<c:url value="/resources/js/jquery.searchable.js" />"></script>
@@ -60,10 +61,10 @@
         
         <!-- MENU VERTICAL -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav side-nav">
+                <ul id="dataMenu" class="nav navbar-nav side-nav">
    				<c:if test="${not empty model.ct}">
-                    <li class="item_menu active">
-                        <a href="#" name="catastrofe" onclick="mostrar(this,${model.ct.idCatastrofe})" data-toggle="tooltip" data-placement="right" title="${model.ct.nombre}"><i class="fa fa-fw fa-bar-chart-o"></i><span class="hidden-sm hidden-md hidden-lg">${model.ct.nombre}</span></a>
+                    <li id="${model.ct.idCatastrofe}" class="item_menu active">
+                        <a href="#"  name="catastrofe" onclick="mostrar(this,${model.ct.idCatastrofe})" data-toggle="tooltip" data-placement="right" title="${model.ct.nombre}"><i class="fa fa-fw fa-bar-chart-o"></i><span class="hidden-sm hidden-md hidden-lg">${model.ct.nombre}</span></a>
                     </li>
                 </c:if>
                     

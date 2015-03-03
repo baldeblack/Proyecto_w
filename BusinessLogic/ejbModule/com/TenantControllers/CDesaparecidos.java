@@ -144,5 +144,11 @@ public class CDesaparecidos implements ICDesaparecidos {
 		_dao.InsertUpdateDesaparecido(des);
 		return des.getEstadoBusqueda() == state;
 	}
+
+	@Override
+	public List<Desaparecido> GetDesaparecidosByIdBO(int id) {
+		// TODO Auto-generated method stub
+		return _dao.getAllDesaparecidos();
+	}
 	
 }

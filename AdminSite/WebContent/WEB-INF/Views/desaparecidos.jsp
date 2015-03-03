@@ -12,22 +12,25 @@
              </div><!-- /input-group -->
          </div>
      </div>
-     <div class="row" id="contenedor-busqueda"><br>
+     <div class="row" id="contenedor-busqueda"><br>  
   
-         <div class="col-sm-3 opcion animated bounceInUp">
-             <div class="hero-widget well well-sm">
-                 <p class="fecha_des">12/02/15</p>
-                 <img src="resources/images/des1.jpg" alt="">
-   
-                 <div class="text">
-                     <label class="text-muted">Nombre</label>
-                     <p class="lugar_des">Canelones</p>
-                 </div>
-                 <div class="options">
-                     <a href="#" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-plus"></i> Encontrado</a>
-                 </div>
-             </div>
-         </div>
+ 			 <c:if test="${not empty desaparecidos}">                      
+                       	<c:forEach var="d" varStatus="j" items="${desaparecidos}">						
+						 <div class="col-sm-3 opcion animated bounceInUp">
+				             <div class="hero-widget well well-sm">
+				                 <p class="fecha_des">${d.fechaDesaparicion}</p>
+				                 <img src="data:image/jpeg;base64,${fotos[j.index]}" alt="">				
+				                 <div class="text">
+				                     <label class="text-muted">${d.nombre}</label>
+				                     <p class="lugar_des">${d.ultimoParadero}</p>
+				                 </div>
+				                 <div class="options">
+				                     <a href="#" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-plus"></i>${d.estadoBusqueda}</a>
+				                 </div>
+				             </div>
+				         </div>
+               		    </c:forEach>               		
+				</c:if>	  
 
      </div>
 </div>
