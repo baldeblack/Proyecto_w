@@ -26,7 +26,10 @@ import com.Helper.PlanUtil;
 import com.Interfaces.ICCatastrofe;
 import com.Interfaces.ICPlanes;
 import com.Interfaces.ICUsuarios;
+import com.TenantControllers.CDesaparecidos;
+import com.TenantInterfaces.ICDesaparecidos;
 import com.google.gson.Gson;
+import com.utilities.MessageInput;
 
 
 
@@ -112,6 +115,20 @@ public class boServices {
 		ICPlanes ip = new CPlanes();
 		int res = ip.UpdatePasoStep(idPlan, idPaso, idRescatista);
 		return Response.ok(res).build(); 
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/AllDesaparecidosMobileCallback/{input}")
+	public String GetAllDesaparecidosMobile(@PathParam("input") String input, @QueryParam("callback") String callback){
+		Gson gson = new Gson();
+		MessageInput request = gson.fromJson(input, MessageInput.class);
+		ICDesaparecidos controller = new CDesaparecidos(request.getBdConnection());
+	
+		String response =  controller.GetAllDesaparecidosMobile();
+		//String response = gson.toJson(controller.GetAllDesaparecidosMobile());
+		return (callback + "(" + response + ")");
+		
 	}
 
 }

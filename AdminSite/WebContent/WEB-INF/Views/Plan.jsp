@@ -93,7 +93,7 @@
 								
 								 <div class="row">
 							        <div class="col-md-4">
-							            <div class="panel panel-primary">
+							            <div class="panel panel-primary ani_panel animated bounceInUp">
 							                <div class="panel-heading">Alta Plan <a data-toggle="collapse" data-target="#altaP" href="#altaP"><i class="glyphicon glyphicon-chevron-up"></i></a>
 											</div>
 							                <div id="altaP" class="panel-body panel-collapse collapse in">

@@ -55,7 +55,7 @@ $(document).ready(function() {
 
 
 		  	    } else if(elem.name == 'catastrofe'){
-		  	    	getCatastrofe(25);
+		  	    	getCatastrofe(id);
  
 	  	}else if(elem.name == 'desaparecidos'){
 		 	 $.ajax({

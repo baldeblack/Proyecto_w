@@ -109,8 +109,9 @@ public class PlanesDAO {
 		
 		public List<PlanUtil> getPlanes(int tipoCT){
 			List<Plan> lstPlanes = new ArrayList<Plan>();
-			TypedQuery<Plan> query =_eManager.createQuery("Select p From Plan p Where p.idTipoCatastrofe =?1 ", Plan.class);
+			TypedQuery<Plan> query =_eManager.createQuery("Select p From Plan p Where p.idTipoCatastrofe =?1 and p.estado =?2", Plan.class);
 			query.setParameter(1, tipoCT);	
+			query.setParameter(2, 0);	
 			lstPlanes = query.getResultList();
 			
 			List<PlanUtil> lspu = new ArrayList<PlanUtil>();
