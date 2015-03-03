@@ -546,3 +546,39 @@ ani_panel{
     -webkit-animation-delay: 1s;  
     /*-webkit-animation-iteration-count: 5; */
 }
+
+.contenedor_index_pasos{
+	margin-top: 30px;
+	padding:20px;
+}
+.setup-panel{
+	overflow: hidden;
+}
+.setup-content{
+	color: #272822;
+}
+.contenido_pasos_res{
+	word-wrap: break-word;
+}
+.pasos_resc{
+	overflow: hidden;
+}
+
+
+ani_panel2{
+    -webkit-animation-duration: 2s;  
+    -webkit-animation-delay: 1s;  
+    /*-webkit-animation-iteration-count: 5; */
+}
+
+ani_panel3{
+    -webkit-animation-duration: 2s;  
+    -webkit-animation-delay: 2s;  
+    /*-webkit-animation-iteration-count: 5; */
+}
+
+ani_panel4{
+    -webkit-animation-duration: 2s;  
+    -webkit-animation-delay: 3s;  
+    /*-webkit-animation-iteration-count: 5; */
+}

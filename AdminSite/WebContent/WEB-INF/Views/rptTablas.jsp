@@ -164,7 +164,7 @@
 											data-toggle="dropdown">
 											<i class="fa fa-bars"></i>Exportar
 										</button>
-										<ul class="dropdown-menu " role="menu">
+										<ul class="dropdown-menu menu_reporte" role="menu">
 		
 											<li class="tableMenu"><a id="ecsv" href="#"
 												onClick="exportT(this)"> <img

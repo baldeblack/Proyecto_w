@@ -16,7 +16,7 @@
   
  			 <c:if test="${not empty desaparecidos}">                      
                        	<c:forEach var="d" varStatus="j" items="${desaparecidos}">						
-						 <div id="div-${d.idDesaparecidos}"class="col-sm-3 opcion animated bounceInUp">
+						 <div id="div-${d.idDesaparecidos}"class="col-sm-3 ani_panel animated bounceInUp">
 				             <div class="hero-widget well well-sm">
 				                 <p class="fecha_des">${d.fechaDesaparicion}</p>
 				                 <img src="data:image/jpeg;base64,${fotos[j.index]}" alt="">				

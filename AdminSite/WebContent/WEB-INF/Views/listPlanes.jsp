@@ -142,7 +142,7 @@
 													<td>${t.nombre}</td> 
 											</c:if>
 											</c:forEach>											
-											<td><a href="/BackOffice/planes/edit/${p.idPlan}">Ir</a></td>							
+											<td><a href="/BackOffice/planes/edit/${p.idPlan}" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fa fa-pencil"></i></a></td>							
 										</tr>
 									</c:forEach>
 								</tbody>

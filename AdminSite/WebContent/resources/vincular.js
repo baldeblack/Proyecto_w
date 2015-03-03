@@ -1,5 +1,6 @@
 jQuery(document).ready(function($) {
-
+	$('[data-toggle="tooltip"]').tooltip();
+	$('#createU').hide();
 	var dataFrom = $('#jsonTable').val().toString().replace(/'/g, "\"");
 	var datap = JSON.parse(dataFrom);
 	
@@ -238,6 +239,7 @@ jQuery(document).ready(function($) {
 			$('#selectO').fadeIn("400");
 			$('#createO').fadeIn("400");
 			$('#delbtn').fadeIn("400");
+			$('#createU').fadeOut("400");
 			
 			
 		} else {
@@ -245,7 +247,8 @@ jQuery(document).ready(function($) {
 			updateres(idc,"", function(data) {			
 				load(current, data);
 			});			
-
+			
+			$('#createU').fadeIn("400");
 			$('#selectO').fadeOut("400");
 			$('#createO').fadeOut("400");
 			$('#delbtn').fadeOut("400");

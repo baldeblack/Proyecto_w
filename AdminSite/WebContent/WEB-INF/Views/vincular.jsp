@@ -98,14 +98,13 @@
 						<div class="panel-body">
 							<div class="container-fluid">
 								<div class="row">
-									<div class="col-md-12">
+									<div class="col-md-4">
 										<div id="radios">
-											<input type="radio" name="donRbt" value="don"
-												checked="checked">ONG's<br> <input type="radio"
-												name="rescRbt" value="resc">Rescatistas<br>
+											<input type="radio" name="donRbt" value="don" checked="checked">ONG's<br> 
+											<input type="radio" name="rescRbt" value="resc">Rescatistas<br>
 										</div>
 									</div>
-										<div class="col-md-4">
+									<div class="col-md-4">
 									<div class="btn-group" role="group" aria-label="...">
 										<button id="addbtn" class="btn btn-default" type="button">AGREGAR</button>
 										<button id="delbtn" class="btn btn-default" type="button">REMOVER</button>
@@ -115,10 +114,10 @@
 										<input type="hidden" id="idCt" name="idCt"
 											value="${VincularModel.idCt}">
 											<div class="col-lg-4">
-											<div class="btn-group btn-group-justified" role="group" aria-label="...">  
-												<a id="createO" class="btn btn-warning bton-reportar" data-toggle="modal" data-target="#modalOng">ONG</a>
-												<a class="btn btn-warning bton-reportar" data-toggle="modal" data-target="#modalUsuario">USUARIO</a>	
-											</div>
+											  
+												<a id="createO" class="btn btn-warning bton-reportar" data-toggle="modal" data-target="#modalOng"><i class="fa fa-plus"></i> ONG</a>
+												<a id="createU" class="btn btn-warning bton-reportar" data-toggle="modal" data-target="#modalUsuario"><i class="fa fa-plus"></i> USUARIO</a>	
+											
 											</div>							
 									</div>
 									<div class="col-md-12">

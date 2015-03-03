@@ -139,8 +139,8 @@
 										<tr>
 											<td>${o.nombre}</td>
 											<td>${o.dominio}</td>
-											<td><a href="/BackOffice/catastrofes/edit/${o.idCatastrofe}">Editar</a></td> 
-											<td><a href="/BackOffice/vincular/init/${o.idCatastrofe}">Ir</a></td>							
+											<td><a href="/BackOffice/catastrofes/edit/${o.idCatastrofe}" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fa fa-pencil"></i></a></td> 
+											<td><a href="/BackOffice/vincular/init/${o.idCatastrofe}" data-toggle="tooltip" data-placement="top" title="Vincular"><i class="fa fa-external-link"></i></a></td>							
 										</tr>
 									</c:forEach>
 								</tbody>

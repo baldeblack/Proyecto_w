@@ -3,7 +3,7 @@
  
 <div class="row contenedor_index">
 		<div class="col-sm-6">   
-            <div class="paneles well well-sm">
+            <div class="paneles well well-sm ani_panel1 animated bounceInLeft">
                 <h2>Catastrofe</h2>
                 <div class="row">
                     <div class="col-sm-5">
@@ -24,7 +24,7 @@
 
         <div class="col-sm-6">
             
-            <div class="paneles well well-sm">
+            <div class="paneles well well-sm ani_panel2 animated bounceInRight">
                 <h2>Rescatista</h2>
                 <div class="row">
                     <div class="col-sm-5">
@@ -42,7 +42,7 @@
             </div>
         </div>
         <div class="col-sm-12">
-            <div class="mapa well well-sm">
+            <div class="mapa well well-sm ani_panel3 animated bounceInUp">
                 <h2>Localización</h2>
                 <div id="map-canvas" style="width: 100%; height: 380px;"></div>
                <input type="hidden" id="zonaAfectada" value="${catastrofe.zonaAfectada}"/>

@@ -131,7 +131,7 @@
 						        <c:forEach var="o" items="${UsuariosListModel.lstUsuarios}">
 						            <tr>
 						                <th>${o.nombre}</th>
-						                <th><a href="/BackOffice/usuarios/edit/${o.idUsuarios}">Editar</a></th>                 
+						                <th><a href="/BackOffice/usuarios/edit/${o.idUsuarios}" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fa fa-pencil"></i></a></th>                 
 						            </tr>
 						        </c:forEach>
 						      </tbody>

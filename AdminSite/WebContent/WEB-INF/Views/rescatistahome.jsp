@@ -35,7 +35,7 @@
                     <span class="btn-menu">User</span>
                 
                 </button>
-                <a class="navbar-brand text-center" href="index.html"><i class="fa fa-life-ring fa-spin"></i> Rescatista</a>
+                <a class="navbar-brand text-center" href="#"><i class="fa fa-life-ring fa-spin"></i> Rescatista</a>
             </div>
            
             <div class="collapse navbar-collapse navbar-ex2-collapse">
@@ -64,7 +64,7 @@
                 <ul id="dataMenu" class="nav navbar-nav side-nav">
    				<c:if test="${not empty model.ct}">
                     <li id="${model.ct.idCatastrofe}" class="item_menu active">
-                        <a href="#"  name="catastrofe" onclick="mostrar(this,${model.ct.idCatastrofe})" data-toggle="tooltip" data-placement="right" title="${model.ct.nombre}"><i class="fa fa-fw fa-bar-chart-o"></i><span class="hidden-sm hidden-md hidden-lg">${model.ct.nombre}</span></a>
+                        <a href="#"  name="catastrofe" onclick="mostrar(this,${model.ct.idCatastrofe})" data-toggle="tooltip" data-placement="right" title="${model.ct.nombre}"><i class="fa fa-fw fa-info"></i><span class="hidden-sm hidden-md hidden-lg">${model.ct.nombre}</span></a>
                     </li>
                 </c:if>
                     
@@ -72,14 +72,14 @@
                     <c:forEach var="s" varStatus="i" items="${model.lstPlanes}">
 																				
 										 <li class="item_menu">
-                        <a href="#"  name="plan" onclick="mostrar(this,${s.idPlan})" data-toggle="tooltip" data-placement="right" title="${s.nombre}"><i class="fa fa-fw fa-user"></i><span class="hidden-sm hidden-md hidden-lg">${s.nombre}</span></a>
+                        <a href="#"  name="plan" onclick="mostrar(this,${s.idPlan})" data-toggle="tooltip" data-placement="right" title="${s.nombre}"><i class="fa fa-fw fa-paypal"></i><span class="hidden-sm hidden-md hidden-lg">${s.nombre}</span></a>
                     </li >
 												
 											</c:forEach>
 					</c:if>					
                      <c:if test="${not empty model.lstdesaparecidos}">
                     <li class="item_menu">
-                        <a href="#" name="desaparecidos" onclick="mostrar(this, ${model.ct.idCatastrofe})" data-toggle="tooltip" data-placement="right" title="Desaparecidos"><i class="fa fa-fw fa-plus"></i><span class="hidden-sm hidden-md hidden-lg">Desaparecidos</span></a>
+                        <a href="#" name="desaparecidos" onclick="mostrar(this, ${model.ct.idCatastrofe})" data-toggle="tooltip" data-placement="right" title="Desaparecidos"><i class="fa fa-fw fa-users"></i><span class="hidden-sm hidden-md hidden-lg">Desaparecidos</span></a>
                     </li>                    
 					</c:if>	
                 </ul>
