@@ -131,5 +131,24 @@ public class boServices {
 		return (callback + "(" + response + ")");
 		
 	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/LostChangeState/{idCat}/{idDes}")
+	public String ChangeStateLost(@PathParam("idCat") int idCat, @PathParam("idDes") int idDes,  @QueryParam("callback") String callback){
+	    
+		ICDesaparecidos controller = new CDesaparecidos(idCat);
+		short state=2;
+		boolean response = controller.UpdateDesaparecidoState(idDes, state);	
+		lostResp lp = new lostResp(); 
+		lp.res = response;
+		Gson gson = new Gson();
+		String resp = gson.toJson(lp);
+		return (callback + "(" + resp + ")");
+	}
+	
+	public class lostResp{
+		public boolean res; 
+	}
 
 }

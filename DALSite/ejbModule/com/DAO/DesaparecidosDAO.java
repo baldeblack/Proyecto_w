@@ -47,7 +47,7 @@ public class DesaparecidosDAO {
 	public Desaparecido getDesaparecidoById(int id){
 		Desaparecido result = null;
 		try {
-		TypedQuery<Desaparecido> query =_eManager.createQuery("Select d From Desaparecido d where d.idDesaparecido = ?1", Desaparecido.class);
+		TypedQuery<Desaparecido> query =_eManager.createQuery("Select d From Desaparecido d where d.idDesaparecidos = ?1", Desaparecido.class);
 		query.setParameter(1, id);
 		result = query.getSingleResult();
 		
