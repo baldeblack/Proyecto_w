@@ -54,15 +54,7 @@
 	margin-top: 5px;
 }
 
-#div1 {
-	width: 100px;
-	float: left;
-}
 
-#div2 {
-	margin-left: 120px;
-	width: 100px;
-}
 
 .delete {
 	width: 20px;
@@ -88,29 +80,6 @@
 	opacity: 0.8;
 	position: relative; //
 	display: none;
-}
-
-.wrapper {
-	max-width: 1200px;
-	margin: 0 auto;
-}
-
-.inner {
-	padding: 20px;
-	border: 1px solid #D1D1D1;
-	width: 215px;
-	background-color: #00F;
-	height: 190px;
-}
-
-#div1 {
-	width: 100px;
-	float: left;
-}
-
-#div2 {
-	margin-left: 120px;
-	width: 100px;
 }
 
 .innerTwo {
@@ -345,28 +314,24 @@
 
 								</div>
 								<div class="tab-pane" id="imagenes">
-									<div class="col-md-6">
+									<div class="col-md-8">
 										<div class="form-group">
 											<div class="innerTwo">
-												<div>
-													<div style="display: table-cell;">
-														<div style="height: 30px">Subir nueva imagen:</div>
-													</div>
-													<div style="display: table-cell;">
-														<input id="addMoreFile" type="image"
+												<div class="row">
+													<div class="col-md-12">
+														<a href="#" id="addMoreFile" class="btn btn-default btn-lg" onclick="javascript:return addFilClick()" ><i class="fa fa-plus"></i> Imagen</a>
+														<!-- <input  type="image"
 															src="http://localhost/img/ic_add_box_24px.svg"
 															type="image" style="width: 30px; height: 30px"
-															onclick="javascript:return addFilClick()" />
+															 />-->
 													</div>
 												</div>
 												<br /> <br />
-												<div id="fileDiv">
-													<div id="uploadTable"
-														style="border: 1px solid black; display: table-cell;">
-														<div class="fileContainer"
-															style="border: 1px solid black;">
+												<div id="fileDiv" class="row">
+													<div id="uploadTable" class="col-md-12">
+														<div class="fileContainer col-md-6">
 															<input id="file-0" name="multiUploadedFileList[0]"
-																type="file" style="margin-bottom: 16px;" /> 
+																type="file" /> 
 														</div>
 													</div>
 												</div>
@@ -392,7 +357,7 @@
 											</div>
 										</div>
 									</div>
-									<div class="col-md-6">
+									<div class="col-md-4">
 										<div id="logocontainer" class="form-group">
 											<label>Logo :</label>
 											<div>
@@ -413,9 +378,15 @@
 									<div class="col-md-12">
 										<div class="col-md-6">
 											<div class="form-group">
-												<div class="innerTwo">								
+												<div class="innerTwo">
+													<!-- 											<div class="form-inline"> -->
+													<!-- 												Palabras Claves:  <input id="PalabrasInput" type="image" -->
+													<!-- 													src="http://localhost/img/ic_add_box_24px.svg" /> -->
+													<!-- 											</div> -->
+
 													<div id="PalabrasDiv" class="row">
-													
+
+
 														<c:if test="${not empty CatastrofeModel.palabrasList}">
 
 															<c:forEach var="palabras"
@@ -423,16 +394,12 @@
 																<div class="col-lg-12 palabraContainer">
 																	<c:choose>
 																		<c:when test="${i.index == 0}">
-
-																			<div class="form-group">
-																				<label class="control-label">Palabras Claves
-																					<input id="PalabrasInput" type="image"
-																					src="http://localhost/img/ic_add_box_24px.svg" />
-																				</label> <input class="form-control" type="text"
+	
+																			<a href="#" id="PalabrasInput" class="btn btn-default btn-lg" ><i class="fa fa-plus"></i> Palabras clave</a><br>
+																			<div class="form-group">	
+																				<input class="form-control" type="text"
 																					name="palabrasList[${i.index}]" value="${palabras}"
-																					required="true" /> <span
-																					class="glyphicon form-control-feedback"
-																					aria-hidden="true"></span>
+																					required="true" />
 																			</div>
 																		</c:when>
 																		<c:otherwise>
@@ -448,15 +415,13 @@
 														</c:if>
 														<c:if test="${ empty CatastrofeModel.palabrasList}">
 															<div class="col-lg-12 palabraContainer">
-																<div class="form-group">
-																	<label class="control-label">Palabras Claves <input
-																		id="PalabrasInput" type="image"
-																		src="http://localhost/img/ic_add_box_24px.svg" /></label> <input
+																<a href="#" id="PalabrasInput" class="btn btn-default btn-lg" ><i class="fa fa-plus"></i> Palabras clave</a>
+																<br>
+																<div class="form-group">	
+																	<input
 																		class="form-control" type="text"
 																		name="palabrasList[0]" value="${palabras}"
-																		required="true" /> <span
-																		class="glyphicon form-control-feedback"
-																		aria-hidden="true"></span>
+																		required="true" /> 
 																</div>
 															</div>
 														</c:if>
@@ -466,16 +431,19 @@
 											</div>
 										</div>
 										<div class="col-md-6">
-											<div class="wrapper">
-												<div class="inner">
-													<div id="div1">
+											
+												<div class="row">
+													<div id="div1" class="col-md-6">
+													<div class="panel panel-primary">                  
+							                        <div class="panel-heading">Fuente de datos</div>
+							                          <div class="panel-body">
 														<div id="fuenteDedatos" class="fuenteDedatos">
 															<c:if test="${not empty CatastrofeModel.fuenteDedatos}">
 
 																<c:forEach var="fuentes"
 																	items="${CatastrofeModel.fuenteDedatos}" varStatus="i">
 																	<div class="fuenteDedatosContainer">
-																		<input style="width: 70px;" type="text"
+																		<input class="form-control"  type="text"
 																			name="fuenteDedatos[${i.index}]" value="${fuentes}"
 																			readonly
 																			ondblclick="Traspass(this, $(this).closest('.fuenteDedatos').attr('id'))" />
@@ -486,7 +454,12 @@
 
 														</div>
 													</div>
-													<div id="div2">
+							                       	</div>
+													</div>
+													<div id="div2" class="col-md-6">
+													<div class="panel panel-primary">                  
+							                        <div class="panel-heading">Asignadas</div>
+							                          <div class="panel-body">
 														<div id="fuenteDedatosMod" class="fuenteDedatos">
 															<c:if
 																test="${not empty CatastrofeModel.fuenteDedatosMod}">
@@ -495,7 +468,7 @@
 																	items="${CatastrofeModel.fuenteDedatosMod}"
 																	varStatus="i">
 																	<div class="fuenteDedatosContainer">
-																		<input style="width: 70px;" type="text"
+																		<input class="form-control" type="text"
 																			name="fuenteDedatosMod[${i.index}]"
 																			value="${fuentesmod}" readonly
 																			ondblclick="Traspass(this, $(this).closest('.fuenteDedatos').attr('id'))" />
@@ -505,10 +478,12 @@
 															</c:if>
 														</div>
 													</div>
+							                       	</div>
+													</div>
 
 
 												</div>
-											</div>
+											
 										</div>
 									</div>
 									<div class="col-md-12">
