@@ -60,7 +60,7 @@ th a:hover {
 .dynatable-active-page {
   background-color: #428bca;
   border-color: #428bca;
-  padding: 6px 12px;
+  padding: 4px 6px;
   color: #fff;
 }
 .dynatable-active-page:hover {

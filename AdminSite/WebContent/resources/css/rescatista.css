@@ -500,12 +500,6 @@ body{
   border-left-color: 1px solid transparent; 
 }
 
-.opcion{
-    -webkit-animation-duration: 2s;  
-    -webkit-animation-delay: 1s;  
-    /*-webkit-animation-iteration-count: 5; */
-}
-
 .contenedor_index{
 	margin-top: 50px;
 }
@@ -552,10 +546,24 @@ ani_panel{
 	padding:20px;
 }
 .setup-panel{
+	background-color: #272822;
+  	border-color: #272822;
 	overflow: hidden;
 }
-.setup-content{
-	color: #272822;
+
+.setup-panel a{
+  border-color: #95001B;
+  background-color: #95001B;
+}
+.contenido_pasos_res{
+	background-color: #272822;
+  	border-color: #272822;
+	color: white;
+}
+
+.setup-content .btn-primary{
+  border-color: #95001B;
+  background-color: #95001B;
 }
 .contenido_pasos_res{
 	word-wrap: break-word;

@@ -326,4 +326,7 @@ ani_panel{
     z-index: 10;
     }
 
+.palabraContainer a{
+	margin-bottom: 5px;
+}
 
