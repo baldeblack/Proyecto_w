@@ -238,7 +238,7 @@
 							<li class="active"><a href="#general" data-toggle="tab">General</a></li>
 							<li><a href="#ubicacion" data-toggle="tab">Ubicacion</a></li>
 							<li><a href="#imagenes" data-toggle="tab">Imagenes</a></li>
-							<li><a href="#conf" data-toggle="tab">Configuracio</a></li>
+							<li><a href="#conf" data-toggle="tab">Configuracion</a></li>
 
 						</ul>
 					</div>
@@ -278,13 +278,7 @@
 												aria-hidden="true"></span>
 										</div>
 									</div>
-									<div class="col-md-6">
-										<div class="form-group">
-											<label class="control-label">Key Twitter :</label>
-											<form:input class="form-control" path="apiTw" required="true" />
-											<span class="glyphicon form-control-feedback"
-												aria-hidden="true"></span>
-										</div>
+									<div class="col-md-6">									
 										<div class="form-group">
 											<label class="control-label">Activa :</label> <select
 												class="form-control" name="activa">
@@ -372,12 +366,7 @@
 														<div class="fileContainer"
 															style="border: 1px solid black;">
 															<input id="file-0" name="multiUploadedFileList[0]"
-																type="file" style="margin-bottom: 16px;" /> <input
-																type="image"
-																src="http://localhost/img/ic_cancel_24px.svg"
-																name="image"
-																style="margin-left: 26px; width: 30px; height: 30px"
-																onclick="javascript:return deleteFile(this)" />
+																type="file" style="margin-bottom: 16px;" /> 
 														</div>
 													</div>
 												</div>
@@ -470,7 +459,7 @@
 																		id="PalabrasInput" type="image"
 																		src="http://localhost/img/ic_add_box_24px.svg" /></label> <input
 																		class="form-control" type="text"
-																		name="palabrasList[${i.index}]" value="${palabras}"
+																		name="palabrasList[0]" value="${palabras}"
 																		required="true" /> <span
 																		class="glyphicon form-control-feedback"
 																		aria-hidden="true"></span>

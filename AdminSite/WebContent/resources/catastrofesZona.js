@@ -390,8 +390,7 @@ function addFilClick() {
 	if (FilCont < 8) {
 
 		fileId = fileId + 1;
-		var toadd = '<div class="fileContainer" style="border: 1px solid black;"><input id="file-'+fileId+'" name="multiUploadedFileList[0]" type="file" style="margin-bottom: 16px;"/>' +
-	'<input type="image" src="http://localhost/img/ic_cancel_24px.svg" "name="image" style="margin-left: 30px; width:30px; height:30px" onclick="javascript:return deleteFile(this)" /></div>'
+		var toadd = '<div class="fileContainer" style="border: 1px solid black;"><input id="file-'+fileId+'" name="multiUploadedFileList[0]" type="file" style="margin-bottom: 16px;"/></div>'
 		$('#uploadTable').append(toadd);
 
 		$('#file-'+fileId).fileinput({

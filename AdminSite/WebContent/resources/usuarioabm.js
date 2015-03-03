@@ -90,9 +90,7 @@ $(document)
 																	.html("");
 															$('#actionbtn')
 																	.html(
-																			"Modificar");
-															$('#passdiv')
-																	.remove();
+																			"Modificar");															
 															$('#tipoUsuario')
 																	.attr(
 																			'disabled',
@@ -153,8 +151,7 @@ $(document)
 
 					}
 
-					if ($('#actionbtn').val() == "Modificar") {
-						$('#passdiv').remove();
+					if ($('#actionbtn').val() == "Modificar") {						
 						$('#tipoUsuario').attr('disabled', 'disabled');
 					}
 
@@ -184,6 +181,9 @@ function load(keyn, usujson) {
 		break;
 	case "direccion":
 		$('#direccion').val(usujson[keyn]);
+		break;
+	case "password":
+		$('#password').val(usujson[keyn]);
 		break;
 	case "email":
 		$('#email').val(usujson[keyn]);

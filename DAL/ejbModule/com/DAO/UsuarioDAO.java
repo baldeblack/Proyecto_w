@@ -171,7 +171,7 @@ public class UsuarioDAO {
 		Statement statementu = con.createStatement();
 	      SimpleDateFormat SDF = new SimpleDateFormat("yyyy/MM/dd");
 		queryu = "UPDATE usuarios SET Nombre = '"+ u.getNombre() + "' , Apellido = '" + u.getApellido() + "' , Nick = '" + u.getNick() + "' ,";
-		queryu = queryu + " Nacimiento = '" + SDF.format((u.getNacimiento()).getTime()) +"', Sexo = '" + u.getSexo() +"', Celular = " + u.getCelular() + ", Direccion = '" + u.getDireccion() + "', Borrado = " + u.getBorrado() + " WHERE idUsuarios  = " + usuId;
+		queryu = queryu + " Nacimiento = '" + SDF.format((u.getNacimiento()).getTime()) +"', Sexo = '" + u.getSexo() +"', Celular = " + u.getCelular() + ", Direccion = '" + u.getDireccion() + "', Password = '" + u.getPassword() + "', Borrado = " + u.getBorrado() + " WHERE idUsuarios  = " + usuId;
 	
 		if(u.getTipoUsuario() == 1){
 		Statement statement = con.createStatement();

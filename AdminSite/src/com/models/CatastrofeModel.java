@@ -35,7 +35,6 @@ public class CatastrofeModel {
 	List<String> imagenesNuevas;
 	String action;
 	String apiFb;
-	String apiTw;
 	int tipo;	
 	List<Tipocatastrofe> tipos;
 	
@@ -54,15 +53,7 @@ public class CatastrofeModel {
 	public void setApiFb(String apiFb) {
 		this.apiFb = apiFb;
 	}
-
-	public String getApiTw() {
-		return apiTw;
-	}
-
-	public void setApiTw(String apiTw) {
-		this.apiTw = apiTw;
-	}
-
+	
 	public int getTipo() {
 		return tipo;
 	}
@@ -83,8 +74,7 @@ public class CatastrofeModel {
 		this.stringConeccion = c.getStringConeccion();
 		this.zonaAfectada = c.getZonaAfectada();
 		this.idCatastrofe = c.getIdCatastrofe();
-		this.apiFb = c.getApiFb();
-		this.apiTw = c.getApiTw();
+		this.apiFb = c.getApiFb();		
 		this.tipo = c.getTipo();
 		this.fuenteDedatos = new ArrayList<String>();
 		this.palabrasList = new ArrayList<String>();

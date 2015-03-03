@@ -64,10 +64,10 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 $( document ).ready(function() {
 	
-	if($('#actionbtn').val() == "Modificar"){
-		$('#password').hide();
-		$("#password").removeAttr("required");
-	}
+//	if($('#actionbtn').val() == "Modificar"){
+//		$('#password').hide();
+//		$("#password").removeAttr("required");
+//	}
 	
 	if($('#tipoU').val() == 1){
 		$('#rescatistaDiv').show();

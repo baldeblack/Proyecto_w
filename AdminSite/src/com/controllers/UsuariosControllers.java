@@ -68,8 +68,7 @@ public class UsuariosControllers {
 		
 		   Calendar cal = Calendar.getInstance();
 		   cal.setTime( u.getNacimiento());	       
-		   u.setNacimiento(cal.getTime());		   
-		   u.setPassword("");	
+		   u.setNacimiento(cal.getTime());
 		if(u.getTipoUsuario() == 1){
 			Rescatista r = iu.getRescatistaByUsuID(u.getIdUsuarios());	
 			model.addAttribute("jsonusu", g.toJson(r).replaceAll("\"", "'"));
@@ -128,13 +127,12 @@ public class UsuariosControllers {
 				usr.setSexo(uf.getSexo());				
 				usr.setEmail(uf.getEmail());
 				usr.setTipoUsuario(uf.getTipoUsuario());
+				usr.setPassword(uf.getPassword());
 				
 		if(uf.getAccion().equals("Crear")){
 			
 			usr.setIdUsuarios(iu.maxUsrId());
-			usr.setCreacion(new Date());
-		
-			usr.setPassword(uf.getPassword());
+			usr.setCreacion(new Date());		
 	
 				if (usr.getTipoUsuario() == 1) {
 					Rescatista r = new Rescatista();
