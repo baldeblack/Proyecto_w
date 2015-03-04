@@ -5,7 +5,7 @@
 	<div class="row">
          <div class="col-sm-12 buscador">
              <div class="input-group">
-               <input type="text" class="form-control buscar-desp" id="buscador" placeholder="Buscar desaparecido...">
+               <input type="text" class="form-control buscar-desp" id="buscador2" placeholder="Buscar desaparecido...">
                <span class="input-group-btn">
                  <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
                </span>
@@ -33,4 +33,8 @@
 				</c:if>	  
 
      </div>
+     
 </div>
+
+		<script type="text/javascript" src="<c:url value="/resources/js/jquery.searchable.js" />"></script>
+		<script type="text/javascript" src="<c:url value="/resources/js/rescatista.js" />"></script>

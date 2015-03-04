@@ -12,7 +12,7 @@
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&signed_in=true"></script>
 	<script type="text/javascript" src="<c:url value="/resources/planesresc.js" />"></script>
 	<script type="text/javascript" src="<c:url value="/resources/js/message.js" />"></script>
-	<script type="text/javascript" src="<c:url value="/resources/js/jquery.searchable.js" />"></script>
+	
 	<link href="<c:url value="/resources/css/bootstrap.css"/>" rel="stylesheet" type="text/css" />
 	<link href="<c:url value="/resources/css/font-awesome.css"/>" rel="stylesheet" type="text/css" />
 	<link href="<c:url value="/resources/css/rescatista.css"/>" rel="stylesheet" type="text/css" />
@@ -63,7 +63,7 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul id="dataMenu" class="nav navbar-nav side-nav">
    				<c:if test="${not empty model.ct}">
-                    <li id="${model.ct.idCatastrofe}" class="item_menu active">
+                    <li id="${model.ct.idCatastrofe}" class="item_menu">
                         <a href="#"  name="catastrofe" onclick="mostrar(this,${model.ct.idCatastrofe})" data-toggle="tooltip" data-placement="right" title="${model.ct.nombre}"><i class="fa fa-fw fa-info"></i><span class="hidden-sm hidden-md hidden-lg">${model.ct.nombre}</span></a>
                     </li>
                 </c:if>
@@ -96,7 +96,9 @@
              
             <br><br><br><br><br><br><br><br><br><br><br><br>
         </div>
-
+		
+		<script type="text/javascript" src="<c:url value="/resources/js/jquery.searchable.js" />"></script>
+		<script type="text/javascript" src="<c:url value="/resources/js/rescatista.js" />"></script>
 
 </body>
 </html>

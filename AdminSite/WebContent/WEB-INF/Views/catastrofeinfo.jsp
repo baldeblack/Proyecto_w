@@ -9,7 +9,7 @@
                     <div class="col-sm-5">
                      <img src="data:image/jpeg;base64,${logo}" alt="">
                     </div>
-                   <div class="col-sm-7">
+                   <div class="col-sm-7 descip-des">
                         <div class="text">
                             <p>${catastrofe.nombre}</p>
                             <p>${catastrofe.dominio}</p>

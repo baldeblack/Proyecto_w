@@ -18,9 +18,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<br>
-						<div class="panel panel-primary ani_panel animated bounceInUp">
-							<div class="panel-heading"></div>
-							<div class="panel-body">
+					
 								<form id="usuarioForm" method="post" data-toggle="validator"
 									role="form">
 									<div class="col-md-6">
@@ -37,8 +35,7 @@
 												aria-hidden="true"></span>
 											<div class="help-block with-errors"></div>
 										</div>
-									</div>
-									<div class="col-md-6">
+									
 										<div class="form-group">
 											<label for="nick" class="control-label">Nick</label> <input
 												id="nick" type="text" class="form-control" required /> <span
@@ -51,8 +48,7 @@
 												class="glyphicon form-control-feedback" aria-hidden="true"></span>
 											<div class="help-block with-errors"></div>
 										</div>
-									</div>									
-									<div class="col-md-6">
+				
 										<div class="form-group">
 										<label for="pass" class="control-label">Contraseña</label> <input
 											id="pass" type="password" class="form-control" required /> <span
@@ -81,8 +77,7 @@
 												<option value="F">FEMENINOD</option>
 											</select>
 										</div>
-									</div>
-									<div class="col-md-6">
+									
 										<div class="form-group">
 											<label for="nacimiento">Fecha de Nacimiento</label> <input
 												type="date" id="nacimiento" class="form-control" required />
@@ -97,16 +92,15 @@
 											</select>
 										</div>									
 									</div>
-									<div class="col-md-6">									
-										<div class="form-group">
-											<div class="col-xs-5 col-xs-offset-3">
-												<button type="submit" class="btn btn-default">Crear</button>
-											</div>
+																		
+									<div class="col-lg-12 form-group">
+										<div class="col-xs-5 col-xs-offset-3">
+											<button type="submit" class="btn btn-default">Crear</button>
 										</div>
 									</div>
+									
 								</form>
-							</div>
-						</div>
+
 					</div>
 				</div>
 			</div>

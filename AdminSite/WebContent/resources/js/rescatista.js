@@ -1,8 +1,8 @@
 $(document).ready(function() {
 
     $( '#contenedor-busqueda' ).searchable({
-        searchField: '#buscador',
-        selector: '.col-sm-3',
+        searchField: '#buscador2',
+        selector: '.well-sm',
         childSelector: '.text',
         show: function( elem ) {
             elem.slideDown(100);

@@ -590,3 +590,7 @@ ani_panel4{
     -webkit-animation-delay: 3s;  
     /*-webkit-animation-iteration-count: 5; */
 }
+
+.descip-des .text{
+	overflow: hidden;
+}

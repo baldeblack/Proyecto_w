@@ -14,9 +14,7 @@
 		<div class="modal-body">
 		      <div class="row">
 			<div class="col-md-12"><br>
-		            <div class="panel panel-primary ani_panel animated bounceInUp">
-		                <div class="panel-heading"></div>
-		                <div class="panel-body">
+		            
 		                <form id="loginForm" method="post" data-toggle="validator" role="form">
 		                	<div class="col-md-6">		            
 		                      <div class="form-group">
@@ -31,12 +29,11 @@
 		                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
 						           <div class="help-block with-errors"></div>
 		                      </div>
-		                    </div>
-		                    <div class="col-md-6">
+
 		                      <div class="form-group">
 		                        <label for="web" class="control-label">Web</label>		                 
 		                        <input id="web" type="text" class="form-control" required/>
-		                   <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+		                   			<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
 						           <div class="help-block with-errors"></div>
 		                      </div>
 		                      <div class="form-group">
@@ -60,9 +57,7 @@
 		                               <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
 						           <div class="help-block with-errors"></div>	                        
 		                      </div>
-		                    </div>
-		                    
-		                    <div class="col-md-6">
+
 		                      <div class="form-group">
 		                        <label for="origen" class="control-label">Origen</label>
 		                             <input id="origen" type="text" class="form-control" required/>	
@@ -70,14 +65,13 @@
 						           <div class="help-block with-errors"></div>	                      
 		                      </div>		                    
 		                    <div class="form-group">
-                        <div class="col-xs-5 col-xs-offset-3">
-                            <button type="submit" class="btn btn-default">Crear</button>
-                        </div>
-                    </div>	 
+		                        
+		                            <button type="submit" class="btn btn-default">Crear</button>
+		                        
+                    		</div>	 
                          </div>                  
-		     </form> 
-		                </div>
-		            </div>
+		     			</form> 
+
 		        </div>
 		        </div>
 		</div>
