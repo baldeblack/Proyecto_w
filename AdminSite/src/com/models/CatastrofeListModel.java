@@ -12,7 +12,7 @@ public class CatastrofeListModel {
 	public CatastrofeListModel(){
 	    ctList = new ArrayList<Catastrofe>();
 		ICCatastrofe ic = new CCatastrofe();
-		ctList = ic.getAllCatastrofes();		
+		ctList = ic.GetAllCatastrofesBO();		
 	}
 	
 	public List<Catastrofe> getCtList() {

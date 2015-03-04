@@ -71,7 +71,7 @@
 		                      </div>		                    
 		                    <div class="form-group">
                         <div class="col-xs-5 col-xs-offset-3">
-                            <button type="submit" class="btn btn-default">Login</button>
+                            <button type="submit" class="btn btn-default">Crear</button>
                         </div>
                     </div>	 
                          </div>                  
@@ -82,7 +82,7 @@
 		        </div>
 		</div>
 		<div class="modal-footer">
-		     <button type="button" class="btn btn-default" data-dismiss="modal" tabindex="5">Crear</button>
+		     <button type="button" class="btn btn-default" data-dismiss="modal" tabindex="5">Cerrar</button>
 		</div>
 
     </div>

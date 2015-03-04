@@ -143,13 +143,26 @@
 
 
 		function inHead(key, tablename) {
-
+				
 		    $('#' +tablename+' thead tr').append('<th>' + key + '</th>');
 		}
 
 		function inBody(key, tablename, rptOption) {
+			
+						
 		    if (rptOption == 'donRbt') {
-				$('#' +tablename+' tbody').append('<tr><td>' + key.IdTipoDonacion + '</td><td>' + key.Cantidad + '</td><td>' + key.Moneda + '</td><td>' + key.Monto + '</td><td>' + key.HsServicio + '</td><td>' + key.Nombre + '</td><td>' + key.Apellido + '</td><td>' + key.Nombreong + '</td><td>' + key.Email + '</td></tr>');
+		    	
+		    	var tipodon="";
+				if(key.IdTipoDonacion == 1){
+					tipodon = 'Economica';
+				}else if(key.IdTipoDonacion == 2){
+					tipodon = 'De bienes';
+				}
+				else if(key.IdTipoDonacion == 3){
+					tipodon = 'De servicios';
+				}
+				
+				$('#' +tablename+' tbody').append('<tr><td>' + tipodon + '</td><td>' + key.Cantidad + '</td><td>' + key.Moneda + '</td><td>' + key.Monto + '</td><td>' + key.HsServicio + '</td><td>' + key.Nombre + '</td><td>' + key.Apellido + '</td><td>' + key.Nombreong + '</td><td>' + key.Email + '</td></tr>');
 			}else if (rptOption == 'pedRbt'){
 				$('#' +tablename+' tbody').append('<tr><td>' + key.TipoSolicitor + '</td><td>' + key.Canal + '</td><td>' + key.Ubicacion + '</td><td>' + key.Fecha + '</td></tr>');
 			}

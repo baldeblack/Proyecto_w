@@ -1,5 +1,6 @@
 package com.DAO;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -71,15 +72,49 @@ public class ReportesDAO {
 		while (resultST.next())
 		{
 			result = new donacionesRpt();
-		result.setIdTipoDonacion(resultST.getInt("idTipoDonacion"));
-		result.setApellido(resultST.getString("apellido"));
+			result.setIdTipoDonacion(resultST.getInt("idTipoDonacion"));
+			if(resultST.getString("moneda") != null){
+				result.setMoneda(resultST.getString("moneda"));
+			}else{
+				result.setMoneda("");
+			}
+			
+			if(resultST.getString("apellido") != null){
+				result.setApellido(resultST.getString("apellido"));
+			}else{
+				result.setNombre("");
+			}
+		
 		result.setCantidad(resultST.getInt("cantidad"));
-		result.setMoneda(resultST.getString("moneda"));
-		result.setMonto(resultST.getBigDecimal("monto"));
+		
+		if(resultST.getBigDecimal("monto") != null){
+			result.setMonto(resultST.getBigDecimal("monto"));			
+		}else{
+			BigDecimal f = new BigDecimal(0);
+			result.setMonto(f);
+		}
+		
 		result.setHsServicio(resultST.getInt("hsServicio"));
-		result.setNombre(resultST.getString("nombre"));
-		result.setNombreong(resultST.getString("nombreong"));
-		result.setEmail(resultST.getString("email"));
+		
+		if(resultST.getString("nombre") != null){
+			result.setNombre(resultST.getString("nombre"));
+		}else{
+			result.setNombre(resultST.getString(""));
+		}
+		
+		if(resultST.getString("nombreong") != null){
+			result.setNombreong(resultST.getString("nombreong"));
+		}else{
+			result.setNombreong(resultST.getString(""));
+		}
+	
+		if(resultST.getString("email") != null){
+			result.setEmail(resultST.getString("email"));
+		}else{
+			result.setEmail(resultST.getString(""));
+		}
+	
+	
 		lst.add(result);
 		}
 				
@@ -133,6 +168,22 @@ public class ReportesDAO {
 	
 		result.setUbicacion(resultST.getString("Ubicacion"));
 		result.setFecha(SDF.format(resultST.getTimestamp("Fecha").getTime()));
+		
+		if(result.getCanal() == null){
+			result.setCanal("");
+		}
+		
+		if(result.getFecha() == null){
+			result.setFecha("");
+		}
+		
+		if(result.getTipoSolicitor() == null){
+			result.setTipoSolicitor("");
+		}
+		
+		if(result.getUbicacion() == null){
+			result.setUbicacion("");
+		}
 		lst.add(result);
 		}
 		

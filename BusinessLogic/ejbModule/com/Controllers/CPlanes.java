@@ -1,5 +1,7 @@
 package com.Controllers;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -34,10 +36,23 @@ public class CPlanes implements ICPlanes{
 		return _dao.getPasos(idPlan);
 	}
 	@Override
-	public int InserUpdatePlanesWithPasos(Plan input, List<Paso> pasos) {
+	public int InserUpdatePlanesWithPasos(Plan input, List<Paso> pasos) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
-		input.setPasos(pasos);
-		return _dao.InsertUpdatePlan(input);
+		//input.setPasos(pasos);
+		List<Paso> nuevo = new ArrayList<Paso>();
+		for(Paso ps:pasos){
+			Paso pc = new Paso();
+			pc.setDescripcion(ps.getDescripcion());
+			pc.setEstado(ps.getEstado());
+			pc.setIdpasos(ps.getIdpasos());
+			pc.setNombre(ps.getNombre());
+			nuevo.add(pc);
+		}
+		input.setCantidadPasos(pasos.size());
+		int ret = _dao.InsertUpdatePlan(input);
+	
+		_dao.updatepaso(nuevo, input);
+		return ret;
 	}
 	@Override
 	public int UpdatePasoStep(int idPlan, int idPaso, int idRescatista) {

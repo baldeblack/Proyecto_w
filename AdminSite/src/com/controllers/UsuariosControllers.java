@@ -17,12 +17,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.Controllers.CCatastrofe;
 import com.Controllers.CPlanes;
 import com.Controllers.CUsuarios;
+import com.Entities.Catastrofe;
 import com.Entities.Rescatista;
 import com.Entities.Rescatistacatastrofe;
 import com.Entities.TipoRescatista;
 import com.Entities.Usuario;
+import com.Interfaces.ICCatastrofe;
 import com.Interfaces.ICPlanes;
 import com.Interfaces.ICUsuarios;
 import com.controllers.ONGsController.ids;
@@ -227,4 +230,39 @@ public class UsuariosControllers {
 		String jsonresp = g.toJson(lstru);
 		return jsonresp;
 	}
+	
+	@RequestMapping(value = "/deactivate", method = RequestMethod.POST)
+	public @ResponseBody String deactivate(@RequestBody String json, HttpServletResponse res, HttpServletRequest request) throws Exception {
+		String estadocurrent = "";
+		String estadonuevo = "";
+		Gson g = new Gson();
+		idCt idc = new idCt();
+		idc = g.fromJson(json, idCt.class);
+		estadocurrent = idc.estado;
+		ICUsuarios iu = new CUsuarios();
+		Usuario u = iu.getUsuById(idc.idc);
+		if(estadocurrent.equals("Deshabilitado")){
+			byte est = 0;
+			u.setBorrado(est);
+			estadonuevo = "Habilitado";
+		}else if(estadocurrent.equals("Habilitado")){
+			byte estf = 1;
+			u.setBorrado(estf);
+			estadonuevo = "Deshabilitado";
+		}
+	
+		Rescatista r = iu.getRescatistaByUsuID(idc.idc);
+		iu.ActualizarUsuario(u, r, idc.idc);
+		idc.estado = estadonuevo;
+		String jsonresp = "";
+		jsonresp = g.toJson(idc);
+		return jsonresp;
+	}
+	
+	public class idCt{
+		int idc;
+		String estado;
+	}
+
+	
 }

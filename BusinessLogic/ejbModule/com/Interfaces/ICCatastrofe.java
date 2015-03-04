@@ -11,6 +11,8 @@ public interface ICCatastrofe {
 
 	List<Catastrofe> getAllCatastrofes();
 	
+	 List<Catastrofe> GetAllCatastrofesBO();
+	 
 	List<CatastrofeLight> getAllCatastrofesLight();
 	
 	Catastrofe GetCatastrofeByDomain(String domain);

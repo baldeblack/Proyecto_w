@@ -40,9 +40,9 @@ public class SessionHandler {
 	    }
 	    
 	    public void setCurrentSite(Catastrofe c, HttpServletRequest request) {
-	        if (request.isRequestedSessionIdValid()) {
+	       // if (request.isRequestedSessionIdValid()) {
 	                request.getSession().setAttribute(CATASTROFE_KEY, c);
-	         }        
+	      //   }        
 	    }
 	    
 	    public Boolean logguedUser(HttpServletRequest request) {          

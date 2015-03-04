@@ -74,10 +74,13 @@ public class boServices {
 		
 		String response = null;
 		ICPlanes ip = new CPlanes();
-		Tipocatastrofe tipo =  new Tipocatastrofe();
-		tipo = ip.getTipo(idCt);
+		//Tipocatastrofe tipo =  new Tipocatastrofe();
+		//tipo = ip.getTipo(idCt);
+		Catastrofe c = new Catastrofe();
+		ICCatastrofe ic = new CCatastrofe();
+		c=ic.getCatastrofeByID(idCt);
 		List<PlanUtil> lstPl = new ArrayList<PlanUtil>();
-		lstPl = ip.getPlanes(tipo.getIdtipocatastrofe());
+		lstPl = ip.getPlanes(c.getTipo());
 		Gson g = new Gson();
 		response = g.toJson(lstPl);
 		return (callback + "(" + response + ")");

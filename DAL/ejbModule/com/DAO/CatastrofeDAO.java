@@ -21,7 +21,9 @@ public class CatastrofeDAO {
 	public List<Catastrofe> GetAllCatastrofes(){
 		List<Catastrofe> result = null;
 		try {
-		TypedQuery<Catastrofe> query =_eManager.createQuery("Select c From Catastrofe c", Catastrofe.class);
+		TypedQuery<Catastrofe> query =_eManager.createQuery("Select c From Catastrofe c Where c.activa =?1", Catastrofe.class);
+		byte est = 1;
+		query.setParameter(1,est);
 		result = query.getResultList();
 		
 		} catch (Exception e) {
@@ -30,6 +32,18 @@ public class CatastrofeDAO {
 		return result;
 	}
 
+	public List<Catastrofe> GetAllCatastrofesBO(){
+		List<Catastrofe> result = null;
+		try {
+		TypedQuery<Catastrofe> query =_eManager.createQuery("Select c From Catastrofe c", Catastrofe.class);
+		result = query.getResultList();
+		
+		} catch (Exception e) {
+			throw e;
+		}
+		return result;
+	}
+	
 	public Catastrofe GetCatastrofeByDomain(String domain){
 		Catastrofe result = null;
 		try {

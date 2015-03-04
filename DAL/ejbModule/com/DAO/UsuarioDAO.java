@@ -47,7 +47,10 @@ public class UsuarioDAO {
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
-		
+		short hab = 1;
+		if(user.getBorrado() == hab){
+			user = null;
+		}
 			return user;
 	}
 	

@@ -1,5 +1,6 @@
 package com.Interfaces;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import com.Entities.Paso;
@@ -14,7 +15,7 @@ public interface ICPlanes {
 	List<PlanUtil> getPlanes(int tipoCT);
 	List<Paso> getPasos(int idPlan);
 	List<Plan> getPlanesBO(int tipoCT);
-	int InserUpdatePlanesWithPasos(Plan input, List<Paso> pasos);
+	int InserUpdatePlanesWithPasos(Plan input, List<Paso> pasos) throws ClassNotFoundException, SQLException;
 	int UpdatePasoStep(int idPlan, int idPaso, int idRescatista);
 	 Plan getPlan(int idPlan);
 	 int maxPasoId();

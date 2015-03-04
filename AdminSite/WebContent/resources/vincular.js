@@ -167,7 +167,9 @@ jQuery(document).ready(function($) {
 						
 						updateres(idc,arrido[i], function(data) {
 							load("rescRbt", data);	
-							message("se dio de alta", "success")
+							message(
+					                "La operacion se realizo con exito.",
+					                "success")
 						});
 					}
 						
@@ -268,32 +270,35 @@ if(jsonRst.length != 0){
 	
 	if (name == 'donRbt') {		
 
-		for (key in result) {
+		//for (key in result) {
 
-			if (key != "borrar") {
-				if (key == "idONGs") {
-					inHead("");
-				} else {
-					inHead(key);
-				}
-			}
+			//if (key != "borrar") {
+				$('#tableList thead tr').append('<th></th><th>Nombre</th><th>Mail</th><th>Web</th><th>Telefono</th><th>Direccion</th><th>Origen</th><th>PayPal</th>');
+				
+				//if (key == "idONGs") {
+					//inHead("");
+			//	} else {
+				//	inHead(key);
+			//	}
+			//}
 
-		}
+		//}
 
 		for (i = 0; i < jsonRst.length; i++) {
 			inBodyOng(jsonRst[i]);
 		}
 	} else {
 
-		for (key in result) {
-
-			if (key == "idUsuarios") {
-				inHead("");
-			} else {
-				inHead(key);
-			}
-		}
-
+//		for (key in result) {
+//
+//			if (key == "idUsuarios") {
+//				inHead("");
+//			} else {
+//				inHead(key);
+//			}
+//		}
+		$('#tableList thead tr').append('<th></th><th>Nombre</th><th>Apellido</th><th>Mail</th><th>Celular</th><th>Tipo</th>');
+		
 		for (i = 0; i < jsonRst.length; i++) {
 			inBodyResc(jsonRst[i]);
 		}
@@ -322,7 +327,9 @@ function updateres(idc, ido, callback) {
 			callback(data);
 		},
 		error : function(data, status, er) {
-			$('#tableList tbody').append('<tr><td>HUBO UN ERROR!</td></tr>');
+			message(
+					"La operacion se realizo con exito.",
+					"success")
 		}
 	});
 }
@@ -340,10 +347,12 @@ function getOngs(idc, ido, callback) {
 			xhr.setRequestHeader("Content-Type", "application/json");
 		},
 		success : function(data) {
-			callback(data);
+			callback(data);			
 		},
 		error : function(data, status, er) {
-			$('#tableList tbody').append('<tr><td>HUBO UN ERROR!</td></tr>');
+			message(
+					"No se pudo realizar la operacion.",
+					"error");
 		}
 	});
 
@@ -365,7 +374,9 @@ function getOngsBefore(idc, ido, callback) {
 			callback(data);
 		},
 		error : function(data, status, er) {
-			$('#tableList tbody').append('<tr><td>HUBO UN ERROR!</td></tr>');
+			message(
+					"No se pudo realizar la operacion.",
+					"error");
 		}
 	});
 }
@@ -385,7 +396,9 @@ function getOngsid(nombre, callback) {
 			callback(data);
 		},
 		error : function(data, status, er) {
-			$('#tableList tbody').append('<tr><td>HUBO UN ERROR!</td></tr>');
+			message(
+					"No se pudo realizar la operacion.",
+					"error");
 		}
 	});
 }
@@ -399,18 +412,20 @@ function inBodyOng(key) {
 	if (key.borrar == 0) {
 		$('#tableList tbody').append(
 				'<tr><td><input type="checkbox" name="' + key.nombre
-						+ '"></td><td>' + key.datosPayPal + '</td><td>'
-						+ key.direccion + '</td><td>' + key.nombre
-						+ '</td><td>' + key.origen + '</td><td>' + key.telefono
-						+ '</td><td>' + key.web + '</td><td>' + key.email
+						+ '"></td><td>' + key.nombre + '</td><td>'
+						+ key.email + '</td><td>' + key.web
+						+ '</td><td>' + key.telefono + '</td><td>' + key.direccion
+						+ '</td><td>' + key.origen + '</td><td>' + key.datosPayPal
 						+ '</td></tr>');
+		
+		
 	} else {
 		$('#tableList tbody').append(
 				'<tr><td><input type="checkbox" disabled name="' + key.nombre
-						+ '"></td><td>' + key.datosPayPal + '</td><td>'
-						+ key.direccion + '</td><td>' + key.nombre
-						+ '</td><td>' + key.origen + '</td><td>' + key.telefono
-						+ '</td><td>' + key.web + '</td><td>' + key.email
+						+ '"></td><td>' + key.nombre + '</td><td>'
+						+ key.email + '</td><td>' + key.web
+						+ '</td><td>' + key.telefono + '</td><td>' + key.direccion
+						+ '</td><td>' + key.origen + '</td><td>' + key.datosPayPal
 						+ '</td></tr>');
 	}
 }

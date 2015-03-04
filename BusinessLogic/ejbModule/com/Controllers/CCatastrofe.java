@@ -79,4 +79,10 @@ public class CCatastrofe implements ICCatastrofe {
 		return _dao.maxCatId();
 	}
 
+	@Override
+	public List<Catastrofe> GetAllCatastrofesBO() {
+		// TODO Auto-generated method stub
+		return  _dao.GetAllCatastrofesBO();
+	}
+
 }
