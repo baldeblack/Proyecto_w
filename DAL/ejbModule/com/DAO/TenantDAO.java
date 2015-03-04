@@ -112,7 +112,7 @@ public class TenantDAO {
 						"Monto decimal(9,2) DEFAULT NULL, " +
 						"FechaEntrega date DEFAULT NULL, " +
 						"HsServicio int(11) DEFAULT NULL, " +
-						"ComienzoServico int(11) DEFAULT NULL, " +
+						"ComienzoServico date DEFAULT NULL, " +
 						"FInalizacionServicio date DEFAULT NULL, " +
 						"Fecha timestamp NULL DEFAULT CURRENT_TIMESTAMP, " +
 						"Descripcion varchar(300) DEFAULT NULL, " +
