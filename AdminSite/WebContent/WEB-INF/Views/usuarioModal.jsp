@@ -93,10 +93,10 @@
 										</div>									
 									</div>
 																		
-									<div class="col-lg-12 form-group">
-										<div class="col-xs-5 col-xs-offset-3">
+									<div class="col-lg-12 text-right form-group">
+										
 											<button type="submit" class="btn btn-default">Crear</button>
-										</div>
+										
 									</div>
 									
 								</form>
