@@ -59,7 +59,7 @@ public class CatastrofeModel {
 	}
 
 	public void setTipo(int tipo) {
-		tipo = tipo;
+		this.tipo = tipo;
 	}
 
 	

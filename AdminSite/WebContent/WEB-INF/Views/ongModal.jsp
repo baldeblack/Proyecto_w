@@ -82,7 +82,7 @@
 		        </div>
 		</div>
 		<div class="modal-footer">
-		     <button type="button" class="btn btn-default" data-dismiss="modal" tabindex="5">Cerrar</button>
+		     <button type="button" class="btn btn-default" data-dismiss="modal" tabindex="5">Crear</button>
 		</div>
 
     </div>

@@ -79,7 +79,7 @@ jQuery(document).ready(function($) {
 		    				xhr.setRequestHeader("Content-Type", "application/json");
 		    			},
 		    			success : function(data) {
-		    				$("#responseOng").html("La se dio de alta la ong " + data.nombre + " .");
+		    				$("#responseOng").html("La se dio de alta la ong.");
 		    				load("donRbt", data);    		
 		    			},
 		    			error : function(data, status, er) {
@@ -121,7 +121,7 @@ jQuery(document).ready(function($) {
 		    				xhr.setRequestHeader("Content-Type", "application/json");
 		    			},
 		    			success : function(data) {
-		    				$("#responseUsu").html("La se dio de alta el usuario " + data.nombre + " .");
+		    				$("#responseUsu").html("La se dio de alta el usuario.");
 		    				load("rescRbt", data);    		
 		    			},
 		    			error : function(data, status, er) {

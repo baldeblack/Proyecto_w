@@ -120,7 +120,7 @@ public class CatastrofesController {
 				cEntity.setActiva(CatastrofeModel.getActiva());
 				cEntity.setNombre(CatastrofeModel.getNombre());
 				cEntity.setCss(CatastrofeModel.getCss());
-				cEntity.setDominio(CatastrofeModel.getDominio());
+				cEntity.setDominio(CatastrofeModel.getDominio().toLowerCase());
 				cEntity.setFechaCreacion(date);
   			    cEntity.setStringConeccion("jdbc:mysql://localhost:3306/" + tenantIdentifier /*CatastrofeModel.getNombre().trim() + s.replace("-", "").trim()*/);
 				cEntity.setInformacion(CatastrofeModel.getInformacion());				
@@ -189,7 +189,7 @@ public class CatastrofesController {
 					c.setActiva(CatastrofeModel.getActiva());
 					c.setNombre(CatastrofeModel.getNombre());
 					c.setCss(CatastrofeModel.getCss());
-					c.setDominio(CatastrofeModel.getDominio());
+					c.setDominio(CatastrofeModel.getDominio().toLowerCase());
 					c.setInformacion(CatastrofeModel.getInformacion());				
 					c.setZonaAfectada(CatastrofeModel.getZonaAfectada());
 					c.setApiFb(CatastrofeModel.getApiFb());
